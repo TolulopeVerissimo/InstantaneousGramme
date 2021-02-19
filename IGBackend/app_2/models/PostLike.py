@@ -10,5 +10,5 @@ class PostLike(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     postId = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
 
-    users = db.Relationship("User", back_populates="postLikes")
-    posts = db.Relationship("Post", back_populates="postLikes")
+    user = db.Relationship("User", back_populates="postLike")
+    post = db.Relationship("Post", back_populates="postLike")

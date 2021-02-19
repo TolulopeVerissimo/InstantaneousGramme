@@ -1,20 +1,33 @@
-from flask_sqlalchemy import SQLAlchemy
+from .db import db
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
-db = SQLAlchemy()
+class User(db.Model, UserMixin):
+  __tablename__ = 'users'
+
+  id = db.Column(db.Integer, primary_key = True)
+  username = db.Column(db.String(40), nullable = False, unique = True)
+  email = db.Column(db.String(255), nullable = False, unique = True)
+  hashed_password = db.Column(db.String(255), nullable = False)
 
 
-class User(db.Model):
-    __tablename__ = 'Users'
+  @property
+  def password(self):
+    return self.hashed_password
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(265), nullable=False)
-    phoneNumber = db.Column(db.Integer, nullable=False)
-    username = db.Column(db.String(30), unique=True, nullable=False)
-    biography = db.Column(db.String(200))
-    # will need to adjust to skeleton
-    hashedPassword = db.Column(db.String(60), nullable=False)
 
-    posts = db.relationship("Post", back_populates="users")
-    follows = db.relationship("Follow", back_populates="users")
-    comments = db.relationship("Comment", back_populates="users")
+  @password.setter
+  def password(self, password):
+    self.hashed_password = generate_password_hash(password)
+
+
+  def check_password(self, password):
+    return check_password_hash(self.password, password)
+
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "username": self.username,
+      "email": self.email
+    }

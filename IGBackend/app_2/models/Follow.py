@@ -10,5 +10,5 @@ class Follow(db.Model):
     followedUserId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     followerId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    users = db.relationship("User", back_populates="follows")
+    user = db.relationship("User", back_populates="follow")
     
