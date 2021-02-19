@@ -10,4 +10,8 @@ class Post(db.Model):
     description = db.Column(db.String(50))
     private = db.Column(db.Boolean, nullable=False)
     imagePath = db.Column(db.String(100))
-    userId = db.Column(db.Integer, unique=True, nullable=False, unique=True)
+    userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+
+    users = db.relationship("User", back_populates="posts")
+    comments = db.relationship("Comment", back_populates="posts")
+    postLikes = db.relationship("PostLike", back_populates="posts")
