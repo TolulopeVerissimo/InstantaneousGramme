@@ -1,8 +1,8 @@
-"""create_users_table
+"""create tables
 
-Revision ID: ffdc0a98111c
+Revision ID: de8b2daa50f9
 Revises: 
-Create Date: 2020-11-20 15:06:02.230689
+Create Date: 2021-02-19 19:02:37.618674
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ffdc0a98111c'
+revision = 'de8b2daa50f9'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,7 +27,7 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    # ### end Alembic commands ###qqqqqqqqq
+    # ### end Alembic commands ###
 
 
 def downgrade():
