@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from .db import db
-db = SQLAlchemy()
+
 
 
 class CommentsLike(db.Model):
