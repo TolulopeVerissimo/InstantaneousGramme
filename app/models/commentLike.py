@@ -12,6 +12,6 @@ class CommentLike(db.Model):
 
     user = db.relationship("User", back_populates="commentLikes")
     comment = db.relationship("Comment", back_populates="commentLikes")
-    user = db.relationship("User", back_populates="commentLike")
-    comment = db.relationship("Comment", back_populates="commentLike")
+    # user = db.relationship("User", back_populates="commentLike")
+    # comment = db.relationship("Comment", back_populates="commentLike")
 

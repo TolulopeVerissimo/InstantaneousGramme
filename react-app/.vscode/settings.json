@@ -1,8 +1,4 @@
 {
-    "python.pythonPath": "/Users/ryanmaloney/Desktop/code/InstantaneousGramme/.venv/bin/python3.8",
-    "python.linting.pylintEnabled": false,
-    "python.linting.enabled": true,
-    "python.linting.pycodestyleEnabled": true,
     "workbench.colorCustomizations": {
         "activityBar.background": "#511b22",
         "titleBar.activeBackground": "#2b0e12",
@@ -36,6 +32,5 @@
         "terminal.ansiRed": "#FF6C60",
         "terminal.ansiWhite": "#B5B3AA",
         "terminal.ansiYellow": "#FFFFB6"
-    },
-    "window.title": " ⚡💻 ${folderName} 💻   ⚡ ${separator} [Branch: maiin-feed-feature]"
+    }
 }
