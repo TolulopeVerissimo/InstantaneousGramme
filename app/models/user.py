@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(50), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     # add a validator for phone number
-    phoneNumber = db.Column(db.Integer, nullable=False)
+    phoneNumber = db.Column(db.String(20))
     username = db.Column(db.String(30), unique=True, nullable=False)
     biography = db.Column(db.String(200))
     profilePicture = db.Column(db.String(255))
