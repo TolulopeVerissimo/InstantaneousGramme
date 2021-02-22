@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar/index";
 import NavBar from "./components/NavBar";
 import Home from './components/Home'
 import Splash from './components/SplashPage'
@@ -60,7 +59,7 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
-      </Switch> 
+      </Switch>
       </BrowserRouter >
       <SmoothProvider skew={false}/>
     */}
