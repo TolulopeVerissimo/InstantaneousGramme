@@ -1,5 +1,6 @@
 import React from 'react'
 function PicGrid() {
+    const pictures = ""
     return (
         <div>
             {
