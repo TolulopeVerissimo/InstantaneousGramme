@@ -21,8 +21,18 @@ class User(db.Model, UserMixin):
     biography = db.Column(db.String(200))
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    post = db.relationship("Post", back_populates="user")
-    comment = db.relationship("Comment", back_populates="user")
+    posts = db.relationship("Post", back_populates="user")
+    postLikes = db.relationship("PostLike", back_populates="user")
+    comments = db.relationship("Comment", back_populates="user")
+    commentLikes = db.relationship("CommentLike", back_populates="user")
+    followers = db.relationship(
+        "User",
+        secondary=follows,
+        primaryjoin=(follows.c.follower_id == id),
+        secondaryjoin=(follows.c.followed_id == id),
+        backref=db.backref("follows", lazy="dynamic"),
+        lazy="dynamic"
+    )
 
     @property
     def password(self):

@@ -11,6 +11,6 @@ class Comment(db.Model):
     postId = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
     content = db.Column(db.String(255), nullable=False)
 
-    user = db.relationship("User", back_populates="comment")
-    post = db.relationship("Post", back_populates="comment")
-    commentLike = db.relationship("CommentLike", back_populates="comment")
+    user = db.relationship("User", back_populates="comments")
+    post = db.relationship("Post", back_populates="comments")
+    commentLikes = db.relationship("CommentLike", back_populates="comment")
