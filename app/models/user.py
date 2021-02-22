@@ -13,12 +13,13 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False, unique=True)
+    name = db.Column(db.String(50), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     # add a validator for phone number
     phoneNumber = db.Column(db.Integer, nullable=False)
     username = db.Column(db.String(30), unique=True, nullable=False)
     biography = db.Column(db.String(200))
+    profilePicture = db.Column(db.String(255))
     hashed_password = db.Column(db.String(255), nullable=False)
 
     posts = db.relationship("Post", back_populates="user")

@@ -1,6 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from .db import db
 
 class Follow(db.Model):
     __tablename__ = 'follows'
