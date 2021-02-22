@@ -1,1 +1,4 @@
-/* TODO Add site wide styles */
+body {
+  background:rgba(var(--d87,255,255,255),1);
+  font-size: 62.5%;
+}
