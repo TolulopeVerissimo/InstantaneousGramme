@@ -1,5 +1,4 @@
 {
-    "python.pythonPath": "/Users/ryanmaloney/Desktop/code/InstantaneousGramme/.venv/bin/python3.8",
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": true,
     "python.linting.pycodestyleEnabled": true

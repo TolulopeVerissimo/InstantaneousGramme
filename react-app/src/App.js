@@ -15,54 +15,53 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const user = await authenticate();
-  //     if (!user.errors) {
-  //       setAuthenticated(true);
-  //     }
-  //     setLoaded(true);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      const user = await authenticate();
+      if (!user.errors) {
+        setAuthenticated(true);
+      }
+      setLoaded(true);
+    })();
+  }, []);
 
-  // if (!loaded) {
-  //   return null;
-  // }
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <>
-      {/* <Splash /> */}
+
       {/* <Home /> */}
 
-      <Profile />
-      {/*
-      <SmoothProvider skew={false}>
-      < BrowserRouter >
-         <NavBar setAuthenticated={setAuthenticated} />
-      <Switch>
-        <Route path="/login" exact={true}>
+      {/* <Profile /> */}
 
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-        </Route>
-        <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-      </Switch>
+      {/* <SmoothProvider skew={false}> */}
+      < BrowserRouter >
+        {authenticated && <NavBar setAuthenticated={setAuthenticated} />}
+
+        <Switch>
+          <Route path="/" exact={true}>
+            {authenticated && <h1>Currently Authenticated Login Form should not appear</h1>}
+            {!authenticated && <Splash authenticated={authenticated}
+              setAuthenticated={setAuthenticated} />}
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          </Route>
+          <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+            <h1>My Home Page</h1>
+          </ProtectedRoute>
+        </Switch>
       </BrowserRouter >
-      <SmoothProvider skew={false}/>
-    */}
+      {/* <SmoothProvider skew={false}/> */}
+
 
     </>
   );
