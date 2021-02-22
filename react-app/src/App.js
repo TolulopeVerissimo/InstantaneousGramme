@@ -28,16 +28,39 @@ function App() {
   if (!loaded) {
     return null;
   }
-  if (!authenticated) {
-    return (
-      <Splash />
-    )
-  }
 
   return (
     <>
-      <Home />
-      <Profile />
+
+      {/* <Home /> */}
+
+      {/* <Profile /> */}
+
+      {/* <SmoothProvider skew={false}> */}
+      < BrowserRouter >
+        {authenticated && <NavBar setAuthenticated={setAuthenticated} />}
+
+        <Switch>
+          <Route path="/" exact={true}>
+            {authenticated && <h1>Currently Authenticated Login Form should not appear</h1>}
+            {!authenticated && <Splash authenticated={authenticated}
+              setAuthenticated={setAuthenticated} />}
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          </Route>
+          <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+            <h1>My Home Page</h1>
+          </ProtectedRoute>
+        </Switch>
+      </BrowserRouter >
+      {/* <SmoothProvider skew={false}/> */}
 
 
         < BrowserRouter >

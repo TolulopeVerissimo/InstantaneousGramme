@@ -13,4 +13,3 @@ class CommentLike(db.Model):
     user = db.relationship("User", back_populates="commentLikes")
     comment = db.relationship("Comment", back_populates="commentLikes")
 
-

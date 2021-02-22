@@ -5,7 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './styles/posts.css'
 
 function Posts() {
-    const [tabIndex, setTabIndex] = useState("")
+    const [tabIndex, setTabIndex] = useState(0)
     return (
         <>
 
