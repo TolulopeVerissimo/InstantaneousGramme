@@ -8,5 +8,5 @@ class PostLike(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     postId = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
 
-    user = db.Relationship("User", back_populates="postLikes")
-    post = db.Relationship("Post", back_populates="postLikes")
+    user = db.relationship("User", back_populates="postLikes")
+    post = db.relationship("Post", back_populates="postLikes")
