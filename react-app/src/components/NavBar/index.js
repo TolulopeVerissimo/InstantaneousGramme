@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import ProfileDropdown from './ProfileDropdown'
 import './NavBar.css'
 
 const NavBar = ({ setAuthenticated }) => {
@@ -43,6 +44,7 @@ const NavBar = ({ setAuthenticated }) => {
         <i className="far fa-paper-plane navbar__icon" />
         <i className="far fa-compass navbar__icon" />
         <i className="far fa-heart navbar__icon" />
+        <ProfileDropdown />
       </div>
     </nav>
   );
