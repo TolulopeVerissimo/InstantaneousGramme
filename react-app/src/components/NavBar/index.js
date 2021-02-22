@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
+import './NavBar.css'
 
 const NavBar = ({ setAuthenticated }) => {
   return (
-    <nav>
-      <ul>
+    <nav className="navbar">
+      {/* <ul>
         <li>
           <NavLink to="/" exact={true} activeClassName="active">
             Home
@@ -29,7 +30,20 @@ const NavBar = ({ setAuthenticated }) => {
         <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
         </li>
-      </ul>
+      </ul> */}
+      <div className="navbar__logocontainer">
+        <img src="/ig-logo.png" className="navbar__logo" alt="Instanttaneous Gramme Logo"/>
+      </div>
+      <div className="navbar__search">
+        <i className="fas fa-search navbar__icon" />
+        <input type="text" placeholder="Search" className="navbar__searchfield"></input>
+      </div>
+      <div className="navbar__navicons">
+        <i className="fas fa-home navbar__icon" />
+        <i className="far fa-paper-plane navbar__icon" />
+        <i className="far fa-compass navbar__icon" />
+        <i className="far fa-heart navbar__icon" />
+      </div>
     </nav>
   );
 }
