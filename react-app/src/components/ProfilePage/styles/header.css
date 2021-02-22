@@ -1,0 +1,24 @@
+.pfpDiv {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.profilePicButton img {
+    max-height: 100%;
+    max-width: 100%;
+    /* border-radius: 75px; */
+    cursor: pointer;
+}
+
+.spacingspan {
+    margin-left: 2.5rem;
+}
+.bottomSpacer {
+    margin-top: 3rem;
+}
+.fas {
+    font-size: 2.5rem;
+}
