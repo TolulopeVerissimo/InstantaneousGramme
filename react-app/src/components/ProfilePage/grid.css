@@ -1,0 +1,7 @@
+.grid {
+    height: 293px;
+    width: 293px;
+    grid-template-areas: 'a a a';
+    gap: 2rem;
+    grid-auto-rows: 100px;
+}
