@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom'
 import { logout } from "../../services/auth";
 
 function ProfileDropdown({ setAuthenticated }) {
   const [showMenu, setShowMenu] = useState(false);
-
+  let history = useHistory()
   const logoutNow = () => {
     logout()
     setAuthenticated(false)
+  }
+
+  const profileRedirect = () => {
+    history.push('/profile')
   }
 
   const openMenu = () => {
@@ -21,21 +26,20 @@ function ProfileDropdown({ setAuthenticated }) {
 
     return () => document.removeEventListener('click', closeMenu);
   }, [showMenu])
+
+
   return (
-    <div className="dropdown__container">
-      <div className="dropdown">
-        {showMenu && (
-          <ul className="dropdown__list">
-            <li>Profile</li>
-            <li onClick={logoutNow}>Logout</li>
-          </ul>
-        )}
-        <div>
-          <i className="far fa-user navbar__icon" onClick={openMenu} />
-        </div>
+    <div className="dropdown">
+      {showMenu && (
+        <ul className="dropdown__list">
+          <li onClick={profileRedirect}>Profile </li>
+          <li onClick={logoutNow}>Logout</li>
+        </ul>
+      )}
+      <div>
+        <i className="far fa-user navbar__icon" onClick={openMenu} />
       </div>
     </div>
-
   )
 }
 

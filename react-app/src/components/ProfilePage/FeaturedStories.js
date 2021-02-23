@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import React from 'react'
 import './styles/featured.css'
 
 function FeaturedStories() {
