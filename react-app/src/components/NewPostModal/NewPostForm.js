@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { getSignedRequest } from '../../services/upload'
 import './NewPostForm.css'
 
 
@@ -6,9 +7,18 @@ function NewPostForm() {
   const [photo, setPhoto] = useState('')
   const [description, setDescription] = useState('')
   const [isPrivate, setIsPrivate] = useState(false)
-  const handleSubmit= (e) => {
+  const handleSubmit= async (e) => {
     e.preventDefault();
-    console.log(description, isPrivate)
+    const photo_url = await getSignedRequest(photo)
+
+
+    // const data = {description, isPrivate}
+    // const options =
+    //                 {
+    //                   method: 'POST',
+    //                   body: photo, data
+    //                 }
+    // const res = await fetch('/api/posts/', options)
   }
   return (
     <form className="newpostform" onSubmit={handleSubmit}>
@@ -16,9 +26,8 @@ function NewPostForm() {
         Photo
         <input
           type="file"
-          value={photo}
           className="newpostform__input"
-          onChange={(e) => setPhoto(e.target.value)}/>
+          onChange={(e) => setPhoto(e.target.files[0])}/>
       </label>
       <label className="newpostform__label textarea">
         <input
