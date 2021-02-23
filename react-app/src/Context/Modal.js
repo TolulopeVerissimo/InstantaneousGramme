@@ -1,14 +1,15 @@
-import { useEffect } from "react";
-
+import React, { useEffect, useRef, useState, useContext } from "react";
+import ReactDOM from 'react-dom'
+import './Modal.css'
 
 const ModalContext = React.createContext();
 
-export function ModalProvider({ childrten }) {
+export function ModalProvider({ children }) {
   const modalRef = useRef();
   const [value, setValue] = useState();
 
   useEffect(() => {
-    setValue(modelRef.current);
+    setValue(modalRef.current);
   }, [])
 
   return (
