@@ -4,10 +4,10 @@
   align-items: center;
   border-bottom:1px solid lightgray;
   margin-bottom: 1rem;
-  /* width: 100%; */
+  background-color: white;
 }
 .navbar__icon {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   padding: .3rem;
   margin: .1rem;
   margin-bottom: .3rem;
@@ -17,6 +17,7 @@
   border: 1px solid lightgray;
   border-radius: .2rem;
   margin-bottom: .8rem;
+  display: flex;
 }
 
 .navbar__searchfield {
