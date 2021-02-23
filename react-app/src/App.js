@@ -61,8 +61,6 @@ function App() {
         </Switch>
       </BrowserRouter >
       {/* <SmoothProvider skew={false}/> */}
-
-
     </>
   );
 }

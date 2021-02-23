@@ -5,18 +5,16 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
+import { ModalProvider } from './Context/Modal';
 
 
 function Root() {
   return (
-
-    <BrowserRouter>
-      {/* <ModalProvider> */}
-
-      <App />
-      {/* </ModalProvider> */}
-    </BrowserRouter>
-
+    <ModalProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ModalProvider>
   );
 }
 ReactDOM.render(

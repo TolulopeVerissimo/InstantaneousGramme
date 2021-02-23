@@ -1,4 +1,7 @@
 import os
+import boto3
+from botocore.config import Config
+import json
 from flask import Flask, render_template, request, session, redirect
 from flask_cors import CORS
 from flask_migrate import Migrate
@@ -8,10 +11,11 @@ from flask_login import LoginManager
 from .models import db, User, Post
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.posts_routes import posts_routes
 
 from .seeds import seed_commands
 
-from .config import Config
+from .config import Configuration
 
 app = Flask(__name__)
 
@@ -28,9 +32,10 @@ def load_user(id):
 # Tell flask about our seed commands
 app.cli.add_command(seed_commands)
 
-app.config.from_object(Config)
+app.config.from_object(Configuration)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(posts_routes, url_prefix='/api/posts')
 db.init_app(app)
 Migrate(app, db)
 
@@ -72,3 +77,26 @@ def react_root(path):
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
+
+
+@app.route('/sign_s3/')
+def sign_s3():
+    S3_BUCKET = os.environ.get('S3_BUCKET')
+
+    file_name = request.args.get('file_name')
+    file_type = request.args.get('file_type')
+    s3 = boto3.client('s3', config=Config(signature_version='s3v4', region_name="us-east-2"))
+
+    presigned_post = s3.generate_presigned_post(
+        Bucket=S3_BUCKET,
+        Key=file_name,
+        Fields={"acl": "public-read", "Content-Type": file_type},
+        Conditions=[
+            {"acl": "public-read"},
+            {"Content-Type": file_type}
+        ],
+    )
+    return json.dumps({
+        'data': presigned_post,
+        'url': 'http://%s.s3.amazonaws.com/' % (S3_BUCKET)
+    })
