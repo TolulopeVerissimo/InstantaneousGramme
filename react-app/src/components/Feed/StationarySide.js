@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { sideItems } from "./sideItems.js";
 import "./StationarySide.css";
 function StationarySide() {
@@ -10,83 +10,53 @@ function StationarySide() {
     "https://starecat.com/content/wp-content/uploads/pope-francis-punch-man-with-damaged-face-photoshopped.jpg",
     "https://i.kym-cdn.com/entries/icons/original/000/027/269/Screen_Shot_2018-09-28_at_3.14.37_PM.png",
   ];
-
   return (
     <>
-      <div>
-        <div></div>
-
-        <div>
-          <div>
-            <div></div>
-            <a>
-              <span> See All </span>
-            </a>
+      <div className='scrollingMain'>
+        <div className='profileContainer'>
+          <div className='testCircle'>
+            <img src={imgArr[4]} alt='' />
           </div>
-
-          <div>
-            <div>
-              <div>
-                Holding 5 Divs that all need to be nest-mapped Box Parent Div
-                picture profile Link Follow
-                {/* {
-                                    userList && userList.map((el,idx)=>{
-                                        return
-                                        (
-                                            <div className="GrandPappieOfAllDivs">
-                                                <div className="ParentDivForUserSuggestions">
-                                                    <div className="PfpParent">
-                                                        <div className="PfpChild1">
-                                                            <div className="PfpChild2">
-                                                                <canvas height="42px" width="42px" style={{position: 'absolute', top: '-5px', left: '-5px', width: '42px', height: '42px'}}></canvas>
-                                                                <a className="toProfile" style={{width:'32px',height:'32px'}}>
-                                                                    <img src={userList.pfp} alt="" draggable="false"/>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="userNameText">
-                                                    <div>
-                                                        <div>
-                                                            <span>
-                                                                <a>{userList.username}</a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div>
-                                                    <button>
-                                                        <span>Follow</span>
-                                                    </button>
-                                                </div>
-
-                                        )
-                                    })} */}
-              </div>
-            </div>
+          <div className='username'>
+            <h5>Demo_McDemerson</h5>
+            <h6>Nemo</h6>
           </div>
         </div>
-
-        <div>
+        <div className='suggested'>
+          {imgArr &&
+            imgArr.map((el, idx) => {
+              return (
+                <>
+                  <div className='circle'>
+                    <img src={el}></img>
+                  </div>
+                  <div className='users'>
+                    <h5>Suggested User {idx}</h5>
+                    <h6>Follow Button</h6>
+                  </div>
+                </>
+              );
+            })}
+        </div>
+        <div style={{ display: "flex", marginTop: "6rem" }}>
           <nav>
-            <ul>
-              {sideItems.map((item, idx) => {
-                return (
-                  <li key={idx} className={item.cName} id='underline'>
-                    <Link to={item.path} style={{ textDecoration: "none" }}>
-                      <span>{item.title}</span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            {sideItems.map((item, idx) => {
+              return (
+                <Link
+                  className={item.cName}
+                  id='underline'
+                  to={item.path}
+                  style={{ textDecoration: "none" }}
+                >
+                  <span style={{ marginRight: "1rem" }}>{item.title}</span>
+                </Link>
+              );
+            })}
           </nav>
         </div>
       </div>
     </>
   );
 }
+
 export default StationarySide;

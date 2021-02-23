@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Comments from "../Comments";
 import CommentForm from "../Comments/CommentForm";
 import "./posts.css";
 
-const Posts = () => {
+const Posts = (postId) => {
+  // const posts = useSelector((state) => {
+  //   if (!Posts) return null;
+  //   return Posts;
+  // });
+
+  const [isLiked, setIsLiked] = useState(false);
+
   return (
     <div className='post__container'>
       <div className='post__header'>
