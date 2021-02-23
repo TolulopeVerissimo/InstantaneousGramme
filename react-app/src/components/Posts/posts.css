@@ -53,3 +53,24 @@
 .post__icon img {
   height: 100%;
 }
+
+.comment__container {
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  padding-top: 0rem;
+  border-bottom: 0.5px solid rgb(235, 231, 231);
+}
+
+.post__title {
+  width: 100%;
+}
+
+.post__user {
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.5rem 0.5rem 0rem 0rem;
+}
+
+.post__description {
+  display: inline-block;
+}

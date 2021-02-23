@@ -1,5 +1,6 @@
 import React from "react";
 import Comments from "../Comments";
+import CommentForm from "../Comments/CommentForm";
 import "./posts.css";
 
 const Posts = () => {
@@ -16,7 +17,7 @@ const Posts = () => {
           className='post__img-tag'
           src='https://i.imgflip.com/4howsd.jpg'
           alt='user_post'
-        ></img>
+        />
       </div>
       <div className='post__icons'>
         <div className='post__icon'>
@@ -41,14 +42,21 @@ const Posts = () => {
           />
         </div>
       </div>
-      <div className='commment__likes-count'>??? likes</div>
-      <div className='description'> USERNAME | Post description</div>
-      <div className='post__comments'>
-        {/* pass user in as props to Comments */}
-        <Comments />
+      <div className='comment__container'>
+        <p className='commment__likes-count'>Liked by >>> and ??? others</p>
+        <div className='post__title'>
+          <p className='post__user'>username</p>
+          <p className='post__description'> Post description</p>
+        </div>
+        <div className='post__comments'>
+          {/* pass user in as props to Comments */}
+          <Comments />
+        </div>
+        <p className='post__createdAt'>??? HOURS AGO</p>
       </div>
-      <div className='post__createdAt'>??? HOURS AGO</div>
-      <div className='post__comment-form'>{/* <CommentForm /> */}</div>
+      <div className='post__comment-form'>
+        <CommentForm />
+      </div>
     </div>
   );
 };
