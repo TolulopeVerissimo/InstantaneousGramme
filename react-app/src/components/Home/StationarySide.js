@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink,Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {sideItems} from './sideItems.js'
 import './styles/StationarySide.css'
 function StationarySide() {

@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react'
 import './styles/Carousel.css'
 import ScrollingSide from './ScrollingSide.js'
 import StationarySide from './StationarySide.js'

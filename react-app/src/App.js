@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import Home from './components/Home'
@@ -31,20 +30,21 @@ function App() {
 
   return (
     <>
-
-      {/* <Home /> */}
-
-      {/* <Profile /> */}
-
       {/* <SmoothProvider skew={false}> */}
       < BrowserRouter >
         {authenticated && <NavBar setAuthenticated={setAuthenticated} />}
 
         <Switch>
           <Route path="/" exact={true}>
-            {authenticated && <h1>Currently Authenticated Login Form should not appear</h1>}
+            {authenticated && <Home />}
             {!authenticated && <Splash authenticated={authenticated}
               setAuthenticated={setAuthenticated} />}
+            <Route path="/profile" User={User} UsersList={UsersList}>
+              {authenticated && <Profile />}
+              {!authenticated && <Splash authenticated={authenticated}
+                setAuthenticated={setAuthenticated} />}
+            </Route>
+
           </Route>
           <Route path="/sign-up" exact={true}>
             <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />

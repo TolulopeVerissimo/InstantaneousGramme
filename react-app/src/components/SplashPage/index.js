@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
 import LoginForm from '../auth/LoginForm.js'
+import { useHistory } from 'react-router-dom'
+
 import './splash.css'
 import './appstore.css'
 import { NavLink } from 'react-router-dom'
 function Splash({ authenticated, setAuthenticated }) {
+    let history = useHistory()
 
+    const signUpRedirect = () => {
+        history.push('/sign-up')
+    }
 
     let imgArr =
         [
@@ -53,43 +59,18 @@ function Splash({ authenticated, setAuthenticated }) {
 
                             <div className="childImage">
                                 <img className="MyTurn" src={imgArr[num]} alt="changing image" />
-
                             </div>
                         </div>
                     </div>
 
-
-
-
                     <div className="splashRight">
                         RIGHT SIDE
                         <div className="login">
-
-
                             <LoginForm authenticated={authenticated}
                                 setAuthenticated={setAuthenticated} />
 
-
-                            {/* <form className="log">
-                                <input
-                                    className="pnue"
-                                    // value=
-                                    type="text"
-                                    placeholder="Phone number, username, or email"
-                                />
-                                <input
-                                    className="pass"
-                                    type="text"
-                                    placeholder="Password"
-                                />
-                                <br />
-                                <input type="submit" value="Log In" onClick={callAPI} />
-                            </form> */}
-
                             <div className="lineBox">
-                                <div className="line"></div>
                                 <div className="wordSeperator">or</div>
-                                <div className="line"></div>
                             </div>
 
                             <div className="Demo-Login">
@@ -97,15 +78,15 @@ function Splash({ authenticated, setAuthenticated }) {
                                     <input type="submit" value="DEMO LOGIN" />
                                 </form>
                             </div>
-
                         </div>
 
                         <div className="signup">
                             <div style={{ marginTop: '15px' }}>
                                 <span>Don't have an account? </span>
-                                <NavLink to="/" style={{ cursor: 'pointer', color: '#0095f6' }}> Sign Up</NavLink>
+                                <span onClick={signUpRedirect} style={{ cursor: 'pointer', color: '#0095f6' }}>Sign Up </span>
                             </div>
                         </div>
+
                         <p style={{ textAlign: 'center' }}> Get the app.</p>
                         <div className="appStore">
 
