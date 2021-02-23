@@ -1,0 +1,22 @@
+.post__container {
+  background-color: blue;
+  width: 20rem;
+  height: ;
+}
+
+.post__header {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  padding: 0.5rem;
+}
+
+.post__profile-pic {
+  background-color: pink;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+}
+
+.post__image img {
+  max-width: 200px;
+}

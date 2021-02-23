@@ -3,6 +3,7 @@ import Posts from "../Posts";
 import NavBar from "../NavBar";
 import StationarySide from "../other/.Home/StationarySide";
 import "./styles.css";
+import ScrollingSide from "../other/.Home/ScrollingSide";
 
 const LandingPage = () => {
   // posts = fetch("/");
@@ -15,6 +16,7 @@ const LandingPage = () => {
       <div className='landing__container'>
         <div className='posts__feed'>
           <Posts />
+          {/* <ScrollingSide /> */}
         </div>
         <div>
           <StationarySide />
