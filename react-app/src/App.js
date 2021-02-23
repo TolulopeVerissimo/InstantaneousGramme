@@ -32,7 +32,7 @@ function App() {
   return (
     <>
 
-      {/* <Home /> */}
+
 
       {/* <Profile /> */}
 
@@ -42,9 +42,10 @@ function App() {
 
         <Switch>
           <Route path="/" exact={true}>
-            {authenticated && <h1>Currently Authenticated Login Form should not appear</h1>}
+            {authenticated && <Home />}
             {!authenticated && <Splash authenticated={authenticated}
               setAuthenticated={setAuthenticated} />}
+
           </Route>
           <Route path="/sign-up" exact={true}>
             <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />

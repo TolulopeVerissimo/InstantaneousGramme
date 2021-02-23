@@ -22,20 +22,17 @@ function ProfileDropdown({ setAuthenticated }) {
     return () => document.removeEventListener('click', closeMenu);
   }, [showMenu])
   return (
-    <div className="dropdown__container">
-      <div className="dropdown">
-        {showMenu && (
-          <ul className="dropdown__list">
-            <li>Profile</li>
-            <li onClick={logoutNow}>Logout</li>
-          </ul>
-        )}
-        <div>
-          <i className="far fa-user navbar__icon" onClick={openMenu} />
-        </div>
+    <div className="dropdown">
+      {showMenu && (
+        <ul className="dropdown__list">
+          <li>Profile</li>
+          <li onClick={logoutNow}>Logout</li>
+        </ul>
+      )}
+      <div>
+        <i className="far fa-user navbar__icon" onClick={openMenu} />
       </div>
     </div>
-
   )
 }
 
