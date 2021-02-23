@@ -7,18 +7,21 @@ function NewPostForm() {
   const [photo, setPhoto] = useState('')
   const [description, setDescription] = useState('')
   const [isPrivate, setIsPrivate] = useState(false)
+  const [userId, setUserId] = useState(1)
+  const [imagePath, setImagePath] = useState("")
   const handleSubmit= async (e) => {
     e.preventDefault();
-    const photo_url = await getSignedRequest(photo)
-
-
-    // const data = {description, isPrivate}
-    // const options =
-    //                 {
-    //                   method: 'POST',
-    //                   body: photo, data
-    //                 }
-    // const res = await fetch('/api/posts/', options)
+    const url = await getSignedRequest(photo)
+    setImagePath(url)
+    const options =
+                    {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type':'Application/json'
+                      },
+                      body: JSON.stringify({description, isPrivate, description, imagePath, userId})
+                    }
+    const res = await fetch('/api/posts/', options)
   }
   return (
     <form className="newpostform" onSubmit={handleSubmit}>
