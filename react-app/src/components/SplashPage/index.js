@@ -70,9 +70,7 @@ function Splash({ authenticated, setAuthenticated }) {
                                 setAuthenticated={setAuthenticated} />
 
                             <div className="lineBox">
-                                <div className="line"></div>
                                 <div className="wordSeperator">or</div>
-                                <div className="line"></div>
                             </div>
 
                             <div className="Demo-Login">
