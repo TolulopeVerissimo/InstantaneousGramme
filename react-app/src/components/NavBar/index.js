@@ -33,7 +33,7 @@ const NavBar = ({ setAuthenticated }) => {
         </li>
       </ul> */}
       <div className="navbar__logocontainer">
-        <img src="/ig-logo.png" className="navbar__logo" alt="Instanttaneous Gramme Logo"/>
+        <img src="/ig-logo.png" className="navbar__logo" alt="Instanttaneous Gramme Logo" />
       </div>
       <div className="navbar__search">
         <i className="fas fa-search navbar__icon" />
@@ -44,7 +44,7 @@ const NavBar = ({ setAuthenticated }) => {
         <i className="far fa-paper-plane navbar__icon" />
         <i className="far fa-compass navbar__icon" />
         <i className="far fa-heart navbar__icon" />
-        <ProfileDropdown />
+        <ProfileDropdown setAuthenticated={setAuthenticated} />
       </div>
     </nav>
   );

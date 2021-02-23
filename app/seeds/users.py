@@ -8,7 +8,7 @@ def seed_users():
         name='Demo', 
         email='demo@aa.io',
         phoneNumber=5551234567,
-        hashed_password='password',
+        hashed_password=generate_password_hash('password'),
         username='demoMcdemoson', 
         biography="A long time demouser, first time insta user", 
         profilePicture='https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1301&q=80',
@@ -17,7 +17,7 @@ def seed_users():
     gen = User(
         name='Gen', 
         email='gen@aa.io', 
-        hashed_password='password',
+        hashed_password=generate_password_hash('password'),
         phoneNumber=5551234567,
         username='genagain',
         biography='Hilarious guy, getting by, teaching at a/A',
@@ -27,7 +27,7 @@ def seed_users():
     ed = User(
         name='Ed', 
         email='ed@aa.io', 
-        hashed_password='password',
+        hashed_password=generate_password_hash('password'),
         username='edagain',
         phoneNumber=5551234567,
         biography='Teaching code/growing plants',

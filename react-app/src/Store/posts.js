@@ -11,7 +11,7 @@ const setPosts = (posts) => {
     type: SET_POSTS,
     posts,
   };
-};
+}
 
 const createPosts = (posts) => {
   return {
@@ -29,8 +29,10 @@ const removePosts = (id) => {
 
 export const getPosts = () => async (dispatch) => {
   console.log('sdsadsadsadasdsadasdsad')  
-  const response = await fetch('/api/posts');
+  const response = await fetch('/api/posts/');
   if (response.ok) {
+    let res = await response.json()
+    console.log(res)
     dispatch(setPosts(response.data.posts));
   }
   return response;
@@ -38,7 +40,7 @@ export const getPosts = () => async (dispatch) => {
 
 
 const initialState = {};
-
+git
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_POSTS:
