@@ -7,6 +7,7 @@ import configureStore from './Store'
 import './index.css';
 import App from './App';
 
+const store = configureStore()
 
 function Root() {
   return (
