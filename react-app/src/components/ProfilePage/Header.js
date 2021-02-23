@@ -34,7 +34,7 @@ function Header() {
                             <span className="spacingspan"></span>
                             <span><h3 font="">Edit Profile</h3></span>
                             <span className="spacingspan"></span>
-                            <i class="fas fa-cog"></i>
+                            <i class="fas fa-cog profile__icon"></i>
                             {/* modal button for settings if you want */}
                             {/* with SVG */}
 

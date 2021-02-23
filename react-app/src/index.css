@@ -2,14 +2,6 @@ body {
     background: rgba(var(--d87, 255, 255, 255), 1);
     font-size: 62.5%;
 }
-/* TODO Add site wide styles */
-* {
-    margin: 0;
-    padding: 0;
-    /* z-index: 1000000; */
-    /* background-color: #fafafa;
-    background-color: rgba(var(--b3f, 250, 250, 250), 1); */
-}
 * button {
     border: none;
     background: none;
