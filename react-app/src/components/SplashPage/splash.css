@@ -33,7 +33,7 @@
 }
 .splashRight {
     background-color: fff;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     margin-top: 6.35rem;
     height: 350px;
     width: 380px;
@@ -57,17 +57,19 @@
 .login {
     width: 350px;
     height: 378.63px;
+    border: 1px solid black;
 }
 .log {
     margin-top: 5rem;
     margin-left: 0rem;
 }
-.login input[type='text'] {
+.login input[type='text'],
+.login input[type='password'] {
     width: 74%;
     padding: 12px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin: 0 0 0.75rem 3rem;
+    margin: 3rem 0 0.75rem 2.4rem;
 }
 .login input[type='submit'] {
     width: 55%;
@@ -75,8 +77,8 @@
     border: 1px solid #ccc;
     background-color: #0095f6;
     border-radius: 4px;
-    margin-left: 3rem;
-    cursor: pointer;
+    margin-left: 1rem;
+    /* cursor: pointer; */
 }
 .lineBox {
     margin: 1rem 4rem 18px;
@@ -85,13 +87,15 @@
     -webkit-box-direction: normal;
 }
 
-.Demo-Login {
-    /* height: 13px; */
-    /* overflow: hidden; */
-    /* border: 1px solid grey; */
-}
 .Demo-Login input[type='submit'] {
     background-color: lawngreen;
+
+    width: 55%;
+    padding: 1rem 2rem;
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+    margin-left: 4.9rem;
+    cursor: pointer;
 }
 .wordSeperator {
     height: 10px;
@@ -120,9 +124,9 @@
     top: 0.45em;
 }
 .signup {
-    width: 380px;
+    width: 22rem;
     height: 63.02px;
-    margin-top: -105px;
+    margin-top: 2.3rem;
     border: 1px solid black;
     text-decoration: none;
     text-align: center;
