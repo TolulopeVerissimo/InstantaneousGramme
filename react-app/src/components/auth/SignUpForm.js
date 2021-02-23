@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
+import './signup.css'
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -11,13 +13,16 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(name, username, email, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
     }
   };
 
+  const updateName = (e) => {
+    setName(e.target.value);
+  };
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -40,6 +45,15 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   return (
     <form onSubmit={onSignUp}>
+      <div>
+        <label>Name</label>
+        <input
+          type="text"
+          name="name"
+          onChange={updateName}
+          value={name}
+        ></input>
+      </div>
       <div>
         <label>User Name</label>
         <input

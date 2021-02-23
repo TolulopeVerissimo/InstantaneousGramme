@@ -31,11 +31,6 @@ function App() {
 
   return (
     <>
-
-
-
-      {/* <Profile /> */}
-
       {/* <SmoothProvider skew={false}> */}
       < BrowserRouter >
         {authenticated && <NavBar setAuthenticated={setAuthenticated} />}
@@ -45,6 +40,11 @@ function App() {
             {authenticated && <Home />}
             {!authenticated && <Splash authenticated={authenticated}
               setAuthenticated={setAuthenticated} />}
+            <Route path="/profile">
+              {authenticated && <Profile />}
+              {!authenticated && <Splash authenticated={authenticated}
+                setAuthenticated={setAuthenticated} />}
+            </Route>
 
           </Route>
           <Route path="/sign-up" exact={true}>
