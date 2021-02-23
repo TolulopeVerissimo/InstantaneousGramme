@@ -7,4 +7,5 @@ posts_routes = Blueprint('posts', __name__)
 
 @posts_routes.route('/', methods=['POST'])
 def new_post():
+    return 'success'
 

@@ -95,7 +95,6 @@ def sign_s3():
             {"acl": "public-read"},
             {"Content-Type": file_type}
         ],
-        ExpriresIn=3600
     )
     return json.dumps({
         'data': presigned_post,
