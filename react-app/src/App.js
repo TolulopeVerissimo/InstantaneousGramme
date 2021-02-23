@@ -48,7 +48,14 @@ function App() {
               {!authenticated && <Splash authenticated={authenticated}
                 setAuthenticated={setAuthenticated} />}
             </Route> */}
-
+{/*             {authenticated && <Home />}
+            {!authenticated && <Splash authenticated={authenticated}
+              setAuthenticated={setAuthenticated} />}
+            <Route path="/profile" User={User} UsersList={UsersList}>
+              {authenticated && <Profile />}
+              {!authenticated && <Splash authenticated={authenticated}
+                setAuthenticated={setAuthenticated} />}
+            </Route> */}
           </Route>
           <Route path="/sign-up" exact={true}>
             <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
@@ -65,8 +72,6 @@ function App() {
         </Switch>
       </BrowserRouter >
       {/* <SmoothProvider skew={false}/> */}
-
-
     </>
   );
 }

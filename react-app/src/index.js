@@ -6,20 +6,19 @@ import { BrowserRouter } from 'react-router-dom';
 import configureStore from './Store'
 import './index.css';
 import App from './App';
+import { ModalProvider } from './Context/Modal';
 
 const store = configureStore()
 
 function Root() {
   return (
     <Provider store={store}>
+      <ModalProvider>
       <BrowserRouter>
-        {/* <ModalProvider> */}
-
         <App />
-        {/* </ModalProvider> */}
       </BrowserRouter>
+      </ModalProvider>
     </Provider>
-
   );
 }
 ReactDOM.render(
