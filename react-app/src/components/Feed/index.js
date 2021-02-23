@@ -3,7 +3,6 @@ import Posts from "../Posts";
 import NavBar from "../NavBar";
 import StationarySide from "./StationarySide";
 import "./feed.css";
-import ScrollingSide from "../other/.Home/ScrollingSide";
 
 const Feed = () => {
   // posts = fetch("/");

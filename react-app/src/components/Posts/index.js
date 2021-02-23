@@ -41,10 +41,14 @@ const Posts = () => {
           />
         </div>
       </div>
+      <div className='commment__likes-count'>??? likes</div>
+      <div className='description'> USERNAME | Post description</div>
       <div className='post__comments'>
         {/* pass user in as props to Comments */}
         <Comments />
       </div>
+      <div className='post__createdAt'>??? HOURS AGO</div>
+      <div className='post__comment-form'>{/* <CommentForm /> */}</div>
     </div>
   );
 };
