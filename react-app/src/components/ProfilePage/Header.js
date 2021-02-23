@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './styles/header.css'
 function Header() {
 
@@ -19,7 +19,7 @@ function Header() {
                     <div className="pfpDiv">
                         <div>
                             <button className="profilePicButton" title="Change Picture">
-                                <img src={imgArr[1]}></img>
+                                <img src={imgArr[1]} alt=""></img>
                             </button>
                         </div>
                     </div>
