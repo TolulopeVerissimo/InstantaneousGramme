@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import StationarySide from "./StationarySide";
 import "./LandingPage.css";
 import * as postActions from "../../Store/posts";
+// import * as userActions from "../../Store/users";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     dispatch(postActions.getPosts());
+    // dispatch(postActions.getUsers());
   }, []);
 
   return (

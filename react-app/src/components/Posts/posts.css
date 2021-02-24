@@ -4,22 +4,24 @@
 
 .post__container {
   background-color: lightgray;
-  width: 30rem;
+  width: 50rem;
   border: 1px solid lightgray;
   box-shadow: 0px 0px 2px lightgray;
   border-radius: 0.2rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
 }
 
 .post__header {
   display: grid;
   grid-template-columns: auto 6fr auto;
-  padding: 0.5rem;
+  padding: 1rem;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 1.4rem;
 }
 
 .post__username {
-  padding-left: 0.3rem;
+  padding-left: 0.6rem;
 }
 
 .post__username:hover {
@@ -29,12 +31,20 @@
 .post__profile-pic {
   background-color: pink;
   border-radius: 50%;
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: 3rem;
+}
+
+.post__profile-pic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 .post__image {
-  max-width: 30rem;
+  max-width: 50rem;
+  max-height: 52rem;
+  overflow: hidden;
 }
 
 .post__img-tag {
@@ -47,8 +57,8 @@
 }
 
 .post__icon {
-  padding: 0.5rem;
-  height: 1.5rem;
+  padding: 0.6rem;
+  height: 2.5rem;
 }
 
 .post__icon img {
@@ -56,8 +66,8 @@
 }
 
 .comment__container {
-  font-size: 0.9rem;
-  padding: 0.5rem;
+  font-size: 1.4rem;
+  padding: 1rem;
   padding-top: 0rem;
   border-bottom: 0.5px solid rgb(235, 231, 231);
 }
@@ -77,7 +87,7 @@
 }
 
 .post__createdAt {
-  font-size: 0.6rem;
+  font-size: 1rem;
   color: rgb(168, 167, 167);
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
 }

@@ -4,7 +4,7 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 // import Home from './components/Home'
 import Splash from "./components/SplashPage";
-// import Profile from './components/ProfilePage'
+import Profile from './components/ProfilePage'
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -45,20 +45,12 @@ function App() {
                 setAuthenticated={setAuthenticated}
               />
             )}
-            {/* <Route path="/profile" User={User} UsersList={UsersList}>
-              {authenticated && <Profile />}
-              {!authenticated && <Splash authenticated={authenticated}
-                setAuthenticated={setAuthenticated} />}
-            </Route> */}
-            {/*             {authenticated && <Home />}
-            {!authenticated && <Splash authenticated={authenticated}
-              setAuthenticated={setAuthenticated} />}
-            <Route path="/profile" User={User} UsersList={UsersList}>
-              {authenticated && <Profile />}
-              {!authenticated && <Splash authenticated={authenticated}
-                setAuthenticated={setAuthenticated} />}
-            </Route> */}
+
+
           </Route>
+          <ProtectedRoute path="/profile/:id" exact={true} authenticated={authenticated}>
+            <Profile />
+          </ProtectedRoute>
           <Route path='/sign-up' exact={true}>
             <SignUpForm
               // authenticated={authenticated}

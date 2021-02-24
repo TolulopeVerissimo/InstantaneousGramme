@@ -57,13 +57,13 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       <div className="signUpForm">
         <form
           onSubmit={onSignUp}>
-          <h2>SIGN UP</h2>
+          <h2 className="signUpForm__title">SIGN UP</h2>
           <div>
             <label></label>
             <input
               type="text"
               name="name"
-              placeholder="name"
+              placeholder="Name"
               onChange={updateName}
               value={name}
             ></input>
@@ -73,7 +73,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             <input
               type="text"
               name="username"
-              placeholder="username"
+              placeholder="Username"
               onChange={updateUsername}
               value={username}
             ></input>
@@ -83,7 +83,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             <input
               type="text"
               name="email"
-              placeholder="email"
+              placeholder="E-Mail"
               onChange={updateEmail}
               value={email}
             ></input>
@@ -93,7 +93,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             <input
               type="password"
               name="password"
-              placeholder="password"
+              placeholder="Password"
               onChange={updatePassword}
               value={password}
             ></input>
@@ -103,7 +103,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             <input
               type="password"
               name="repeat_password"
-              placeholder="repeat_password"
+              placeholder="Confirm Password"
               onChange={updateRepeatPassword}
               value={repeatPassword}
               required={true}
@@ -111,8 +111,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           </div>
           <button className="signUpForm__submit" type="submit">Sign Up</button>
         </form>
-        <div className="login">
-          <span>Don't have an account? </span>
+        <div className="logincontainer">
+          <span>Already have an account? </span>
           <span onClick={loginRedirect} style={{ cursor: 'pointer', color: '#0095f6' }}>Log In </span>
         </div>
       </div>

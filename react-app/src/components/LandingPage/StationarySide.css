@@ -1,5 +1,6 @@
 .scrollingMain {
-  top: 0;
+  position: fixed;
+  top: 8rem;
   padding: 50px;
   font-size: 20px;
   width: 293px;

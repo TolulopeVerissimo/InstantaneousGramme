@@ -1,6 +1,6 @@
-const SET_POSTS = "posts/SET_DRINKS";
-const CREATE_POSTS = "posts/CREATE_DRINK";
-const REMOVE_POSTS = "posts/REMOVE_DRINK";
+const SET_POSTS = "posts/SET_POSTS";
+const CREATE_POSTS = "posts/CREATE_POSTS";
+const REMOVE_POSTS = "posts/REMOVE_POSTS";
 
 const setPosts = (posts) => {
   return {
@@ -24,11 +24,9 @@ const removePosts = (id) => {
 };
 
 export const getPosts = () => async (dispatch) => {
-  console.log("sdsadsadsadasdsadasdsad");
   const response = await fetch("/api/posts/");
   if (response.ok) {
     let res = await response.json();
-    console.log(res);
     dispatch(setPosts(res.posts));
   }
   return response;
