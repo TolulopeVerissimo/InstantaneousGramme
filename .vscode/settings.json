@@ -3,7 +3,6 @@
     "python.linting.enabled": true,
     "python.linting.pycodestyleEnabled": true,
     "python.pythonPath": "/Users/ryanmaloney/.pyenv/versions/3.8.3/bin/python",
-    "window.title": " ⚡💻 ${folderName} 💻   ⚡ ${separator} [Branch: update-db-add-seeders]",
     "workbench.colorCustomizations": {
         "activityBar.background": "#511b22",
         "titleBar.activeBackground": "#2b0e12",
@@ -38,4 +37,5 @@
         "terminal.ansiWhite": "#B5B3AA",
         "terminal.ansiYellow": "#FFFFB6"
     }
+   
 }
