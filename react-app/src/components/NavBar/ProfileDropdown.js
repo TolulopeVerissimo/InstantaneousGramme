@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom'
 import { logout } from "../../services/auth";
+import LogoutButton from '../auth/LogoutButton'
 
 function ProfileDropdown({ setAuthenticated }) {
   const [showMenu, setShowMenu] = useState(false);
@@ -32,8 +33,21 @@ function ProfileDropdown({ setAuthenticated }) {
     <div className="dropdown">
       {showMenu && (
         <ul className="dropdown__list">
-          <li onClick={profileRedirect}>Profile </li>
-          <li onClick={logoutNow}>Logout</li>
+          <li onClick={profileRedirect}>
+            <i className="far fa-user dropdown__icon" />
+            <p className="dropdown__link">Profile</p> </li>
+          <li>
+            <i className="far fa-bookmark dropdown__icon" />
+            <p className="dropdown__link">Saved</p>
+            </li>
+          <li>
+            <i className="fas fa-cog dropdown__icon" />
+            <p className="dropdown__link">Settings</p>
+            </li>
+          <li onClick={logoutNow}>
+            <i className="fas fa-sign-out-alt dropdown__icon" />
+            <LogoutButton setAuthenticated={setAuthenticated}/>
+          </li>
         </ul>
       )}
       <div>
