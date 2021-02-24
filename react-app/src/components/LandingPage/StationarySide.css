@@ -1,0 +1,45 @@
+.scrollingMain {
+  top: 0;
+  padding: 50px;
+  font-size: 20px;
+  width: 293px;
+  height: 476px;
+}
+.profileContainer {
+  justify-content: center;
+  align-content: center;
+}
+.profileContainer .testCircle {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  border: 1px solid black;
+  /* overflow: hidden; */
+}
+.testCircle img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-position: center center;
+  background-size: cover;
+}
+
+.suggested {
+  justify-content: center;
+  align-content: center;
+  margin-top: 5rem;
+}
+.suggested .circle {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  border: 1px solid black;
+  /* overflow: hidden; */
+}
+.circle img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-position: center center;
+  background-size: cover;
+}

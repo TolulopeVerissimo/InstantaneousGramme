@@ -1,13 +1,29 @@
+* {
+  font-family: "proxima-nova", sans-serif;
+}
+
 .post__container {
-  background-color: blue;
-  width: 20rem;
-  height: ;
+  background-color: lightgray;
+  width: 30rem;
+  border: 1px solid lightgray;
+  box-shadow: 0px 0px 2px lightgray;
+  border-radius: 0.2rem;
 }
 
 .post__header {
   display: grid;
-  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-columns: auto 6fr auto;
   padding: 0.5rem;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.post__username {
+  padding-left: 0.3rem;
+}
+
+.post__username:hover {
+  text-decoration: underline;
 }
 
 .post__profile-pic {
@@ -17,6 +33,51 @@
   width: 2rem;
 }
 
-.post__image img {
-  max-width: 200px;
+.post__image {
+  max-width: 30rem;
+}
+
+.post__img-tag {
+  width: 100%;
+}
+
+.post__icons {
+  display: grid;
+  grid-template-columns: auto auto auto 3fr;
+}
+
+.post__icon {
+  padding: 0.5rem;
+  height: 1.5rem;
+}
+
+.post__icon img {
+  height: 100%;
+}
+
+.comment__container {
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  padding-top: 0rem;
+  border-bottom: 0.5px solid rgb(235, 231, 231);
+}
+
+.post__title {
+  width: 100%;
+}
+
+.post__user {
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.5rem 0.5rem 0rem 0rem;
+}
+
+.post__description {
+  display: inline-block;
+}
+
+.post__createdAt {
+  font-size: 0.6rem;
+  color: rgb(168, 167, 167);
+  padding-top: 0.5rem;
 }

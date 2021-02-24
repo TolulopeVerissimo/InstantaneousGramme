@@ -1,17 +1,13 @@
-
-
-
-
-const SET_POSTS = 'posts/SET_DRINKS';
-const CREATE_POSTS = 'posts/CREATE_DRINK';
-const REMOVE_POSTS = 'posts/REMOVE_DRINK';
+const SET_POSTS = "posts/SET_DRINKS";
+const CREATE_POSTS = "posts/CREATE_DRINK";
+const REMOVE_POSTS = "posts/REMOVE_DRINK";
 
 const setPosts = (posts) => {
   return {
     type: SET_POSTS,
     posts,
   };
-}
+};
 
 const createPosts = (posts) => {
   return {
@@ -28,19 +24,18 @@ const removePosts = (id) => {
 };
 
 export const getPosts = () => async (dispatch) => {
-  console.log('sdsadsadsadasdsadasdsad')  
-  const response = await fetch('/api/posts/');
+  console.log("sdsadsadsadasdsadasdsad");
+  const response = await fetch("/api/posts/");
   if (response.ok) {
-    let res = await response.json()
-    console.log(res)
-    dispatch(setPosts(response.data.posts));
+    let res = await response.json();
+    console.log(res);
+    dispatch(setPosts(res.posts));
   }
   return response;
 };
 
-
 const initialState = {};
-git
+
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_POSTS:

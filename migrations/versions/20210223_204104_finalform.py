@@ -1,8 +1,8 @@
 """finalform
 
-Revision ID: 6f6403d5cf16
-Revises: 
-Create Date: 2021-02-22 14:36:38.864000
+Revision ID: 059136c82018
+Revises: 6dd51f83f1d7
+Create Date: 2021-02-23 20:41:04.683175
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6f6403d5cf16'
-down_revision = None
+revision = '059136c82018'
+down_revision = '6dd51f83f1d7'
 branch_labels = None
 depends_on = None
 

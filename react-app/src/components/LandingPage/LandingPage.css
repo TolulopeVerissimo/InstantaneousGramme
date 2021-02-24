@@ -8,10 +8,10 @@
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  grid-template-columns: 65% auto;
+  grid-template-columns: 1fr 1fr;
 }
 
 .posts__feed {
-  width: 600px;
-  background-color: #ffffff;
+  width: 100%;
+  margin-right: 2rem;
 }
