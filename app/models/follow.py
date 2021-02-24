@@ -7,6 +7,8 @@ class Follow(db.Model):
     #users.id for both foreign keys? 
     followedUserId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     followerId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-
+    date_created  = db.Column(db.DateTime,  default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(),onupdate=db.func.current_timestamp())
+    
     user = db.relationship("User", back_populates="follow")
     

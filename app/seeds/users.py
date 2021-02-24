@@ -13,7 +13,7 @@ def seed_users():
         hashed_password=generate_password_hash('password'),
         username='demoMcdemoson',
         biography="A long time demouser, first time insta user",
-        profilePicture='https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1301&q=80',
+        profilePicture='https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1301&q=80'
     )
 
     gen = User(
@@ -23,7 +23,7 @@ def seed_users():
         phoneNumber=5551234567,
         username='genagain',
         biography='Hilarious guy, getting by, teaching at a/A',
-        profilePicture='https://images.unsplash.com/photo-1581456495146-65a71b2c8e52?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1233&q=80',
+        profilePicture='https://images.unsplash.com/photo-1581456495146-65a71b2c8e52?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1233&q=80'
     )
 
     ed = User(
@@ -33,7 +33,7 @@ def seed_users():
         username='edagain',
         phoneNumber=5551234567,
         biography='Teaching code/growing plants',
-        profilePicture='https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80',
+        profilePicture='https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80'
     )
 
     db.session.add(demo)
@@ -49,5 +49,5 @@ def seed_users():
 
 
 def undo_users():
-    db.session.execute('TRUNCATE users;')
+    db.session.execute('TRUNCATE users CASCADE;')
     db.session.commit()
