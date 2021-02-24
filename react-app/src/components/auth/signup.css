@@ -3,27 +3,32 @@
     width: 38rem;
     height: 38rem;
     margin: 0 auto;
-    margin-top: 22rem;
+    margin-top: 18rem;
 }
-.signUpForm Form {
+.signUpForm form {
     border: 1px solid #CCCCCC;
+    background-color: #ffff;
+}
+.signUpForm form div {
+    background-color: #ffff;
 }
 .signUpForm__title {
     margin-top: 1rem;
     font-weight: 700;
     color: #2B2D2F;
+    background-color: #ffff;
 }
 input {
     margin: 0.6rem 0.6rem 0.6rem 1rem;
 }
 .signUpForm__submit {
-    width: 50%;
+    width: 80%;
     background-color: #0095f6;
     color: white;
-    padding: 0.5rem;
-    margin: 0.5rem 0 0.5rem 1rem;
+    padding: .7rem;
+    margin: 1rem auto;
     border: none;
-    border-radius: 2rem;
+    border-radius: .6rem;
     cursor: pointer;
 }
 
@@ -40,6 +45,7 @@ input {
     width: 38rem;
     height: 4rem;
     border: 1px solid #CCCCCC;
+    background-color: #ffff;
 }
 .logincontainer span {
     text-align: center;
@@ -47,4 +53,5 @@ input {
     display: flex;
     align-content: center;
     justify-content: center;
+    background-color: #ffff;
 }
