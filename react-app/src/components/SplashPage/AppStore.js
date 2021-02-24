@@ -11,8 +11,8 @@ export default function AppStore(){
       </button>
       <button className="appStore__button">
           <span className="fa fa-google-wallet appStore__icon"></span>
-          <p>Available at</p>
-          <h1>Google</h1>
+          <p>GET IT ON</p>
+          <h1>Google Play</h1>
       </button>
     </div>
   )

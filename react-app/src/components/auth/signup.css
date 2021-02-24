@@ -13,17 +13,7 @@
 input {
     margin: 0.6rem 0.6rem 0.6rem 1rem;
 }
-button[type='submit'] {
-    width: 50%;
-    background-color: #0095f6;
-    color: white;
-    padding: 0.5rem;
-    margin: 0.5rem 0 0.5rem 5.1rem;
-    border: none;
-    border-radius: 2rem;
-    cursor: pointer;
-}
-.signUpForm button[type='submit'] {
+.signUpForm__submit {
     width: 50%;
     background-color: #0095f6;
     color: white;

@@ -23,13 +23,13 @@ function Splash({ authenticated, setAuthenticated }) {
 
                     <div className="splashRight">
                         <div className="login">
-                            <div className="loginForm__logo" />
+                            <div className="login__logo">
+                                <h1 className="login__heading">Instantaneous Gramme</h1>
+                            </div>
                             <LoginForm authenticated={authenticated}
                                 setAuthenticated={setAuthenticated} />
+                            <h2 className="wordSeperator">or</h2>
 
-                            <div className="lineBox">
-                                <div className="wordSeperator">or</div>
-                            </div>
 
                             <div className="Demo-Login">
                                 <form>
@@ -39,7 +39,7 @@ function Splash({ authenticated, setAuthenticated }) {
                         </div>
 
                         <div className="signup">
-                            <div style={{ marginTop: '15px' }}>
+                            <div style={{ marginTop: '2.2rem' }}>
                                 <span>Don't have an account? </span>
                                 <span onClick={signUpRedirect} style={{ cursor: 'pointer', color: '#0095f6' }}>Sign Up </span>
                             </div>

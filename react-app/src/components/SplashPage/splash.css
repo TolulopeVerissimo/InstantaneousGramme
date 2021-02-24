@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap');
+
 .SplashContainer {
   display: flex;
   align-items: center;
@@ -22,20 +24,13 @@
   background-position: center;
   background-color: transparent;
 }
-
-.blank:first-child img {
-  /* clip: rect(20px, 50px, 20px, 5000px); */
-}
-
 .splashLeft,
 .splashRight {
   width: 35%;
   float: left;
-  background-color: transparent;
 }
 .splashRight {
   background-color: #fff;
-  /* border: 1px solid grey; */
   margin-top: 4.5rem;
   height: 35rem;
   width: 38rem;
@@ -59,83 +54,70 @@
   display: inline-block;
   height: 37.86rem;
   width: 38rem;
-  border: 1px solid black;
+  border: 1px solid #CCCCCC;
+  background-color: white;
 }
-.loginForm__logo {
-  width:20rem;
+.login__logo {
+  width:30rem;
   height:7rem;
-  background-image: url("../../images/ig-logo.png");
-  background-repeat: no-repeat;
-  background-size: 15rem 5rem;
+  margin: 0 auto;
+  margin-top: 2.5rem;
+  background-color: white;
 }
-.log {
-  margin-top: 5rem;
-  margin-left: 0rem;
+.login__heading {
+  font-family: 'Lobster Two', cursive;
+  font-size: 3.3rem;
 }
-
-
-.lineBox {
-  margin: 1rem 4rem 1.8rem;
-  flex-direction: row;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-}
-
 .Demo-Login input[type="submit"] {
   background-color: lawngreen;
-
-  width: 55%;
-  padding: 1rem 2rem;
+  width: 80%;
+  height: 3rem;
+  margin-left: 3.3rem;
   border: 1px solid #ccc;
-  border-radius: 2rem;
-  margin-left: 4.9rem;
+  color: white;
+  font-weight: 500;
+  border-radius: 6px;
+  outline:none;
   cursor: pointer;
 }
 .wordSeperator {
+  display: flex;
+  flex-direction: row;
   height: 10px;
   z-index: 100;
   color: #8e8e8e;
-  /* color: rgba(var(--f52, 142, 142, 142), 1); */
   font-size: 1.3rem;
   font-weight: 600;
-  line-height: 2.5rem;
-  margin: 0 46%;
+  margin: 0 auto;
+  padding: 1.5rem;
   text-transform: uppercase;
 }
-.line {
-  width: 15rem;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
-  background-color: #dbdbdb;
-  background-color: rgba(var(--b38, 219, 219, 219), 1);
-  height: 1px;
-  position: relative;
-  top: 0.45em;
+.wordSeperator:before,
+.wordSeperator:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 2px solid #8e8e8e;
+  margin: auto;
 }
 .signup {
-  width: 22rem;
+  width: 100%;
   height: 6.3rem;
-  margin-top: 2.3rem;
-  border: 1px solid black;
+  margin-top: 1rem;
+  border: 1px solid #CCCCCC;
   text-decoration: none;
   text-align: center;
   font-size: large;
-  display: inline-block;
-
-  /* color: rgba(var(--d69, 0, 149, 246), 1); */
 }
 .splashRight p {
   height: 1.78rem;
   margin-left: 1.5rem;
+  margin-top: 1rem;
 }
 .appstore__wrapper {
   display: inline-block;
-  /* background-color: green; */
   height: 4.33rem;
   width:38rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-left: 2.55rem;
 }

@@ -43,6 +43,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           name="email"
           type="text"
           placeholder="Email"
+          className="loginForm__textField"
           value={email}
           onChange={updateEmail}
         />
@@ -53,10 +54,11 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           name="password"
           type="password"
           placeholder="Password"
+          className="loginForm__textField"
           value={password}
           onChange={updatePassword}
         />
-        <button className="LoginFormLogin" type="submit">Login</button>
+        <button className="loginForm__button" type="submit">Login</button>
       </div>
     </form>
   );

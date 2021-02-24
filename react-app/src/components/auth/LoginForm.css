@@ -1,5 +1,6 @@
 .loginForm {
-  width: 100%
+  width: 100%;
+  background-color: white;
 }
 .login input[type="password"] {
   margin-top: 1rem;
@@ -8,21 +9,26 @@
 .login input[type="text"] {
   margin-top: 3rem;
 }
-.login input[type="text"],
-.login input[type="password"] {
+.loginForm__textField {
   width: 74%;
   padding: 1.2rem 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  /* margin-top: 1rem; */
-  margin-left: 2.4rem;
+  margin-left: 3.3rem;
+  background-color: #FAFAFA;
+  outline: none;
 }
-.login input[type="submit"] {
-  width: 55%;
-  padding: 1rem 13.9rem;
+.loginForm__textField:focus {
+  border: 1px solid #262626;
+}
+.loginForm__button {
+  width: 80%;
+  height: 3rem;
+  margin-left: 3.3rem;
   border: 1px solid #ccc;
   background-color: #0095f6;
-  border-radius: 4px;
-  margin-left: 1rem;
-  /* cursor: pointer; */
+  color: white;
+  font-weight: 500;
+  border-radius: 6px;
+  outline:none;
 }
