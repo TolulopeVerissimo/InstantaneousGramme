@@ -24,9 +24,11 @@ const removeFollow = (id) => {
 }
 export const getFollows = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/follow`);
+
     if (response.ok) {
+        const follows = await response.json()
         debugger
-        dispatch(setFollows(response.data.follows));
+        dispatch(setFollows(follows));
         return response;
     }
 };
@@ -81,11 +83,11 @@ const initialState = {};
 const followsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_FOLLOWS:
-            const follows = action.follows.reduce((acc, ele) => {
-                acc[ele.id] = ele;
-                return acc;
-            }, {});
-            return { ...state, ...follows };
+            // const follows = action.follows.reduce((acc, ele) => {
+            //     acc[ele.id] = ele;
+            //     return acc;
+            // }, {});
+            return { ...state, ...{ [action.follows.id]: action.follows } };
         case CREATE_FOLLOW:
             return { ...state, [action.follow.id]: action.follow };
         case REMOVE_FOLLOW:
