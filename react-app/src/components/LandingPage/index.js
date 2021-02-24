@@ -2,9 +2,9 @@ import React from "react";
 import Posts from "../Posts";
 import NavBar from "../NavBar";
 import StationarySide from "./StationarySide";
-import "./feed.css";
+import "./LandingPage.css";
 
-const Feed = () => {
+const LandingPage = () => {
   // posts = fetch("/");
 
   return (
@@ -24,4 +24,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default LandingPage;

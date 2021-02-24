@@ -50,7 +50,7 @@ const Posts = (postId) => {
         </div>
       </div>
       <div className='comment__container'>
-        <p className='commment__likes-count'>Liked by >>> and ??? others</p>
+        <p className='commment__likes-count'>Liked by ??? and ??? others</p>
         <div className='post__title'>
           <p className='post__user'>username</p>
           <p className='post__description'> Post description</p>

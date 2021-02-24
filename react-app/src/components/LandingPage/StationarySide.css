@@ -1,6 +1,4 @@
 .scrollingMain {
-  position: -webkit-sticky;
-  position: sticky;
   top: 0;
   padding: 50px;
   font-size: 20px;
@@ -8,12 +6,10 @@
   height: 476px;
 }
 .profileContainer {
-  position: flex;
   justify-content: center;
   align-content: center;
 }
 .profileContainer .testCircle {
-  position: relative;
   height: 4rem;
   width: 4rem;
   border-radius: 50%;
@@ -27,15 +23,8 @@
   background-position: center center;
   background-size: cover;
 }
-.scrollingMain .profileContainer .username {
-  margin-top: -5.2rem;
-  margin-left: 6rem;
-}
-.scrollingMain .profileContainer .username h6 {
-  margin-top: -1rem;
-}
+
 .suggested {
-  position: flex;
   justify-content: center;
   align-content: center;
   margin-top: 5rem;
@@ -53,11 +42,4 @@
   border-radius: 50%;
   background-position: center center;
   background-size: cover;
-}
-.scrollingMain .suggested .users {
-  margin-top: -4.2rem;
-  margin-left: 3rem;
-}
-.scrollingMain .suggested .users h6 {
-  margin-top: -1.5rem;
 }

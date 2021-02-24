@@ -10,7 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./services/auth";
 
 // my import {  } from "module";
-import Feed from "./components/Feed";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -35,7 +35,7 @@ function App() {
       {/* <NavBar setAuthenticated={setAuthenticated} /> */}
       <Switch>
         <Route path='/' exact={true}>
-          <Feed />
+          <LandingPage />
         </Route>
         {/* <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <LandingPage />
