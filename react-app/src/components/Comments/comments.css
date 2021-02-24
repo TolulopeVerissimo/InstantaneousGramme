@@ -16,15 +16,15 @@
 }
 
 .comment-form__container {
-  height: 3rem;
+  height: 5rem;
   display: grid;
-  grid-template-columns: 3rem auto 3rem;
+  grid-template-columns: 4rem auto 4rem;
   width: 100%;
 }
 
 .comment-form__icon {
   padding-left: 0.5rem;
-  width: 2.2rem;
+  width: 3.8rem;
   display: grid;
   align-self: center;
 }
