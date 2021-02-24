@@ -2,25 +2,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* Put in index.css */
-  /* background-color: #fafafa; */
-  /* background-color: rgba(var(--b3f, 250, 250, 250), 1); */
 }
+
 .centerPiece {
-  margin-top: 50px;
-  margin-left: 19rem;
-  margin-right: 29.3rem;
+  margin: 0 auto;
+  margin-top: 10rem;
   height: 50%;
   display: flex;
-  /* border: 10px solid orange; */
 }
 
 .blankPhone {
-  height: 600px;
-  width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60rem;
+  width: 45rem;
   z-index: -99;
-  /* overflow: hidden; */
+  background-image: url("../../images/instagramme_phone.png");
+  background-position: center;
+  background-color: transparent;
 }
 
 .blank:first-child img {
@@ -30,69 +30,52 @@
 .splashLeft,
 .splashRight {
   width: 35%;
-  margin: 50px;
   float: left;
+  background-color: transparent;
 }
 .splashRight {
   background-color: #fff;
   /* border: 1px solid grey; */
-  margin-top: 6.35rem;
-  height: 350px;
-  width: 380px;
+  margin-top: 4.5rem;
+  height: 35rem;
+  width: 38rem;
 }
 .splashLeft {
-  /* background-color: green; */
+  margin-right: 7rem;
 }
 .MyTurn {
-  position: absolute;
-  height: 46.2%;
-  /* overflow: hidden; */
-  max-width: 11.69%;
-  margin-top: -32.8rem;
-  margin-left: 11.7rem;
-  border-radius: 10px 10px 10px 10px;
-  /* height: 500px; */
-  /* width: 250px; */
-  /* z-index: 99; */
-  /* object-fit: contain; */
+  height: 75%;
+  background:transparent;
+  width: 50%;
+  border-radius: 1rem;
+  margin-right:.1rem;
+  margin-top: .1rem;
+  background-position: center;
+  background-size: 25rem 45.2rem;
+  background-repeat: no-repeat;
+  transition: background-image 1.4s ease-in;
 }
 .login {
-  width: 350px;
-  height: 378.63px;
+  display: inline-block;
+  height: 37.86rem;
+  width: 38rem;
   border: 1px solid black;
+}
+.loginForm__logo {
+  width:20rem;
+  height:7rem;
+  background-image: url("../../images/ig-logo.png");
+  background-repeat: no-repeat;
+  background-size: 15rem 5rem;
 }
 .log {
   margin-top: 5rem;
   margin-left: 0rem;
 }
 
-.login input[type="password"] {
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-}
-.login input[type="text"] {
-  margin-top: 3rem;
-}
-.login input[type="text"],
-.login input[type="password"] {
-  width: 74%;
-  padding: 12px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  /* margin-top: 1rem; */
-  margin-left: 2.4rem;
-}
-.login input[type="submit"] {
-  width: 55%;
-  padding: 10px 139.2px;
-  border: 1px solid #ccc;
-  background-color: #0095f6;
-  border-radius: 4px;
-  margin-left: 1rem;
-  /* cursor: pointer; */
-}
+
 .lineBox {
-  margin: 1rem 4rem 18px;
+  margin: 1rem 4rem 1.8rem;
   flex-direction: row;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -113,9 +96,9 @@
   z-index: 100;
   color: #8e8e8e;
   /* color: rgba(var(--f52, 142, 142, 142), 1); */
-  font-size: 13px;
+  font-size: 1.3rem;
   font-weight: 600;
-  line-height: 25px;
+  line-height: 2.5rem;
   margin: 0 46%;
   text-transform: uppercase;
 }
@@ -136,23 +119,23 @@
 }
 .signup {
   width: 22rem;
-  height: 63.02px;
+  height: 6.3rem;
   margin-top: 2.3rem;
   border: 1px solid black;
   text-decoration: none;
   text-align: center;
   font-size: large;
+  display: inline-block;
 
   /* color: rgba(var(--d69, 0, 149, 246), 1); */
 }
 .splashRight p {
-  width: 350px;
-  height: 17.78px;
-  margin-left: 15px;
+  height: 1.78rem;
+  margin-left: 1.5rem;
 }
-.appStore {
+.appstore__wrapper {
+  display: inline-block;
   /* background-color: green; */
-  margin: 10;
-  width: 380px;
-  height: 43.33px;
+  height: 4.33rem;
+  width:38rem;
 }
