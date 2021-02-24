@@ -37,7 +37,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         ))}
       </div>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email"></label>
         <input
           name="email"
           type="text"
@@ -47,7 +47,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password"></label>
         <input
           name="password"
           type="password"
@@ -55,7 +55,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
+        <button className="LoginFormLogin" type="submit">Login</button>
       </div>
     </form>
   );

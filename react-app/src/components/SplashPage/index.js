@@ -1,8 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react'
+import LoginForm from '../auth/LoginForm.js'
+import { useHistory } from 'react-router-dom'
+
 import './splash.css'
 import './appstore.css'
 import { NavLink } from 'react-router-dom'
-function Splash() {
+function Splash({ authenticated, setAuthenticated }) {
+    let history = useHistory()
+
+    const signUpRedirect = () => {
+        history.push('/sign-up')
+    }
+
     let imgArr =
         [
             "https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Ffacebook%2F000%2F034%2F408%2FPunching_Pepe_Banner.jpg",
@@ -50,7 +59,6 @@ function Splash() {
 
                             <div className="childImage">
                                 <img className="MyTurn" src={imgArr[num]} alt="changing image" />
-
                             </div>
                         </div>
                     </div>
@@ -58,24 +66,11 @@ function Splash() {
                     <div className="splashRight">
                         RIGHT SIDE
                         <div className="login">
-                            <form className="log">
-                                <input
-                                    className="pnue"
-                                    type="text"
-                                    placeholder="Phone number, username, or email"
-                                />
-                                <input
-                                    className="pass"
-                                    type="text"
-                                    placeholder="Password"
-                                />
-                                <br />
-                                <input type="submit" value="Log In" />
-                            </form>
-                            <div class="lineBox">
-                                <div class="line"></div>
-                                <div class="wordSeperator">or</div>
-                                <div class="line"></div>
+                            <LoginForm authenticated={authenticated}
+                                setAuthenticated={setAuthenticated} />
+
+                            <div className="lineBox">
+                                <div className="wordSeperator">or</div>
                             </div>
 
                             <div className="Demo-Login">
@@ -83,26 +78,26 @@ function Splash() {
                                     <input type="submit" value="DEMO LOGIN" />
                                 </form>
                             </div>
-
                         </div>
 
                         <div className="signup">
                             <div style={{ marginTop: '15px' }}>
                                 <span>Don't have an account? </span>
-                                <NavLink to="/" style={{ cursor: 'pointer', color: '#0095f6' }}> Sign Up</NavLink>
+                                <span onClick={signUpRedirect} style={{ cursor: 'pointer', color: '#0095f6' }}>Sign Up </span>
                             </div>
                         </div>
+
                         <p style={{ textAlign: 'center' }}> Get the app.</p>
                         <div className="appStore">
 
-                            <div class="wrapper">
-                                <button class="app-store">
-                                    <span class="fa fa-apple app-store-icon"></span>
+                            <div className="wrapper">
+                                <button className="app-store">
+                                    <span className="fa fa-apple app-store-icon"></span>
                                     <p>Download on the</p>
                                     <h1>App Store</h1>
                                 </button>
-                                <button class="app-store">
-                                    <span class="fa fa-google-wallet app-store-icon"></span>
+                                <button className="app-store">
+                                    <span className="fa fa-google-wallet app-store-icon"></span>
                                     <p>Available at</p>
                                     <h1>Google</h1>
                                 </button>
