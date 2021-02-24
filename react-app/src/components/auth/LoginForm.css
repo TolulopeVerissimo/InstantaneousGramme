@@ -1,0 +1,28 @@
+.loginForm {
+  width: 100%
+}
+.login input[type="password"] {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+.login input[type="text"] {
+  margin-top: 3rem;
+}
+.login input[type="text"],
+.login input[type="password"] {
+  width: 74%;
+  padding: 1.2rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* margin-top: 1rem; */
+  margin-left: 2.4rem;
+}
+.login input[type="submit"] {
+  width: 55%;
+  padding: 1rem 13.9rem;
+  border: 1px solid #ccc;
+  background-color: #0095f6;
+  border-radius: 4px;
+  margin-left: 1rem;
+  /* cursor: pointer; */
+}
