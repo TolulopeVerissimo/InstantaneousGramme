@@ -1,14 +1,17 @@
 .signUpForm {
     text-align: center;
-    /* float: center; */
-    width: 15rem;
-    height: 20rem;
-
-    margin-left: 50rem;
-    margin-top: 25rem;
+    width: 38rem;
+    height: 38rem;
+    margin: 0 auto;
+    margin-top: 22rem;
 }
 .signUpForm Form {
-    border: 1px solid black;
+    border: 1px solid #CCCCCC;
+}
+.signUpForm__title {
+    margin-top: 1rem;
+    font-weight: 700;
+    color: #2B2D2F;
 }
 input {
     margin: 0.6rem 0.6rem 0.6rem 1rem;
@@ -31,14 +34,14 @@ input {
     border-radius: 4px;
     /* margin: 0 0 0.75rem 3rem; */
 }
-.signUpForm .login {
+.logincontainer {
     margin-top: 1.5rem;
-    font-size: 1rem;
-    width: 15rem;
-    height: 3rem;
-    border: 1px solid black;
+    font-size: 1.3rem;
+    width: 38rem;
+    height: 4rem;
+    border: 1px solid #CCCCCC;
 }
-.signUpForm .login span {
+.logincontainer span {
     text-align: center;
     margin-top: 0.3rem;
     display: flex;
