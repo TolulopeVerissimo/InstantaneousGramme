@@ -14,6 +14,10 @@ class Post(db.Model):
     comments = db.relationship("Comment", back_populates="post")
     postLikes = db.relationship("PostLike", back_populates="post")
 
+    date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(
+    ), onupdate=db.func.current_timestamp())
+
     def to_dict(self):
         user = self.user.to_dict()
         username = user["username"]
