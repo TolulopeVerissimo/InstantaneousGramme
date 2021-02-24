@@ -4,7 +4,7 @@ const CREATE_PROFILE = 'profile/CREATE_PROFILE';
 const REMOVE_PROFILE = 'profile/REMOVE_PROFILE';
 
 const setProfile = (profile) => {
-    console.log("These are profile:::", profile)
+    // console.log("These are profile:::", profile)
     return {
         type: SET_PROFILE,
         profile,
