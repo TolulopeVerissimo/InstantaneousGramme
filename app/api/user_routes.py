@@ -45,9 +45,9 @@ def profilePost(id):
 def userFollowGET(id):
     user = User.query.get(id)
     print("SIOAHDIOHAOHDOASNDOASIOD::::::", user.followers.all(), "sadpojasdjopsjpJPJS")
-    followers = user.followers.all()
+    # followers = user.followers.all()
     
-    followers = [follower.to_dict() for follower in followers]
+    followers = [follower.to_dict() for follower in user.followers]
     return(followers)
     
 @user_routes.route('/<int:id>/follow', methods=['POST'])
