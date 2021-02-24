@@ -24,11 +24,9 @@ const removePosts = (id) => {
 };
 
 export const getPosts = () => async (dispatch) => {
-  console.log("sdsadsadsadasdsadasdsad");
   const response = await fetch("/api/posts/");
   if (response.ok) {
     let res = await response.json();
-    console.log(res);
     dispatch(setPosts(res.posts));
   }
   return response;

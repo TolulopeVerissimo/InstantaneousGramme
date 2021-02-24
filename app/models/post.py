@@ -15,10 +15,19 @@ class Post(db.Model):
     postLikes = db.relationship("PostLike", back_populates="post")
 
     def to_dict(self):
+        user = self.user.to_dict()
+        username = user["username"]
+        profilePicture = user["profilePicture"]
+
         return {
             'id': self.id,
             'description': self.description,
             'private': self.private,
             'imagePath': self.imagePath,
-            'userId' : self.userId
+            'userId': self.userId,
+            'username': username,
+            'profilePicture': profilePicture,
+
+            # 'comments': self.comments,
+            # 'postLikes': self.postLikes,
         }

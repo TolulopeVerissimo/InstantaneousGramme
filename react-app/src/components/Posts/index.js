@@ -24,9 +24,11 @@ const Posts = (postId) => {
         posts.map((post) => (
           <div className='post__container'>
             <div className='post__header'>
-              <div className='post__profile-pic'></div>
+              <div className='post__profile-pic'>
+                <img src={post.profilePicture} alt='profile pic' />
+              </div>
               <div className='post__user-info'>
-                <div className='post__username'>{post.userId}</div>
+                <div className='post__username'>{post.username}</div>
               </div>
             </div>
             <div className='post__image'>
@@ -67,7 +69,7 @@ const Posts = (postId) => {
                 Liked by ??? and ??? others
               </p>
               <div className='post__title'>
-                <p className='post__user'>{post.userId}</p>
+                <p className='post__user'>{post.username}</p>
                 <p className='post__description'>{post.description}</p>
               </div>
               <div className='post__comments'>

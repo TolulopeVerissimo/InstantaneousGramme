@@ -35,8 +35,16 @@
   width: 3rem;
 }
 
+.post__profile-pic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
 .post__image {
   max-width: 50rem;
+  max-height: 52rem;
+  overflow: hidden;
 }
 
 .post__img-tag {
