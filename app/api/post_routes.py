@@ -9,11 +9,7 @@ post_routes = Blueprint('posts', __name__)
 @login_required
 def posts():
     posts = Post.query.all()
-    print("hit route")
-    print('todict;', posts[0].to_dict())
-    print(posts[0].user.username)
     if posts[0]:
-        # return {"posts": [post.to_dict() for post in posts]}
         return jsonify({"posts": [post.to_dict() for post in posts]})
     else:
         return {'posts': []}
