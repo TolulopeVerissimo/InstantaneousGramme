@@ -1,6 +1,9 @@
 .loginForm {
   width: 100%;
-  background-color: white;
+  background-color: #ffff;
+}
+.loginForm div {
+  background-color: #ffff;
 }
 .login input[type="password"] {
   margin-top: 1rem;
@@ -29,6 +32,7 @@
   background-color: #0095f6;
   color: white;
   font-weight: 500;
-  border-radius: 6px;
+  border-radius: .6rem;
   outline:none;
+  padding: .7rem;
 }

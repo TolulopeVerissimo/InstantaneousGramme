@@ -30,7 +30,7 @@
   float: left;
 }
 .splashRight {
-  background-color: #fff;
+  background-color: #ffff;
   margin-top: 4.5rem;
   height: 35rem;
   width: 38rem;
@@ -55,18 +55,22 @@
   height: 37.86rem;
   width: 38rem;
   border: 1px solid #CCCCCC;
-  background-color: white;
+  background-color: #ffff;
 }
 .login__logo {
   width:30rem;
   height:7rem;
   margin: 0 auto;
   margin-top: 2.5rem;
-  background-color: white;
+  background-color: #ffff;
 }
 .login__heading {
   font-family: 'Lobster Two', cursive;
+  background-color: #ffff;
   font-size: 3.3rem;
+}
+.Demo-Login form {
+  background-color: #ffff;
 }
 .Demo-Login input[type="submit"] {
   background-color: lawngreen;
@@ -74,7 +78,7 @@
   height: 3rem;
   margin-left: 3.3rem;
   border: 1px solid #ccc;
-  color: white;
+  color: #ffff;
   font-weight: 500;
   border-radius: 6px;
   outline:none;
@@ -91,6 +95,7 @@
   margin: 0 auto;
   padding: 1.5rem;
   text-transform: uppercase;
+  background-color: #ffff;
 }
 .wordSeperator:before,
 .wordSeperator:after {
@@ -107,6 +112,11 @@
   text-decoration: none;
   text-align: center;
   font-size: large;
+  background-color: #ffff;
+}
+.signup div,
+.signup div span {
+  background-color: #ffff;
 }
 .splashRight p {
   height: 1.78rem;
