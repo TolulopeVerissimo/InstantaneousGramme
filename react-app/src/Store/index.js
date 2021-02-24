@@ -3,9 +3,15 @@ import thunk from 'redux-thunk';
 
 
 import postsReducer from './posts'
+import usersReducer from './user'
+import profileReducer from './profile'
+import followsReducer from './follow'
 
 const rootReducer = combineReducers({
-  posts: postsReducer
+  posts: postsReducer,
+  users: usersReducer,
+  profiles: profileReducer,
+  follows: followsReducer,
 });
 
 let enhancer;

@@ -1,13 +1,13 @@
-import { fetch } from './csrf';
 
-const SET_PROFILES = 'profileProfile_PROFILES';
-const CREATE_PROFILE = 'profiles/CREATE_PROFILE';
-const REMOVE_PROFILE = 'profiles/REMOVE_PROFILE';
+const SET_PROFILE = 'profile/SET_PROFILE';
+const CREATE_PROFILE = 'profile/CREATE_PROFILE';
+const REMOVE_PROFILE = 'profile/REMOVE_PROFILE';
 
-const setProfiles = (profiles) => {
+const setProfile = (profile) => {
+    console.log("These are profile:::", profile)
     return {
-        type: SET_PROFILES,
-        profiles,
+        type: SET_PROFILE,
+        profile,
     };
 };
 
@@ -23,25 +23,24 @@ const removeProfile = (id) => {
         id
     }
 }
-export const getProfiles = () => async (dispatch) => {
-    const response = await fetch('/api/profiles');
+export const getProfile = (id) => async (dispatch) => {
+    const response = await fetch(`/api/users/${id}/profile`);
+    debugger
     if (response.ok) {
-        dispatch(setProfiles(response.data.profiles));
-        return response;
+        const profile = await response.json()
+        debugger
+
+        dispatch(setProfile(profile));
+        return profile;
     }
 };
 
-
-
 export const formProfile = (profile) => async (dispatch) => {
-    const { ratings, name, description, ABV, IBU } = profile;
+    const { name } = profile;
     const formData = new FormData();
     formData.append('name', name);
-    formData.append('description', description);
-    formData.append('ratings', ratings);
-    formData.append('ABV', ABV);
-    formData.append('IBU', IBU);
-    const response = await fetch('/api/profiles', {
+
+    const response = await fetch('/api/users/profile', {
         method: 'POST',
         body: formData,
         headers: {
@@ -53,14 +52,11 @@ export const formProfile = (profile) => async (dispatch) => {
     return response.data.profile;
 };
 
-export const updateProfile = ({ id, name, description, ratings, ABV, IBU }) => async (dispatch) => {
+export const updateProfile = ({ id, name, }) => async (dispatch) => {
     const formData = new FormData();
     formData.append('name', name);
-    formData.append('description', description);
-    formData.append('ratings', ratings);
-    formData.append('ABV', ABV);
-    formData.append('IBU', IBU);
-    const response = await fetch(`/api/profiles/${id}`, {
+
+    const response = await fetch(`/api/users/${id}/profile/`, {
         method: 'PUT',
         body: formData,
         headers: {
@@ -73,7 +69,7 @@ export const updateProfile = ({ id, name, description, ratings, ABV, IBU }) => a
 
 export const deleteProfile = (id) => async (dispatch) => {
     await dispatch(removeProfile(id));
-    const response = await fetch(`/api/profiles/${id}`, {
+    const response = await fetch(`/api/users/profile/${id}`, {
         method: 'DELETE',
     });
     return response.data.message;
@@ -83,12 +79,15 @@ const initialState = {};
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_PROFILES:
-            const profile = action.profile.reduce((acc, ele) => {
-                acc[ele.id] = ele;
-                return acc;
-            }, {});
-            return { ...state, ...profile };
+        case SET_PROFILE:
+            debugger;
+
+            // const profile = action.profile.reduce((acc, ele) => {
+            //     acc[ele.id] = ele;
+            //     return acc;
+            // }, {});
+
+            return { ...state, ...{ [action.profile.id]: action.profile } };
         case CREATE_PROFILE:
             return { ...state, [action.profile.id]: action.profile };
         case REMOVE_PROFILE:
@@ -98,6 +97,7 @@ const profileReducer = (state = initialState, action) => {
         default:
             return state;
     }
+
 };
 
 export default profileReducer;

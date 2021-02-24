@@ -1,4 +1,3 @@
-import { fetch } from './csrf';
 
 const SET_USERS = 'users/USERS';
 const CREATE_USER = 'users/CREATE_USER';
@@ -16,10 +15,12 @@ const createUsers = (user) => {
     }
 }
 
-
 export const getUsers = () => async (dispatch) => {
     const response = await fetch('/api/users');
+
+    console.log(response)
     if (response.ok) {
+        debugger
         dispatch(setUsers(response.data.users));
         return response;
     }

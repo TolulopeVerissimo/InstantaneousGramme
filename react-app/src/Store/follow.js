@@ -1,4 +1,3 @@
-import { fetch } from './csrf';
 
 const SET_FOLLOWS = 'follows/SET_FOLLOWS';
 const CREATE_FOLLOW = 'follows/CREATE_FOLLOW';
@@ -24,8 +23,9 @@ const removeFollow = (id) => {
     }
 }
 export const getFollows = () => async (dispatch) => {
-    const response = await fetch('/api/follows');
+    const response = await fetch('/api/users/${id}/follow');
     if (response.ok) {
+        debugger
         dispatch(setFollows(response.data.follows));
         return response;
     }
@@ -40,7 +40,7 @@ export const formFollow = (follow) => async (dispatch) => {
     formData.append('followed_id', followed_id);
 
 
-    const response = await fetch('/api/follows', {
+    const response = await fetch('/api/users/${id}/follow', {
         method: 'POST',
         body: formData,
         headers: {
@@ -57,7 +57,7 @@ export const updateFollow = ({ id, follower_id, followed_id }) => async (dispatc
     formData.append('follower_id', follower_id);
     formData.append('followed_id', followed_id);
 
-    const response = await fetch(`/api/follows/${id}`, {
+    const response = await fetch(`/api/users/${id}/follow`, {
         method: 'PUT',
         body: formData,
         headers: {
@@ -70,7 +70,7 @@ export const updateFollow = ({ id, follower_id, followed_id }) => async (dispatc
 
 export const deleteFollow = (id) => async (dispatch) => {
     await dispatch(removeFollow(id));
-    const response = await fetch(`/api/follows/${id}`, {
+    const response = await fetch(`/api/users/${id}/follow`, {
         method: 'DELETE',
     });
     return response.data.message;

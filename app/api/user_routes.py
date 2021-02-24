@@ -18,42 +18,41 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-return user.to_dict()
-
 @user_routes.route('/<int:id>/profile', methods=['GET'])
 @login_required
-def profile(id):
-    userList = users()
-    specificUser = user(id)
-    if userList.has_key(specificUser):
-        print "UserFound",specificUser
-    print "not found"    
-    
+def profileGet(id):
+    user = User.query.get(id)
+    return user.to_dict()
+    # specificUser = user(id)
+    # if userList.has_key(specificUser):
+    #     print ("UserFound",specificUser)
+    # print("not found")    
+
 @user_routes.route('/<int:id>/profile', methods=['POST'])
 @login_required
-def profile(id):
+def profilePost(id):
     userList = users()
     specificUser = user(id)
     if userList.has_key(specificUser):
-        print "UserFound",specificUser
-    print "not found"    
+        print ("UserFound",specificUser)
+    print("not found")    
 
 
 
 # Follows
 @user_routes.route('/<int:id>/follow', methods=['GET'])
 @login_required
-def user(id):
+def userFollowGET(id):
     user = User.query.get(id)
     users = User.query.all()
     userList = {"users":[person.to_dict() for person in users]}
-    print userList
-    return user.follows
+    print (userList)
+    return (user.follows)
     
     
 @user_routes.route('/<int:id>/follow', methods=['POST'])
 @login_required
-def user(id):
+def userFollowPOST(id):
     user = User.query.get(id)
     users = User.query.all()
     req = request.get_json()
@@ -69,7 +68,7 @@ def user(id):
 
 @user_routes.route('/<int:id>/follow', methods=['PUT'])
 @login_required
-def user(id):
+def userFollowPUT(id):
     user = User.query.get(id)
     users = User.query.all()
     req = request.get_json()
