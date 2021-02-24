@@ -19,6 +19,9 @@ class Post(db.Model):
         username = user["username"]
         profilePicture = user["profilePicture"]
 
+        # likes = self.postLikes.to_dict()
+        # likes =
+
         return {
             'id': self.id,
             'description': self.description,
