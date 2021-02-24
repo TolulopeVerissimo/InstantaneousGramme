@@ -12,16 +12,12 @@ function Profile() {
 
     const { id } = useParams()
     const dispatch = useDispatch()
-    // console.log(getUsers())
 
-    // const profiles = useSelector(state => state.profile)
-    // const follows = useSelector(state => state.follow)
-    // const users = useSelector(state => state.user)
 
     useEffect(() => {
         debugger;
         dispatch(getProfile(id))
-        // dispatch(getFollows())
+        dispatch(getFollows())
         // dispatch(getUsers())
     }, [dispatch])
 

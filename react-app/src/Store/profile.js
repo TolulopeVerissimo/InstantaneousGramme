@@ -25,10 +25,8 @@ const removeProfile = (id) => {
 }
 export const getProfile = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/profile`);
-    debugger
     if (response.ok) {
         const profile = await response.json()
-        debugger
 
         dispatch(setProfile(profile));
         return profile;
@@ -80,12 +78,6 @@ const initialState = {};
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_PROFILE:
-            debugger;
-
-            // const profile = action.profile.reduce((acc, ele) => {
-            //     acc[ele.id] = ele;
-            //     return acc;
-            // }, {});
 
             return { ...state, ...{ [action.profile.id]: action.profile } };
         case CREATE_PROFILE:
