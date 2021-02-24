@@ -1,4 +1,4 @@
-async function getSignedRequest(photo){
+export async function getSignedRequest(photo){
   let res = await fetch('/sign_s3?file_name='+photo.name+"&file_type="+photo.type);
   if (res.ok) {
     res= await res.json()
@@ -9,7 +9,7 @@ async function getSignedRequest(photo){
   return res.url + res.data.fields.key
 }
 
-async function uploadFile(file, s3Data, url){
+export async function uploadFile(file, s3Data, url){
   const data = new FormData()
   for(const key in s3Data.fields){
     data.append(key, s3Data.fields[key]);
@@ -19,8 +19,4 @@ async function uploadFile(file, s3Data, url){
     method:'POST',
     body: data
   })
-}
-
-module.exports = {
-  getSignedRequest, uploadFile
 }
