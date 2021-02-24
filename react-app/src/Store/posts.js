@@ -1,6 +1,6 @@
-const SET_POSTS = "posts/SET_DRINKS";
-const CREATE_POSTS = "posts/CREATE_DRINK";
-const REMOVE_POSTS = "posts/REMOVE_DRINK";
+const SET_POSTS = "posts/SET_POSTS";
+const CREATE_POSTS = "posts/CREATE_POSTS";
+const REMOVE_POSTS = "posts/REMOVE_POSTS";
 
 const setPosts = (posts) => {
   return {
