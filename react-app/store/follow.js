@@ -1,47 +1,46 @@
 import { fetch } from './csrf';
 
-const SET_DRINKS = 'drinks/SET_DRINKS';
-const CREATE_DRINK = 'drinks/CREATE_DRINK';
-const REMOVE_DRINK = 'drinks/REMOVE_DRINK';
+const SET_FOLLOWS = 'follows/SET_FOLLOWS';
+const CREATE_FOLLOW = 'follows/CREATE_FOLLOW';
+const REMOVE_FOLLOW = 'follows/REMOVE_FOLLOW';
 
-const setDrinks = (drinks) => {
+const setFollows = (follows) => {
     return {
-        type: SET_DRINKS,
-        drinks,
+        type: SET_FOLLOWS,
+        follows,
     };
 };
 
-const createDrink = (drink) => {
+const createFollow = (follow) => {
     return {
-        type: CREATE_DRINK,
-        drink
+        type: CREATE_FOLLOW,
+        follow
     }
 }
-const removeDrink = (id) => {
+const removeFollow = (id) => {
     return {
-        type: REMOVE_DRINK,
+        type: REMOVE_FOLLOW,
         id
     }
 }
-export const getDrinks = () => async (dispatch) => {
-    const response = await fetch('/api/drinks');
+export const getFollows = () => async (dispatch) => {
+    const response = await fetch('/api/follows');
     if (response.ok) {
-        dispatch(setDrinks(response.data.drinks));
+        dispatch(setFollows(response.data.follows));
         return response;
     }
 };
 
 
 
-export const formDrink = (drink) => async (dispatch) => {
-    const { ratings, name, description, ABV, IBU } = drink;
+export const formFollow = (follow) => async (dispatch) => {
+    const { follower_id, followed_id } = follow;
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('description', description);
-    formData.append('ratings', ratings);
-    formData.append('ABV', ABV);
-    formData.append('IBU', IBU);
-    const response = await fetch('/api/drinks', {
+    formData.append('follower_id', follower_id);
+    formData.append('followed_id', followed_id);
+
+
+    const response = await fetch('/api/follows', {
         method: 'POST',
         body: formData,
         headers: {
@@ -49,31 +48,29 @@ export const formDrink = (drink) => async (dispatch) => {
         },
     });
 
-    dispatch(createDrink(response.data.drink));
-    return response.data.drink;
+    dispatch(createFollow(response.data.follow));
+    return response.data.follow;
 };
 
-export const updateDrink = ({ id, name, description, ratings, ABV, IBU }) => async (dispatch) => {
+export const updateFollow = ({ id, follower_id, followed_id }) => async (dispatch) => {
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('description', description);
-    formData.append('ratings', ratings);
-    formData.append('ABV', ABV);
-    formData.append('IBU', IBU);
-    const response = await fetch(`/api/drinks/${id}`, {
+    formData.append('follower_id', follower_id);
+    formData.append('followed_id', followed_id);
+
+    const response = await fetch(`/api/follows/${id}`, {
         method: 'PUT',
         body: formData,
         headers: {
             'Content-Type': 'multipart/form-data',
         },
     });
-    dispatch(createDrink(response.data.drink));
-    return response.data.drink;
+    dispatch(createFollow(response.data.follow));
+    return response.data.follow;
 };
 
-export const deleteDrink = (id) => async (dispatch) => {
-    await dispatch(removeDrink(id));
-    const response = await fetch(`/api/drinks/${id}`, {
+export const deleteFollow = (id) => async (dispatch) => {
+    await dispatch(removeFollow(id));
+    const response = await fetch(`/api/follows/${id}`, {
         method: 'DELETE',
     });
     return response.data.message;
@@ -81,17 +78,17 @@ export const deleteDrink = (id) => async (dispatch) => {
 
 const initialState = {};
 
-const drinksReducer = (state = initialState, action) => {
+const followsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_DRINKS:
-            const drinks = action.drinks.reduce((acc, ele) => {
+        case SET_FOLLOWS:
+            const follows = action.follows.reduce((acc, ele) => {
                 acc[ele.id] = ele;
                 return acc;
             }, {});
-            return { ...state, ...drinks };
-        case CREATE_DRINK:
-            return { ...state, [action.drink.id]: action.drink };
-        case REMOVE_DRINK:
+            return { ...state, ...follows };
+        case CREATE_FOLLOW:
+            return { ...state, [action.follow.id]: action.follow };
+        case REMOVE_FOLLOW:
             const newState = { ...state };
             delete newState[action.id];
             return newState;
@@ -100,4 +97,4 @@ const drinksReducer = (state = initialState, action) => {
     }
 };
 
-export default drinksReducer;
+export default followsReducer;
