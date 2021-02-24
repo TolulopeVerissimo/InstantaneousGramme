@@ -22,6 +22,7 @@ def posts():
 @post_routes.route('/', methods=['POST'])
 def new_post():
     data = request.get_json()
+    print(data)
     description = data['description']
     private = data['isPrivate']
     imagePath = data['imagePath']
