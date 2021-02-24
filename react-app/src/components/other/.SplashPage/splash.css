@@ -9,8 +9,7 @@
 }
 .centerPiece {
     margin-top: 50px;
-    margin-left: 19rem;
-    margin-right: 29.3rem;
+    margin-right: 10.3rem;
     height: 50%;
     /* border: 10px solid orange; */
 }
@@ -34,7 +33,7 @@
 }
 .splashRight {
     background-color: fff;
-    /* border: 1px solid grey; */
+    border: 1px solid grey;
     margin-top: 6.35rem;
     height: 350px;
     width: 380px;
@@ -58,28 +57,17 @@
 .login {
     width: 350px;
     height: 378.63px;
-    border: 1px solid black;
 }
 .log {
     margin-top: 5rem;
     margin-left: 0rem;
 }
-
-.login input[type='password'] {
-    margin-top: 1rem;
-    margin-bottom: 3rem;
-}
 .login input[type='text'] {
-    margin-top: 3rem;
-}
-.login input[type='text'],
-.login input[type='password'] {
     width: 74%;
     padding: 12px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    /* margin-top: 1rem; */
-    margin-left: 2.4rem;
+    margin: 0 0 0.75rem 3rem;
 }
 .login input[type='submit'] {
     width: 55%;
@@ -87,8 +75,8 @@
     border: 1px solid #ccc;
     background-color: #0095f6;
     border-radius: 4px;
-    margin-left: 1rem;
-    /* cursor: pointer; */
+    margin-left: 3rem;
+    cursor: pointer;
 }
 .lineBox {
     margin: 1rem 4rem 18px;
@@ -97,15 +85,13 @@
     -webkit-box-direction: normal;
 }
 
+.Demo-Login {
+    /* height: 13px; */
+    /* overflow: hidden; */
+    /* border: 1px solid grey; */
+}
 .Demo-Login input[type='submit'] {
     background-color: lawngreen;
-
-    width: 55%;
-    padding: 1rem 2rem;
-    border: 1px solid #ccc;
-    border-radius: 2rem;
-    margin-left: 4.9rem;
-    cursor: pointer;
 }
 .wordSeperator {
     height: 10px;
@@ -115,7 +101,7 @@
     font-size: 13px;
     font-weight: 600;
     line-height: 25px;
-    margin: 0 46%;
+    margin: 0 55%;
     text-transform: uppercase;
 }
 .line {
@@ -134,13 +120,12 @@
     top: 0.45em;
 }
 .signup {
-    width: 22rem;
+    width: 380px;
     height: 63.02px;
-    margin-top: 2.3rem;
+    margin-top: -105px;
     border: 1px solid black;
     text-decoration: none;
     text-align: center;
-    font-size: large;
 
     /* color: rgba(var(--d69, 0, 149, 246), 1); */
 }

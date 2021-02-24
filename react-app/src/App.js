@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
-import Home from './components/Home'
+// import Home from './components/Home'
 import Splash from './components/SplashPage'
-import Profile from './components/ProfilePage'
+// import Profile from './components/ProfilePage'
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import LandingPage from './components/LandingPage'
+
+
+
 import { authenticate } from "./services/auth";
 
 function App() {
@@ -36,15 +40,22 @@ function App() {
 
         <Switch>
           <Route path="/" exact={true}>
-            {authenticated && <Home />}
+            {authenticated && <LandingPage/>}
+            {!authenticated && <Splash authenticated={authenticated}
+              setAuthenticated={setAuthenticated} />}
+            {/* <Route path="/profile" User={User} UsersList={UsersList}>
+              {authenticated && <Profile />}
+              {!authenticated && <Splash authenticated={authenticated}
+                setAuthenticated={setAuthenticated} />}
+            </Route> */}
+{/*             {authenticated && <Home />}
             {!authenticated && <Splash authenticated={authenticated}
               setAuthenticated={setAuthenticated} />}
             <Route path="/profile" User={User} UsersList={UsersList}>
               {authenticated && <Profile />}
               {!authenticated && <Splash authenticated={authenticated}
                 setAuthenticated={setAuthenticated} />}
-            </Route>
-
+            </Route> */}
           </Route>
           <Route path="/sign-up" exact={true}>
             <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />

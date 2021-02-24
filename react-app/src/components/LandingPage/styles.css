@@ -1,0 +1,17 @@
+#root {
+  background-color: #fafafa;
+}
+
+.landing__container {
+  width: 70%;
+  padding-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 65% auto;
+}
+
+.posts__feed {
+  width: 600px;
+  background-color: #ffffff;
+}
