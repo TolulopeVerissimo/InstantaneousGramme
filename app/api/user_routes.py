@@ -41,14 +41,14 @@ def profilePost(id):
 
 # Follows
 @user_routes.route('/<int:id>/follow', methods=['GET'])
-@login_required
+# @login_required
 def userFollowGET(id):
     user = User.query.get(id)
-    users = User.query.all()
-    userList = {"users":[person.to_dict() for person in users]}
-    print (userList)
-    return (user.follows)
-    
+    followers = [follower.to_dict() for follower in user.followers]
+    print(followers)
+    # print(followers.username)
+    # return({"followers":followers})
+    return["followers":followers]
     
 @user_routes.route('/<int:id>/follow', methods=['POST'])
 @login_required
