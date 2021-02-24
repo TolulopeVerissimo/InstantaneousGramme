@@ -72,7 +72,7 @@ const Posts = (postId) => {
               </div>
               <div className='post__comments'>
                 {/* pass user in as props to Comments */}
-                <Comments />
+                <Comments post={post} />
               </div>
               <p className='post__createdAt'>??? HOURS AGO</p>
             </div>

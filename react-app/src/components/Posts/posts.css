@@ -17,7 +17,7 @@
   grid-template-columns: auto 6fr auto;
   padding: 1rem;
   align-items: center;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
 }
 
 .post__username {
@@ -58,7 +58,7 @@
 }
 
 .comment__container {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   padding: 1rem;
   padding-top: 0rem;
   border-bottom: 0.5px solid rgb(235, 231, 231);
@@ -79,7 +79,7 @@
 }
 
 .post__createdAt {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: rgb(168, 167, 167);
   padding-top: 0.8rem;
 }
