@@ -1,0 +1,34 @@
+.loginForm {
+  width: 100%;
+  background-color: white;
+}
+.login input[type="password"] {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+.login input[type="text"] {
+  margin-top: 3rem;
+}
+.loginForm__textField {
+  width: 74%;
+  padding: 1.2rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 3.3rem;
+  background-color: #FAFAFA;
+  outline: none;
+}
+.loginForm__textField:focus {
+  border: 1px solid #262626;
+}
+.loginForm__button {
+  width: 80%;
+  height: 3rem;
+  margin-left: 3.3rem;
+  border: 1px solid #ccc;
+  background-color: #0095f6;
+  color: white;
+  font-weight: 500;
+  border-radius: 6px;
+  outline:none;
+}
