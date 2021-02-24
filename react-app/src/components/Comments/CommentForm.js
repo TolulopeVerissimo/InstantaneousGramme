@@ -1,12 +1,13 @@
 import React from "react";
 import "./comments.css";
+import smilyIcon from '../../images/icons/insta_smily_face_icon.png'
 
 const CommentForm = () => {
   return (
     <div className='comment-form__container'>
       <img
         className='comment-form__icon'
-        src='/icons/insta_smily_face_icon.png'
+        src={smilyIcon}
       ></img>
       <input
         className='comment-form__input'

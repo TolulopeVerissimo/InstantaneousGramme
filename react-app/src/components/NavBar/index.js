@@ -1,7 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useHistory } from 'react-router-dom'
-import LogoutButton from '../auth/LogoutButton';
+import { useHistory } from 'react-router-dom';
 import NewPostModal from '../NewPostModal'
 import ProfileDropdown from './ProfileDropdown'
 import './NavBar.css'
@@ -14,7 +12,7 @@ const NavBar = ({ setAuthenticated }) => {
   return (
     <nav className="navbar">
       <div className="navbar__logocontainer">
-        <img src="/ig-logo.png" className="navbar__logo" alt="Instanttaneous Gramme Logo" />
+        <h1 className="navbar__logo">Instantaneous-Gramme</h1>
       </div>
       <div className="navbar__search">
         <i className="fas fa-search navbar__icon" />

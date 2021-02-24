@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import Comments from "../Comments";
 import CommentForm from "../Comments/CommentForm";
 import "./posts.css";
-
+import commentIcon from '../../images/icons/insta_comment_icon.png'
+import blankHeart from '../../images/icons/insta_heart_blank_icon.png'
+import redHeart from '../../images/icons/insta_heart_red_icon.png'
+import shareIcon from '../../images/icons/insta_share_icon.png'
 const Posts = (postId) => {
   // const posts = useSelector((state) => {
   //   if (!Posts) return null;
@@ -29,21 +32,21 @@ const Posts = (postId) => {
       <div className='post__icons'>
         <div className='post__icon'>
           <img
-            src='/icons/insta_heart_blank_icon.png'
+            src={blankHeart}
             // changes icon to heart_red_icon and sets state of post to liked
             onClick={() => console.log("clicked")}
           />
         </div>
         <div className='post__icon'>
           <img
-            src='/icons/insta_comment_icon.png'
+            src={commentIcon}
             // opens up comment section?
             onClick={() => console.log("clicked")}
           />
         </div>
         <div className='post__icon'>
           <img
-            src='/icons/insta_share_icon.png'
+            src={shareIcon}
             // Do we want the share icon? what would it enable?
             onClick={() => console.log("clicked")}
           />

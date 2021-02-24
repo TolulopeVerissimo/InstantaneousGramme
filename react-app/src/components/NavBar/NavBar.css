@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap');
+
 .navbar {
   display: flex;
   justify-content: space-evenly;
@@ -6,28 +8,41 @@
   margin-bottom: 1rem;
   background-color: white;
 }
+.navbar__logocontainer {
+	background-color: white;
+}
+.navbar__navicons {
+	background-color: white;
+}
 .navbar__icon {
   font-size: 1.5rem;
   padding: .3rem;
   margin: .1rem;
   margin-bottom: .3rem;
+	background-color: white;
+	cursor: pointer;
+}
+.navbar__logo {
+  font-family: 'Lobster Two', cursive;
+	background-color: white;
 }
 
 .navbar__search {
   border: 1px solid lightgray;
   border-radius: .2rem;
   margin-bottom: .8rem;
+	margin-top: .5rem;
   display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .navbar__searchfield {
     margin-left: 0.3rem;
     margin-right: 0.3rem;
     padding: 0.3rem;
-    background: rgba(var(--d87, 255, 255, 255), 1);
     border: none;
 }
-
 .navbar__searchfield:focus {
     outline-width: 0;
 }
@@ -40,28 +55,53 @@
     justify-content: flex-end;
     display: inline-block;
     position: relative;
+		background-color: white;
 }
-
 .dropdown__list {
     margin-left: -13rem;
     list-style-type: none;
     position: absolute;
     top: 150%;
     border: 1px #f6f6f6 solid;
-    border-radius: 0.3rem;
-    background-color: #f6f6f6;
+    border-radius: 0.6rem;
+    background-color: white;
     animation: revealMenu 400ms ease-in-out forwards;
     transform-origin: top;
     box-sizing: border-box;
-    width: 15rem;
+    width: 20rem;
+		height: 15rem;
     text-align: right;
     padding-left: 0rem;
     margin-top: 0.4rem;
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+
 }
 
 .dropdown__list > li {
-    font-size: 1.2rem;
+		display: flex;
+		justify-content: flex-start;
+		margin-top: 1rem;
+		background-color: white;
+		cursor: pointer;
+	}
+.dropdown__icon {
+	width: 1rem;
+	font-size: 1.4rem;
+	margin: 0 1rem;
 }
+.dropdown__link, .logoutButton {
+	font-size: 1.2rem;
+	font-weight: 600;
+	font-family: "proxima-nova", sans-serif;
+	color: black;
+	outline: none;
+	cursor: pointer;
+	padding-left: .1rem;
+}
+
+
 @keyframes revealMenu {
     0% {
         transform: scaleY(0);
