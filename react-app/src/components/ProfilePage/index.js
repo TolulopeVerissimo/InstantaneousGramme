@@ -17,7 +17,7 @@ function Profile() {
     useEffect(() => {
         debugger;
         dispatch(getProfile(id))
-        dispatch(getFollows())
+        dispatch(getFollows(id))
         // dispatch(getUsers())
     }, [dispatch])
 

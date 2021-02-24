@@ -22,8 +22,8 @@ const removeFollow = (id) => {
         id
     }
 }
-export const getFollows = () => async (dispatch) => {
-    const response = await fetch('/api/users/${id}/follow');
+export const getFollows = (id) => async (dispatch) => {
+    const response = await fetch(`/api/users/${id}/follow`);
     if (response.ok) {
         debugger
         dispatch(setFollows(response.data.follows));

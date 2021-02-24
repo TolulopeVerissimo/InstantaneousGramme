@@ -46,8 +46,9 @@ def userFollowGET(id):
     user = User.query.get(id)
     users = User.query.all()
     userList = {"users":[person.to_dict() for person in users]}
-    print (userList)
-    return (user.follows)
+    # print (userList)
+    print("user Id ===",user.id)
+    return ("user Id ===",user.id)
     
     
 @user_routes.route('/<int:id>/follow', methods=['POST'])
