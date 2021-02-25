@@ -9,22 +9,25 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import LandingPage from "./components/LandingPage";
-
-import { authenticate } from "./services/auth";
+import { useDispatch } from "react-redux";
+import { restoreUser } from "./Store/session";
 
 function App() {
+  const dispatch = useDispatch()
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const user = await authenticate();
+      const user = await dispatch(restoreUser())
+      // const user = await authenticate()
+      console.log(user)
       if (!user.errors) {
         setAuthenticated(true);
       }
       setLoaded(true);
     })();
-  }, []);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
