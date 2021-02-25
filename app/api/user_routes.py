@@ -58,10 +58,12 @@ def follow_user(followed_user_id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         follower_id = form.data['follower_id']
-        follower = User.query.filter(User.id == follower_id).first()
-        followed_user.followers.append(follower)
-        db.session.commit()
+        new_follower = User.query.filter(User.id == follower_id).first()
         followers = followed_user.followers.all()
+        if new_follower in followers:
+            return 'User Already Follows'
+        followed_user.followers.append(new_follower)
+        db.session.commit()
         return followed_user.to_dict()
 
 @user_routes.route('/<int:id>/follow', methods=['PUT'])
