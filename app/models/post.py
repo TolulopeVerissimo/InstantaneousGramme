@@ -21,8 +21,8 @@ class Post(db.Model):
 
         likes = [like.to_dict() for like in self.postLikes]
         print('likes ______', likes)
-        follower_id = likes[0].follower_id
-        print('***********,', follower_id)
+        like = likes[0]
+        print('***********,', likes)
 
         return {
             'id': self.id,
@@ -32,7 +32,7 @@ class Post(db.Model):
             'userId': self.userId,
             'username': username,
             'profilePicture': profilePicture,
-            'likes': self.postLikes
+            'likes': likes
             # 'follower_id': follower_id,
 
 
