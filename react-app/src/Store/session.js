@@ -23,6 +23,29 @@ export const login = (email, password) => async (dispatch) => {
 		return user;
 };
 
+export const demoLogin = () => async (dispatch) => {
+	
+	// const response = await fetch('/api/auth/demologin', {
+	// 	method: 'POST',
+	// 	headers: {
+	// 			'Content-Type': 'application/json'
+	// 		},
+	// 		body: JSON.stringify({
+	// 			email : "demo@aa.io",
+	// 			password: "password"
+	// 			})
+	// 		});
+		
+	// const user = await response.json()
+	// 	console.log(user)
+	// 	dispatch(setSession(user));
+	// 	return user;
+};
+
+
+
+
+
 export const restoreUser = () => async dispatch => {
     const res = await fetch('/api/auth/', {headers: {
         'Content-Type': 'application/json'
@@ -35,18 +58,8 @@ export const restoreUser = () => async dispatch => {
 	return user;
 };
 
-export const demo = () => async (dispatch) => {
-    try {
-        const response = await fetch('/api/session/demo', {
-            method: 'POST',
-            body: JSON.stringify({ credential: 'demo', password: 'demo' }),
-        });
-        dispatch(setSession(response.data.user));
-        return response;
-    } catch (err) {
-        return err;
-    }
-};
+
+
 
 const initialState = {
     user: null,
