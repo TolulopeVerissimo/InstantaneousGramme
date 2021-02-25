@@ -24,9 +24,10 @@ function NewPostForm() {
                       headers: {
                         'Content-Type':'Application/json'
                       },
-                      body: JSON.stringify({description, isPrivate, description, imagePath, userId})
+                      body: JSON.stringify({isPrivate, description, imagePath, userId})
                     }
     const res = await fetch('/api/posts/', options)
+    return res
   }
   return (
     <form className="newpostform" onSubmit={handleSubmit}>

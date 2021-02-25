@@ -19,4 +19,5 @@ export async function uploadFile(file, s3Data, url){
     method:'POST',
     body: data
   })
+  return res
 }
