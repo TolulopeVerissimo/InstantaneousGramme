@@ -1,45 +1,76 @@
 .scrollingMain {
+<<<<<<< Updated upstream
   top: 0;
   padding: 50px;
   font-size: 20px;
   width: 293px;
   height: 476px;
+=======
+    position: fixed;
+    top: 8rem;
+    padding: 50px;
+    font-size: 20px;
+    width: 293px;
+    height: 476px;
+>>>>>>> Stashed changes
 }
 .profileContainer {
-  justify-content: center;
-  align-content: center;
+    justify-content: center;
+    align-content: center;
 }
 .profileContainer .testCircle {
-  height: 4rem;
-  width: 4rem;
-  border-radius: 50%;
-  border: 1px solid black;
-  /* overflow: hidden; */
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: 1px solid black;
+    /* overflow: hidden; */
 }
 .testCircle img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-position: center center;
-  background-size: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+}
+.profileContainer .username h5 {
+    position: absolute;
+    margin-top: -3.76rem;
+    margin-left: 6rem;
+}
+.profileContainer .username h6 {
+    position: absolute;
+    margin-top: -0.76rem;
+    margin-left: 6.1rem;
 }
 
 .suggested {
-  justify-content: center;
-  align-content: center;
-  margin-top: 5rem;
+    justify-content: center;
+    align-content: center;
+    margin-top: 5rem;
 }
 .suggested .circle {
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-  border: 1px solid black;
-  /* overflow: hidden; */
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    border: 1px solid black;
+    /* overflow: hidden; */
 }
-.circle img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-position: center center;
-  background-size: cover;
+.suggested .circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+}
+
+.suggested .users {
+    margin-top: 3rem;
+}
+.suggested .users h5 {
+    position: absolute;
+    margin: -5rem 0 0 4rem;
+}
+.suggested .users h6 {
+    position: absolute;
+    margin: -4.6rem 0 0 20rem;
 }

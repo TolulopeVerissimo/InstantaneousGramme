@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-// import Header from './Header.js'
+import { useDispatch } from 'react-redux'
+import Header from './Header.js'
 // import FeaturedStories from './FeaturedStories.js'
 // import Posts from './Posts.js'
 import { getProfile } from '../../Store/profile'
@@ -15,7 +15,7 @@ function Profile() {
 
 
     useEffect(() => {
-        debugger;
+
         dispatch(getProfile(id))
         dispatch(getFollows(id))
         // dispatch(getUsers())
@@ -23,8 +23,8 @@ function Profile() {
 
     return (
         <>
-            <h2>hi</h2>
-            {/* <Header /> */}
+            {/* <h2>hi</h2> */}
+            <Header />
             {/* <FeaturedStories /> */}
             {/* <Posts /> */}
         </>

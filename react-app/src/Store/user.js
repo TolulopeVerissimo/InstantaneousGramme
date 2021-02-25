@@ -20,7 +20,7 @@ export const getUsers = () => async (dispatch) => {
 
     console.log(response)
     if (response.ok) {
-        debugger
+
         dispatch(setUsers(response.data.users));
         return response;
     }
