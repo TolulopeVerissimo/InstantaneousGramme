@@ -24,8 +24,11 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const restoreUser = () => async dispatch => {
-    const res = await fetch('/api/auth')
-		const user = await res.json()
+    const res = await fetch('/api/auth/', {headers: {
+        'Content-Type': 'application/json'
+    }})
+
+	const user = await res.json()
     if (res.ok) {
     	dispatch(setSession(user))
     }

@@ -9,8 +9,6 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import LandingPage from "./components/LandingPage";
-
-import { authenticate } from "./services/auth";
 import { useDispatch } from "react-redux";
 import { restoreUser } from "./Store/session";
 
@@ -22,6 +20,7 @@ function App() {
   useEffect(() => {
     (async () => {
       const user = await dispatch(restoreUser())
+      // const user = await authenticate()
       console.log(user)
       if (!user.errors) {
         setAuthenticated(true);
