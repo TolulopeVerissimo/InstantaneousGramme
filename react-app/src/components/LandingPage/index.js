@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Posts from "../Posts";
-import NavBar from "../NavBar";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import StationarySide from "./StationarySide";
 import "./LandingPage.css";
 import * as postActions from "../../Store/posts";
@@ -9,13 +8,13 @@ import * as postActions from "../../Store/posts";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
   // posts = fetch("/");
 
   useEffect(() => {
     dispatch(postActions.getPosts());
     // dispatch(postActions.getUsers());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

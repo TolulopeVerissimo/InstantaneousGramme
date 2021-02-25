@@ -5,13 +5,13 @@ import CommentForm from "../Comments/CommentForm";
 import "./posts.css";
 import commentIcon from "../../images/icons/insta_comment_icon.png";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
-import redHeart from "../../images/icons/insta_heart_red_icon.png";
+// import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import shareIcon from "../../images/icons/insta_share_icon.png";
 
 const Posts = (postId) => {
   const posts = useSelector((state) => Object.values(state.posts));
 
-  const [isLiked, setIsLiked] = useState(false);
+  // const [isLiked, setIsLiked] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Posts = (postId) => {
     <>
       {isLoaded &&
         posts.map((post) => (
-          <div className='post__container'>
+          <div key={post.id} className='post__container'>
             <div className='post__header'>
               <div className='post__profile-pic'>
                 <img src={post.profilePicture} alt='profile pic' />
