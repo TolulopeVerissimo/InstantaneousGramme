@@ -1,8 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { sideItems } from "./sideItems.js";
+import { useDispatch } from 'react-redux'
+import { getFollows, updateFollow } from '../../Store/follow'
 import "./StationarySide.css";
 function StationarySide() {
+
+  const { id } = useParams()
+  const [following, setFollowing] = useState(false)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getFollows())
+
+  }, [dispatch])
+
+  // dispatch(updateFollow()) on button click
+
   let imgArr = [
     "https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Ffacebook%2F000%2F034%2F408%2FPunching_Pepe_Banner.jpg",
     "https://i.imgflip.com/4howsd.jpg",
@@ -10,6 +23,7 @@ function StationarySide() {
     "https://starecat.com/content/wp-content/uploads/pope-francis-punch-man-with-damaged-face-photoshopped.jpg",
     "https://i.kym-cdn.com/entries/icons/original/000/027/269/Screen_Shot_2018-09-28_at_3.14.37_PM.png",
   ];
+
   return (
     <>
       <div className='scrollingMain'>
@@ -19,7 +33,7 @@ function StationarySide() {
           </div>
           <div className='username'>
             <h5>Demo_McDemerson</h5>
-            <h6>Nemo</h6>
+            <h6>Slayer60NoThousand</h6>
           </div>
         </div>
         <div className='suggested'>
@@ -32,7 +46,10 @@ function StationarySide() {
                   </div>
                   <div className='users'>
                     <h5>Suggested User {idx}</h5>
-                    <h6>Follow Button</h6>
+                    <h6 >
+                      {following ? <button title="Unfollow" onClick={() => dispatch(updateFollow())}>Unfollow</button> : <button title="Follow" onClick={() => dispatch(updateFollow())}>Follow</button>}
+                    </h6>
+
                   </div>
                 </div>
               );

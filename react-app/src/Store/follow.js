@@ -1,3 +1,4 @@
+// import { formProfile } from "./profile";
 
 const SET_FOLLOWS = 'follows/SET_FOLLOWS';
 const CREATE_FOLLOW = 'follows/CREATE_FOLLOW';
@@ -24,25 +25,23 @@ const removeFollow = (id) => {
 }
 export const getFollows = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/follow`);
-
     if (response.ok) {
         const follows = await response.json()
-        debugger
         dispatch(setFollows(follows));
-        return response;
+        return follows;
     }
 };
 
 
 
-export const formFollow = (follow) => async (dispatch) => {
-    const { follower_id, followed_id } = follow;
+export const formFollow = (followers, id) => async (dispatch) => {
+    const { follower_id, followed_id } = followers;
     const formData = new FormData();
     formData.append('follower_id', follower_id);
     formData.append('followed_id', followed_id);
 
 
-    const response = await fetch('/api/users/${id}/follow', {
+    const response = await fetch(`/api/users/${id}/follow`, {
         method: 'POST',
         body: formData,
         headers: {
@@ -50,8 +49,9 @@ export const formFollow = (follow) => async (dispatch) => {
         },
     });
 
-    dispatch(createFollow(response.data.follow));
-    return response.data.follow;
+    const follow = await response.json()
+    dispatch(createFollow(follow));
+    return follow;
 };
 
 export const updateFollow = ({ id, follower_id, followed_id }) => async (dispatch) => {
@@ -66,8 +66,10 @@ export const updateFollow = ({ id, follower_id, followed_id }) => async (dispatc
             'Content-Type': 'multipart/form-data',
         },
     });
-    dispatch(createFollow(response.data.follow));
-    return response.data.follow;
+
+    const follow = await response.json()
+    dispatch(createFollow(follow));
+    return follow;
 };
 
 export const deleteFollow = (id) => async (dispatch) => {
@@ -75,7 +77,8 @@ export const deleteFollow = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/follow`, {
         method: 'DELETE',
     });
-    return response.data.message;
+    const follow = await response.json()
+    return follow;
 };
 
 const initialState = {};
