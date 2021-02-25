@@ -14,8 +14,8 @@ function Header({ profile, user }) {
     const [isLoaded, setIsLoaded] = useState(false);
 
 
-    const item = Object.values(profile)[0]
-    const profileObj = Object.values(profile)[0]
+    // const item = Object.values(profile)[0]
+    // const profileObj = Object.values(profile)[0]
 
 
     return (
@@ -25,21 +25,17 @@ function Header({ profile, user }) {
                 <div className="HeaderMain">
 
                     <div className="pfp">
-                        <img src={item.profilePicture} alt={item.username} />
+                        <img src={profile.profilePicture} alt={profile.username} />
                     </div>
-                    <h2 className="userHandle">{item.username}</h2>
+                    <h2 className="userHandle">{profile.username}</h2>
                     <i style={{ fontSize: '10rem' }} class="fas fa-cog"></i>
-
-                    <br />
-                    <br />
-                    <br />
                     <div>
                         <span>posts</span>
                         <span>followers</span>
                         <span>following</span>
                     </div>
-                    <div><h4>{item.username}</h4></div>
-                    <div><p>Synopsis goes here.</p></div>
+                    <div><h4>{profile.username}</h4></div>
+                    <div><p>{profile.biography}</p></div>
 
 
                 </div>}

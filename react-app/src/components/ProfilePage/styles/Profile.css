@@ -1,0 +1,14 @@
+.profilePost {
+  width:15rem;
+  height:15rem;
+}
+.profilePost img {
+  position: relative;
+  max-width: 15rem;
+  max-height: 15rem;
+}
+.followUser {
+  background-color: blue;
+  color: white;
+  font-weight: 500;
+}
