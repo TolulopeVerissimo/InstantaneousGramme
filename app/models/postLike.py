@@ -12,3 +12,6 @@ class PostLike(db.Model):
 
     user = db.relationship("User", back_populates="postLikes")
     post = db.relationship("Post", back_populates="postLikes")
+
+    def to_list(self):
+        return self.userId
