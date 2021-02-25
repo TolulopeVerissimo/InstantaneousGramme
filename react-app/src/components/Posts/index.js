@@ -9,10 +9,18 @@ import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import shareIcon from "../../images/icons/insta_share_icon.png";
 
 const Posts = (postId) => {
-  const posts = useSelector((state) => Object.values(state.posts));
+  const postsNormalized = useSelector((state) => state.posts);
+  const posts = Object.values(postsNormalized);
 
   const [isLiked, setIsLiked] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  // const loadLikes = (postId) => {
+  //   const post = postsNormalized[postId];
+  //   if(post){
+  //     post.likesUsers.includes(userId)
+  //   }
+  // }
 
   useEffect(() => {
     if (posts) setIsLoaded(true);
@@ -66,7 +74,7 @@ const Posts = (postId) => {
             </div>
             <div className='comment__container'>
               <p className='commment__likes-count'>
-                Liked by ??? and ??? others
+                {"Liked by " + post.likesUsers.length + " others"}
               </p>
               <div className='post__title'>
                 <p className='post__user'>{post.username}</p>

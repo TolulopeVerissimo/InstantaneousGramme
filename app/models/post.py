@@ -19,10 +19,10 @@ class Post(db.Model):
         username = user["username"]
         profilePicture = user["profilePicture"]
 
-        likes = [like.to_dict() for like in self.postLikes]
-        print('likes ______', likes)
-        like = likes[0]
-        print('***********,', likes)
+        likesUsers = [like.to_list() for like in self.postLikes]
+        # print('likes ______', likes)
+        # like = likes[0]
+        # print('***********,', likes)
 
         return {
             'id': self.id,
@@ -32,9 +32,6 @@ class Post(db.Model):
             'userId': self.userId,
             'username': username,
             'profilePicture': profilePicture,
-            'likes': likes
-            # 'follower_id': follower_id,
-
-
+            'likesUsers': likesUsers
             # 'comments': self.comments,
         }
