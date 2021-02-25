@@ -28,10 +28,12 @@ function Header({ profile, user }) {
                         <img src={profile.profilePicture} alt={profile.username} />
                     </div>
                     <h2 className="userHandle">{profile.username}</h2>
-                    <i style={{ fontSize: '10rem' }} class="fas fa-cog"></i>
-                    <div>
+                    <i style={{ fontSize: '3.2rem' }} class="fas fa-cog"></i>
+                    <div className="metrics">
                         <span>posts</span>
+                        <span className="s"></span>
                         <span>followers</span>
+                        <span className="s"></span>
                         <span>following</span>
                     </div>
                     <div><h4>{profile.username}</h4></div>

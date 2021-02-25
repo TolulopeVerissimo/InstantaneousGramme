@@ -1,14 +1,9 @@
-.profilePost {
-  width:15rem;
-  height:15rem;
-}
-.profilePost img {
-  position: relative;
-  max-width: 15rem;
-  max-height: 15rem;
-}
-.followUser {
-  background-color: blue;
-  color: white;
-  font-weight: 500;
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 35%);
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    grid-gap: 2rem;
+    align-items: center;
+    width: 66%;
+    margin-left: 30rem;
 }

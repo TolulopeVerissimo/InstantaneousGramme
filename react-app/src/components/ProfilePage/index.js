@@ -12,14 +12,22 @@ import { useParams } from 'react-router-dom'
 import FollowUser from '../FollowUser'
 import './styles/Profile.css'
 function Profile() {
-		const { id } = useParams()
-    const profiles = useSelector(state => state.profiles)
-    const user = useSelector(state => state.users)
-    // const follow = useSelector(state => state.follows)
-    const posts = useSelector(state => state.posts)
-    const dispatch = useDispatch()
-		const userPosts = []
-    useEffect(() => {
+	const { id } = useParams()
+	const profiles = useSelector(state => state.profiles)
+	const user = useSelector(state => state.users)
+	// const follow = useSelector(state => state.follows)
+	const posts = useSelector(state => state.posts)
+	const dispatch = useDispatch()
+	const userPosts =
+		[
+			"https://images.unsplash.com/photo-1484723091739-30…3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+			"https://images.unsplash.com/photo-1484723091739-30…3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+			"https://images.unsplash.com/photo-1484723091739-30…3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+			"https://images.unsplash.com/photo-1484723091739-30…3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+			"https://images.unsplash.com/photo-1484723091739-30…3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+			"https://images.unsplash.com/photo-1484723091739-30…3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80"
+		]
+	useEffect(() => {
 		// debugger;
 		dispatch(getProfile(id))
 		// dispatch(getFollows(id))
@@ -27,22 +35,28 @@ function Profile() {
 	}, [dispatch])
 	if (posts) {
 		for (let key in posts) {
-			if( posts[key].userId == id) {
+			if (posts[key].userId == id) {
 				userPosts.push(posts[key])
 			}
 		}
 	}
 	return (
-			<>
-					{/* {profiles &&  <h2>hi {profiles[id].username}</h2>} */}
+		<>
+			{/* {profiles &&  <h2>hi {profiles[id].username}</h2>} */}
 
-				  <Header profile={profiles[id]} user={user} />
-					<FollowUser />
-            {/* <FeaturedStories /> */}
-            { userPosts &&
-						userPosts.map((post) => <SmallPost  post={post}/>)}
+			< Header profile={profiles[id]} user={user} />
+			<FollowUser />
+			{/* <FeaturedStories /> */}
 
-			</>
+			<div className="gridContainer">
+				{
+					userPosts &&
+					userPosts.map((post) => <SmallPost post={post} />)
+				}
+
+			</div>
+
+		</>
 	)
 }
 
