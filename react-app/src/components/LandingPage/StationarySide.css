@@ -1,6 +1,11 @@
 .scrollingMain {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   top: 0;
+=======
+  position: fixed;
+  top: 8rem;
+>>>>>>> master
   padding: 50px;
   font-size: 20px;
   width: 293px;

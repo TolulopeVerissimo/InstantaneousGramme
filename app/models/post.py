@@ -14,11 +14,28 @@ class Post(db.Model):
     comments = db.relationship("Comment", back_populates="post")
     postLikes = db.relationship("PostLike", back_populates="post")
 
+    date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(
+    ), onupdate=db.func.current_timestamp())
+
     def to_dict(self):
+        user = self.user.to_dict()
+        username = user["username"]
+        profilePicture = user["profilePicture"]
+
+        likesUsers = [like.to_list() for like in self.postLikes]
+        # print('likes ______', likes)
+        # like = likes[0]
+        # print('***********,', likes)
+
         return {
             'id': self.id,
             'description': self.description,
             'private': self.private,
             'imagePath': self.imagePath,
-            'userId' : self.userId
+            'userId': self.userId,
+            'username': username,
+            'profilePicture': profilePicture,
+            'likesUsers': likesUsers
+            # 'comments': self.comments,
         }

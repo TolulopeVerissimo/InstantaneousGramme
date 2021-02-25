@@ -1,8 +1,8 @@
-"""finalform
+"""Run All Migrations
 
-Revision ID: 059136c82018
-Revises: 6dd51f83f1d7
-Create Date: 2021-02-23 20:41:04.683175
+Revision ID: 733ffceee29b
+Revises: 
+Create Date: 2021-02-24 15:44:11.304498
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '059136c82018'
-down_revision = '6dd51f83f1d7'
+revision = '733ffceee29b'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -27,6 +27,8 @@ def upgrade():
     sa.Column('biography', sa.String(length=200), nullable=True),
     sa.Column('profilePicture', sa.String(length=255), nullable=True),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.Column('date_created', sa.DateTime(), nullable=True),
+    sa.Column('date_modified', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('name'),
@@ -44,6 +46,8 @@ def upgrade():
     sa.Column('private', sa.Boolean(), nullable=False),
     sa.Column('imagePath', sa.String(length=255), nullable=True),
     sa.Column('userId', sa.Integer(), nullable=False),
+    sa.Column('date_created', sa.DateTime(), nullable=True),
+    sa.Column('date_modified', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -52,6 +56,8 @@ def upgrade():
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('postId', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(length=255), nullable=False),
+    sa.Column('date_created', sa.DateTime(), nullable=True),
+    sa.Column('date_modified', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['postId'], ['posts.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -60,6 +66,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('postId', sa.Integer(), nullable=False),
+    sa.Column('date_created', sa.DateTime(), nullable=True),
+    sa.Column('date_modified', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['postId'], ['posts.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -68,6 +76,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('commentId', sa.Integer(), nullable=False),
+    sa.Column('date_created', sa.DateTime(), nullable=True),
+    sa.Column('date_modified', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['commentId'], ['comments.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

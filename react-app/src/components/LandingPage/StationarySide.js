@@ -40,9 +40,9 @@ function StationarySide() {
           {imgArr &&
             imgArr.map((el, idx) => {
               return (
-                <>
+                <div key={idx}>
                   <div className='circle'>
-                    <img src={el}></img>
+                    <img src={el} alt="user profile pic"></img>
                   </div>
                   <div className='users'>
                     <h5>Suggested User {idx}</h5>
@@ -51,7 +51,7 @@ function StationarySide() {
                     </h6>
 
                   </div>
-                </>
+                </div>
               );
             })}
         </div>
@@ -60,6 +60,7 @@ function StationarySide() {
             {sideItems.map((item, idx) => {
               return (
                 <Link
+                  key={idx}
                   className={item.cName}
                   id='underline'
                   to={item.path}

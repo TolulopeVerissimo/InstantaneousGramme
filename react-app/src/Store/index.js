@@ -6,12 +6,14 @@ import postsReducer from './posts'
 import usersReducer from './user'
 import profileReducer from './profile'
 import followsReducer from './follow'
+import sessionReducer from './session'
 
 const rootReducer = combineReducers({
   posts: postsReducer,
   users: usersReducer,
   profiles: profileReducer,
   follows: followsReducer,
+  session: sessionReducer
 });
 
 let enhancer;

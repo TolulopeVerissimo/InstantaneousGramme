@@ -6,6 +6,7 @@ const CommentForm = () => {
   return (
     <div className='comment-form__container'>
       <img
+        alt="smile emoji"
         className='comment-form__icon'
         src={smilyIcon}
       ></img>

@@ -9,26 +9,25 @@ const setPosts = (posts) => {
   };
 };
 
-const createPosts = (posts) => {
-  return {
-    type: CREATE_POSTS,
-    posts,
-  };
-};
+// const createPosts = (posts) => {
+//   return {
+//     type: CREATE_POSTS,
+//     posts,
+//   };
+// };
 
-const removePosts = (id) => {
-  return {
-    type: REMOVE_POSTS,
-    id,
-  };
-};
+// const removePosts = (id) => {
+//   return {
+//     type: REMOVE_POSTS,
+//     id,
+//   };
+// };
 
 export const getPosts = () => async (dispatch) => {
-  console.log("sdsadsadsadasdsadasdsad");
   const response = await fetch("/api/posts/");
   if (response.ok) {
     let res = await response.json();
-    console.log(res);
+    console.log(res.posts);
     dispatch(setPosts(res.posts));
   }
   return response;
