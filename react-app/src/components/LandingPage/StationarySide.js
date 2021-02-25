@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { sideItems } from "./sideItems.js";
 import { useDispatch } from 'react-redux'
-import { getFollows, updateFollow } from '../../Store/follow'
+import { getFollowers, updateFollow } from '../../Store/follow'
 import "./StationarySide.css";
 function StationarySide() {
 
@@ -10,7 +10,7 @@ function StationarySide() {
   const [following, setFollowing] = useState(false)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getFollows())
+    // dispatch(getFollowers(id))
 
   }, [dispatch])
 

@@ -22,7 +22,7 @@ const removeFollow = (id) => {
         id
     }
 }
-export const getFollows = (id) => async (dispatch) => {
+export const getFollowers = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/follows`);
     if (response.ok) {
         const follows = await response.json()
@@ -85,7 +85,9 @@ const initialState = {};
 const followsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_FOLLOWS:
-            return { ...state, ...{ [action.id]: action.follows } };
+            const followers= {}
+            action.follows.forEach(person => followers[person.id]=person)
+            return { ...state,  [action.id]: followers};
         case CREATE_FOLLOW:
             return { ...state, ...{ [action.follow.id]: action.follow } };
         case REMOVE_FOLLOW:
