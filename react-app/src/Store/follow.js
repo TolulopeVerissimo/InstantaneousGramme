@@ -25,19 +25,10 @@ const removeFollow = (id) => {
 }
 export const getFollows = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/follow`);
-<<<<<<< Updated upstream
-
-    if (response.ok) {
-        const follows = await response.json()
-        debugger
-        dispatch(setFollows(follows));
-        return response;
-=======
     if (response.ok) {
         const follows = await response.json()
         dispatch(setFollows(follows));
         return follows;
->>>>>>> Stashed changes
     }
 };
 

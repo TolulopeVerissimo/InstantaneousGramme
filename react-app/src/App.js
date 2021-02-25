@@ -11,6 +11,7 @@ import User from "./components/User";
 import LandingPage from "./components/LandingPage";
 import { useDispatch } from "react-redux";
 import { restoreUser } from "./Store/session";
+import FollowUser from "./components/FollowUser";
 
 function App() {
   const dispatch = useDispatch()
@@ -76,6 +77,9 @@ function App() {
           <ProtectedRoute path='/' exact={true} authenticated={authenticated}>
             <h1>My Home Page</h1>
           </ProtectedRoute>
+          <Route path="/followUserTest/:id" >
+            <FollowUser />
+          </Route>
         </Switch>
       </BrowserRouter>
       {/* <SmoothProvider skew={false}/> */}
