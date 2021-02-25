@@ -1,13 +1,12 @@
-// import { formProfile } from "./profile";
-
 const SET_FOLLOWS = 'follows/SET_FOLLOWS';
 const CREATE_FOLLOW = 'follows/CREATE_FOLLOW';
 const REMOVE_FOLLOW = 'follows/REMOVE_FOLLOW';
 
-const setFollows = (follows) => {
+const setFollows = (follows, id = null) => {
     return {
         type: SET_FOLLOWS,
         follows,
+        id
     };
 };
 
@@ -24,10 +23,10 @@ const removeFollow = (id) => {
     }
 }
 export const getFollows = (id) => async (dispatch) => {
-    const response = await fetch(`/api/users/${id}/follow`);
+    const response = await fetch(`/api/users/${id}/follows`);
     if (response.ok) {
         const follows = await response.json()
-        dispatch(setFollows(follows));
+        dispatch(setFollows(follows, id));
         return follows;
     }
 };
@@ -86,13 +85,9 @@ const initialState = {};
 const followsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_FOLLOWS:
-            // const follows = action.follows.reduce((acc, ele) => {
-            //     acc[ele.id] = ele;
-            //     return acc;
-            // }, {});
-            return { ...state, ...{ [action.follows.id]: action.follows } };
+            return { ...state, ...{ [action.id]: action.follows } };
         case CREATE_FOLLOW:
-            return { ...state, [action.follow.id]: action.follow };
+            return { ...state, ...{ [action.follow.id]: action.follow } };
         case REMOVE_FOLLOW:
             const newState = { ...state };
             delete newState[action.id];

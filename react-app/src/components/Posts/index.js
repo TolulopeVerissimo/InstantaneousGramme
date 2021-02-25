@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import Comments from "../Comments";
 import CommentForm from "../Comments/CommentForm";
 import "./posts.css";
@@ -7,8 +7,10 @@ import commentIcon from "../../images/icons/insta_comment_icon.png";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 // import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import shareIcon from "../../images/icons/insta_share_icon.png";
+import { getFollows } from '../../Store/follow'
 
 const Posts = (postId) => {
+  const dispatch = useDispatch()
   const postsNormalized = useSelector((state) => state.posts);
   const posts = Object.values(postsNormalized);
 
@@ -24,6 +26,8 @@ const Posts = (postId) => {
 
   useEffect(() => {
     if (posts) setIsLoaded(true);
+    dispatch(getFollows(2))
+
   }, [posts]);
 
   return (
