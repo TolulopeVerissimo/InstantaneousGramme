@@ -1,15 +1,32 @@
-import React from 'react'
+import React, {useState} from 'react'
 import LoginForm from '../auth/LoginForm.js'
 import { useHistory } from 'react-router-dom'
 import './splash.css'
 import './appstore.css'
 import RotatingImage from './RotatingImage'
+import { demoLogin, login } from '../../Store/session.js'
+import {useDispatch} from 'react-redux'
 import AppStore from './AppStore'
 function Splash({ authenticated, setAuthenticated }) {
     let history = useHistory()
+    const [errors, setErrors] = useState([]);
+    const dispatch = useDispatch()
     const signUpRedirect = () => {
         history.push('/sign-up')
     }
+    const loginDemo = async(e) => {
+        e.preventDefault()
+        // const user = await dispatch(demoLogin())
+        const user = await dispatch(login('demo@aa.io','password'))
+        if (!user.errors) {
+            setAuthenticated(true)
+        } else {
+            setErrors(user.errors)
+        }
+
+    }
+
+
     return (
         <>
             <div className="SplashContainer">
@@ -33,7 +50,7 @@ function Splash({ authenticated, setAuthenticated }) {
 
                             <div className="Demo-Login">
                                 <form>
-                                    <input type="submit" value="DEMO LOGIN" />
+                                    <input type="submit" value="DEMO LOGIN" onClick={loginDemo} />
                                 </form>
                             </div>
                         </div>
