@@ -15,6 +15,9 @@ from .api.post_routes import post_routes
 from .api.postLike_routes import postLike_routes
 from .seeds import seed_commands
 
+#socketIO
+# from flask_socketio import SocketIO, send
+
 from .config import Configuration
 
 app = Flask(__name__)

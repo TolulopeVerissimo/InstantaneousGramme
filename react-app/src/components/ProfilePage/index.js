@@ -48,7 +48,7 @@ function Profile() {
 			{/* {profiles &&  <h2>hi {profiles[id].username}</h2>} */}
 
 			< Header profile={profiles[id]} user={user} />
-			{userId != id &&
+			{userId !== id &&
 				<div className="moveTheFollowButton">
 					<FollowUser />
 				</div>
