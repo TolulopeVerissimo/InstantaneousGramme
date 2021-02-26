@@ -55,8 +55,8 @@ function Profile() {
 				}
 
 			</div>
-
 		</>
+
 	)
 }
 

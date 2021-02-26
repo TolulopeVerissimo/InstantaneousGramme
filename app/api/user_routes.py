@@ -37,21 +37,17 @@ def profileGet(id):
 
 # Follows
 
-@user_routes.route('/<int:id>/follow', methods=['GET'])
+@user_routes.route('/<int:id>/follows', methods=['GET'])
 @login_required
-def userFollowGET(id):
-    user = User.query.get(id)
-    # followers = [follower.to_dict() for follower in user.followers]
-    # print(followers.username)
-    # return({"followers":followers})
-    # return["followers":followers]
-    # users = User.query.all()
-    # # return (user.follows)
-    # return (user.followers)
-    return(user.follow)
+def get_user_follows(id):
+    user = User.query.filter(User.id == id).first()
+    followers = user.followers.all()
+    return jsonify([follower.to_dict() for follower in followers])
+
+
 
 @user_routes.route('/<int:followed_user_id>/follow', methods=['POST'])
-# @login_required
+@login_required
 def follow_user(followed_user_id):
     followed_user = User.query.filter(User.id == followed_user_id).first()
     form = FollowForm()
