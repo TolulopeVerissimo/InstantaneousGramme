@@ -17,6 +17,14 @@ const Post = ({ post, user }) => {
     dispatch(postLike(like));
   };
 
+  const likeCount = () => {
+    if (post.likesUsers.length === 1) {
+      return "other";
+    } else {
+      return "others";
+    }
+  };
+
   //sets isLiked to match redux state
   useEffect(() => {
     if (post) {
@@ -66,7 +74,7 @@ const Post = ({ post, user }) => {
       </div>
       <div className='comment__container'>
         <p className='commment__likes-count'>
-          {"Liked by " + post.likesUsers.length + " others"}
+          {"Liked by " + post.likesUsers.length + " " + likeCount()}
         </p>
         <div className='post__title'>
           <p className='post__user'>{post.username}</p>
