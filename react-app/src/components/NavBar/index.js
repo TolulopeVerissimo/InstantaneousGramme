@@ -12,7 +12,7 @@ const NavBar = ({ setAuthenticated }) => {
   return (
     <nav className="navbar">
       <div className="navbar__logocontainer">
-        <h1 className="navbar__logo">Instantaneous-Gramme</h1>
+        <h1 className="navbar__logo" style={{ cursor: 'pointer' }} onClick={homeRouter}>Instantaneous-Gramme</h1>
       </div>
       <div className="navbar__search">
         <i className="fas fa-search navbar__icon" />
