@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import Comments from "../Comments";
 import CommentForm from "../Comments/CommentForm";
 import "./posts.css";
@@ -7,6 +7,7 @@ import commentIcon from "../../images/icons/insta_comment_icon.png";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 // import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import shareIcon from "../../images/icons/insta_share_icon.png";
+import {getPostComments} from '../../Store/comments'
 
 const Posts = (postId) => {
   const postsNormalized = useSelector((state) => state.posts);
@@ -14,6 +15,11 @@ const Posts = (postId) => {
 
   // const [isLiked, setIsLiked] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPostComments());
+  }, [dispatch]);
 
   // const loadLikes = (postId) => {
   //   const post = postsNormalized[postId];
@@ -23,8 +29,8 @@ const Posts = (postId) => {
   // }
 
   useEffect(() => {
-    if (posts) setIsLoaded(true);
-  }, [posts]);
+		if (posts) setIsLoaded(true);
+	}, [posts]);
 
   return (
     <>
@@ -82,12 +88,12 @@ const Posts = (postId) => {
               </div>
               <div className='post__comments'>
                 {/* pass user in as props to Comments */}
-                <Comments post={post} />
+                <Comments postId={post.id} />
               </div>
               <p className='post__createdAt'>??? HOURS AGO</p>
             </div>
             <div className='post__comment-form'>
-              <CommentForm />
+              <CommentForm  />
             </div>
           </div>
         ))}

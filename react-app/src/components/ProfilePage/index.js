@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import Header from './Header.js'
+import Header from './Header.js'
 // import FeaturedStories from './FeaturedStories.js'
 // import Posts from './Posts.js'
 import { getProfile } from '../../Store/profile'
