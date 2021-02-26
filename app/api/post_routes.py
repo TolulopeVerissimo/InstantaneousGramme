@@ -30,3 +30,13 @@ def new_post():
     db.session.commit()
 
     return(data)
+
+
+@post_routes.route('/<int:id>')
+@login_required
+def post(id):
+    post = Post.query.get(id)
+    if post:
+        return jsonify(post.to_dict())
+    else:
+        return {'post': []}

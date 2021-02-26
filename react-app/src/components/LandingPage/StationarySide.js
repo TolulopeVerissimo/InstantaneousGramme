@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { sideItems } from "./sideItems.js";
 import { useDispatch } from 'react-redux'
 import { getFollowers } from '../../Store/follow'
 import FollowUser from '../FollowUser'
+import { useSelector } from 'react-redux'
 import "./StationarySide.css";
 function StationarySide() {
 
   const { id } = useParams()
   const [following, setFollowing] = useState(false)
+  let history = useHistory()
+  const userId = useSelector(state => state.session.user.id)
+  const profileRedirect = () => {
+    history.push(`/profile/${userId}`)
+  }
   const dispatch = useDispatch()
   useEffect(() => {
     // dispatch(getFollowers(id))
@@ -29,10 +35,10 @@ function StationarySide() {
     <>
       <div className='scrollingMain'>
         <div className='profileContainer'>
-          <div className='testCircle'>
+          <div onClick={profileRedirect} style={{ cursor: 'pointer' }} className='testCircle'>
             <img src={imgArr[4]} alt='' />
           </div>
-          <div className='username'>
+          <div onClick={profileRedirect} style={{ cursor: 'pointer' }} className='username'>
             <h5>Demo_McDemerson</h5>
             <h6>Slayer60NoThousand</h6>
           </div>
