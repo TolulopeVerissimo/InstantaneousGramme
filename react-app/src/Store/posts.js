@@ -1,6 +1,7 @@
 const SET_POSTS = "posts/SET_POSTS";
 const CREATE_POSTS = "posts/CREATE_POSTS";
 const REMOVE_POSTS = "posts/REMOVE_POSTS";
+const UPDATE_POST = "posts/UPDATE_POST";
 
 const setPosts = (posts) => {
   return {
@@ -9,20 +10,28 @@ const setPosts = (posts) => {
   };
 };
 
-export const updatePostLikes = async (like) => {
+const updatePosts = (post) => {
+  return {
+    type: UPDATE_POST,
+    post,
+  };
+};
+
+export const updatePostLikes = (like) => async (dispatch) => {
   const { postId, userId } = like;
   const response = await fetch(`/api/posts/${postId}`);
   if (response.ok) {
     const res = await response.json();
-    console.log(res, "res");
+    dispatch(updatePosts(res));
+    console.log(res, "res*****************************");
   }
+  return response;
 };
 
 export const getPosts = () => async (dispatch) => {
   const response = await fetch("/api/posts/");
   if (response.ok) {
     let res = await response.json();
-    console.log(res.posts);
     dispatch(setPosts(res.posts));
   }
   return response;
@@ -44,6 +53,12 @@ const postsReducer = (state = initialState, action) => {
       const newState = { ...state };
       delete newState[action.id];
       return newState;
+    case UPDATE_POST:
+      const newPosts = { ...state };
+      console.log(action, "CHECKING STATE");
+      const index = action.post.id;
+      newPosts[index] = action.post;
+      return newPosts;
     default:
       return state;
   }
