@@ -15,8 +15,6 @@ def postLike():
     postId = newLike['postId']
     for like in likes:
         if int(like.userId) == int(userId) and int(like.postId) == int(postId):
-            print("********************************PRINT ALL LIKES",
-                  like.userId, userId, like.postId, postId)
             db.session.delete(like)
             db.session.commit()
             return({"userId": like.userId, "postId": like.postId})

@@ -1,7 +1,6 @@
 import { updatePostLikes } from "./posts";
 
-export const postLike = (like) => async () => {
-  // const res = await fetch(`/api/postLike/${postId}`, {
+export const postLike = (like) => async (dispatch) => {
   const res = await fetch(`/api/postLikes/`, {
     method: "POST",
     headers: {
@@ -9,8 +8,8 @@ export const postLike = (like) => async () => {
     },
     body: JSON.stringify(like),
   });
-  // if (res.ok) {
-  //   updatePostLikes(like);
-  //   return res;
-  // }
+  if (res.ok) {
+    dispatch(updatePostLikes(like));
+    return res;
+  }
 };

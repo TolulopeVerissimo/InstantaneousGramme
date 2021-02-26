@@ -5,22 +5,24 @@ import CommentForm from "../Comments/CommentForm";
 import commentIcon from "../../images/icons/insta_comment_icon.png";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 import redHeart from "../../images/icons/insta_heart_red_icon.png";
-import shareIcon from "../../images/icons/insta_share_icon.png";
 import { postLike } from "../../Store/postLike";
 
 const Post = ({ post, user }) => {
   const [isLiked, setIsLiked] = useState(false);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const like = { userId: user.id, postId: post.id };
-  //   dispatch(postLike(like));
-  // }, [isLiked, dispatch, user, post]);
-
   const likeHandler = () => {
     const like = { userId: user.id, postId: post.id };
     setIsLiked(!isLiked);
     dispatch(postLike(like));
+  };
+
+  const likeCount = () => {
+    if (post.likesUsers.length === 1) {
+      return "other";
+    } else {
+      return "others";
+    }
   };
 
   //sets isLiked to match redux state
@@ -62,17 +64,17 @@ const Post = ({ post, user }) => {
           />
         </div>
         <div className='post__icon'>
-          <img
+          {/* <img
             src={shareIcon}
             alt='post share button'
             // Do we want the share icon? what would it enable?
             onClick={() => console.log("clicked")}
-          />
+          /> */}
         </div>
       </div>
       <div className='comment__container'>
         <p className='commment__likes-count'>
-          {"Liked by " + post.likesUsers.length + " others"}
+          {"Liked by " + post.likesUsers.length + " " + likeCount()}
         </p>
         <div className='post__title'>
           <p className='post__user'>{post.username}</p>
