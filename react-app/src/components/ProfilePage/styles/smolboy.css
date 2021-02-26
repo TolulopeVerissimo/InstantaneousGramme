@@ -41,7 +41,10 @@ figure::after {
 }
 
 .followUser {
-    background-color: blue;
-    color: white;
-    font-weight: 500;
+    color: #0095f6;
+    font-weight: bolder;
+    margin-top: -1rem;
+    /* background-color: #0095f6; */
+    /* color: white; */
+    /* font-weight: 500; */
 }
