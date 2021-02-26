@@ -12,14 +12,18 @@ const Post = ({ post, user }) => {
   const [isLiked, setIsLiked] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const like = {
-      userId: user.id,
-      postId: post.id,
-    };
-    if (isLiked) dispatch(postLike(like));
-  }, [isLiked, dispatch, post, user]);
+  // useEffect(() => {
+  //   const like = { userId: user.id, postId: post.id };
+  //   dispatch(postLike(like));
+  // }, [isLiked, dispatch, user, post]);
 
+  const likeHandler = () => {
+    const like = { userId: user.id, postId: post.id };
+    setIsLiked(!isLiked);
+    dispatch(postLike(like));
+  };
+
+  //sets isLiked to match redux state
   useEffect(() => {
     if (post) {
       if (post.likesUsers.includes(user.id)) {
@@ -46,7 +50,7 @@ const Post = ({ post, user }) => {
           <img
             src={isLiked ? redHeart : blankHeart}
             alt='post like button'
-            onClick={() => setIsLiked(!isLiked)}
+            onClick={() => likeHandler()}
           />
         </div>
         <div className='post__icon'>

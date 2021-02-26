@@ -9,9 +9,8 @@ export const postLike = (like) => async () => {
     },
     body: JSON.stringify(like),
   });
-  // console.log("************************", like, res);
-  if (res.ok) {
-    updatePostLikes(like);
-    return res;
-  }
+  // if (res.ok) {
+  //   updatePostLikes(like);
+  //   return res;
+  // }
 };
