@@ -17,13 +17,10 @@ const createUsers = (user) => {
 
 export const getUsers = () => async (dispatch) => {
     const response = await fetch('/api/users');
-    
-
-    console.log(response)
     if (response.ok) {
-        const user = await response.json()
-        dispatch(setUsers(user));
-        return user;
+        const users = await response.json()
+        dispatch(setUsers(users));
+        return users;
 
 //         dispatch(setUsers(response.data.users));
 //         return response;
@@ -76,12 +73,7 @@ const initialState = {};
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USERS:
-            console.log("ACTION", action.users)
-            const users = action.users.reduce((acc, ele) => {
-                acc[ele.id] = ele;
-                return acc;
-            }, {});
-            return { ...state, ...users };
+            return { ...state, ...action.users };
         default:
             return state;
     }
