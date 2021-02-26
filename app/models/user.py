@@ -32,8 +32,8 @@ class User(db.Model, UserMixin):
     followers = db.relationship(
         "User",
         secondary=follows,
-        primaryjoin=(follows.c.follower_id == id),
-        secondaryjoin=(follows.c.followed_id == id),
+        primaryjoin=(follows.c.followed_id == id),
+        secondaryjoin=(follows.c.follower_id == id),
         backref=db.backref("follows", lazy="dynamic"),
         lazy="dynamic"
     )
@@ -54,7 +54,8 @@ class User(db.Model, UserMixin):
             "id": self.id,
             "username": self.username,
             "email": self.email,
-            "profilePicture": self.profilePicture
+            "profilePicture": self.profilePicture,
+            "biography":self.biography,
         }
 
 

@@ -1,0 +1,24 @@
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 35%);
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    grid-gap: 2rem;
+    align-items: center;
+    width: 66%;
+    margin-left: 30rem;
+    margin-top: 10rem;
+}
+.moveTheFollowButton {
+    position: absolute;
+    margin-left: 50%;
+    margin-top: -7.6%;
+}
+
+.moveTheFollowButton button {
+    border-color: rgba(var(--d69, 0, 149, 246), 1);
+    background-color: #0095f6;
+    color: #fff;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+}

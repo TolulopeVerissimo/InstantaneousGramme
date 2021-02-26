@@ -6,7 +6,7 @@ export async function getSignedRequest(photo){
   } else {
     console.error('could not get url')
   }
-  return res.url + res.data.fields.key
+  return res.data.url + res.data.fields.key
 }
 
 export async function uploadFile(file, s3Data, url){
