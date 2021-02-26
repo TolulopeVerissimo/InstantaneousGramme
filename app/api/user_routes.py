@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, make_response, request
 from flask_login import login_required
-from app.models import User, db
+from app.models import User, Post, db
 from app.forms import FollowForm
 
 user_routes = Blueprint('users', __name__)
@@ -24,15 +24,15 @@ def user(id):
 @login_required
 def profileGet(id):
     user = User.query.get(id)
-    return user.to_dict()
-    # print("not found")
-# @user_routes.route('/<int:id>/profile', methods=['POST'])
-# @login_required
-#     userList = users()
-#     specificUser = user(id)
-#     if userList.has_key(specificUser):
-#         print ("UserFound",specificUser)
-#     print("not found")
+    post_count = len(Post.query.filter(Post.userId == id).all())
+    follower_count = len(user.followers.all())
+    following_count = len(user.follows.all())
+    profile = user.to_dict()
+    profile['followerCount'] = follower_count
+    profile['followingCount'] = following_count
+    profile['postCount'] = post_count
+    return profile
+
 
 
 # Follows
