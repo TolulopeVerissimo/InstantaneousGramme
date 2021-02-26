@@ -1,5 +1,7 @@
 .HeaderMain {
     display: flex;
+    margin-left: 55rem;
+    margin-top: 5rem;
 }
 .HeaderMain .pfp {
     height: 15rem;
@@ -14,4 +16,30 @@
     border-radius: 50%;
     background-position: center center;
     background-size: cover;
+}
+
+.HeaderMain .userHandle {
+    margin-left: 10rem;
+}
+.HeaderMain .metrics {
+    position: absolute;
+    margin-top: 5rem;
+    margin-left: 25.2rem;
+}
+.HeaderMain .s {
+    margin-right: 4rem;
+}
+.HeaderMain i {
+    position: absolute;
+    margin-left: 55rem;
+}
+.HeaderMain h4 {
+    position: absolute;
+    margin-top: 10rem;
+    margin-left: -20.5rem;
+}
+.HeaderMain p {
+    position: absolute;
+    margin-left: -20.5rem;
+    margin-top: 13rem;
 }

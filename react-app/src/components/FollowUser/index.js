@@ -20,7 +20,7 @@ export default function FollowUser() {
       {userId &&
       <form onSubmit={follow}>
         <input name="follower_id" type="hidden" value={userId} />
-        <button type="submit">{'Follow This User'}</button>
+        <button className="followUser" type="submit">{'Follow This User'}</button>
         </form>}
     </div>
 

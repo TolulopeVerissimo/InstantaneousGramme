@@ -78,7 +78,6 @@ const initialState = {};
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_PROFILE:
-
             return { ...state, ...{ [action.profile.id]: action.profile } };
         case CREATE_PROFILE:
             return { ...state, [action.profile.id]: action.profile };
