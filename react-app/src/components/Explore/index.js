@@ -17,6 +17,7 @@ const Explore = () => {
 
     const posts = useSelector((state) => Object.values(state.posts));
     const user = useSelector((state) => state.session.user);
+    const users = useSelector((state) => state.user);
 
 
     useEffect(() => {

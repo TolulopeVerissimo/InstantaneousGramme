@@ -12,6 +12,7 @@ import LandingPage from "./components/LandingPage";
 import { useDispatch } from "react-redux";
 import { restoreUser } from "./Store/session";
 import FollowUser from "./components/FollowUser";
+import { getUsers } from "./Store/user";
 
 function App() {
   const dispatch = useDispatch()
@@ -21,6 +22,7 @@ function App() {
   useEffect(() => {
     (async () => {
       const user = await dispatch(restoreUser())
+      const users = await dispatch(getUsers())
       // const user = await authenticate()
       if (!user.errors) {
         setAuthenticated(true);
@@ -41,7 +43,7 @@ function App() {
 
         <Switch>
           <Route path='/' exact={true}>
-            {authenticated && <LandingPage />}
+            {authenticated && <LandingPage authenticated={authenticated} />}
             {!authenticated && (
               <Splash
                 authenticated={authenticated}
