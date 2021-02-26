@@ -18,12 +18,11 @@ const updatePosts = (post) => {
 };
 
 export const updatePostLikes = (like) => async (dispatch) => {
-  const { postId, userId } = like;
+  const { postId } = like;
   const response = await fetch(`/api/posts/${postId}`);
   if (response.ok) {
     const res = await response.json();
     dispatch(updatePosts(res));
-    console.log(res, "res*****************************");
   }
   return response;
 };
@@ -55,7 +54,6 @@ const postsReducer = (state = initialState, action) => {
       return newState;
     case UPDATE_POST:
       const newPosts = { ...state };
-      console.log(action, "CHECKING STATE");
       const index = action.post.id;
       newPosts[index] = action.post;
       return newPosts;

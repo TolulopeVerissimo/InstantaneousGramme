@@ -63,14 +63,7 @@ const Post = ({ post, user }) => {
             onClick={() => console.log("clicked")}
           />
         </div>
-        <div className='post__icon'>
-          {/* <img
-            src={shareIcon}
-            alt='post share button'
-            // Do we want the share icon? what would it enable?
-            onClick={() => console.log("clicked")}
-          /> */}
-        </div>
+        <div className='post__icon'></div>
       </div>
       <div className='comment__container'>
         <p className='commment__likes-count'>
