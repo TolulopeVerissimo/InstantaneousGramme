@@ -12,6 +12,8 @@ import LandingPage from "./components/LandingPage";
 import { useDispatch } from "react-redux";
 import { restoreUser } from "./Store/session";
 import FollowUser from "./components/FollowUser";
+import { getFollowers } from "./Store/follow";
+import { getUsers } from "./Store/user";
 
 function App() {
   const dispatch = useDispatch()

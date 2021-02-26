@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { sideItems } from "./sideItems.js";
 import { useDispatch } from 'react-redux'
-import { getFollowers, updateFollow } from '../../Store/follow'
+import { getFollowers } from '../../Store/follow'
 import FollowUser from '../FollowUser'
 import "./StationarySide.css";
 function StationarySide() {
@@ -48,7 +48,7 @@ function StationarySide() {
                   <div className='users'>
                     <h5>Suggested User {idx}</h5>
                     <h6 >
-                      {following ? <button title="Unfollow" onClick={() => dispatch(updateFollow())}>Unfollow</button> : <FollowUser />}
+                      {/* {following ? <button title="Unfollow" onClick={() => dispatch(updateFollow())}>Unfollow</button> : <FollowUser />} */}
                     </h6>
 
                   </div>

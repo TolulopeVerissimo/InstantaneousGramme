@@ -8,7 +8,7 @@ import { getFollows } from '../../Store/follow'
 
 import { useParams } from 'react-router-dom'
 import './styles/headers.css'
-function Header({ profile, user }) {
+function Header({ profile }) {
 
 
     const [isLoaded, setIsLoaded] = useState(false);

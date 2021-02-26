@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Header from './Header.js'
 import SmallPost from './SmallPost'
@@ -11,14 +11,12 @@ import { getUsers } from '../../Store/user'
 import { useParams } from 'react-router-dom'
 import FollowUser from '../FollowUser'
 import './styles/Profile.css'
+import { getFollowers } from '../../Store/follow.js'
 function Profile() {
 	const { id } = useParams()
-
-	console.log("id", id)
+	const [loaded,setLoaded] = useState(false)
 	const userId = useSelector(state => state.session.user.id)
 	const profiles = useSelector(state => state.profiles)
-	const user = useSelector(state => state.users)
-	// const follow = useSelector(state => state.follows)
 	const posts = useSelector(state => state.posts)
 	const dispatch = useDispatch()
 	const userPosts =
@@ -33,8 +31,9 @@ function Profile() {
 	useEffect(() => {
 		// debugger;
 		dispatch(getProfile(id))
-		// dispatch(getFollows(id))
 		dispatch(getPosts())
+		dispatch(getFollowers(id))
+		setLoaded(true)
 	}, [dispatch])
 	if (posts) {
 		for (let key in posts) {
@@ -45,23 +44,20 @@ function Profile() {
 	}
 	return (
 		<>
-			{/* {profiles &&  <h2>hi {profiles[id].username}</h2>} */}
-
-			< Header profile={profiles[id]} user={user} />
-			{userId != id &&
+			{ loaded &&
+				<div>
+					< Header profile={profiles[id]} />
 				<div className="moveTheFollowButton">
-					<FollowUser />
+					<FollowUser followedUserId={id}/>
+				</div>
+				<div className="gridContainer">
+					{
+						userPosts &&
+						userPosts.map((post) => <SmallPost post={post} />)
+					}
+					</div>
 				</div>
 			}
-
-
-			<div className="gridContainer">
-				{
-					userPosts &&
-					userPosts.map((post) => <SmallPost post={post} />)
-				}
-
-			</div>
 		</>
 
 	)

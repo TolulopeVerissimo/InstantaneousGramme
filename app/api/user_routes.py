@@ -10,7 +10,7 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
-    return {"users": [user.to_dict() for user in users]}
+    return {user.id : {"id": user.id, "username": user.username} for user in users}
 
 
 @user_routes.route('/<int:id>')
@@ -42,8 +42,8 @@ def profileGet(id):
 def get_user_follows(id):
     user = User.query.filter(User.id == id).first()
     followers = user.followers.all()
-    return jsonify([follower.to_dict() for follower in followers])
-
+    return {user.id: {follower.id: {"id": follower.id, "username": follower.username}
+            for follower in user.followers.all()}}
 
 
 @user_routes.route('/<int:followed_user_id>/follow', methods=['POST'])
@@ -60,7 +60,8 @@ def follow_user(followed_user_id):
             return 'User Already Follows'
         followed_user.followers.append(new_follower)
         db.session.commit()
-        return followed_user.to_dict()
+        return {follower.id: {"id": follower.id, "username": follower.username}
+            for follower in followed_user.followers.all()}
 
 @user_routes.route('/<int:id>/follow', methods=['DELETE'])
 @login_required

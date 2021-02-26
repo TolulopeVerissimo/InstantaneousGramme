@@ -1,28 +1,25 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { followUser } from '../../Store/follow';
 
-export default function FollowUser() {
-  const followed_user = useParams();
+export default function FollowUser({followedUserId }) {
+  const dispatch = useDispatch();
+  const follows = useSelector(state => state.follows[followedUserId])
   const userId = useSelector(state => state.session.user.id)
   const follow = async (e) => {
     e.preventDefault()
-    const res = await fetch(`/api/users/${followed_user.id}/follow`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/JSON' },
-      body: JSON.stringify({ follower_id: userId })
-    })
+    dispatch(followUser(userId, followedUserId))
   }
   const unfollow = async (e) => {
     e.preventDefault()
+    dispatch(unfollow(userId, followedUserId))
   }
-
   return (
     <div>
-      {userId &&
-        <form onSubmit={follow}>
+      {follows &&
+        <form onSubmit={follows[userId] ? unfollow: follow}>
           <input name="follower_id" type="hidden" value={userId} />
-          <button className="followUser" type="submit">{'Follow'}</button>
+          <button className={follows[userId] ? "unfollowUser" : "followUser"} type="submit">{follows[userId] ? 'Unfollow' :'Follow'}</button>
         </form>}
     </div>
 

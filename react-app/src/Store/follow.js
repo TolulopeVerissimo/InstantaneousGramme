@@ -2,44 +2,54 @@ const SET_FOLLOWS = 'follows/SET_FOLLOWS';
 const CREATE_FOLLOW = 'follows/CREATE_FOLLOW';
 const REMOVE_FOLLOW = 'follows/REMOVE_FOLLOW';
 
-const setFollows = (follows, id = null) => {
+const setFollows = (follows) => {
     return {
         type: SET_FOLLOWS,
         follows,
-        id
     };
 };
-const createFollow = (follow) => {
+const createFollow = (follows, followedId) => {
     return {
         type: CREATE_FOLLOW,
-        follow
+        follows,
+        followedId
     }
 }
-const removeFollow = (id) => {
+const removeFollow = (followerId, followedId) => {
     return {
         type: REMOVE_FOLLOW,
-        id
+        followerId,
+        followedId
     }
 }
 export const getFollowers = (id) => async (dispatch) => {
     const response = await fetch(`/api/users/${id}/follows`);
     if (response.ok) {
         const follows = await response.json()
-        dispatch(setFollows(follows, id));
-        return follows;
+        dispatch(setFollows(follows));
     }
 };
 
+export const followUser = (followerId, followedId) => async dispatch  => {
+    const res = await fetch(`/api/users/${followedId}/follow`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/JSON' },
+        body: JSON.stringify({ follower_id: followerId })
+    })
+    if(res.ok) {
+        const follows = await res.json()
+        dispatch(createFollow(follows, followedId))
+    }
+    }
 
 
-
-export const unfollow = (id) => async (dispatch) => {
-    await dispatch(removeFollow(id));
-    const res = await fetch(`/api/users/${followed_user.id}/follow`, {
+export const unfollowUser = (followerId, followedId) => async (dispatch) => {
+    const res = await fetch(`/api/users/${followedId}/follow`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/JSON' },
-        body: JSON.stringify({ follower_id: userId })
+        body: JSON.stringify({ follower_id: followerId })
     })
+    dispatch(removeFollow(followerId, followedId));
     const follow = await res.json()
     return follow;
 };
@@ -49,14 +59,14 @@ const initialState = {};
 const followsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_FOLLOWS:
-            const followers= {}
-            action.follows.forEach(person => followers[person.id]=person)
-            return { ...state,  [action.id]: followers};
+            return {...state, ...action.follows}
         case CREATE_FOLLOW:
-            return { ...state, ...{ [action.follow.id]: action.follow } };
+            const newState = {...state}
+            newState[action.followedId] = action.follows
+            return newState
         case REMOVE_FOLLOW:
-            const newState = { ...state };
-            delete newState[action.id];
+            newState = { ...state };
+            delete newState[action.followedId][action.followedId];
             return newState;
         default:
             return state;
