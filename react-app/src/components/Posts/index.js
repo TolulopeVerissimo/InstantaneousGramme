@@ -4,8 +4,10 @@ import Post from "./Post";
 import "./posts.css";
 
 const Posts = () => {
-  const posts = useSelector((state) => Object.values(state.posts));
   const user = useSelector((state) => state.session.user);
+  const posts = useSelector((state) =>
+    Object.values(state.posts).filter((post) => post.userId !== user.id)
+  );
 
   const [isLoaded, setIsLoaded] = useState(false);
 
