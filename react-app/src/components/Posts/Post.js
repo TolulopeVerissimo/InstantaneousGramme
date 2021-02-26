@@ -69,7 +69,7 @@ const Post = ({ post, user }) => {
           {/* pass user in as props to Comments */}
           <Comments post={post} />
         </div>
-        <p className='post__createdAt'>??? HOURS AGO</p>
+        <p className='post__createdAt'>{post.date_created}</p>
       </div>
       <div className='post__comment-form'>
         <CommentForm />
