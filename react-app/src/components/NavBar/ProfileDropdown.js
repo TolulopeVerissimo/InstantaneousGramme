@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { logout } from "../../services/auth";
+
+
 import LogoutButton from '../auth/LogoutButton'
 
 function ProfileDropdown({ setAuthenticated }) {
+
   const [showMenu, setShowMenu] = useState(false);
   let history = useHistory()
+  const userId = useSelector(state => state.session.user.id)
+  const profileRedirect = () => {
+    history.push(`/profile/${userId}`)
+  }
+
   const logoutNow = () => {
     logout()
     setAuthenticated(false)
   }
 
-  const profileRedirect = () => {
-    history.push('/profile')
-  }
 
   const openMenu = () => {
     setShowMenu(true);
   }
+
   useEffect(() => {
     if (!showMenu) return
     const closeMenu = () => {
@@ -39,14 +46,14 @@ function ProfileDropdown({ setAuthenticated }) {
           <li>
             <i className="far fa-bookmark dropdown__icon" />
             <p className="dropdown__link">Saved</p>
-            </li>
+          </li>
           <li>
             <i className="fas fa-cog dropdown__icon" />
             <p className="dropdown__link">Settings</p>
-            </li>
+          </li>
           <li onClick={logoutNow}>
             <i className="fas fa-sign-out-alt dropdown__icon" />
-            <LogoutButton setAuthenticated={setAuthenticated}/>
+            <LogoutButton setAuthenticated={setAuthenticated} />
           </li>
         </ul>
       )}
