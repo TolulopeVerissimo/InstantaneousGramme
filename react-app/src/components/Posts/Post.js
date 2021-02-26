@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Comments from "../Comments";
 import CommentForm from "../Comments/CommentForm";
 import commentIcon from "../../images/icons/insta_comment_icon.png";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import shareIcon from "../../images/icons/insta_share_icon.png";
+import { postLike } from "../../Store/postLike";
 
 const Post = ({ post, user }) => {
   const [isLiked, setIsLiked] = useState(false);
+  const dispatch = useDispatch();
 
-  useEffect(() => {}, [isLiked]);
+  // useEffect(() => {
+  //   const like = { userId: user.id, postId: post.id };
+  //   dispatch(postLike(like));
+  // }, [isLiked, dispatch, user, post]);
 
+  const likeHandler = () => {
+    const like = { userId: user.id, postId: post.id };
+    setIsLiked(!isLiked);
+    dispatch(postLike(like));
+  };
+
+  //sets isLiked to match redux state
   useEffect(() => {
     if (post) {
       if (post.likesUsers.includes(user.id)) {
@@ -37,7 +50,7 @@ const Post = ({ post, user }) => {
           <img
             src={isLiked ? redHeart : blankHeart}
             alt='post like button'
-            onClick={() => setIsLiked(!isLiked)}
+            onClick={() => likeHandler()}
           />
         </div>
         <div className='post__icon'>
