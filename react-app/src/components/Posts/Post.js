@@ -6,6 +6,7 @@ import commentIcon from "../../images/icons/insta_comment_icon.png";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import { postLike } from "../../Store/postLike";
+import EditDropdown from "./EditDropdown";
 
 const Post = ({ post, user }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -42,6 +43,10 @@ const Post = ({ post, user }) => {
         </div>
         <div className='post__user-info'>
           <div className='post__username'>{post.username}</div>
+        </div>
+        <div className="post__edit-button">
+          <i className="fas fa-ellipsis-h"></i>
+          <EditDropdown post={post} />
         </div>
       </div>
       <div className='post__image'>
