@@ -7,14 +7,16 @@ export default function FollowUser() {
   const userId = useSelector(state => state.session.user.id)
   const follow = async (e) => {
     e.preventDefault()
-    console.log(userId)
     const res = await fetch(`/api/users/${followed_user.id}/follow`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/JSON' },
       body: JSON.stringify({ follower_id: userId })
     })
-    console.log(res)
   }
+  const unfollow = async (e) => {
+    e.preventDefault()
+  }
+
   return (
     <div>
       {userId &&

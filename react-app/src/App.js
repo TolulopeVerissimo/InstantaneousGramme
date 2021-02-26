@@ -77,9 +77,6 @@ function App() {
           <ProtectedRoute path='/' exact={true} authenticated={authenticated}>
             <h1>My Home Page</h1>
           </ProtectedRoute>
-          <Route path="/followUserTest/:id" >
-            <FollowUser />
-          </Route>
         </Switch>
       </BrowserRouter>
       {/* <SmoothProvider skew={false}/> */}

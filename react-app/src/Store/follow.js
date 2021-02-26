@@ -9,7 +9,6 @@ const setFollows = (follows, id = null) => {
         id
     };
 };
-
 const createFollow = (follow) => {
     return {
         type: CREATE_FOLLOW,
@@ -33,50 +32,15 @@ export const getFollowers = (id) => async (dispatch) => {
 
 
 
-export const formFollow = (followers, id) => async (dispatch) => {
-    const { follower_id, followed_id } = followers;
-    const formData = new FormData();
-    formData.append('follower_id', follower_id);
-    formData.append('followed_id', followed_id);
 
-
-    const response = await fetch(`/api/users/${id}/follow`, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        },
-    });
-
-    const follow = await response.json()
-    dispatch(createFollow(follow));
-    return follow;
-};
-
-export const updateFollow = ({ id, follower_id, followed_id }) => async (dispatch) => {
-    const formData = new FormData();
-    formData.append('follower_id', follower_id);
-    formData.append('followed_id', followed_id);
-
-    const response = await fetch(`/api/users/${id}/follow`, {
-        method: 'PUT',
-        body: formData,
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        },
-    });
-
-    const follow = await response.json()
-    dispatch(createFollow(follow));
-    return follow;
-};
-
-export const deleteFollow = (id) => async (dispatch) => {
+export const unfollow = (id) => async (dispatch) => {
     await dispatch(removeFollow(id));
-    const response = await fetch(`/api/users/${id}/follow`, {
+    const res = await fetch(`/api/users/${followed_user.id}/follow`, {
         method: 'DELETE',
-    });
-    const follow = await response.json()
+        headers: { 'Content-Type': 'application/JSON' },
+        body: JSON.stringify({ follower_id: userId })
+    })
+    const follow = await res.json()
     return follow;
 };
 
