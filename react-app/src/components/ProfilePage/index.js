@@ -26,7 +26,7 @@ function Profile() {
 			<>
 					{profile &&  <h2>hi {profile.username}</h2>}
 
-				  <Header profile={profile} user={user} />
+				  {/* <Header profile={profile} user={user} /> */}
             {/* <FeaturedStories /> */}
             {/* <Posts /> */}
 			</>
