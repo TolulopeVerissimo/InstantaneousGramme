@@ -5,7 +5,7 @@ import SmallPost from './SmallPost'
 // import FeaturedStories from './FeaturedStories.js'
 // import Posts from './Posts.js'
 import { getProfile } from '../../Store/profile'
-import { getFollows } from '../../Store/follow'
+// import { getFollows } from '../../Store/follow'
 import { getPosts } from '../../Store/posts'
 import { getUsers } from '../../Store/user'
 import { useParams } from 'react-router-dom'
@@ -13,6 +13,9 @@ import FollowUser from '../FollowUser'
 import './styles/Profile.css'
 function Profile() {
 	const { id } = useParams()
+
+	console.log("id", id)
+	const userId = useSelector(state => state.session.user.id)
 	const profiles = useSelector(state => state.profiles)
 	const user = useSelector(state => state.users)
 	// const follow = useSelector(state => state.follows)
@@ -45,8 +48,12 @@ function Profile() {
 			{/* {profiles &&  <h2>hi {profiles[id].username}</h2>} */}
 
 			< Header profile={profiles[id]} user={user} />
-			<FollowUser />
-			{/* <FeaturedStories /> */}
+			{userId != id &&
+				<div className="moveTheFollowButton">
+					<FollowUser />
+				</div>
+			}
+
 
 			<div className="gridContainer">
 				{

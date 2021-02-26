@@ -6,4 +6,19 @@
     align-items: center;
     width: 66%;
     margin-left: 30rem;
+    margin-top: 10rem;
+}
+.moveTheFollowButton {
+    position: absolute;
+    margin-left: 50%;
+    margin-top: -7.6%;
+}
+
+.moveTheFollowButton button {
+    border-color: rgba(var(--d69, 0, 149, 246), 1);
+    background-color: #0095f6;
+    color: #fff;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
 }
