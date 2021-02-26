@@ -14,6 +14,9 @@ from .api.auth_routes import auth_routes
 from .api.post_routes import post_routes
 from .seeds import seed_commands
 
+#socketIO
+# from flask_socketio import SocketIO, send
+
 from .config import Configuration
 
 app = Flask(__name__)
