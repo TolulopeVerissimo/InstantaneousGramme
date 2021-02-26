@@ -9,6 +9,15 @@ const setPosts = (posts) => {
   };
 };
 
+export const updatePostLikes = async (like) => {
+  const { postId, userId } = like;
+  const response = await fetch(`/api/posts/${postId}`);
+  if (response.ok) {
+    const res = await response.json();
+    console.log(res, "res");
+  }
+};
+
 // const createPosts = (posts) => {
 //   return {
 //     type: CREATE_POSTS,
