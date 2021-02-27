@@ -37,12 +37,12 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_more_users()
     undo_postLikes()
     undo_posts()
+    undo_more_posts()
     undo_commentLikes()
     undo_comments()
-    undo_more_users()
-    undo_more_posts()
     # Add other undo functions here
 
 
@@ -57,6 +57,11 @@ def seed_data():
 @seed_commands.command('more_posts')
 def more_posts():
     seed_more_posts()
+
+
+@seed_commands.command('undo_more_posts')
+def undo_more_posts():
+    undo_more_posts()
 
 
 @seed_commands.command('more_users')
