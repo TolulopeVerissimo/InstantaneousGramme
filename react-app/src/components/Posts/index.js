@@ -7,7 +7,7 @@ import commentIcon from "../../images/icons/insta_comment_icon.png";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 // import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import shareIcon from "../../images/icons/insta_share_icon.png";
-import {getPostComments} from '../../Store/comments'
+
 
 const Posts = (postId) => {
   const postsNormalized = useSelector((state) => state.posts);
@@ -17,9 +17,6 @@ const Posts = (postId) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getPostComments());
-  }, [dispatch]);
 
   // const loadLikes = (postId) => {
   //   const post = postsNormalized[postId];

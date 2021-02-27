@@ -2,21 +2,13 @@ import React, { useState } from "react";
 import {useSelector, useDispatch} from 'react-redux'
 import "./comments.css";
 import smilyIcon from '../../images/icons/insta_smily_face_icon.png'
-import {createComments} from '../../Store/comments'
+
 const CommentForm = (props) => {
   const [comment, setComment] = useState('')
-  
-  const userId = useSelector((state) => state.session.user);
-  const dispatch = useDispatch()
 
-  const useEffect = (() => {
-
-
-
-   })
 
   const formSubmitHandler = (e) => {
-    const comment = dispatch(createComments(props.postId, userId, comment));
+   
     if (!comment.errors) {
       
     } else {
