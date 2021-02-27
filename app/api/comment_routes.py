@@ -25,9 +25,7 @@ def comments(id):
 @comment_routes.route('/', methods=['POST'])
 @login_required
 def new_comment():
-    data = request.get_json()
-    print('************************************************************')
-    print(data)
+    data = request.get_json()    
     # description = data['description']
     # private = data['isPrivate']
     # imagePath = data['imagePath']
