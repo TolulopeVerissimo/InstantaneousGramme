@@ -1,31 +1,26 @@
 from app.models import db, User
+from werkzeug.security import generate_password_hash
 from random import randint
 from faker import Faker
+from pexels_api import API
 import os
-import {createClient} from 'pexels'
 
 fake = Faker()
+api = API(os.environ.get('PEXEL_API_KEY'))
 
-const client = createClient(os.environ.get('PEXEL_API_KEY'))
-const query = 'Nature'
-
-client.photos.search({query, per_page: 1}).then(photos= > {...})
+api.search('selfie', page=1, results_per_page=20)
+photos = api.get_entries()
 
 
 def seed_more_users():
 
-    selfies = []
-    const images = await fetch()
-
     users = [User(
         name=fake.name(),
         email=fake.email(),
-        username=fake.user_name()
-        phoneNumber=fake.phoneNumber(),
+        username=fake.user_name(),
         hashed_password=generate_password_hash('password'),
-        biography=fake.sentence
-        imagePath=,
-        userId=randint(1, 3)) for i in range(20)]
+        biography=fake.sentence(),
+        profilePicture=photos[i].url) for i in range(20)]
 
     for user in users:
         db.session.add(user)
