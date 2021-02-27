@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, make_response, request
 from flask_login import login_required
-from app.models import User, db
+from app.models import User, Post, db
 from app.forms import FollowForm
 
 user_routes = Blueprint('users', __name__)
@@ -10,7 +10,7 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
-    return {"users": [user.to_dict() for user in users]}
+    return {user.id : {"id": user.id, "username": user.username} for user in users}
 
 
 @user_routes.route('/<int:id>')
@@ -24,34 +24,30 @@ def user(id):
 @login_required
 def profileGet(id):
     user = User.query.get(id)
-    return user.to_dict()
-    # print("not found")
-# @user_routes.route('/<int:id>/profile', methods=['POST'])
-# @login_required
-#     userList = users()
-#     specificUser = user(id)
-#     if userList.has_key(specificUser):
-#         print ("UserFound",specificUser)
-#     print("not found")
+    post_count = len(Post.query.filter(Post.userId == id).all())
+    follower_count = len(user.followers.all())
+    following_count = len(user.follows.all())
+    profile = user.to_dict()
+    profile['followerCount'] = follower_count
+    profile['followingCount'] = following_count
+    profile['postCount'] = post_count
+    return profile
+
 
 
 # Follows
 
-@user_routes.route('/<int:id>/follow', methods=['GET'])
+@user_routes.route('/<int:id>/follows', methods=['GET'])
 @login_required
-def userFollowGET(id):
-    user = User.query.get(id)
-    # followers = [follower.to_dict() for follower in user.followers]
-    # print(followers.username)
-    # return({"followers":followers})
-    # return["followers":followers]
-    # users = User.query.all()
-    # # return (user.follows)
-    # return (user.followers)
-    return(user.follow)
+def get_user_follows(id):
+    user = User.query.filter(User.id == id).first()
+    followers = user.followers.all()
+    return {user.id: {follower.id: {"id": follower.id, "username": follower.username}
+            for follower in user.followers.all()}}
+
 
 @user_routes.route('/<int:followed_user_id>/follow', methods=['POST'])
-# @login_required
+@login_required
 def follow_user(followed_user_id):
     followed_user = User.query.filter(User.id == followed_user_id).first()
     form = FollowForm()
@@ -64,20 +60,19 @@ def follow_user(followed_user_id):
             return 'User Already Follows'
         followed_user.followers.append(new_follower)
         db.session.commit()
-        return followed_user.to_dict()
+        return {follower.id: {"id": follower.id, "username": follower.username}
+            for follower in followed_user.followers.all()}
 
-@user_routes.route('/<int:id>/follow', methods=['PUT'])
+@user_routes.route('/<int:id>/follow', methods=['DELETE'])
 @login_required
-def userFollowPUT(id):
-    user = User.query.get(id)
-    otherUsers = User.query.filter(User.id != user.id)
-    for person in otherUsers:
-        if person.id == user.followers.followed_id:
-            follows = [filter(otherUsers != person)]
-            [people == user.followers.follower_id for people in follows]
-            db.session.add()
-            db.session.commit()
-
-        user.followers.follower_id.append(person.id)
-        db.session.add()
+def unfollow_user(id):
+    followed_user = User.query.filter(User.id == id).first()
+    form = FollowForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        follower_id = form.data['follower_id']
+        follower = User.query.filter(User.id == follower_id).first()
+        followed_user.followers.remove(follower)
+        print(followed_user.followers.all())
         db.session.commit()
+        return followed_user.to_dict()

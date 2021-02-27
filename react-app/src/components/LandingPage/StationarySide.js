@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { sideItems } from "./sideItems.js";
 import { useDispatch } from 'react-redux'
-import { getFollows, updateFollow } from '../../Store/follow'
+import { getFollowers } from '../../Store/follow'
+import FollowUser from '../FollowUser'
+import { useSelector } from 'react-redux'
 import "./StationarySide.css";
 function StationarySide() {
 
   const { id } = useParams()
   const [following, setFollowing] = useState(false)
+  let history = useHistory()
+  const userId = useSelector(state => state.session.user.id)
+  const profileRedirect = () => {
+    history.push(`/profile/${userId}`)
+  }
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getFollows())
+    // dispatch(getFollowers(id))
 
   }, [dispatch])
 
@@ -28,10 +35,10 @@ function StationarySide() {
     <>
       <div className='scrollingMain'>
         <div className='profileContainer'>
-          <div className='testCircle'>
+          <div onClick={profileRedirect} style={{ cursor: 'pointer' }} className='testCircle'>
             <img src={imgArr[4]} alt='' />
           </div>
-          <div className='username'>
+          <div onClick={profileRedirect} style={{ cursor: 'pointer' }} className='username'>
             <h5>Demo_McDemerson</h5>
             <h6>Slayer60NoThousand</h6>
           </div>
@@ -47,7 +54,7 @@ function StationarySide() {
                   <div className='users'>
                     <h5>Suggested User {idx}</h5>
                     <h6 >
-                      {following ? <button title="Unfollow" onClick={() => dispatch(updateFollow())}>Unfollow</button> : <button title="Follow" onClick={() => dispatch(updateFollow())}>Follow</button>}
+                      {/* {following ? <button title="Unfollow" onClick={() => dispatch(updateFollow())}>Unfollow</button> : <FollowUser />} */}
                     </h6>
 
                   </div>

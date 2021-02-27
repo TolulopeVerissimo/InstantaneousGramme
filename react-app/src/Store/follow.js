@@ -1,5 +1,3 @@
-// import { formProfile } from "./profile";
-
 const SET_FOLLOWS = 'follows/SET_FOLLOWS';
 const CREATE_FOLLOW = 'follows/CREATE_FOLLOW';
 const REMOVE_FOLLOW = 'follows/REMOVE_FOLLOW';
@@ -10,74 +8,49 @@ const setFollows = (follows) => {
         follows,
     };
 };
-
-const createFollow = (follow) => {
+const createFollow = (follows, followedId) => {
     return {
         type: CREATE_FOLLOW,
-        follow
+        follows,
+        followedId
     }
 }
-const removeFollow = (id) => {
+const removeFollow = (followerId, followedId) => {
     return {
         type: REMOVE_FOLLOW,
-        id
+        followerId,
+        followedId
     }
 }
-export const getFollows = (id) => async (dispatch) => {
-    const response = await fetch(`/api/users/${id}/follow`);
+export const getFollowers = (id) => async (dispatch) => {
+    const response = await fetch(`/api/users/${id}/follows`);
     if (response.ok) {
         const follows = await response.json()
         dispatch(setFollows(follows));
-        return follows;
     }
 };
 
-
-
-export const formFollow = (followers, id) => async (dispatch) => {
-    const { follower_id, followed_id } = followers;
-    const formData = new FormData();
-    formData.append('follower_id', follower_id);
-    formData.append('followed_id', followed_id);
-
-
-    const response = await fetch(`/api/users/${id}/follow`, {
+export const followUser = (followerId, followedId) => async dispatch  => {
+    const res = await fetch(`/api/users/${followedId}/follow`, {
         method: 'POST',
-        body: formData,
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        },
-    });
+        headers: { 'Content-Type': 'application/JSON' },
+        body: JSON.stringify({ follower_id: followerId })
+    })
+    if(res.ok) {
+        const follows = await res.json()
+        dispatch(createFollow(follows, followedId))
+    }
+    }
 
-    const follow = await response.json()
-    dispatch(createFollow(follow));
-    return follow;
-};
 
-export const updateFollow = ({ id, follower_id, followed_id }) => async (dispatch) => {
-    const formData = new FormData();
-    formData.append('follower_id', follower_id);
-    formData.append('followed_id', followed_id);
-
-    const response = await fetch(`/api/users/${id}/follow`, {
-        method: 'PUT',
-        body: formData,
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        },
-    });
-
-    const follow = await response.json()
-    dispatch(createFollow(follow));
-    return follow;
-};
-
-export const deleteFollow = (id) => async (dispatch) => {
-    await dispatch(removeFollow(id));
-    const response = await fetch(`/api/users/${id}/follow`, {
+export const unfollowUser = (followerId, followedId) => async (dispatch) => {
+    const res = await fetch(`/api/users/${followedId}/follow`, {
         method: 'DELETE',
-    });
-    const follow = await response.json()
+        headers: { 'Content-Type': 'application/JSON' },
+        body: JSON.stringify({ follower_id: followerId })
+    })
+    dispatch(removeFollow(followerId, followedId));
+    const follow = await res.json()
     return follow;
 };
 
@@ -86,17 +59,15 @@ const initialState = {};
 const followsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_FOLLOWS:
-            // const follows = action.follows.reduce((acc, ele) => {
-            //     acc[ele.id] = ele;
-            //     return acc;
-            // }, {});
-            return { ...state, ...{ [action.follows.id]: action.follows } };
+            return {...state, ...action.follows}
         case CREATE_FOLLOW:
-            return { ...state, [action.follow.id]: action.follow };
+            const newState = {...state}
+            newState[action.followedId] = action.follows
+            return newState
         case REMOVE_FOLLOW:
-            const newState = { ...state };
-            delete newState[action.id];
-            return newState;
+            const deleteUser = {...state}
+            delete deleteUser[action.followedId][action.followedId];
+            return deleteUser;
         default:
             return state;
     }

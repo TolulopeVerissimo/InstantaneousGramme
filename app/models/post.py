@@ -24,9 +24,10 @@ class Post(db.Model):
         profilePicture = user["profilePicture"]
 
         likesUsers = [like.to_list() for like in self.postLikes]
-        # print('likes ______', likes)
-        # like = likes[0]
-        # print('***********,', likes)
+        year = self.date_created.strftime('%Y')
+        month = self.date_created.strftime('%B')
+        day = self.date_created.strftime("%d")
+        date = f'{month} {day} {year}'
 
         return {
             'id': self.id,
@@ -36,6 +37,7 @@ class Post(db.Model):
             'userId': self.userId,
             'username': username,
             'profilePicture': profilePicture,
-            'likesUsers': likesUsers
+            'likesUsers': likesUsers,
+            'date_created': date
             # 'comments': self.comments,
         }

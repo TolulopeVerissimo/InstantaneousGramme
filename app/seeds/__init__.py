@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .posts import seed_posts, undo_posts
+from .more_posts import seed_more_posts, undo_more_posts
 from .comments import seed_comments, undo_comments
 from .commentLikes import seed_commentLikes, undo_commentLikes
 from .postLikes import seed_postLikes, undo_postLikes
@@ -19,6 +20,7 @@ def seed_users_seeds():
 def seed():
     seed_users()
     seed_posts()
+    seed_more_posts()
     seed_comments()
     seed_commentLikes()
     seed_postLikes()
@@ -28,10 +30,10 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_postLikes()
     undo_posts()
+    undo_commentLikes()
     undo_comments()
-    seed_commentLikes()
-    seed_postLikes()    
     # Add other undo functions here
 
 @seed_commands.command('data')
@@ -39,4 +41,8 @@ def seed_data():
     seed_posts()
     seed_comments()
     seed_commentLikes()
-    seed_postLikes()    
+    seed_postLikes()
+
+@seed_commands.command('more_posts')
+def more_posts():
+    seed_more_posts()

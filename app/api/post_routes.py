@@ -10,7 +10,6 @@ post_routes = Blueprint('posts', __name__)
 def posts():
     posts = Post.query.all()
     if posts[0]:
-        print("**************************", posts[0].postLikes)
         return jsonify({"posts": [post.to_dict() for post in posts]})
     else:
         return {'posts': []}
@@ -30,3 +29,13 @@ def new_post():
     db.session.commit()
 
     return(data)
+
+
+@post_routes.route('/<int:id>')
+@login_required
+def post(id):
+    post = Post.query.get(id)
+    if post:
+        return jsonify(post.to_dict())
+    else:
+        return {'post': []}

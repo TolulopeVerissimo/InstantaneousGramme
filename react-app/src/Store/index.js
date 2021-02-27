@@ -1,26 +1,27 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
 
-import postsReducer from './posts'
-import usersReducer from './user'
-import profileReducer from './profile'
-import followsReducer from './follow'
-import sessionReducer from './session'
+
+import postsReducer from "./posts";
+import usersReducer from "./user";
+import profileReducer from "./profile";
+import followsReducer from "./follow";
+import sessionReducer from "./session";
 
 const rootReducer = combineReducers({
   posts: postsReducer,
   users: usersReducer,
   profiles: profileReducer,
   follows: followsReducer,
-  session: sessionReducer
+  session: sessionReducer,
 });
 
 let enhancer;
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   enhancer = applyMiddleware(thunk);
 } else {
-  const logger = require('redux-logger').default;
+  const logger = require("redux-logger").default;
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   enhancer = composeEnhancers(applyMiddleware(thunk, logger));

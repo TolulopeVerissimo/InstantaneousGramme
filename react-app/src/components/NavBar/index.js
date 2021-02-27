@@ -9,10 +9,13 @@ const NavBar = ({ setAuthenticated }) => {
   const homeRouter = () => {
     history.push('/')
   }
+  const exploreRouter = () => {
+    history.push('/explore')
+  }
   return (
     <nav className="navbar">
       <div className="navbar__logocontainer">
-        <h1 className="navbar__logo">Instantaneous-Gramme</h1>
+        <h1 className="navbar__logo" style={{ cursor: 'pointer' }} onClick={homeRouter}>Instantaneous-Gramme</h1>
       </div>
       <div className="navbar__search">
         <i className="fas fa-search navbar__icon" />
@@ -22,7 +25,7 @@ const NavBar = ({ setAuthenticated }) => {
         <NewPostModal />
         <i className="fas fa-home navbar__icon" onClick={homeRouter} />
         <i className="far fa-paper-plane navbar__icon" />
-        <i className="far fa-compass navbar__icon" />
+        <i className="far fa-compass navbar__icon" onClick={exploreRouter} />
         <i className="far fa-heart navbar__icon" />
         <ProfileDropdown setAuthenticated={setAuthenticated} />
       </div>

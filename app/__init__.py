@@ -13,8 +13,12 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.post_routes import post_routes
 from .api.comment_routes import comment_routes
+from .api.postLike_routes import postLike_routes
 from .seeds import seed_commands
 from .queries import query_commands
+
+#socketIO
+# from flask_socketio import SocketIO, send
 
 from .config import Configuration
 
@@ -41,6 +45,7 @@ app.register_blueprint(comment_routes, url_prefix='/api/comments')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(post_routes, url_prefix='/api/posts')
+app.register_blueprint(postLike_routes, url_prefix='/api/postLikes')
 db.init_app(app)
 Migrate(app, db)
 
@@ -90,7 +95,8 @@ def sign_s3():
 
     file_name = request.args.get('file_name')
     file_type = request.args.get('file_type')
-    s3 = boto3.client('s3', config=Config(signature_version='s3v4', region_name="us-east-2"))
+    s3 = boto3.client('s3', config=Config(
+        signature_version='s3v4', region_name="us-east-2"))
 
     presigned_post = s3.generate_presigned_post(
         Bucket=S3_BUCKET,

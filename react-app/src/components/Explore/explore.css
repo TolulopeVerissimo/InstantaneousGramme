@@ -1,0 +1,14 @@
+.ExploreRow {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+.ExploreColumn {
+    /* flex: 50%; */
+    flex: 25%;
+    padding: 0 4px;
+}
+.ExploreColumn img {
+    margin-top: 8px;
+    vertical-align: middle;
+}

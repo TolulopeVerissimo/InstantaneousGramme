@@ -1,19 +1,19 @@
 .scrollingMain {
-  position: fixed;
-  top: 8rem;
-  padding: 50px;
-  font-size: 20px;
-  width: 293px;
-  height: 476px;
-
+    position: fixed;
+    top: 8rem;
+    padding: 50px;
+    font-size: 20px;
+    width: 293px;
+    height: 476px;
 }
 .profileContainer {
     justify-content: center;
     align-content: center;
+    margin-left: -1.7rem;
 }
 .profileContainer .testCircle {
-    height: 4rem;
-    width: 4rem;
+    height: 5rem;
+    width: 5rem;
     border-radius: 50%;
     border: 1px solid black;
     /* overflow: hidden; */
