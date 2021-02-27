@@ -23,11 +23,11 @@ def seed_users_seeds():
 @seed_commands.command('all')
 def seed():
     seed_users()
+    seed_more_users()
     seed_posts()
     seed_more_posts()
     seed_comments()
     seed_commentLikes()
-    seed_more_users()
     seed_postLikes()
     # Add other seed functions here
 

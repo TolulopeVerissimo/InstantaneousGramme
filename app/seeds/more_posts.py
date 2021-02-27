@@ -15,8 +15,8 @@ def seed_more_posts():
     posts = [Post(
         description=fake.sentence(),
         private=False,
-        imagePath=photos[i].url,
-        userId=randint(1, 25)) for i in range(80)]
+        imagePath=photos[i].medium,
+        userId=randint(1, 23)) for i in range(50)]
 
     for post in posts:
         db.session.add(post)
