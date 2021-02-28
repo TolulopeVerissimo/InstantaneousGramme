@@ -1,33 +1,25 @@
 from app.models import db, PostLike
+from random import randint
 
-# for(let i=0
-#     i < users.length
-#     i++){
-#     let postLikes = []
-#     for(let j=0
-#         i < posts.length
-#         i++){
-#         let u = user[i]
-#         let p = post[i+1] // Just add one? How to create more randomness to it?
-#         let like = PostLike({
-#             userId=u,
-#             postId=p
-#         })
-#         postLikes.push(like)
-#     }
-#     db.session.commit()
-# }
+
+def randomUserSet():
+    userSet = {2}
+
+    for i in range(10):
+        userSet.add(randint(1, 15))
+    return userSet
 
 
 def seed_postLikes():
 
-    likes = [PostLike(
-        userId=i,
-        postId=i+1,
-    ) for i in range(80)]
+    likes = []
+    for i in range(80):
+        users = randomUserSet()
+        for user in users:
+            likes.append(PostLike(userId=user, postId=(i+1)))
 
     for like in likes:
-        db.session.add(post)
+        db.session.add(like)
 
     db.session.commit()
 
