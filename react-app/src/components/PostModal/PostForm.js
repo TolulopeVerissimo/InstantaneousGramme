@@ -1,33 +1,40 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { getSignedRequest } from "../../services/upload";
-import { createPost, editPost, deletePost } from "../../Store/posts";
-import "./PostForm.css";
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { getSignedRequest } from '../../services/upload'
+import { createPost, editPost, deletePost } from '../../Store/posts'
+import './PostForm.css'
+
 
 function PostForm({ edit, post }) {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const [photo, setPhoto] = useState("");
-  const [description, setDescription] = useState("");
-  const [isPrivate, setIsPrivate] = useState(false);
-  const [imagePath, setImagePath] = useState("");
-  const user = useSelector((state) => state.session.user);
-  let userId;
+  const history = useHistory()
+  const dispatch = useDispatch()
+  const [src, setSrc] = useState('')
+  const [description, setDescription] = useState('')
+  const [isPrivate, setIsPrivate] = useState(false)
+  const user = useSelector(state => state.session.user)
+  let userId
   if (user) {
     userId = user.id;
   }
   const handleSubmit = async (e) => {
+    const form = e.target;
+    const photo = form.elements["image"].files[0]
     e.preventDefault();
     if (edit) {
       await dispatch(editPost(post.id, description, isPrivate));
     } else {
       const url = await getSignedRequest(photo);
-      setImagePath(url);
-      await dispatch(createPost({ userId, description, imagePath, isPrivate }));
+      await dispatch(createPost({userId, description, url, isPrivate }));
     }
     history.push("/");
   };
+  const readUrl = (e) => {
+    if (e.target.files[0]){
+      const src = URL.createObjectURL(e.target.files[0])
+      setSrc(src)
+    }
+  }
   const removePost = async (e) => {
     await dispatch(deletePost(post.id));
   };
@@ -35,6 +42,9 @@ function PostForm({ edit, post }) {
     <div className='postform__container'>
       <h2 className='postform__header'>{edit ? "Edit Post" : "New Post"}</h2>
       <form className='postform' onSubmit={handleSubmit}>
+      {src && <img className="postform__image" src={src} />}
+      {/* <div className="postform__imagewrapper">
+      </div> */}
         {!edit && (
           <div className='fileInput__container'>
             <label className='postform__label fileInput__label'>
@@ -42,7 +52,7 @@ function PostForm({ edit, post }) {
               <input
                 type='file'
                 className='postform__input fileInput'
-                onChange={(e) => setPhoto(e.target.files[0])}
+                onChange={readUrl}
               />
             </label>
           </div>

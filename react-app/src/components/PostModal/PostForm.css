@@ -6,8 +6,8 @@
 }
 
 .postform__container {
-  width: 35rem;
-  height: 20rem;
+  width: 70rem;
+  height: 40rem;
   font-size: 1.2rem;
   border-radius: 1rem;
 }
@@ -38,7 +38,8 @@ textarea {
 
 .postform__label {
   display: block;
-  margin-left: 14rem;
+  width: 10%;
+  margin: 0 auto;
   padding: 0.5rem;
 }
 
@@ -112,4 +113,12 @@ textarea {
 
 .postform__delete:hover {
   text-decoration: underline;
+}
+
+.postform__image {
+  display: block;
+  width: 90%;
+  max-width: 40rem;
+  max-height: 100rem;
+  margin: 0 auto;
 }

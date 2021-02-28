@@ -25,18 +25,18 @@ const removePost = (id) => {
 
 export const createPost = (post) => async dispatch => {
     console.log('POST BEING MADE',post)
-    const { isPrivate, description, imagePath, userId} = post
+    const { isPrivate, description, url, userId} = post
     const options =
     {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/json'
       },
-      body: JSON.stringify({ isPrivate, description, imagePath, userId })
+      body: JSON.stringify({ isPrivate, description, url, userId })
     }
     const res = await fetch('/api/posts/', options)
     const json = await res.json()
-    //TODO INSERT POST INTO THE STORE
+    dispatch(setPosts([json]))
 }
 export const editPost = (id, description, isPrivate) => async dispatch => {
   const options = {
