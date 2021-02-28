@@ -9,6 +9,7 @@ import './PostForm.css'
 function PostForm({ edit, post }) {
   const history = useHistory()
   const dispatch = useDispatch()
+  const [src, setSrc] = useState('')
   const [description, setDescription] = useState('')
   const [isPrivate, setIsPrivate] = useState(false)
   const user = useSelector(state => state.session.user)
@@ -28,18 +29,25 @@ function PostForm({ edit, post }) {
     }
     history.push('/')
   }
+  const readUrl = (e) => {
+    const src = URL.createObjectURL(e.target.files[0])
+    setSrc(src)
+  }
   const removePost = async (e) => {
     await dispatch(deletePost(post.id))
   }
   return (
     <form className="postform" onSubmit={handleSubmit}>
-      {/* {photo && <img src={photo} />} */}
+      <div className="postform__imagewrapper">
+      {src && <img className="postform__image" src={src} />}
+      </div>
       {!edit && <label className="postform__label fileInput__label">
         Choose a Photo
         <input
           name="image"
           type="file"
           className="postform__input fileInput"
+          onChange={readUrl}
         />
       </label>}
 
