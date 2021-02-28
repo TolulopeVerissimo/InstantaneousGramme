@@ -1,39 +1,69 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { sideItems } from "./sideItems.js";
-import { useDispatch } from 'react-redux'
-import { getFollowers } from '../../Store/follow'
-import FollowUser from '../FollowUser'
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 import "./StationarySide.css";
+
 function StationarySide() {
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const { id } = useParams()
-  const [following, setFollowing] = useState(false)
-  let history = useHistory()
-  const userId = useSelector(state => state.session.user.id)
+  let history = useHistory();
+  const userId = useSelector((state) => state.session.user.id);
+
   const profileRedirect = () => {
-    history.push(`/profile/${userId}`)
+    history.push(`/profile/${userId}`);
+  };
+
+  const allUsers = useSelector((state) => state.users);
+  const suggestedUsers = [];
+
+  for (let i = 10; i < 15; i++) {
+    suggestedUsers.push(allUsers[i]);
   }
-  const dispatch = useDispatch()
+
   useEffect(() => {
-    // dispatch(getFollowers(id))
+    if (suggestedUsers[0]) setIsLoaded(true);
+  }, [suggestedUsers]);
 
-  }, [dispatch])
-
-  // dispatch(updateFollow()) on button click
-
-  let imgArr = [
-    "https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Ffacebook%2F000%2F034%2F408%2FPunching_Pepe_Banner.jpg",
-    "https://i.imgflip.com/4howsd.jpg",
-    "https://i.kym-cdn.com/photos/images/newsfeed/001/591/675/a27.png",
-    "https://starecat.com/content/wp-content/uploads/pope-francis-punch-man-with-damaged-face-photoshopped.jpg",
-    "https://i.kym-cdn.com/entries/icons/original/000/027/269/Screen_Shot_2018-09-28_at_3.14.37_PM.png",
-  ];
+  console.log(suggestedUsers);
 
   return (
     <>
-      <div className='scrollingMain'>
+      <div className='stationary__container scrollingMain'>
+        <h3>Suggestions For You</h3>
+        <div className='follow__suggestions'>
+          {isLoaded &&
+            suggestedUsers.map((user) => (
+              <div key={user.id}>
+                <div className='post__profile-pic'>
+                  <img src={user.profilePicture} alt='profile pic' />
+                </div>
+                <div className='post__user-info'>
+                  <div className='post__username'>{user.username}</div>
+                </div>
+              </div>
+            ))}
+        </div>
+        <div style={{ display: "flex", marginTop: "6rem" }}>
+          <nav>
+            {sideItems.map((item, idx) => {
+              return (
+                <Link
+                  key={idx}
+                  className={item.cName}
+                  id='underline'
+                  to={item.path}
+                  style={{ textDecoration: "none" }}
+                >
+                  <span style={{ marginRight: "1rem" }}>{item.title}</span>
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+      </div>
+
+      {/* <div className='scrollingMain'>
         <div className='profileContainer'>
           <div onClick={profileRedirect} style={{ cursor: 'pointer' }} className='testCircle'>
             <img src={imgArr[4]} alt='' />
@@ -54,7 +84,7 @@ function StationarySide() {
                   <div className='users'>
                     <h5>Suggested User {idx}</h5>
                     <h6 >
-                      {/* {following ? <button title="Unfollow" onClick={() => dispatch(updateFollow())}>Unfollow</button> : <FollowUser />} */}
+                      {/* {following ? <button title="Unfollow" onClick={() => dispatch(updateFollow())}>Unfollow</button> : <FollowUser />} 
                     </h6>
 
                   </div>
@@ -79,7 +109,7 @@ function StationarySide() {
             })}
           </nav>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

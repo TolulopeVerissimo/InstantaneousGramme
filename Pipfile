@@ -31,6 +31,8 @@ psycopg2-binary = "==2.8.6"
 dnspython = "==2.1.0"
 idna = "==3.1"
 boto3 = "*"
+pexels-api = "*"
+faker = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"

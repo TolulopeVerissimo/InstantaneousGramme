@@ -10,7 +10,7 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
-    return {user.id: {"id": user.id, "username": user.username}
+    return {user.id: {"id": user.id, "username": user.username, "profilePicture": user.profilePicture}
             for user in users}
 
 
@@ -43,8 +43,8 @@ def get_user_follows(id):
     user = User.query.filter(User.id == id).first()
     followers = user.followers.all()
     return {user.id: {follower.id:
-            {"id": follower.id, "username": follower.username}
-            for follower in user.followers.all()}}
+                      {"id": follower.id, "username": follower.username}
+                      for follower in user.followers.all()}}
 
 
 @user_routes.route('/<int:followed_user_id>/follow', methods=['POST'])
