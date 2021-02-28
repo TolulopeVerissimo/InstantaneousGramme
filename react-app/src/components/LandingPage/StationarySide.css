@@ -1,12 +1,43 @@
 .scrollingMain {
-    position: fixed;
-    top: 8rem;
-    padding: 50px;
-    font-size: 20px;
-    width: 293px;
-    height: 476px;
+  /* position: fixed; */
+  top: 8rem;
+  padding: 50px;
+  font-size: 20px;
+  width: 293px;
+  height: 476px;
 }
-.profileContainer {
+
+.follow_suggestions {
+  display: grid;
+}
+
+.suggestion__profile {
+  display: grid;
+  grid-template-columns: auto 6fr;
+  padding: 1rem;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.suggestion__username {
+  display: grid;
+}
+
+.suggestion__pic {
+  object-fit: cover;
+  background-color: pink;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.suggestion__pic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* .profileContainer {
     justify-content: center;
     align-content: center;
     margin-left: -1.7rem;
@@ -16,7 +47,6 @@
     width: 5rem;
     border-radius: 50%;
     border: 1px solid black;
-    /* overflow: hidden; */
 }
 .testCircle img {
     width: 100%;
@@ -46,7 +76,6 @@
     width: 2rem;
     border-radius: 50%;
     border: 1px solid black;
-    /* overflow: hidden; */
 }
 .suggested .circle img {
     width: 100%;
@@ -66,4 +95,4 @@
 .suggested .users h6 {
     position: absolute;
     margin: -4.6rem 0 0 20rem;
-}
+} */
