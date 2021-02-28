@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import Comments from "../Comments";
+import CommentForm from "../Comments/CommentForm";
+
 import Post from "./Post";
 import "./posts.css";
 
@@ -10,6 +13,8 @@ const Posts = () => {
   );
 
   const [isLoaded, setIsLoaded] = useState(false);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     if (posts && user) setIsLoaded(true);

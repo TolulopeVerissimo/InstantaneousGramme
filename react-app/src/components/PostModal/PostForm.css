@@ -1,7 +1,7 @@
 #modal-content {
   border-radius: 1rem;
 }
-.newpostform {
+.postform {
   width: 35rem;
   height: 20rem;
   font-size: 1.2rem;
@@ -15,12 +15,12 @@ textarea {
   border:1px solid #cccccc;
   outline: none;
 }
-.newpostform__label {
+.postform__label {
   display: block;
   margin-left: 14rem;
   padding: .5rem;
 }
-.newpostform__input{
+.postform__input{
   outline:none;
 
 }
@@ -28,10 +28,11 @@ textarea {
   resize: none;
 }
 
-.newpostform__button {
+.postform__button {
   width: 60%;
   height: 3rem;
   margin-left: 6.7rem;
+  margin-top: 1rem;
   border: 1px solid #ccc;
   background-color: #0095f6;
   color: white;
@@ -39,6 +40,7 @@ textarea {
   border-radius: .6rem;
   outline:none;
   padding: .7rem;
+  cursor: pointer;
 }
 
 .fileInput {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import NewPostModal from '../NewPostModal'
+import PostModal from '../PostModal'
 import ProfileDropdown from './ProfileDropdown'
 import './NavBar.css'
 
@@ -22,7 +22,7 @@ const NavBar = ({ setAuthenticated }) => {
         <input type="text" placeholder="Search" className="navbar__searchfield"></input>
       </div>
       <div className="navbar__navicons">
-        <NewPostModal />
+        <PostModal edit={false}/>
         <i className="fas fa-home navbar__icon" onClick={homeRouter} />
         <i className="far fa-paper-plane navbar__icon" />
         <i className="far fa-compass navbar__icon" onClick={exploreRouter} />
