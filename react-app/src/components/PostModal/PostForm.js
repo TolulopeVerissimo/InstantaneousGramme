@@ -40,9 +40,9 @@ function PostForm({ edit, post }) {
     <div className='postform__container'>
       <h2 className='postform__header'>{edit ? "Edit Post" : "New Post"}</h2>
       <form className='postform' onSubmit={handleSubmit}>
-      <div className="postform__imagewrapper">
       {src && <img className="postform__image" src={src} />}
-      </div>
+      {/* <div className="postform__imagewrapper">
+      </div> */}
         {!edit && (
           <div className='fileInput__container'>
             <label className='postform__label fileInput__label'>
