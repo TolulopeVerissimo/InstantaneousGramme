@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getSignedRequest } from '../../services/upload'
@@ -9,23 +9,22 @@ import './PostForm.css'
 function PostForm({ edit, post }) {
   const history = useHistory()
   const dispatch = useDispatch()
-  const [photo, setPhoto] = useState('')
   const [description, setDescription] = useState('')
   const [isPrivate, setIsPrivate] = useState(false)
-  const [imagePath, setImagePath] = useState('')
   const user = useSelector(state => state.session.user)
   let userId
   if (user) {
     userId = user.id
   }
   const handleSubmit = async (e) => {
+    const form = e.target;
+    const photo = form.elements["image"].files[0]
     e.preventDefault();
     if (edit) {
       await dispatch(editPost(post.id, description, isPrivate))
     } else {
       const url = await getSignedRequest(photo)
-      setImagePath(url)
-      await dispatch(createPost({userId, description, imagePath, isPrivate }))
+      await dispatch(createPost({userId, description, url, isPrivate }))
     }
     history.push('/')
   }
@@ -34,12 +33,14 @@ function PostForm({ edit, post }) {
   }
   return (
     <form className="postform" onSubmit={handleSubmit}>
+      {/* {photo && <img src={photo} />} */}
       {!edit && <label className="postform__label fileInput__label">
         Choose a Photo
         <input
+          name="image"
           type="file"
           className="postform__input fileInput"
-          onChange={(e) => setPhoto(e.target.files[0])} />
+        />
       </label>}
 
       <textarea
