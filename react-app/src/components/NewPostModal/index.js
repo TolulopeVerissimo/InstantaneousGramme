@@ -6,8 +6,8 @@ function NewPostModal() {
 
   return (
     <>
-      <i className="far fa-plus-square navbar__icon" onClick={()=>setShowModal(true)} />
-      {showModal &&(
+      <i className="far fa-plus-square navbar__icon" onClick={() => setShowModal(true)} />
+      {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <NewPostForm />
         </Modal>
