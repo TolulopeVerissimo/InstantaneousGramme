@@ -17,7 +17,8 @@ from .api.postLike_routes import postLike_routes
 from .seeds import seed_commands
 from .queries import query_commands
 
-#socketIO
+
+# socketIO
 # from flask_socketio import SocketIO, send
 
 from .config import Configuration
@@ -32,6 +33,7 @@ login.login_view = 'auth.unauthorized'
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
 
 # Tell Flask our seed commands
 app.cli.add_command(query_commands)

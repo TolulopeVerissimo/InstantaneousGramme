@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
-// import Home from './components/Home'
 import Splash from "./components/SplashPage";
 import Profile from './components/ProfilePage'
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -11,9 +10,6 @@ import User from "./components/User";
 import LandingPage from "./components/LandingPage";
 import { useDispatch } from "react-redux";
 import { restoreUser } from "./Store/session";
-import FollowUser from "./components/FollowUser";
-import { getFollowers } from "./Store/follow";
-import { getUsers } from "./Store/user";
 
 function App() {
   const dispatch = useDispatch()
@@ -23,7 +19,6 @@ function App() {
   useEffect(() => {
     (async () => {
       const user = await dispatch(restoreUser())
-      // const user = await authenticate()
       if (!user.errors) {
         setAuthenticated(true);
       }
@@ -37,7 +32,7 @@ function App() {
 
   return (
     <>
-      {/* <SmoothProvider skew={false}> */}
+
       <BrowserRouter>
         {authenticated && <NavBar setAuthenticated={setAuthenticated} />}
 
@@ -58,7 +53,6 @@ function App() {
           </ProtectedRoute>
           <Route path='/sign-up' exact={true}>
             <SignUpForm
-              // authenticated={authenticated}
               setAuthenticated={setAuthenticated}
             />
           </Route>
@@ -81,7 +75,6 @@ function App() {
           </ProtectedRoute>
         </Switch>
       </BrowserRouter>
-      {/* <SmoothProvider skew={false}/> */}
     </>
   );
 }

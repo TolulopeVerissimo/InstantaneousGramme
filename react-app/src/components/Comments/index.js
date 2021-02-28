@@ -5,13 +5,11 @@ import "./comments.css";
 
 const Comments = (props) => {
   const [comments, setComments] = useState([]);
-  console.log(props.postId);
   const [isLoaded,setIsLoaded] = useState(false)
   useEffect(() => {
     (async () => {
       const response = await fetch(`/api/comments/${props.postId}`);
       const comments = await response.json();
-      console.log("sdsdsd", comments.comments);
       setComments(comments);
       if(comments) setIsLoaded(true)
     })();
@@ -22,7 +20,7 @@ const Comments = (props) => {
       {isLoaded &&
         comments.comments.map((comments) => (
           <div className='comments__container'>
-            {/* if( comments.length > 2) collapse content  
+            {/* if( comments.length > 2) collapse content
                   "View all 152 comments" */}
             <div className='comments__user-comment'>
               <div className='comment__username'>{comments.username}</div>
@@ -32,13 +30,13 @@ const Comments = (props) => {
 
 
         ))}
-        
-        </>  
+
+        </>
     );
-      
-      
-      
-      
+
+
+
+
 
 };
 
