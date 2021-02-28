@@ -12,8 +12,10 @@ from .models import db, User, Post
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.post_routes import post_routes
+from .api.comment_routes import comment_routes
 from .api.postLike_routes import postLike_routes
 from .seeds import seed_commands
+from .queries import query_commands
 
 #socketIO
 # from flask_socketio import SocketIO, send
@@ -31,11 +33,15 @@ login.login_view = 'auth.unauthorized'
 def load_user(id):
     return User.query.get(int(id))
 
+# Tell Flask our seed commands 
+app.cli.add_command(query_commands)
+
 
 # Tell flask about our seed commands
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Configuration)
+app.register_blueprint(comment_routes, url_prefix='/api/comments')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(post_routes, url_prefix='/api/posts')
