@@ -2,62 +2,90 @@
   border-radius: 1rem;
 }
 .postform {
+  padding: 0.5rem;
+  background-color: #ffffff;
+}
+
+.postform__container {
   width: 35rem;
   height: 20rem;
   font-size: 1.2rem;
-  padding: .5rem;
-  border-radius: .6rem;
-  border: 1px solid #CCCCCC;
+  border-radius: 1rem;
+}
+
+.postform__header {
+  display: grid;
+  border-bottom: 2px solid rgb(228, 227, 227);
+  width: 100%;
+  height: 3rem;
+  text-align: center;
+  align-items: center;
+  color: rgb(95, 95, 95);
+  background-color: #fafafad0;
 }
 textarea {
+  display: grid;
+  justify-content: center;
   resize: none;
-  margin-left: 5rem;
-  border:1px solid #cccccc;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #cccccc;
   outline: none;
+  background-color: #ffffff;
+  width: 90%;
 }
 .postform__label {
   display: block;
   margin-left: 14rem;
-  padding: .5rem;
+  padding: 0.5rem;
 }
-.postform__input{
-  outline:none;
 
+.fileInput__label:hover {
+  background-color: #0095f6;
+}
+
+.postform__input {
+  outline: none;
 }
 .textarea {
   resize: none;
 }
 
 .postform__button {
-  width: 60%;
+  display: grid;
+  justify-content: center;
+  width: 9rem;
   height: 3rem;
-  margin-left: 6.7rem;
   margin-top: 1rem;
   border: 1px solid #ccc;
-  background-color: #0095f6;
+  background-color: #5aaef8;
   color: white;
   font-weight: 500;
-  border-radius: .6rem;
-  outline:none;
-  padding: .7rem;
+  border-radius: 0.6rem;
+  outline: none;
+  padding: 0.7rem;
   cursor: pointer;
+}
+
+.postform__button:hover {
+  background-color: #0095f6;
 }
 
 .fileInput {
   width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 .fileInput__label {
-  background-color: #0095f6;
+  background-color: #5aaef8;
   width: 9rem;
-  padding: .5;
+  padding: 0.5;
   color: white;
   display: inline-block;
-  border-radius: .6rem;
-  margin: .5rem auto;
+  border-radius: 0.6rem;
+  margin: 0.5rem auto;
   margin-left: 12rem;
 }
