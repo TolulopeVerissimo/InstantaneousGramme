@@ -33,17 +33,19 @@ function PostForm({ edit, post }) {
   };
   return (
     <div className='postform__container'>
-      <h2 className='postform__header'>New Post</h2>
+      <h2 className='postform__header'>{edit ? "Edit Post" : "New Post"}</h2>
       <form className='postform' onSubmit={handleSubmit}>
         {!edit && (
-          <label className='postform__label fileInput__label'>
-            Choose a Photo
-            <input
-              type='file'
-              className='postform__input fileInput'
-              onChange={(e) => setPhoto(e.target.files[0])}
-            />
-          </label>
+          <div className='fileInput__container'>
+            <label className='postform__label fileInput__label'>
+              Choose a Photo
+              <input
+                type='file'
+                className='postform__input fileInput'
+                onChange={(e) => setPhoto(e.target.files[0])}
+              />
+            </label>
+          </div>
         )}
 
         <textarea
@@ -64,14 +66,17 @@ function PostForm({ edit, post }) {
             onChange={(e) => setIsPrivate(e.target.checked)}
           />
         </label>
-        <button type='submit' className='postform__button'>
-          {edit ? "Edit Post" : "Share Post"}
-        </button>
-        {edit && (
-          <a onClick={removePost} className='postform__button postform__delete'>
-            Delete Post
-          </a>
-        )}
+        <div className='postform__button-container'>
+          <button type='submit' className='postform__button'>
+            {edit ? "Edit Post" : "Share Post"}
+          </button>
+
+          {edit && (
+            <a onClick={removePost} className='postform__delete'>
+              Delete Post
+            </a>
+          )}
+        </div>
       </form>
     </div>
   );
