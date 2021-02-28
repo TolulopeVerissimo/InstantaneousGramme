@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { getSignedRequest } from '../../services/upload'
-import { createPost, editPost } from '../../Store/posts'
+import { createPost, editPost, deletePost } from '../../Store/posts'
 import './PostForm.css'
 
 
 function PostForm({ edit, post }) {
+  const history = useHistory()
+  const dispatch = useDispatch()
   const [photo, setPhoto] = useState('')
   const [description, setDescription] = useState('')
   const [isPrivate, setIsPrivate] = useState(false)
@@ -18,13 +21,16 @@ function PostForm({ edit, post }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (edit) {
-      editPost(post.id, description, isPrivate)
+      await dispatch(editPost(post.id, description, isPrivate))
     } else {
       const url = await getSignedRequest(photo)
       setImagePath(url)
-      createPost({userId, description, imagePath, isPrivate })
+      await dispatch(createPost({userId, description, imagePath, isPrivate }))
     }
-
+    history.push('/')
+  }
+  const removePost = async (e) => {
+    await dispatch(deletePost(post.id))
   }
   return (
     <form className="postform" onSubmit={handleSubmit}>
@@ -53,6 +59,7 @@ function PostForm({ edit, post }) {
           onChange={(e) => setIsPrivate(e.target.checked)} />
       </label>
       <button type="submit" className="postform__button">{edit ?'Edit Post': 'Submit Post'}</button>
+      {edit && <a onClick={removePost} className="postform__button postform__delete">Delete Post</a>}
     </form>
   )
 }

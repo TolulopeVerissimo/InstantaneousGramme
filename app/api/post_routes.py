@@ -27,7 +27,6 @@ def new_post():
                     imagePath=imagePath, userId=userId)
     db.session.add(new_post)
     db.session.commit()
-
     return(data)
 
 
@@ -41,14 +40,21 @@ def post(id):
         return {'post': []}
 
 
-@post_routes.route('/<int:id>')
+@post_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_post(id):
-    form = EditPostForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        post = Post.query.get(id)
-        post['description'] = form['description']
-        post['private'] = form['private']
-        print(post)
-    return '123'
+    data = request.get_json()
+    post = Post.query.get(id)
+    post.description = data['description']
+    post.private = data['isPrivate']
+    db.session.commit()
+    return post.to_dict()
+
+
+@post_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_post(id):
+    post = Post.query.get(id)
+    db.session.delete(post)
+    db.session.commit()
+    return 'Post Deleted'

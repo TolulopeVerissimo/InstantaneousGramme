@@ -1,6 +1,6 @@
 const SET_POSTS = "posts/SET_POSTS";
 const CREATE_POSTS = "posts/CREATE_POSTS";
-const REMOVE_POSTS = "posts/REMOVE_POSTS";
+const REMOVE_POST = "posts/REMOVE_POST";
 const UPDATE_POST = "posts/UPDATE_POST";
 
 const setPosts = (posts) => {
@@ -16,8 +16,15 @@ const updatePosts = (post) => {
     post,
   };
 };
+const removePost = (id) => {
+  return {
+    type: REMOVE_POST,
+    id
+  }
+}
 
 export const createPost = (post) => async dispatch => {
+    console.log('POST BEING MADE',post)
     const { isPrivate, description, imagePath, userId} = post
     const options =
     {
@@ -28,18 +35,35 @@ export const createPost = (post) => async dispatch => {
       body: JSON.stringify({ isPrivate, description, imagePath, userId })
     }
     const res = await fetch('/api/posts/', options)
-    return res
+    const json = await res.json()
+    //TODO INSERT POST INTO THE STORE
 }
 export const editPost = (id, description, isPrivate) => async dispatch => {
   const options = {
-    method: 'PATCH',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(description, isPrivate)
+    body: JSON.stringify({description, isPrivate})
   }
-  const newPost = await fetch(`/api/posts/${id}`, options)
+  const res = await fetch(`/api/posts/${id}`, options)
+  if (res.ok) {
+    const newPost = await res.json()
+    dispatch(setPosts([newPost]))
+  }
 }
+
+export const deletePost = (id) => async dispatch => {
+  console.log(id)
+  const options = {
+    method: 'DELETE'
+  }
+  const res =await fetch(`/api/posts/${id}`, options)
+  if ( res.ok) {
+    dispatch(removePost(id))
+  }
+}
+
 export const updatePostLikes = (like) => async (dispatch) => {
   const { postId } = like;
   const response = await fetch(`/api/posts/${postId}`);
@@ -71,7 +95,7 @@ const postsReducer = (state = initialState, action) => {
       return { ...state, ...posts };
     case CREATE_POSTS:
       return { ...state, [action.drink.id]: action.drink };
-    case REMOVE_POSTS:
+    case REMOVE_POST:
       const newState = { ...state };
       delete newState[action.id];
       return newState;
