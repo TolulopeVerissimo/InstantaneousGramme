@@ -30,8 +30,10 @@ function PostForm({ edit, post }) {
     history.push("/");
   };
   const readUrl = (e) => {
-    const src = URL.createObjectURL(e.target.files[0])
-    setSrc(src)
+    if (e.target.files[0]){
+      const src = URL.createObjectURL(e.target.files[0])
+      setSrc(src)
+    }
   }
   const removePost = async (e) => {
     await dispatch(deletePost(post.id));
