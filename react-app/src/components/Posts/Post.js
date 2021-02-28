@@ -51,8 +51,9 @@ const Post = ({ post, user }) => {
         <div className='post__user-info'>
           <div onMouseEnter={enterMouse} onMouseLeave={leaveMouse} className='post__username'>
             {post.username}
+            {hover && hover ? <Hover open={hover} post={post} profile={profiles}></Hover> : ""}
             <div></div>
-            {/* <Hover open={hover} post={post} profile={profiles}></Hover> */}
+
           </div>
 
         </div>

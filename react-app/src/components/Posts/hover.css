@@ -1,10 +1,17 @@
 .modalLandingPage__container {
+    position: fixed;
+    z-index: 1;
     height: 378px;
     width: 390px;
+    border: 1px solid black;
+    border-radius: 1rem;
 }
 .modalLandingPage__levelOne {
     width: 100%;
     height: 114px;
+    /* height: 100%; */
+
+    border-bottom: 0.5px solid gray;
 }
 .modalLandingPage__header {
 }
@@ -21,9 +28,15 @@
 
 .modalLandingPage__levelTwo {
     height: 70px;
+    width: 100%;
+    border-top: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
 }
 .modalLandingPage__levelThree {
     height: 130px;
+    width: 100%;
+    border-top: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
 }
 
 .modalLandingPage__image {
@@ -42,4 +55,5 @@
 
 .modalLandingPage__levelFour {
     height: 64px;
+    width: 100%;
 }
