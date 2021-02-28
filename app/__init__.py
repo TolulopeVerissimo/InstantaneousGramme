@@ -33,7 +33,7 @@ login.login_view = 'auth.unauthorized'
 def load_user(id):
     return User.query.get(int(id))
 
-# Tell Flask our seed commands 
+# Tell Flask our seed commands
 app.cli.add_command(query_commands)
 
 
