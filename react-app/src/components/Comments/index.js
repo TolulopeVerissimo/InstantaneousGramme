@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./comments.css";
 
 
@@ -6,14 +6,14 @@ import "./comments.css";
 const Comments = (props) => {
   const [comments, setComments] = useState([]);
   console.log(props.postId);
-  const [isLoaded,setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {
     (async () => {
       const response = await fetch(`/api/comments/${props.postId}`);
       const comments = await response.json();
-      console.log("sdsdsd", comments.comments);
+      // console.log("sdsdsd", comments.comments);
       setComments(comments);
-      if(comments) setIsLoaded(true)
+      if (comments) setIsLoaded(true)
     })();
   }, [comments]);
 
@@ -32,13 +32,13 @@ const Comments = (props) => {
 
 
         ))}
-        
-        </>  
-    );
-      
-      
-      
-      
+
+    </>
+  );
+
+
+
+
 
 };
 
