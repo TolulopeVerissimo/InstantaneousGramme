@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react"
 import React, { useEffect, useState } from 'react'
 
 export default function EditDropdown() {
   const [showMenu, setShowMenu] = useState(false)
+
+  const openMenu = () => {
+    setShowMenu(true);
+  }
+
   useEffect(() => {
     if (!showMenu) return
     const closeMenu = () => {
@@ -13,28 +17,19 @@ export default function EditDropdown() {
     return () => document.removeEventListener('click', closeMenu);
   }, [showMenu])
   return (
-    <div className="dropdown">
+    <div className="editpost__dropdown">
       {showMenu && (
         <ul className="dropdown__list">
-          <li onClick={profileRedirect}>
-            <i className="far fa-user dropdown__icon" />
-            <p className="dropdown__link">Profile</p> </li>
-          <li>
-            <i className="far fa-bookmark dropdown__icon" />
-            <p className="dropdown__link">Saved</p>
-          </li>
-          <li>
-            <i className="fas fa-cog dropdown__icon" />
-            <p className="dropdown__link">Settings</p>
-          </li>
-          <li onClick={logoutNow}>
-            <i className="fas fa-sign-out-alt dropdown__icon" />
-            <LogoutButton setAuthenticated={setAuthenticated} />
-          </li>
+            <li>
+              <a href="">Edit Post</a>
+              </li>
+            <li>
+              <a href="">Delete Post</a>
+            </li>
         </ul>
       )}
       <div>
-        <i className="far fa-user navbar__icon" onClick={openMenu} />
+      <i className="fas fa-ellipsis-h" onClick={openMenu} />
       </div>
     </div>
   )

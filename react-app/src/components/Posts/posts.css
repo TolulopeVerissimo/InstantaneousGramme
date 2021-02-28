@@ -91,3 +91,12 @@
   color: rgb(168, 167, 167);
   padding-top: 0.8rem;
 }
+.editpost__dropdown {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  display: inline-block;
+  position: relative;
+  background-color: white;
+  z-index: 99;
+}

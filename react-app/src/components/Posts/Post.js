@@ -45,7 +45,7 @@ const Post = ({ post, user }) => {
           <div className='post__username'>{post.username}</div>
         </div>
         <div className="post__edit-button">
-          <i className="fas fa-ellipsis-h"></i>
+
           <EditDropdown post={post} />
         </div>
       </div>
