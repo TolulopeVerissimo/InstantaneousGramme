@@ -17,6 +17,29 @@ const updatePosts = (post) => {
   };
 };
 
+export const createPost = (post) => async dispatch => {
+    const { isPrivate, description, imagePath, userId} = post
+    const options =
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify({ isPrivate, description, imagePath, userId })
+    }
+    const res = await fetch('/api/posts/', options)
+    return res
+}
+export const editPost = (id, description, isPrivate) => async dispatch => {
+  const options = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(description, isPrivate)
+  }
+  const newPost = await fetch(`/api/posts/${id}`, options)
+}
 export const updatePostLikes = (like) => async (dispatch) => {
   const { postId } = like;
   const response = await fetch(`/api/posts/${postId}`);

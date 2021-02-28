@@ -6,7 +6,7 @@ import commentIcon from "../../images/icons/insta_comment_icon.png";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import { postLike } from "../../Store/postLike";
-import EditDropdown from "./EditDropdown";
+import EditPostModal from "../EditPostModal";
 
 const Post = ({ post, user }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -46,7 +46,7 @@ const Post = ({ post, user }) => {
         </div>
         <div className="post__edit-button">
 
-          <EditDropdown post={post} />
+          <EditPostModal post={post} edit={true} />
         </div>
       </div>
       <div className='post__image'>

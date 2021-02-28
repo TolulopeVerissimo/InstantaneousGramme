@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { getSignedRequest } from '../../services/upload'
-import './NewPostForm.css'
+import { createPost, editPost } from '../../Store/posts'
+import './PostForm.css'
 
 
-function NewPostForm() {
+function PostForm({ edit, post }) {
   const [photo, setPhoto] = useState('')
   const [description, setDescription] = useState('')
   const [isPrivate, setIsPrivate] = useState(false)
@@ -16,28 +17,25 @@ function NewPostForm() {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = await getSignedRequest(photo)
-    setImagePath(url)
-    const options =
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'Application/json'
-      },
-      body: JSON.stringify({ isPrivate, description, imagePath, userId })
+    if (edit) {
+      editPost(post.id, description, isPrivate)
+    } else {
+      const url = await getSignedRequest(photo)
+      setImagePath(url)
+      createPost({userId, description, imagePath, isPrivate })
     }
-    const res = await fetch('/api/posts/', options)
-    return res
+
   }
   return (
-    <form className="newpostform" onSubmit={handleSubmit}>
-      <label className="newpostform__label fileInput__label">
+    <form className="postform" onSubmit={handleSubmit}>
+      {!edit && <label className="postform__label fileInput__label">
         Choose a Photo
         <input
           type="file"
-          className="newpostform__input fileInput"
+          className="postform__input fileInput"
           onChange={(e) => setPhoto(e.target.files[0])} />
-      </label>
+      </label>}
+
       <textarea
         rows="5"
         cols="33"
@@ -46,17 +44,17 @@ function NewPostForm() {
         placeholder="Enter a description"
         onChange={(e) => setDescription(e.target.value)} />
 
-      <label className="newpostform__label">
+      <label className="postform__label">
         Private
         <input
           type="checkbox"
-          className="newpostform__input checkbox"
+          className="postform__input checkbox"
           checked={isPrivate}
           onChange={(e) => setIsPrivate(e.target.checked)} />
       </label>
-      <button type="submit" className="newpostform__button">Submit Post</button>
+      <button type="submit" className="postform__button">{edit ?'Edit Post': 'Submit Post'}</button>
     </form>
   )
 }
 
-export default NewPostForm
+export default PostForm

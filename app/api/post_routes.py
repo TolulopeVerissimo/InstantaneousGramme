@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import db, Post
 from flask_login import login_required
+from app.forms import NewPostForm, EditPostForm
 post_routes = Blueprint('posts', __name__)
 
 
@@ -18,7 +19,6 @@ def posts():
 @post_routes.route('/', methods=['POST'])
 def new_post():
     data = request.get_json()
-    print(data)
     description = data['description']
     private = data['isPrivate']
     imagePath = data['imagePath']
@@ -39,3 +39,16 @@ def post(id):
         return jsonify(post.to_dict())
     else:
         return {'post': []}
+
+
+@post_routes.route('/<int:id>')
+@login_required
+def edit_post(id):
+    form = EditPostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        post = Post.query.get(id)
+        post['description'] = form['description']
+        post['private'] = form['private']
+        print(post)
+    return '123'
