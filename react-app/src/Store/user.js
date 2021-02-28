@@ -18,12 +18,14 @@ const createUsers = (user) => {
 export const getUsers = () => async (dispatch) => {
     const response = await fetch('/api/users');
     if (response.ok) {
+
         const users = await response.json()
+        console.log(users)
         dispatch(setUsers(users));
         return users;
 
-//         dispatch(setUsers(response.data.users));
-//         return response;
+        //         dispatch(setUsers(response.data.users));
+        //         return response;
     }
 };
 

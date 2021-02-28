@@ -14,17 +14,17 @@ import { useParams } from 'react-router-dom'
 import FollowUser from '../FollowUser'
 import './styles/Profile.css'
 import { getFollowers } from '../../Store/follow.js'
+
 function Profile() {
 	const { id } = useParams()
 	const [loaded, setLoaded] = useState(false)
 	const userId = useSelector(state => state.session.user.id)
+	const user = useSelector((state) => state.session.user);
 	const profiles = useSelector(state => state.profiles)
 	const posts = useSelector(state => state.posts)
 	const dispatch = useDispatch()
-	const userPosts =
-		[
+	const userPosts = []
 
-		]
 	useEffect(() => {
 
 		dispatch(getProfile(id))
@@ -39,18 +39,24 @@ function Profile() {
 			}
 		}
 	}
+	// 	const [displayCSS, setDisplayCSS] = useState("inline-block")
+	// 	style = {{ display: { displayCSS } }
+	// }
+	// setDisplayCSS('none')
+
 	return (
 		<>
 			{ loaded &&
 				<div>
 					< Header profile={profiles[id]} />
+
 					<div className="moveTheFollowButton">
 						<FollowUser followedUserId={id} />
 					</div>
+
 					<div className="gridContainer">
-						{
-							userPosts &&
-							userPosts.map((post) => <SmallPost post={post} />)
+						{userPosts &&
+							userPosts.map((post) => <SmallPost post={post} user={user} />)
 						}
 					</div>
 				</div>
