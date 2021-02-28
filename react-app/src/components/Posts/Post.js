@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Comments from "../Comments";
 import CommentForm from "../Comments/CommentForm";
 import commentIcon from "../../images/icons/insta_comment_icon.png";
@@ -7,8 +7,15 @@ import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import { postLike } from "../../Store/postLike";
 import EditPostModal from "../EditPostModal";
+import Hover from './hoverBoard'
 
 const Post = ({ post, user }) => {
+  const profiles = useSelector(state => state.profiles)
+
+  const [hover, setHover] = useState(false)
+  const enterMouse = () => setHover(true)
+  const leaveMouse = () => setHover(false)
+
   const [isLiked, setIsLiked] = useState(false);
   const dispatch = useDispatch();
 
@@ -42,7 +49,12 @@ const Post = ({ post, user }) => {
           <img src={post.profilePicture} alt='profile pic' />
         </div>
         <div className='post__user-info'>
-          <div className='post__username'>{post.username}</div>
+          <div onMouseEnter={enterMouse} onMouseLeave={leaveMouse} className='post__username'>
+            {post.username}
+            <div></div>
+            {/* <Hover open={hover} post={post} profile={profiles}></Hover> */}
+          </div>
+
         </div>
         <div className="post__edit-button">
 
