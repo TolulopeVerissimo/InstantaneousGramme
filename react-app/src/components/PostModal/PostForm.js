@@ -20,15 +20,13 @@ function PostForm({ edit, post }) {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const form = e.target;
-    // const photo = form.elements["image"].files[0]
     if (edit) {
       await dispatch(editPost(post.id, description, isPrivate));
     } else {
       const url = await getSignedRequest(photo);
       await dispatch(createPost({userId, description, url, isPrivate }));
     }
-    history.push("/");
+    history.push(`/profile/${userId}`);
   };
   const readUrl = (e) => {
     if (e.target.files[0]){
@@ -45,8 +43,6 @@ function PostForm({ edit, post }) {
       <h2 className='postform__header'>{edit ? "Edit Post" : "New Post"}</h2>
       <form className='postform' onSubmit={handleSubmit}>
       {src && <img className="postform__image" src={src} />}
-      {/* <div className="postform__imagewrapper">
-      </div> */}
         {!edit && (
           <div className='fileInput__container'>
             <label className='postform__label fileInput__label'>
