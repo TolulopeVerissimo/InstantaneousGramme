@@ -59,16 +59,6 @@ def more_posts():
     seed_more_posts()
 
 
-@seed_commands.command('undo_more_posts')
-def undo_more_posts():
-    undo_more_posts()
-
-
 @seed_commands.command('more_users')
 def more_users():
     seed_more_users()
-
-
-@seed_commands.command('undo_more_users')
-def undo_more_users():
-    undo_more_users()
