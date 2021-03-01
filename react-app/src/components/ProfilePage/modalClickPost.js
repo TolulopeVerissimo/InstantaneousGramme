@@ -70,7 +70,7 @@ const ModalPost = ({ post, user }) => {
 
                     <div className='modalPost__comments'>
                         {/* pass user in as props to Comments */}
-                        <Comments post={post} />
+                        <Comments postId={post.id} />
                     </div>
 
 
@@ -100,7 +100,7 @@ const ModalPost = ({ post, user }) => {
 
 
                 <div className='modalPost__comment-form'>
-                    <CommentForm />
+                    <CommentForm postId={post.id}/>
                 </div>
 
             </div>
