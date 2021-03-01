@@ -24,7 +24,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const demoLogin = () => async (dispatch) => {
-	
+
 	// const response = await fetch('/api/auth/demologin', {
 	// 	method: 'POST',
 	// 	headers: {
@@ -35,9 +35,8 @@ export const demoLogin = () => async (dispatch) => {
 	// 			password: "password"
 	// 			})
 	// 		});
-		
+
 	// const user = await response.json()
-	// 	console.log(user)
 	// 	dispatch(setSession(user));
 	// 	return user;
 };

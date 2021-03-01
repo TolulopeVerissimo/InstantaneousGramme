@@ -35,8 +35,6 @@ const ModalPost = ({ post, user }) => {
             } else setIsLiked(false);
         }
     }, [setIsLiked, post, user]);
-
-    // console.log("post modal", posts)
     return (
 
         <div key={post.id} className='modalPost__container'>
@@ -88,8 +86,6 @@ const ModalPost = ({ post, user }) => {
                         <img
                             src={commentIcon}
                             alt='post comment button'
-                            // opens up comment section?
-                            onClick={() => console.log("clicked")}
                         />
                     </div>
                     <div className='modalPost__icon'></div>

@@ -4,7 +4,6 @@ const CREATE_COMMENTS = 'COMMENTS/CREATE_COMMENTS';
 const REMOVE_COMMENTS = 'COMMENTS/REMOVE_COMMENTS';
 
 const setComments = (comments) => {
-    // console.log("These are COMMENTS:::", COMMENTS)
     return {
         type: SET_COMMENTS,
         comments,
@@ -24,13 +23,12 @@ const removeComments = (id) => {
     }
 }
 
-  
+
 
 export const getComments = () => async (dispatch) => {
     const response = await fetch('/api/comments');
     if (response.ok) {
         const res = await response.json()
-        console.log(res)
         dispatch(setComments(res.comments));
         return response;
     }
@@ -83,10 +81,10 @@ const commentsReducer = (state = initialState, action) => {
         case SET_COMMENTS:
             const comments = action.comments.reduce((acc, ele) => {
                 acc[ele.id] = ele;
-                return acc 
+                return acc
             }, {});;
             return { ...state, ...comments };
-            
+
         case CREATE_COMMENTS:
             return { ...state, [action.comments.id]: action.comments };
         case REMOVE_COMMENTS:

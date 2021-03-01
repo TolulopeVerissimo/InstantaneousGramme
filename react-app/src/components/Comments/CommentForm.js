@@ -14,13 +14,8 @@ const CommentForm = (props) => {
   const formSubmitHandler = async (e) => {
     e.preventDefault()
     if(!content) return alert('there is no content')
-
     const userId = user.id
-  
-    
     dispatch(createComment(userId,postId,content))
-   
- 
   }
 
 

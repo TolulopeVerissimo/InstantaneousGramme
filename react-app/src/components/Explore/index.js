@@ -23,8 +23,6 @@ const Explore = () => {
         if (posts && user) setIsLoaded(true);
     }, [posts, user]);
 
-    console.log(posts)
-
     return (
         <>
             <Explore posts={posts} user={user} />\
