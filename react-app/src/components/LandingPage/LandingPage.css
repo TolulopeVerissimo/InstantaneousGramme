@@ -9,11 +9,13 @@
   margin-right: auto;
   display: grid;
   grid-template-columns: 2fr 1fr;
+  background-color: white;
 }
 
 .posts__feed {
   display: grid;
   width: 100%;
   margin-right: 4rem;
-  justify-content: right;
+  justify-content: center;
+  background-color: white;
 }
