@@ -1,33 +1,49 @@
 .scrollingMain {
-  /* position: fixed; */
-  top: 8rem;
-  padding: 50px;
+  position: fixed;
+  top: 7rem;
+  padding: 5rem;
+  padding-top: 3rem;
   font-size: 20px;
   width: 293px;
   height: 476px;
 }
 
-.follow_suggestions {
+.scrollingMain h3 {
+  font-size: 1.3rem;
+  color: #8e8e8e;
+  padding-bottom: 1rem;
+  font-weight: normal;
+}
+
+.follow__suggestions {
   display: grid;
+  width: 100%;
 }
 
 .suggestion__profile {
   display: grid;
-  grid-template-columns: auto 6fr;
-  padding: 1rem;
+  grid-template-columns: 1fr 6fr;
+  padding: 0.5rem;
   align-items: center;
   font-size: 1.4rem;
 }
 
-.suggestion__username {
-  display: grid;
+.suggestion__username a {
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+  width: auto;
+}
+
+.suggestion__username:hover {
+  text-decoration: underline;
 }
 
 .suggestion__pic {
   object-fit: cover;
   background-color: pink;
-  width: 4rem;
-  height: 4rem;
+  height: 3rem;
+  max-width: 3rem;
   border-radius: 50%;
 }
 
@@ -35,6 +51,32 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+
+.side__items {
+  display: grid;
+  margin-top: 4rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.item-text {
+  font-size: 1.3rem;
+  color: #8e8e8e;
+}
+
+.item-text:hover {
+  text-decoration: underline;
+}
+
+.side__item {
+  font: 1rem;
+}
+
+.side__item span:visited {
+  color: black;
 }
 
 /* .profileContainer {

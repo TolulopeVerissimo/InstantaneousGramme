@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { sideItems } from "./sideItems.js";
 import { useSelector } from "react-redux";
 import "./StationarySide.css";
@@ -7,12 +7,7 @@ import "./StationarySide.css";
 function StationarySide() {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  let history = useHistory();
   const userId = useSelector((state) => state.session.user.id);
-
-  const profileRedirect = () => {
-    history.push(`/profile/${userId}`);
-  };
 
   const allUsers = useSelector((state) => state.users);
   const suggestedUsers = [];
@@ -34,33 +29,43 @@ function StationarySide() {
         <div className='follow__suggestions'>
           {isLoaded &&
             suggestedUsers.map((user) => (
-              <div classname='suggestion__profile' key={user.id}>
-                <div className='suggestion__pic'>
-                  <img src={user.profilePicture} alt='profile pic' />
-                </div>
-                <div>
-                  <div className='suggestion__username'>
-                    <a href={`/profile/${user.id}`}>{user.username}</a>
+              <>
+                <div className='suggestion__profile' key={user.id}>
+                  <div className='suggestion__pic'>
+                    <img src={user.profilePicture} alt='profile pic' />
+                  </div>
+                  <div>
+                    <div className='suggestion__username'>
+                      <a href={`/profile/${user.id}`}>{user.username}</a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </>
             ))}
         </div>
-        <div style={{ display: "flex", marginTop: "6rem" }}>
+        <div className='side__items'>
           <nav>
-            {sideItems.map((item, idx) => {
-              return (
-                <Link
-                  key={idx}
-                  className={item.cName}
-                  id='underline'
-                  to={item.path}
-                  style={{ textDecoration: "none" }}
-                >
-                  <span style={{ marginRight: "1rem" }}>{item.title}</span>
-                </Link>
-              );
-            })}
+            <ul>
+              {sideItems.map((item, idx) => {
+                return (
+                  <li>
+                    <div className='side__item'>
+                      <Link
+                        key={idx}
+                        className={item.cName}
+                        id='underline'
+                        to={item.path}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <span style={{ marginRight: "1rem" }}>
+                          {item.title}
+                        </span>
+                      </Link>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
           </nav>
         </div>
       </div>
