@@ -69,54 +69,6 @@ function StationarySide() {
           </nav>
         </div>
       </div>
-
-      {/* <div className='scrollingMain'>
-        <div className='profileContainer'>
-          <div onClick={profileRedirect} style={{ cursor: 'pointer' }} className='testCircle'>
-            <img src={imgArr[4]} alt='' />
-          </div>
-          <div onClick={profileRedirect} style={{ cursor: 'pointer' }} className='username'>
-            <h5>Demo_McDemerson</h5>
-            <h6>Slayer60NoThousand</h6>
-          </div>
-        </div>
-        <div className='suggested'>
-          {imgArr &&
-            imgArr.map((el, idx) => {
-              return (
-                <div key={idx}>
-                  <div className='circle'>
-                    <img src={el} alt="user profile pic"></img>
-                  </div>
-                  <div className='users'>
-                    <h5>Suggested User {idx}</h5>
-                    <h6 >
-                      {/* {following ? <button title="Unfollow" onClick={() => dispatch(updateFollow())}>Unfollow</button> : <FollowUser />} 
-                    </h6>
-
-                  </div>
-                </div>
-              );
-            })}
-        </div>
-        <div style={{ display: "flex", marginTop: "6rem" }}>
-          <nav>
-            {sideItems.map((item, idx) => {
-              return (
-                <Link
-                  key={idx}
-                  className={item.cName}
-                  id='underline'
-                  to={item.path}
-                  style={{ textDecoration: "none" }}
-                >
-                  <span style={{ marginRight: "1rem" }}>{item.title}</span>
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-      </div> */}
     </>
   );
 }
