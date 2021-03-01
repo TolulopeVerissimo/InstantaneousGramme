@@ -26,7 +26,7 @@ function PostForm({ edit, post }) {
       const url = await getSignedRequest(photo);
       await dispatch(createPost({userId, description, url, isPrivate }));
     }
-    history.push(`/profile/${userId}`);
+    history.push(`/profile/${id}`);
   };
   const readUrl = (e) => {
     if (e.target.files[0]){
