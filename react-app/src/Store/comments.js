@@ -26,7 +26,7 @@ const removeComments = (id) => {
 
 
 export const getComments = () => async (dispatch) => {
-    const response = await fetch('/api/comments');
+    const response = await fetch('/api/comments/');
     if (response.ok) {
         const res = await response.json()
         dispatch(setComments(res.comments));
