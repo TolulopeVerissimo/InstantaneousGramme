@@ -7,7 +7,7 @@ import "./StationarySide.css";
 function StationarySide() {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const userId = useSelector((state) => state.session.user.id);
+  // const userId = useSelector((state) => state.session.user.id);
 
   const allUsers = useSelector((state) => state.users);
   const suggestedUsers = [];
@@ -49,18 +49,8 @@ function StationarySide() {
               {sideItems.map((item, idx) => {
                 return (
                   <li>
-                    <div className='side__item'>
-                      <Link
-                        key={idx}
-                        className={item.cName}
-                        id='underline'
-                        to={item.path}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <span style={{ marginRight: "1rem" }}>
-                          {item.title}
-                        </span>
-                      </Link>
+                    <div key={idx} className='side__item item-text'>
+                      <a href={item.path}>{item.title}</a>
                     </div>
                   </li>
                 );
