@@ -1,69 +1,80 @@
 .scrollingMain {
-    position: fixed;
-    top: 8rem;
-    padding: 50px;
-    font-size: 20px;
-    width: 293px;
-    height: 476px;
-}
-.profileContainer {
-    justify-content: center;
-    align-content: center;
-    margin-left: -1.7rem;
-}
-.profileContainer .testCircle {
-    height: 5rem;
-    width: 5rem;
-    border-radius: 50%;
-    border: 1px solid black;
-    /* overflow: hidden; */
-}
-.testCircle img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-position: center center;
-    background-size: cover;
-}
-.profileContainer .username h5 {
-    position: absolute;
-    margin-top: -3.76rem;
-    margin-left: 6rem;
-}
-.profileContainer .username h6 {
-    position: absolute;
-    margin-top: -0.76rem;
-    margin-left: 6.1rem;
+  position: fixed;
+  top: 7rem;
+  padding: 5rem;
+  padding-top: 3rem;
+  font-size: 20px;
+  width: 293px;
+  height: 476px;
 }
 
-.suggested {
-    justify-content: center;
-    align-content: center;
-    margin-top: 5rem;
-}
-.suggested .circle {
-    height: 2rem;
-    width: 2rem;
-    border-radius: 50%;
-    border: 1px solid black;
-    /* overflow: hidden; */
-}
-.suggested .circle img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-position: center center;
-    background-size: cover;
+.scrollingMain h3 {
+  font-size: 1.3rem;
+  color: #8e8e8e;
+  padding-bottom: 1rem;
+  font-weight: normal;
 }
 
-.suggested .users {
-    margin-top: 3rem;
+.follow__suggestions {
+  display: grid;
+  width: 100%;
 }
-.suggested .users h5 {
-    position: absolute;
-    margin: -5rem 0 0 4rem;
+
+.suggestion__profile {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  padding: 0.5rem;
+  align-items: center;
+  font-size: 1.4rem;
 }
-.suggested .users h6 {
-    position: absolute;
-    margin: -4.6rem 0 0 20rem;
+
+.suggestion__username a {
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+  width: auto;
+}
+
+.suggestion__username:hover {
+  text-decoration: underline;
+}
+
+.suggestion__pic {
+  object-fit: cover;
+  background-color: pink;
+  height: 3rem;
+  max-width: 3rem;
+  border-radius: 50%;
+}
+
+.suggestion__pic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.side__items {
+  display: grid;
+  margin-top: 4rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.item-text {
+  font-size: 1.3rem;
+  color: #8e8e8e;
+}
+
+.item-text:hover {
+  text-decoration: underline;
+}
+
+.side__item {
+  font: 1rem;
+}
+
+.side__item span:visited {
+  color: black;
 }

@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './styles/smolboy.css'
-export default function SmallPost({ post }) {
-  return (
-    // <div className="profilePost">
-    //   <div className="grid">
-    // <img src={post.imagePath} alt="ig post" />
-    //   </div>
-    // </div>
+import { Modal } from '../../Context/Modal'
+import ModalPost from './modalClickPost'
 
+export default function SmallPost({ post, user }) {
+  const [showModal, setShowModal] = useState(false);
+  return (
     <div className="ppContainer">
       <article className="card">
         <figure>
-          <img src={post.imagePath} alt="ig post" />
+          <img src={post.imagePath} key={post.id} alt="ig post" onClick={() => { setShowModal(true) }
+          } />
+          {showModal
+            && (<Modal onClose={() => {
+              // setDisplayCSS('inline-block')
+              setShowModal(false)
+            }}>
+              <ModalPost post={post} user={user} />
+            </Modal>
+            )}
+
         </figure>
       </article>
     </div>

@@ -16,16 +16,14 @@ const createUsers = (user) => {
 }
 
 export const getUsers = () => async (dispatch) => {
-    const response = await fetch('/api/users');
+    const response = await fetch('/api/users/');
     if (response.ok) {
+
         const users = await response.json()
         dispatch(setUsers(users));
         return users;
-
-//         dispatch(setUsers(response.data.users));
-//         return response;
-    }
-};
+    };
+}
 
 export const formUsers = (user) => async (dispatch) => {
     const { name, email, phoneNumber, username, biography, profilePicture } = user;

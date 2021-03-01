@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import { Modal } from '../../Context/Modal'
-import NewPostForm from './NewPostForm'
-function NewPostModal() {
+import PostForm from '../PostModal/PostForm'
+
+function EditPostModal( { post }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <i className="far fa-plus-square navbar__icon" onClick={()=>setShowModal(true)} />
+      <i className="fas fa-ellipsis-h navbar__icon" onClick={()=>setShowModal(true)} />
       {showModal &&(
         <Modal onClose={() => setShowModal(false)}>
-          <NewPostForm />
+          <PostForm post={post} edit={true}/>
         </Modal>
       )}
     </>
   )
 }
 
-export default NewPostModal;
+export default EditPostModal;
