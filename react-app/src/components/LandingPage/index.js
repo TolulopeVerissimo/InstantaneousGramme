@@ -4,15 +4,18 @@ import { useDispatch } from "react-redux";
 import StationarySide from "./StationarySide";
 import "./LandingPage.css";
 import * as postActions from "../../Store/posts";
+import * as commentActions from '../../Store/comments'
 // import * as userActions from "../../Store/users";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
+
   // const [posts, setPosts] = useState([]);
   // posts = fetch("/");
 
   useEffect(() => {
     dispatch(postActions.getPosts());
+    dispatch (commentActions.getComments())
     // dispatch(postActions.getUsers());
   }, [dispatch]);
 

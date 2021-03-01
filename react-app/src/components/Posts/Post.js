@@ -80,7 +80,7 @@ const Post = ({ post, user }) => {
         <p className='post__createdAt'>{post.date_created}</p>
       </div>
       <div className='post__comment-form'>
-        <CommentForm />
+        <CommentForm postId={post.id}/>
       </div>
     </div>
   );

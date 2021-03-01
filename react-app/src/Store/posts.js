@@ -31,6 +31,7 @@ export const getPosts = () => async (dispatch) => {
   const response = await fetch("/api/posts/");
   if (response.ok) {
     let res = await response.json();
+    console.log(res)
     dispatch(setPosts(res.posts));
   }
   return response;
