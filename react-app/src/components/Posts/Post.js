@@ -64,8 +64,6 @@ const Post = ({ post, user }) => {
           <img
             src={commentIcon}
             alt='post comment button'
-            // opens up comment section?
-            onClick={() => console.log("clicked")}
           />
         </div>
         <div className='post__icon'></div>

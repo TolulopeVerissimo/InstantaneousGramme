@@ -28,7 +28,7 @@ function Header({ profile }) {
                         <img src={profile.profilePicture} alt={profile.username} />
                     </div>
                     <h2 className="userHandle">{profile.username}</h2>
-                    <i style={{ fontSize: '3.2rem' }} class="fas fa-cog"></i>
+                    {/* <i style={{ fontSize: '3.2rem' }} class="fas fa-cog"></i> */}
                     <div className="metrics">
                         <span>posts</span>
                         <span className="s"></span>

@@ -1,5 +1,6 @@
 * {
   font-family: "proxima-nova", sans-serif;
+  background-color: white;
 }
 
 .post__container {
@@ -8,6 +9,7 @@
   border: 1px solid lightgray;
   box-shadow: 0px 0px 2px lightgray;
   border-radius: 0.2rem;
+  margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 4rem;
 }

@@ -6,10 +6,11 @@ import { createPost, editPost, deletePost } from '../../Store/posts'
 import './PostForm.css'
 
 
-function PostForm({ edit, post }) {
+function PostForm({ edit, post, setShowModal }) {
   const history = useHistory()
   const dispatch = useDispatch()
   const [src, setSrc] = useState('')
+  const [photo, setPhoto] = useState('')
   const [description, setDescription] = useState('')
   const [isPrivate, setIsPrivate] = useState(false)
   const user = useSelector(state => state.session.user)
@@ -18,8 +19,6 @@ function PostForm({ edit, post }) {
     userId = user.id;
   }
   const handleSubmit = async (e) => {
-    const form = e.target;
-    const photo = form.elements["image"].files[0]
     e.preventDefault();
     if (edit) {
       await dispatch(editPost(post.id, description, isPrivate));
@@ -27,12 +26,14 @@ function PostForm({ edit, post }) {
       const url = await getSignedRequest(photo);
       await dispatch(createPost({userId, description, url, isPrivate }));
     }
-    history.push("/");
+    setShowModal(false)
+    history.push(`/profile/${userId}`);
   };
   const readUrl = (e) => {
     if (e.target.files[0]){
       const src = URL.createObjectURL(e.target.files[0])
       setSrc(src)
+      setPhoto(e.target.files[0])
     }
   }
   const removePost = async (e) => {
@@ -43,8 +44,6 @@ function PostForm({ edit, post }) {
       <h2 className='postform__header'>{edit ? "Edit Post" : "New Post"}</h2>
       <form className='postform' onSubmit={handleSubmit}>
       {src && <img className="postform__image" src={src} />}
-      {/* <div className="postform__imagewrapper">
-      </div> */}
         {!edit && (
           <div className='fileInput__container'>
             <label className='postform__label fileInput__label'>

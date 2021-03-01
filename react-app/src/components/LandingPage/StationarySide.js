@@ -19,9 +19,6 @@ function StationarySide() {
   useEffect(() => {
     if (suggestedUsers[0]) setIsLoaded(true);
   }, [suggestedUsers]);
-
-  console.log(suggestedUsers);
-
   return (
     <>
       <div className='stationary__container scrollingMain'>

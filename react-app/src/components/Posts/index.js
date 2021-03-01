@@ -24,9 +24,7 @@ const Posts = () => {
     <>
       {isLoaded &&
         posts.map((post) => (
-          <div key={post.id}>
-            <Post post={post} user={user} />
-          </div>
+            <Post key={post.id} post={post} user={user} />
         ))}
     </>
   );

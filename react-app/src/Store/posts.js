@@ -24,7 +24,6 @@ const removePost = (id) => {
 }
 
 export const createPost = (post) => async dispatch => {
-    console.log('POST BEING MADE',post)
     const { isPrivate, description, url, userId} = post
     const options =
     {
@@ -54,7 +53,6 @@ export const editPost = (id, description, isPrivate) => async dispatch => {
 }
 
 export const deletePost = (id) => async dispatch => {
-  console.log(id)
   const options = {
     method: 'DELETE'
   }
@@ -78,8 +76,7 @@ export const getPosts = () => async (dispatch) => {
   const response = await fetch("/api/posts/");
   if (response.ok) {
     let res = await response.json();
-    console.log(res)
-    dispatch(setPosts(res.posts));
+       dispatch(setPosts(res.posts));
   }
   return response;
 };
