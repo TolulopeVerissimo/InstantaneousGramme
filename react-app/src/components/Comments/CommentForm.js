@@ -2,18 +2,25 @@ import React, { useState } from "react";
 import {useSelector, useDispatch} from 'react-redux'
 import "./comments.css";
 import smilyIcon from '../../images/icons/insta_smily_face_icon.png'
+import {createComment} from '../../Store/comments'
 
 const CommentForm = (props) => {
-  const [comment, setComment] = useState('')
+  const [content, setContent] = useState('')
+  const user = useSelector(state => state.session.user)
+  const postId = props.postId
+  const dispatch = useDispatch()
 
 
-  const formSubmitHandler = (e) => {
+  const formSubmitHandler = async (e) => {
+    e.preventDefault()
+    if(!content) return alert('there is no content')
+
+    const userId = user.id
+  
+    
+    dispatch(createComment(userId,postId,content))
    
-    if (!comment.errors) {
-      
-    } else {
-      alert("Comment could not be submitted")
-    }    
+ 
   }
 
 
@@ -24,13 +31,12 @@ const CommentForm = (props) => {
         className='comment-form__icon'
         src={smilyIcon}
       ></img>
-      <input
-        className='comment-form__input'
-        placeholder='Add a comment...'
-        onChange={(e) => setComment(e.target.value)}
-        onSubmit={() => formSubmitHandler}
-      ></input>
-      <form action='/' method='post'>
+      <form onSubmit={formSubmitHandler}>
+        <input
+          className='comment-form__input'
+          placeholder='Add a comment...'
+          onChange={(e) => setContent(e.target.value)}
+        ></input>
         <button type='submit' className='comment-form__button'>
           Post
         </button>

@@ -1,38 +1,41 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Comment,CommentLike, Post 
+from app.models import db, Comment
 from flask_login import login_required
 comment_routes = Blueprint('comments', __name__)
 
 
-@comment_routes.route('/<int:id>')
-def comments(id):
-    print('request', request)
+
+
+
+
+
+@comment_routes.route('/')
+# @login_required
+def comments():
     comments = Comment.query.all()
-    print(comments)
-
-# {user.id: {follower.id: {"id": follower.id, "username": follower.username}
-            # for follower in user.followers.all()}}
-
     if comments[0]:
         return jsonify({"comments": [comment.to_dict() for comment in comments]})
-
-    # sonify({"comments": [comment for comment in comments]})
     else:
         return {'comments': []}
 
 
-@comment_routes.route('/', methods=['POST'])
-@login_required
-def new_comment():
-    data = request.get_json()    
-    # description = data['description']
-    # private = data['isPrivate']
-    # imagePath = data['imagePath']
-    # userId = data['userId']
-    # new_post = Post(description=description, private=private,
-    #                 imagePath=imagePath, userId=userId)
-    # db.session.add(new_post)
-    # db.session.commit()
 
-    return(data)
+
+
+
+@comment_routes.route('/', methods=['POST'])
+# @login_required
+def new_comment():
+    data = request.get_json() 
+    print(data)   
+
+    userId = data['userId']
+    postId = data['postId']
+    content = data['content']
+    # userId = data['userId']
+    new_comment = Comment(userId=userId, postId=postId, content=content)
+    db.session.add(new_comment)
+    db.session.commit()
+
+    return new_comment.to_dict()

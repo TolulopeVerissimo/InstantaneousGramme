@@ -1,30 +1,29 @@
 import React, {useState,useEffect} from "react";
 import "./comments.css";
+import {useSelector} from 'react-redux'
 
 
 
 const Comments = (props) => {
-  const [comments, setComments] = useState([]);
+
+  const comments = useSelector((state) => {
+    return Object.values(state.comments).filter((comment) => comment.postId == props.postId);
+  });
+  const user = useSelector((state) => state.session.user);
+
   const [isLoaded,setIsLoaded] = useState(false)
   useEffect(() => {
-    (async () => {
-      const response = await fetch(`/api/comments/${props.postId}`);
-      const comments = await response.json();
-      setComments(comments);
-      if(comments) setIsLoaded(true)
-    })();
-  }, [comments]);
+    if (comments && user) setIsLoaded(true);
+  }, [comments, user]);
 
   return (
     <>
-      {isLoaded &&
-        comments.comments.map((comments) => (
+      { isLoaded &&
+        comments.map((comment) => (
           <div className='comments__container'>
-            {/* if( comments.length > 2) collapse content
-                  "View all 152 comments" */}
             <div className='comments__user-comment'>
-              <div className='comment__username'>{comments.username}</div>
-              <div className='comment__content'>{comments.content}</div>
+              <div className='comment__username'>{comment.username}</div>
+              <div className='comment__content'>{comment.content}</div>
             </div>
           </div>
 
