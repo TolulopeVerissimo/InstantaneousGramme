@@ -26,7 +26,7 @@ const CommentForm = (props) => {
         className='comment-form__icon'
         src={smilyIcon}
       ></img>
-      <form onSubmit={formSubmitHandler}>
+      <form className="commentform" onSubmit={formSubmitHandler}>
         <input
           className='comment-form__input'
           placeholder='Add a comment...'
