@@ -6,7 +6,7 @@ import { createPost, editPost, deletePost } from '../../Store/posts'
 import './PostForm.css'
 
 
-function PostForm({ edit, post }) {
+function PostForm({ edit, post, setShowModal }) {
   const history = useHistory()
   const dispatch = useDispatch()
   const [src, setSrc] = useState('')
@@ -26,6 +26,7 @@ function PostForm({ edit, post }) {
       const url = await getSignedRequest(photo);
       await dispatch(createPost({userId, description, url, isPrivate }));
     }
+    setShowModal(false)
     history.push(`/profile/${userId}`);
   };
   const readUrl = (e) => {
