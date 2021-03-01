@@ -10,6 +10,7 @@ function PostForm({ edit, post }) {
   const history = useHistory()
   const dispatch = useDispatch()
   const [src, setSrc] = useState('')
+  const [photo, setPhoto] = useState('')
   const [description, setDescription] = useState('')
   const [isPrivate, setIsPrivate] = useState(false)
   const user = useSelector(state => state.session.user)
@@ -18,9 +19,9 @@ function PostForm({ edit, post }) {
     userId = user.id;
   }
   const handleSubmit = async (e) => {
-    const form = e.target;
-    const photo = form.elements["image"].files[0]
     e.preventDefault();
+    // const form = e.target;
+    // const photo = form.elements["image"].files[0]
     if (edit) {
       await dispatch(editPost(post.id, description, isPrivate));
     } else {
@@ -33,6 +34,7 @@ function PostForm({ edit, post }) {
     if (e.target.files[0]){
       const src = URL.createObjectURL(e.target.files[0])
       setSrc(src)
+      setPhoto(e.target.files[0])
     }
   }
   const removePost = async (e) => {

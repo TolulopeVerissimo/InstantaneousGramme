@@ -6,6 +6,7 @@ import commentIcon from "../../images/icons/insta_comment_icon.png";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import { postLike } from "../../Store/postLike";
+import  EditPostModal from "../EditPostModal"
 import './styles/modalClickPost.css'
 
 const ModalPost = ({ post, user }) => {
@@ -55,6 +56,7 @@ const ModalPost = ({ post, user }) => {
                     <div className='modalPost__user-info'>
                         <div className='modalPost__username'>{post.username}</div>
                     </div>
+                    <EditPostModal post={post} edit={true} />
                 </div>
 
 
