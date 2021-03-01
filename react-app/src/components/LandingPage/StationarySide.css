@@ -62,9 +62,10 @@ ul {
   list-style-type: none;
 }
 
-.item-text {
+.item-text a {
   font-size: 1.3rem;
   color: #8e8e8e;
+  text-decoration: none;
 }
 
 .item-text:hover {
