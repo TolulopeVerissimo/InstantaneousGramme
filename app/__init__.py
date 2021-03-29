@@ -15,6 +15,7 @@ from .api.auth_routes import auth_routes
 from .api.post_routes import post_routes
 from .api.comment_routes import comment_routes
 from .api.postLike_routes import postLike_routes
+from .api.DM_routes import DM_routes
 from .seeds import seed_commands
 from .queries import query_commands
 

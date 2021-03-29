@@ -1,17 +1,17 @@
-from app.models import DirectMessage, db
+from app.models import db, DirectMessage
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.forms import DMForm
 
 DM_routes = Blueprint('DM', __name__)
 
-@chat_routes.route("")
+@DM_routes.route("")
 @login_required
 def get_messages():
     messages = DirectMessage.query.all()
     return {"messages": [message.to_dict() for message in messages]}
 
-@chat_routes.route("", methods=["POST"])
+@DM_routes.route("", methods=["POST"])
 @login_required
 def create_message():
     form = CreateChatForm()
@@ -29,7 +29,7 @@ def create_message():
     errors = validation_errors_to_error_messages(form.errors)
     return {"errors": errors}
 
-@chat_routes.route("/<messageId>", methods=["DELETE"])
+@DM_routes.route("/<messageId>", methods=["DELETE"])
 @login_required
 def delete_message(messageId):
     message_to_delete = DirectMessage.query.get(messageId)
