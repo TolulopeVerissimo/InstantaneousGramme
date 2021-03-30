@@ -6,7 +6,7 @@ function PostModal({ edit }) {
 
   return (
     <>
-      <i className="far fa-plus-square navbar__icon" onClick={() => setShowModal(true)} />
+      <i className="far fa-plus-square navbar__icon" />
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <PostForm setShowModal={setShowModal} edit={edit}/>

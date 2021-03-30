@@ -118,3 +118,10 @@ textarea {
   max-height: 100rem;
   margin: 0 auto;
 }
+.postform__closeForm {
+  display: flex;
+  justify-content: flex-end;
+}
+.postform__closeForm i {
+  font-size: 1.6rem;
+}

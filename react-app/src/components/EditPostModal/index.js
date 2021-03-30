@@ -9,8 +9,8 @@ function EditPostModal( { post }) {
     <>
       <i className="fas fa-ellipsis-h navbar__icon" onClick={()=>setShowModal(true)} />
       {showModal &&(
-        <Modal onClose={() => setShowModal(false)}>
-          <PostForm post={post} edit={true}/>
+        <Modal>
+          <PostForm post={post} edit={true} setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

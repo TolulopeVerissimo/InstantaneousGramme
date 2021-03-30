@@ -18,6 +18,11 @@ function PostForm({ edit, post, setShowModal }) {
   if (user) {
     userId = user.id;
   }
+  useEffect(() => {
+    if (post) {
+      setDescription(post.description)
+    }
+  })
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (edit) {
@@ -39,13 +44,16 @@ function PostForm({ edit, post, setShowModal }) {
   const removePost = async (e) => {
     await dispatch(deletePost(post.id));
   };
-  useEffect(() => {
-    if (post) {
-      setDescription(post.description)
-    }
-  })
+
+  const closeWindow = (e) => {
+    e.preventDefault()
+    setShowModal(false);
+  }
   return (
     <div className="postform__container">
+      <div className="postform__closeForm">
+        <i className="fas fa-window-close" onClick={closeWindow}/>
+      </div>
       <h2 className="postform__header">{edit ? "Edit Post" : "New Post"}</h2>
       <form className="postform" onSubmit={handleSubmit}>
       {src && <img className="postform__image" src={src} />}
