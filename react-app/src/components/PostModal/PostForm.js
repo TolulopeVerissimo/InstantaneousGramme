@@ -12,7 +12,7 @@ function PostForm({ edit, post, setShowModal }) {
   const [src, setSrc] = useState('')
   const [photo, setPhoto] = useState('')
   const [description, setDescription] = useState('')
-  const [isPrivate, setIsPrivate] = useState(false)
+  const [isPrivate] = useState(false)
   const user = useSelector(state => state.session.user)
   let userId
   if (user) {
@@ -21,6 +21,7 @@ function PostForm({ edit, post, setShowModal }) {
   useEffect(() => {
     if (post) {
       setDescription(post.description)
+      setSrc(post.imagePath)
     }
   })
   const handleSubmit = async (e) => {
