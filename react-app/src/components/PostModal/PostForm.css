@@ -1,17 +1,10 @@
-#modal-content {
-  border-radius: 1rem;
-}
-.postform {
-  padding: 0.5rem;
-}
-
 .postform__container {
-  width: 70rem;
-  height: 40rem;
+  min-width: 50rem;
+  min-height: 20rem;
   font-size: 1.2rem;
   border-radius: 1rem;
+  padding: 1rem;
 }
-
 .postform__header {
   display: grid;
   width: 100%;
@@ -20,6 +13,10 @@
   align-items: center;
   margin: 2rem auto;
   border-radius: 1rem;
+}
+.postform {
+  display: flex;
+  flex-direction: column;
 }
 textarea {
   display: grid;
@@ -55,16 +52,14 @@ textarea {
 
 .postform__button {
   width: 11rem;
-  height: 3rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  border: 1px solid #ccc;
-  background-color: #5aaef8;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: dodgerblue;
   color: white;
   font-weight: 500;
-  border-radius: 0.6rem;
+  border-radius: 1rem;
   outline: none;
-  padding: 0.7rem;
+  padding: 1rem;
   cursor: pointer;
 }
 
@@ -75,7 +70,7 @@ textarea {
 }
 
 .postform__button:hover {
-  background-color: #0095f6;
+  background-color: #007df6;
 }
 
 .fileInput {
@@ -106,8 +101,10 @@ textarea {
 
 .postform__delete {
   text-align: center;
-  color: #5aaef8;
-  padding-bottom: 1rem;
+  background-color: red;
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 .postform__delete:hover {
