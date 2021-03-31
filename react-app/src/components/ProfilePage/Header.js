@@ -14,7 +14,12 @@ function Header({ profile }) {
                         <img src={profile.profilePicture} alt={profile.username} />
                     </div>
                     <div className="userinfo">
-                        <h2 className="userHandle">{profile.username}</h2>
+                        <div className="userHandle">
+                            <h2 >{profile.username}</h2>
+                            {profile.id !== userId &&
+                            <FollowUser followedUserId={profile.id} />
+                            }
+                        </div>
                         <div className="metrics">
                             <span><span style={{ fontWeight: '700'}}>{profile.postCount}</span> posts</span>
                             <span className="s"></span>
@@ -24,9 +29,7 @@ function Header({ profile }) {
                         </div>
                         <h4>{profile.username}</h4>
                         <p>{profile.biography}</p>
-                        {profile.id !== userId &&
-                        <FollowUser followedUserId={profile.id} />
-                        }
+
                     </div>
                 </div>}
 
