@@ -1,23 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react'
-
-import { useDispatch } from 'react-redux'
-
-import { getProfile } from '../../Store/profile'
-
-import { getFollows } from '../../Store/follow'
-
-import { useParams } from 'react-router-dom'
+import React from 'react'
 import './styles/headers.css'
 function Header({ profile }) {
-
-
-    const [isLoaded, setIsLoaded] = useState(false);
-
-
-    // const item = Object.values(profile)[0]
-    // const profileObj = Object.values(profile)[0]
-
-
     return (
         <>
 
