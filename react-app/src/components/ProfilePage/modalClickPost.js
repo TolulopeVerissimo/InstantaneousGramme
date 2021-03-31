@@ -11,7 +11,6 @@ import './styles/modalClickPost.css'
 
 const ModalPost = ({ post, user }) => {
     const [isLiked, setIsLiked] = useState(false);
-    const posts = useSelector(state => state.posts)
     const dispatch = useDispatch();
 
     const likeHandler = () => {

@@ -1,7 +1,9 @@
 .HeaderMain {
     display: flex;
-    margin-left: 55rem;
-    margin-top: 5rem;
+    padding-top: 4rem;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 5rem;
 }
 .HeaderMain .pfp {
     height: 15rem;
@@ -17,29 +19,46 @@
     background-position: center center;
     background-size: cover;
 }
-
-.HeaderMain .userHandle {
-    margin-left: 10rem;
+.userinfo {
+    display: flex;
+    margin-left: 3rem;
+    font-size: 2.4rem;
+    flex-direction: column;
 }
-.HeaderMain .metrics {
-    position: absolute;
-    margin-top: 5rem;
-    margin-left: 25.2rem;
+.userHandle {
+    display: flex;
+    align-items: center;
 }
-.HeaderMain .s {
-    margin-right: 4rem;
+.userHandle,
+.metrics,
+.userinfo h4,
+.userinfo p {
+    margin-bottom: 1rem;
 }
-.HeaderMain i {
-    position: absolute;
-    margin-left: 55rem;
+.followUser, .unfollowUser {
+    border-color: rgba(var(--d69, 0, 149, 246), 1);
+    background-color: dodgerblue;
+    color: #fff;
+    cursor: pointer;
+    padding: .7rem 1.5rem;
+    border-radius: 0.5rem;
+    margin-left: 1.5rem;
+    outline: none;
 }
-.HeaderMain h4 {
-    position: absolute;
-    margin-top: 10rem;
-    margin-left: -20.5rem;
+.followUser:hover {
+    background-color: #007df6;
+    transform: translateY(.1rem);
 }
-.HeaderMain p {
-    position: absolute;
-    margin-left: -20.5rem;
-    margin-top: 13rem;
+.unfollowUser {
+    background-color: red;
+}
+.unfollowUser:hover {
+    background-color: #cc0000;
+    transform: translateY(.1rem);
+}
+.metrics span {
+    font-size: 2rem;
+}
+.s {
+    margin: 3rem;
 }
