@@ -41,3 +41,12 @@
   background-color: #007df6;
   transform: translateY(.1rem);
 }
+.errors {
+  width: 100%;
+  text-align: center;
+}
+
+.errors li {
+  color: red;
+  font-weight: 600;
+}
