@@ -4,12 +4,9 @@
     display: inline-block;
     border-radius: 3rem;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
-    margin: 1rem 0;
-    padding: 2rem;
     height: 25rem;
     width: 25rem;
-    margin-left: 3rem;
-    margin-top: 2rem;
+    margin-bottom: 4rem;
 }
 .card {
     height: 100%;
@@ -19,7 +16,6 @@
 .card figure {
     position: relative;
     margin: 0;
-    /* z-index: 1; */
     height: 100%;
     width: 100%;
 }
@@ -34,11 +30,6 @@
     border-radius: 1rem;
     border-color: 5px solid silver;
 }
-/* .card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-} */
 figure::after {
     content: '';
     display: block;
@@ -53,11 +44,3 @@ figure::after {
     filter: blur(1rem);
 }
 
-.followUser {
-    color: #0095f6;
-    font-weight: bolder;
-    margin-top: -1rem;
-    /* background-color: #0095f6; */
-    /* color: white; */
-    /* font-weight: 500; */
-}

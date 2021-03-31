@@ -5,7 +5,6 @@ import SmallPost from './SmallPost'
 import { getProfile } from '../../Store/profile'
 import { getPosts } from '../../Store/posts'
 import { useParams } from 'react-router-dom'
-import FollowUser from '../FollowUser'
 import './styles/Profile.css'
 import { getFollowers } from '../../Store/follow.js'
 
@@ -36,13 +35,8 @@ function Profile() {
 	return (
 		<>
 			{ loaded &&
-				<div>
+				<div id="profile">
 					< Header profile={profiles[id]} />
-
-					<div className="moveTheFollowButton">
-						<FollowUser followedUserId={id} />
-					</div>
-
 					<div className="gridContainer">
 						{userPosts &&
 							userPosts.map((post) => <SmallPost post={post} key={post.id} user={user} />)

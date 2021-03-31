@@ -1,7 +1,9 @@
 .HeaderMain {
     display: flex;
-    margin-left: 55rem;
-    margin-top: 5rem;
+    padding-top: 4rem;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 4rem;
 }
 .HeaderMain .pfp {
     height: 15rem;
@@ -42,4 +44,18 @@
     position: absolute;
     margin-left: -20.5rem;
     margin-top: 13rem;
+}
+
+.followUser, .unfollowUser {
+    border-color: rgba(var(--d69, 0, 149, 246), 1);
+    background-color: #0095f6;
+    color: #fff;
+    cursor: pointer;
+    padding: .7rem 1.5rem;
+    border-radius: 0.5rem;
+    margin-left: 1.5rem;
+}
+
+.unfollowUser {
+    background-color: red;
 }

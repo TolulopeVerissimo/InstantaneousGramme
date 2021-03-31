@@ -1,24 +1,21 @@
-.gridContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 35%);
+#profile {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 6rem;
     box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
-    grid-gap: 0.5rem;
-    align-items: center;
-    width: 66%;
-    margin-left: 30rem;
-    margin-top: 10rem;
-}
-.moveTheFollowButton {
-    position: absolute;
-    margin-left: 60%;
-    margin-top: -7.6%;
 }
 
-.moveTheFollowButton button {
-    border-color: rgba(var(--d69, 0, 149, 246), 1);
-    background-color: #0095f6;
-    color: #fff;
-    cursor: pointer;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-gap: 0.5rem;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .gridContainer {
+        grid-template-columns: repeat(3, 35%);
+    }
 }
