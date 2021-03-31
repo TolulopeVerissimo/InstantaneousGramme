@@ -26,18 +26,16 @@ function StationarySide() {
         <div className='follow__suggestions'>
           {isLoaded &&
             suggestedUsers.map((user) => (
-              <>
-                <div className='suggestion__profile' key={user.id}>
-                  <div className='suggestion__pic'>
-                    <img src={user.profilePicture} alt='profile pic' />
-                  </div>
-                  <div>
-                    <div className='suggestion__username'>
-                      <a href={`/profile/${user.id}`}>{user.username}</a>
-                    </div>
+              <div className='suggestion__profile' key={user.id}>
+                <div className='suggestion__pic'>
+                  <img src={user.profilePicture} alt='profile pic' />
+                </div>
+                <div>
+                  <div className='suggestion__username'>
+                    <a href={`/profile/${user.id}`}>{user.username}</a>
                   </div>
                 </div>
-              </>
+              </div>
             ))}
         </div>
         <div className='side__items'>
@@ -45,8 +43,8 @@ function StationarySide() {
             <ul>
               {sideItems.map((item, idx) => {
                 return (
-                  <li>
-                    <div key={idx} className='side__item item-text'>
+                  <li key={idx}>
+                    <div className='side__item item-text'>
                       <a href={item.path}>{item.title}</a>
                     </div>
                   </li>

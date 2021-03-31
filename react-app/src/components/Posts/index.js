@@ -1,31 +1,48 @@
-import React, { useEffect, useState } from "react";
-import { useSelector,useDispatch } from "react-redux";
-import Comments from "../Comments";
-import CommentForm from "../Comments/CommentForm";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import InfiniteScroll from "react-infinite-scroller";
 
 import Post from "./Post";
 import "./posts.css";
 
-const Posts = () => {
+const Posts = ({ posts }) => {
   const user = useSelector((state) => state.session.user);
-  const posts = useSelector((state) =>
-    Object.values(state.posts).filter((post) => post.userId !== user.id)
-  );
+  posts = posts.filter((post) => post.userId !== user.id);
 
-  const [isLoaded, setIsLoaded] = useState(false);
-  const dispatch = useDispatch();
+  const [count, setCount] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+  const [postsToDisplay, setPostsToDisplay] = useState([]);
 
-
-  useEffect(() => {
-    if (posts && user) setIsLoaded(true);
-  }, [posts, user]);
+  const loadFunc = () => {
+    const newPosts = [...postsToDisplay];
+    for (let i = count; i < count + 10; i++) {
+      if (!posts[i]) {
+        setHasMore(false);
+        break;
+      }
+      newPosts.push(posts[i]);
+    }
+    setCount((count) => count + 10);
+    setPostsToDisplay(newPosts);
+  };
 
   return (
     <>
-      {isLoaded &&
-        posts.map((post) => (
+      <InfiniteScroll
+        hasMore={hasMore}
+        loadMore={loadFunc}
+        loader={
+          <div className='loader' key={0}>
+            Loading ...
+          </div>
+        }
+      >
+        {postsToDisplay &&
+          user &&
+          postsToDisplay.map((post) => (
             <Post key={post.id} post={post} user={user} />
-        ))}
+          ))}
+      </InfiniteScroll>
     </>
   );
 };
