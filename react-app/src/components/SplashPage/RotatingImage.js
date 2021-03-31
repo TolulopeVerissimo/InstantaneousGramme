@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
+import splash1 from './images/splash1.jpg'
+import splash2 from './images/splash2.jpg'
+import splash3 from './images/splash3.jpg'
+import splash4 from './images/splash4.jpg'
 export default function RotatingImage() {
   let imgArr =
         [
-            "https://i.imgflip.com/4howsd.jpg",
-            "https://i.kym-cdn.com/photos/images/newsfeed/001/591/675/a27.png",
-            "https://starecat.com/content/wp-content/uploads/pope-francis-punch-man-with-damaged-face-photoshopped.jpg",
-            "https://i.kym-cdn.com/entries/icons/original/000/027/269/Screen_Shot_2018-09-28_at_3.14.37_PM.png"
+            splash1,
+            splash2,
+            splash3,
+            splash4
         ]
   function useInterval(callback, delay) {
     const savedCallback = useRef();
