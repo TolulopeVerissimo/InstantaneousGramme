@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import InfiniteScroll from "react-infinite-scroller";
-import Comments from "../Comments";
-import CommentForm from "../Comments/CommentForm";
 
 import Post from "./Post";
 import "./posts.css";
@@ -21,24 +19,27 @@ const Posts = () => {
 
   const loadFunc = () => {
     //need to check for end of posts
+    const newPosts = [];
     for (let i = 0; i < 10; i++) {
-      postsToDisplay.push(posts[count]);
+      if (count >= posts.length) {
+        console.log("count over posts length");
+        setHasMore(false);
+        return;
+      }
+      newPosts.push(posts[count]);
       count++;
     }
-    console.log(count, postsToDisplay);
+    setPostsToDisplay(newPosts);
   };
 
   useEffect(() => {
     if (posts) {
-      for (let i = 0; i < 10; i++) {
-        postsToDisplay.push(posts[count]);
-        count++;
-      }
+      loadFunc();
     }
-  }, [posts]);
+  });
 
   useEffect(() => {
-    if (postsToDisplay && user) setIsLoaded(true);
+    if (postsToDisplay.length && user) setIsLoaded(true);
   }, [postsToDisplay, user]);
 
   return (
