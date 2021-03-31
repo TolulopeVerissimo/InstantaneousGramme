@@ -73,16 +73,21 @@
   background-color: #ffff;
 }
 .Demo-Login input[type="submit"] {
-  background-color: lawngreen;
+  background-color: #00964c;
   width: 80%;
   height: 3rem;
   margin-left: 3.3rem;
   border: 1px solid #ccc;
   color: #ffff;
-  font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: 600;
   border-radius: 6px;
   outline:none;
   cursor: pointer;
+}
+.Demo-Login input[type="submit"]:hover {
+  transform: translateY(.1rem);
+  background-color: #006332;
 }
 .wordSeperator {
   display: flex;
