@@ -15,7 +15,6 @@ function Header({ profile }) {
                     </div>
                     <div className="userinfo">
                         <h2 className="userHandle">{profile.username}</h2>
-                        {/* <i style={{ fontSize: '3.2rem' }} class="fas fa-cog"></i> */}
                         <div className="metrics">
                             <span><span style={{ fontWeight: '700'}}>{profile.postCount}</span> posts</span>
                             <span className="s"></span>
@@ -23,8 +22,8 @@ function Header({ profile }) {
                             <span className="s"></span>
                             <span><span style={{ fontWeight: '700'}}>{profile.followingCount}</span> following</span>
                         </div>
-                        <div><h4>{profile.username}</h4></div>
-                        <div><p>{profile.biography}</p></div>
+                        <h4>{profile.username}</h4>
+                        <p>{profile.biography}</p>
                         {profile.id !== userId &&
                         <FollowUser followedUserId={profile.id} />
                         }

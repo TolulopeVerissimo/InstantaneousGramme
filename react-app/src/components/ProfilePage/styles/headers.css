@@ -3,7 +3,7 @@
     padding-top: 4rem;
     width: 50%;
     margin: 0 auto;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
 }
 .HeaderMain .pfp {
     height: 15rem;
@@ -19,33 +19,18 @@
     background-position: center center;
     background-size: cover;
 }
-
 .userinfo {
     display: flex;
     margin-left: 3rem;
+    font-size: 2.4rem;
+    flex-direction: column;
 }
-.HeaderMain .metrics {
-    position: absolute;
-    margin-top: 5rem;
+.userHandle,
+.metrics,
+.userinfo h4,
+.userinfo p {
+    margin-bottom: 1rem;
 }
-.HeaderMain .s {
-    margin-right: 4rem;
-}
-.HeaderMain i {
-    position: absolute;
-    margin-left: 55rem;
-}
-.HeaderMain h4 {
-    position: absolute;
-    margin-top: 10rem;
-    margin-left: -20.5rem;
-}
-.HeaderMain p {
-    position: absolute;
-    margin-left: -20.5rem;
-    margin-top: 13rem;
-}
-
 .followUser, .unfollowUser {
     border-color: rgba(var(--d69, 0, 149, 246), 1);
     background-color: #0095f6;
@@ -55,7 +40,12 @@
     border-radius: 0.5rem;
     margin-left: 1.5rem;
 }
-
 .unfollowUser {
     background-color: red;
+}
+.metrics span {
+    font-size: 2rem;
+}
+.s {
+    margin: 3rem;
 }
