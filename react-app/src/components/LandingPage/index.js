@@ -21,7 +21,7 @@ const LandingPage = () => {
     <>
       <div className='landing__container'>
         <div className='posts__feed'>
-          <Posts posts={posts} />
+          {posts.length !== 0 && <Posts posts={posts} />}
         </div>
         <div>
           <StationarySide />

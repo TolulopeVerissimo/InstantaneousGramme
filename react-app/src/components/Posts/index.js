@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroller";
 
 import Post from "./Post";
@@ -12,16 +12,13 @@ const Posts = ({ posts }) => {
   const [count, setCount] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [postsToDisplay, setPostsToDisplay] = useState([]);
-  // const postsToDisplay = []
 
   const loadFunc = () => {
-    //need to check for end of posts
     const newPosts = [...postsToDisplay];
     for (let i = count; i < count + 10; i++) {
-      if (count + 10 >= posts.length) {
-        console.log("count over posts length");
+      if (!posts[i]) {
         setHasMore(false);
-        return;
+        break;
       }
       newPosts.push(posts[i]);
     }
