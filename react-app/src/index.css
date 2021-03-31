@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 html {
   font-size: 62.5%;
 }
@@ -5,6 +7,7 @@ body {
   font-size: 16px;
   font-size: 1.6rem;
   background:rgba(var(--d87,255,255,255),1);
+  font-family: "Lato", sans-serif;
 }
 * {
     margin: 0;

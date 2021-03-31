@@ -19,7 +19,6 @@ def posts():
 @post_routes.route('/', methods=['POST'])
 def new_post():
     data = request.get_json()
-    print(data)
     description = data['description']
     private = data['isPrivate']
     imagePath = data['url']
@@ -28,7 +27,7 @@ def new_post():
                     imagePath=imagePath, userId=userId)
     db.session.add(new_post)
     db.session.commit()
-    return(data)
+    return(new_post.to_dict())
 
 
 @post_routes.route('/<int:id>')
