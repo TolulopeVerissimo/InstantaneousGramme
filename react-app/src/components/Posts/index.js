@@ -36,7 +36,7 @@ const Posts = () => {
     if (posts) {
       loadFunc();
     }
-  });
+  }, [posts]);
 
   useEffect(() => {
     if (postsToDisplay.length && user) setIsLoaded(true);
