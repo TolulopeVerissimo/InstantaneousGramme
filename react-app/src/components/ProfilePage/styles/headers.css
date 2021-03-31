@@ -20,13 +20,13 @@
     background-size: cover;
 }
 
-.HeaderMain .userHandle {
-    margin-left: 10rem;
+.userinfo {
+    display: flex;
+    margin-left: 3rem;
 }
 .HeaderMain .metrics {
     position: absolute;
     margin-top: 5rem;
-    margin-left: 25.2rem;
 }
 .HeaderMain .s {
     margin-right: 4rem;

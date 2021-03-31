@@ -8,14 +8,16 @@
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(4, 25%);
-    grid-gap: 0.5rem;
     align-items: center;
     width: 90%;
     margin: 0 auto;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .gridContainer {
         grid-template-columns: repeat(3, 35%);
+    }
+    #profile {
+        width: 100%
     }
 }

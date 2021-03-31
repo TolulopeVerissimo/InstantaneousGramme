@@ -4,8 +4,8 @@
     display: inline-block;
     border-radius: 3rem;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
-    height: 25rem;
-    width: 25rem;
+    height: 20rem;
+    width: 20rem;
     margin-bottom: 4rem;
 }
 .card {
@@ -44,3 +44,9 @@ figure::after {
     filter: blur(1rem);
 }
 
+@media screen and (max-width: 900px) {
+    .ppContainer {
+        width: 15rem;
+        height: 15rem;
+    }
+}
