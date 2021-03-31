@@ -5,42 +5,29 @@ import InfiniteScroll from "react-infinite-scroller";
 import Post from "./Post";
 import "./posts.css";
 
-const Posts = () => {
+const Posts = ({ posts }) => {
   const user = useSelector((state) => state.session.user);
-  const posts = useSelector((state) =>
-    Object.values(state.posts).filter((post) => post.userId !== user.id)
-  );
+  posts = posts.filter((post) => post.userId !== user.id);
 
-  let count = 0;
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [count, setCount] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [postsToDisplay, setPostsToDisplay] = useState([]);
-  const dispatch = useDispatch();
+  // const postsToDisplay = []
 
   const loadFunc = () => {
     //need to check for end of posts
-    const newPosts = [];
-    for (let i = 0; i < 10; i++) {
-      if (count >= posts.length) {
+    const newPosts = [...postsToDisplay];
+    for (let i = count; i < count + 10; i++) {
+      if (count + 10 >= posts.length) {
         console.log("count over posts length");
         setHasMore(false);
         return;
       }
-      newPosts.push(posts[count]);
-      count++;
+      newPosts.push(posts[i]);
     }
+    setCount((count) => count + 10);
     setPostsToDisplay(newPosts);
   };
-
-  useEffect(() => {
-    if (posts) {
-      loadFunc();
-    }
-  }, [posts]);
-
-  useEffect(() => {
-    if (postsToDisplay.length && user) setIsLoaded(true);
-  }, [postsToDisplay, user]);
 
   return (
     <>
@@ -53,7 +40,8 @@ const Posts = () => {
           </div>
         }
       >
-        {isLoaded &&
+        {postsToDisplay &&
+          user &&
           postsToDisplay.map((post) => (
             <Post key={post.id} post={post} user={user} />
           ))}
