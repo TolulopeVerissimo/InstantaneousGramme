@@ -33,5 +33,5 @@
         "terminal.ansiWhite": "#B5B3AA",
         "terminal.ansiYellow": "#FFFFB6"
     },
-    "window.title": " ⚡💻 ${folderName} 💻   ⚡"
+    "window.title": " ⚡💻 ${folderName} 💻   ⚡ ${separator} [Branch: comments_actions]"
 }

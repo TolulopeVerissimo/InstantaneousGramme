@@ -1,7 +1,7 @@
 
 const SET_COMMENTS = 'COMMENTS/SET_COMMENTS';
 const CREATE_COMMENTS = 'COMMENTS/CREATE_COMMENTS';
-const REMOVE_COMMENTS = 'COMMENTS/REMOVE_COMMENTS';
+const REMOVE_COMMENT = 'COMMENTS/REMOVE_COMMENT';
 
 const setComments = (comments) => {
     return {
@@ -16,9 +16,9 @@ const createComments = (comments) => {
         comments
     }
 }
-const removeComments = (id) => {
+const removeComment = (id) => {
     return {
-        type: REMOVE_COMMENTS,
+        type: REMOVE_COMMENT,
         id
     }
 }
@@ -66,12 +66,14 @@ export const updateCOMMENTS = ({ id, name, }) => async (dispatch) => {
     return response.data.COMMENTS;
 };
 
-export const deleteComments = (id) => async (dispatch) => {
-    await dispatch(removeComments(id));
-    const response = await fetch(`/api/users/COMMENTS/${id}`, {
+export const deleteComment = (id) => async (dispatch) => {
+    await dispatch(removeComment(id));
+    const res = await fetch(`/api/comments/${id}`, {
         method: 'DELETE',
     });
-    return response.data.message;
+    if (res.ok) {
+        
+    }
 };
 
 const initialState = {};
@@ -87,7 +89,7 @@ const commentsReducer = (state = initialState, action) => {
 
         case CREATE_COMMENTS:
             return { ...state, [action.comments.id]: action.comments };
-        case REMOVE_COMMENTS:
+        case REMOVE_COMMENT:
             const newState = { ...state };
             delete newState[action.id];
             return newState;

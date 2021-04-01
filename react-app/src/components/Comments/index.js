@@ -2,14 +2,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import './dropdown.css'
 import "./comments.css";
-import { useSelector } from 'react-redux'
-import {useDetectOutsideClick} from "../../services/detectOutsideClick"
+import { useSelector, useDispatch } from 'react-redux'
+import { useDetectOutsideClick } from "../../services/detectOutsideClick"
+import {editComment, deleteComment} from '../../Store/comments'
 
 
 
 const Comments = (props) => {
 
-
+  const dispatch = useDispatch()
 
   const comments = useSelector((state) => {
     return Object.values(state.comments).filter(
@@ -22,7 +23,9 @@ const Comments = (props) => {
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
   const onClick = () => setIsActive(!isActive);
 
-
+  const removeComment = async (commentId) => {
+    await dispatch(deleteComment(commentId));
+  };
 
   const [isLoaded,setIsLoaded] = useState(false)
   useEffect(() => {
@@ -46,7 +49,7 @@ const Comments = (props) => {
           >
             <ul>
               <li>
-                <div className=''  >Delete</div>
+                <div className='' onClick={()=>removeComment(comment.id)}  >Delete</div>
               </li>
               <li>
                 <div className='' >Edit</div>

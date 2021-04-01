@@ -39,3 +39,11 @@ def new_comment():
     db.session.commit()
 
     return new_comment.to_dict()
+
+@comment_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_post(id):
+    Comment = Comment.query.get(id)
+    db.session.delete(Comment)
+    db.session.commit()
+    return 'Comment Deleted'
