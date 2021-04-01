@@ -7,7 +7,7 @@ import { editComment, deleteComment } from "../../Store/comments";
 
 const Comments = (props) => {
   const dispatch = useDispatch();
-  const [activeElement, setActiveElement] = useState("");
+  let activeElement
 
 	const comments = useSelector((state) => {
 		return Object.values(state.comments).filter(
@@ -16,12 +16,20 @@ const Comments = (props) => {
 	});
 	const user = useSelector((state) => state.session.user);
 
+  const handleEnter = (e) => {
+
+    if (e.key === "Enter") alert('enter')
+  }
   
   const showDropMenu = (comment, user) => {
     if (comment.userId !== user.id) return
-    let droppedElement = document.querySelector(`#comment-${comment.id}`)
-    droppedElement.classList.add('active')
-    console.log(comment,droppedElement)
+    // let droppedElement = document.querySelector(`#comment-${comment.id}`)
+    activeElement = document.querySelector(`#comment-${comment.id}`)
+
+    // droppedElement.classList.add('active')
+    activeElement.classList.add('active')
+    console.log(activeElement)
+    // console.log(comment,droppedElement)
     // setIsActive(!isActive);
   }
   // const dropdownRef = useRef(null);
@@ -37,11 +45,14 @@ const Comments = (props) => {
 	}, [comments, user]);
 
 	const editActionHandler = (e, comment) => {
-    console.log(comment)
-    let editableElement = document.getElementById(`comment-${comment.id}`)
-    console.log(editableElement)
-    editableElement.setAttribute("contenteditable", true);
-    editableElement.focus()
+    // console.log(comment)
+    // let editableElement = document.getElementById(`comment-${comment.id}`)
+    // console.log(editableElement)
+    // editableElement.setAttribute("contenteditable", true);
+    // editableElement.focus()
+    activeElement.setAttribute("contenteditable", true);
+    activeElement.classList.add('highlight')
+    activeElement.focus()
 	};
 	return (
 		<>
@@ -55,7 +66,8 @@ const Comments = (props) => {
                 id={`comment-${comment.id}`}
 								className="comment__content menu-trigger"
 								suppressContentEditableWarning="true"
-								contentEditable='false'
+                contentEditable='false'
+                onKeyPress={handleEnter}
 								onClick={() => showDropMenu(comment,user)}
 							>
 								{comment.content}
@@ -76,7 +88,8 @@ const Comments = (props) => {
 														<div
 															className=""
 															suppressContentEditableWarning="true"
-															contentEditable="false"
+                              contentEditable="false"
+                              
 															onClick={() => removeComment(comment.id)}
 														>
 															Delete
