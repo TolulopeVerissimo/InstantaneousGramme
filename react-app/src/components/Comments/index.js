@@ -3,10 +3,19 @@ import "./dropdown.css";
 import "./comments.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useDetectOutsideClick } from "../../services/detectOutsideClick";
-import { editComment, deleteComment } from "../../Store/comments";
+import { updateComments, deleteComment } from "../../Store/comments";
+import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
+import redHeart from "../../images/icons/insta_heart_red_icon.png";
 
 const Comments = (props) => {
+  const [isLiked, setIsLiked] = useState(false);
   const dispatch = useDispatch();
+
+  const likeHandler = () => {
+    // const like = { userId: user.id, postId: post.id };
+    setIsLiked(!isLiked);
+    // dispatch(postLike(like));
+  };
   let activeElement
 
 	const comments = useSelector((state) => {
@@ -18,8 +27,11 @@ const Comments = (props) => {
 
   const handleEnter = async(e,commentId) => {
     console.log(commentId)
-    if (e.key === "Enter") alert('enter')
-      await dispatch(editComment(commentId));
+    let content = activeElement.firstChild.nodeValue
+    if (e.key === "Enter") {
+      e.preventDefault()
+      await dispatch(updateComments(commentId, content));
+    }
   }
   
   const showDropMenu = (comment, user) => {
@@ -45,12 +57,8 @@ const Comments = (props) => {
 		if (comments && user) setIsLoaded(true);
 	}, [comments, user]);
 
-	const editActionHandler = (e, comment) => {
-    // console.log(comment)
-    // let editableElement = document.getElementById(`comment-${comment.id}`)
-    // console.log(editableElement)
-    // editableElement.setAttribute("contenteditable", true);
-    // editableElement.focus()
+  const editActionHandler = (e, comment) => {
+    
     activeElement.setAttribute("contenteditable", true);
     activeElement.classList.add('highlight')
     activeElement.focus()
@@ -78,11 +86,7 @@ const Comments = (props) => {
 											<nav
 												// ref={dropdownRef}
                         className={`menu abs 
-                       `
-                      //  ${
-                      //   isActive ? "active" : "inactive"
-                      // }
-                      }
+                       `}
 											>
 												<ul>
 													<li>
@@ -110,20 +114,15 @@ const Comments = (props) => {
 											</nav>
 										</>
 									)
-									//   <nav
-									//   ref={dropdownRef}
-									//   className={`menu abs ${isActive ? "active" : "inactive"}`}
-									// >
-									//   <ul>
-									//     <li>
-									//       <div className=''  suppressContentEditableWarning='true' contentEditable='false' onClick={()=>removeComment(comment.id)}  >Delete</div>
-									//     </li>
-									//     <li>
-									//       <div className='' suppressContentEditableWarning='true' contentEditable='false'  onClick={(e)=>editActionHandler(e)} >Edit</div>
-									//     </li>
-									//   </ul>
-									// </nav>
-								}
+								
+                }
+                        <div className='post__icon'>
+          <img
+            src={isLiked ? redHeart : blankHeart}
+            alt='post like button'
+            onClick={() => likeHandler()}
+          />
+        </div>
 							</div>
 						</div>
 					</div>

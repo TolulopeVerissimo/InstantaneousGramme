@@ -59,7 +59,7 @@ export const createComment = (userId, postId, content) => async (dispatch) => {
 
 };
 
-export const updateComments = ({id, content}) => async (dispatch) => {
+export const updateComments = (commentId, content) => async (dispatch) => {
 
     const options =
     {
@@ -69,10 +69,11 @@ export const updateComments = ({id, content}) => async (dispatch) => {
       },
       body: JSON.stringify({ content })
     }
-    const res = await fetch(`/api/comments/${id}`, options)
+    const res = await fetch(`/api/comments/${commentId}`, options)
     if (!res.ok) alert('issue')
     const data = await res.json()
-    dispatch(setComments[data])
+    console.log(data)
+    // dispatch(setComments[data])
 };
 
 export const deleteComment = (id) => async (dispatch) => {
