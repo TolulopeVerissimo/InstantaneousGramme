@@ -17,7 +17,6 @@ export default function CommentContent({ comment }) {
     const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
 
     const profileRedirect = () => {
-        console.log(comment)
         history.push(`profile/${comment.userId}`)
 
     }
@@ -32,11 +31,9 @@ export default function CommentContent({ comment }) {
 
 
     const handleEnter = async(e,commentId) => {
-        // console.log(commentId)
         activeElement = document.querySelector(`#comment-${comment.id}`)
 
         let content = activeElement.firstChild.nodeValue
-        console.log(content)
         if (e.key === "Enter") {
           e.preventDefault()
             await dispatch(updateComments(commentId, content));
@@ -49,10 +46,6 @@ export default function CommentContent({ comment }) {
           if (comment.userId !== user.id) return
         setIsActive(!isActive);
         activeElement = document.querySelector(`#comment-${comment.id}`)
-    
-        // activeElement.classList.add('active')
-        console.log(activeElement)
-    
       }
       const removeComment = async (commentId) => {
 		await dispatch(deleteComment(commentId));
@@ -87,7 +80,6 @@ export default function CommentContent({ comment }) {
                                 <nav
                                     ref={dropdownRef}
                                     className={`menu abs ${isActive ? "active" : "inactive"}`}
-                                    // className={`menu abs`}
                                 >
                                         <ul>
                                             <li>

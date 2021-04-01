@@ -72,8 +72,7 @@ export const updateComments = (commentId, content) => async (dispatch) => {
     const res = await fetch(`/api/comments/${commentId}`, options)
     if (!res.ok) alert('issue')
     const data = await res.json()
-    console.log(data)
-    // dispatch(setComments[data])
+
 };
 
 export const deleteComment = (id) => async (dispatch) => {

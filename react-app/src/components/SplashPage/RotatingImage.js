@@ -13,11 +13,9 @@ export default function RotatingImage() {
         ]
   function useInterval(callback, delay) {
     const savedCallback = useRef();
-    // Remember the latest callback.
     useEffect(() => {
         savedCallback.current = callback;
     }, [callback]);
-    // Set up the interval.
     useEffect(() => {
         let id = setInterval(() => {
             savedCallback.current();
