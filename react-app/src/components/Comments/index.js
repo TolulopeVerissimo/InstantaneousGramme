@@ -6,8 +6,8 @@ import { useDetectOutsideClick } from "../../services/detectOutsideClick";
 import { editComment, deleteComment } from "../../Store/comments";
 
 const Comments = (props) => {
-	const dispatch = useDispatch();
-	const [editable, setEditable] = useState(false);
+  const dispatch = useDispatch();
+  const [activeElement, setActiveElement] = useState("");
 
 	const comments = useSelector((state) => {
 		return Object.values(state.comments).filter(
@@ -17,12 +17,15 @@ const Comments = (props) => {
 	const user = useSelector((state) => state.session.user);
 
   
-  const showDropMenu = (comment,user) => {
-    if(comment.userId !== user.id) return
-    setIsActive(!isActive);
+  const showDropMenu = (comment, user) => {
+    if (comment.userId !== user.id) return
+    let droppedElement = document.querySelector(`#comment-${comment.id}`)
+    droppedElement.classList.add('active')
+    console.log(comment,droppedElement)
+    // setIsActive(!isActive);
   }
-  const dropdownRef = useRef(null);
-  const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
+  // const dropdownRef = useRef(null);
+  // const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
 
 	const removeComment = async (commentId) => {
 		await dispatch(deleteComment(commentId));
@@ -38,6 +41,7 @@ const Comments = (props) => {
     let editableElement = document.getElementById(`comment-${comment.id}`)
     console.log(editableElement)
     editableElement.setAttribute("contenteditable", true);
+    editableElement.focus()
 	};
 	return (
 		<>
@@ -56,13 +60,16 @@ const Comments = (props) => {
 							>
 								{comment.content}
 								{
-									comment.userId === user.id && (
+									comment.userId === user.id &&  (
 										<>
 											<nav
-												ref={dropdownRef}
-												className={`menu abs ${
-													isActive ? "active" : "inactive"
-												}`}
+												// ref={dropdownRef}
+                        className={`menu abs 
+                       `
+                      //  ${
+                      //   isActive ? "active" : "inactive"
+                      // }
+                      }
 											>
 												<ul>
 													<li>

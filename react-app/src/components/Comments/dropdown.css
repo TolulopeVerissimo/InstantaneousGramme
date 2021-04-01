@@ -57,10 +57,23 @@
     z-index: 34
   }
   
-  .menu.active {
+  /* .menu.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+
+  } */
+
+  .comment__content.active nav {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+  }
+
+
+  .comment__content.active {
+    background-color: yellow;
   }
   
   .menu ul {
