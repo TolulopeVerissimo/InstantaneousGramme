@@ -3,14 +3,13 @@
 
 }
 .commentLikeContainer{
-  display:inline-block;
-  align-items: right;
-  margin-left: 30rem;
+
+  margin-left: 45rem;
 }
 
 .comments__user-comment {
   font-size: 1.4rem;
-  position: relative
+  position: absolute
 }
 
 .comment__username {

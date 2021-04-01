@@ -3,7 +3,7 @@ from flask_login import login_required
 from app.models import db, CommentLike
 
 
-commentLike_routes = Blueprint('commentLike', __name__)
+commentLike_routes = Blueprint('commentLikes', __name__)
 
 
 @commentLike_routes.route('/', methods=['POST'])

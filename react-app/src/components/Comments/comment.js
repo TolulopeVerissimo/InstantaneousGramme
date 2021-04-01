@@ -4,6 +4,7 @@ import {useDetectOutsideClick} from "../../services/detectOutsideClick"
 import { updateComments, deleteComment } from "../../Store/comments";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 import redHeart from "../../images/icons/insta_heart_red_icon.png";
+import { commentLike } from '../../Store/commentLike'
 
 
 export default function CommentContent({ comment }) {
@@ -17,9 +18,9 @@ export default function CommentContent({ comment }) {
 
 
     const likeHandler = () => {
-        // const like = { userId: user.id, postId: post.id };
+        const like = { userId: user.id, commentId: comment.id };
         setIsLiked(!isLiked);
-        // dispatch(postLike(like));
+        dispatch(commentLike(like));
       };
       let activeElement
 
