@@ -2,6 +2,7 @@
 const SET_COMMENTS = 'COMMENTS/SET_COMMENTS';
 const CREATE_COMMENTS = 'COMMENTS/CREATE_COMMENTS';
 const REMOVE_COMMENT = 'COMMENTS/REMOVE_COMMENT';
+const UPDATE_COMMENT = "posts/UPDATE_COMMENT";
 
 const setComments = (comments) => {
     return {
@@ -9,6 +10,13 @@ const setComments = (comments) => {
         comments,
     };
 };
+
+const updateComment = (comment) => {
+    return {
+      type: UPDATE_COMMENT,
+      comment,
+    };
+  };
 
 const createComments = (comments) => {
     return {
@@ -51,19 +59,20 @@ export const createComment = (userId, postId, content) => async (dispatch) => {
 
 };
 
-export const updateCOMMENTS = ({ id, name, }) => async (dispatch) => {
-    const formData = new FormData();
-    formData.append('name', name);
+export const updateComments = ({userId, postId, content}) => async (dispatch) => {
 
-    const response = await fetch(`/api/users/${id}/COMMENTS/`, {
-        method: 'PUT',
-        body: formData,
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        },
-    });
-    dispatch(createComments(response.data.COMMENTS));
-    return response.data.COMMENTS;
+    const options =
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify({ userId, postId, content })
+    }
+    const res = await fetch('/api/comments/', options)
+    if (!res.ok) alert('issue')
+    const data = await res.json()
+    dispatch(setComments[data])
 };
 
 export const deleteComment = (id) => async (dispatch) => {
