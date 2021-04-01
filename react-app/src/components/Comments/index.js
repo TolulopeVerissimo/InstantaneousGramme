@@ -31,13 +31,13 @@ const Comments = (props) => {
 	const [isLoaded, setIsLoaded] = useState(false);
 	useEffect(() => {
 		if (comments && user) setIsLoaded(true);
-		console.log(user);
 	}, [comments, user]);
 
 	const editActionHandler = (e, comment) => {
-		setEditable(true);
-		console.log(e.target);
-		console.log(comment);
+    console.log(comment)
+    let editableElement = document.getElementById(`comment-${comment.id}`)
+    console.log(editableElement)
+    editableElement.setAttribute("contenteditable", true);
 	};
 	return (
 		<>
@@ -47,10 +47,11 @@ const Comments = (props) => {
 					<div className="comments__container menu-container">
 						<div className="comments__user-comment">
 							<div className="comment__username">{comment.username}</div>
-							<div
+              <div
+                id={`comment-${comment.id}`}
 								className="comment__content menu-trigger"
 								suppressContentEditableWarning="true"
-								contentEditable={editable}
+								contentEditable='false'
 								onClick={() => showDropMenu(comment,user)}
 							>
 								{comment.content}
@@ -79,7 +80,7 @@ const Comments = (props) => {
 															className=""
 															suppressContentEditableWarning="true"
 															contentEditable="false"
-															onClick={(e) => editActionHandler(e)}
+															onClick={(e) => editActionHandler(e,comment)}
 														>
 															Edit
 														</div>
