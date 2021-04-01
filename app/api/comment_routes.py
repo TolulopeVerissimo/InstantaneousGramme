@@ -47,3 +47,16 @@ def delete_post(id):
     db.session.delete(comment)
     db.session.commit()
     return 'Comment Deleted'
+
+@comment_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_comment(id):
+ data = request.get_json() 
+    comment = Comment.query.get(id)
+    content = data['content']
+    # userId = data['userId']
+    new_comment = Comment(userId=userId, postId=postId, content=content)
+    db.session.add(new_comment)
+    db.session.commit()
+
+    return new_comment.to_dict()

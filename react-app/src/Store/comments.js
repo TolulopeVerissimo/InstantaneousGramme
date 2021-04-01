@@ -59,17 +59,17 @@ export const createComment = (userId, postId, content) => async (dispatch) => {
 
 };
 
-export const updateComments = ({userId, postId, content}) => async (dispatch) => {
+export const updateComments = ({id, content}) => async (dispatch) => {
 
     const options =
     {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'Application/json'
       },
-      body: JSON.stringify({ userId, postId, content })
+      body: JSON.stringify({ content })
     }
-    const res = await fetch('/api/comments/', options)
+    const res = await fetch(`/api/comments/${id}`, options)
     if (!res.ok) alert('issue')
     const data = await res.json()
     dispatch(setComments[data])

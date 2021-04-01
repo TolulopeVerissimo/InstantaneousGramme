@@ -16,9 +16,10 @@ const Comments = (props) => {
 	});
 	const user = useSelector((state) => state.session.user);
 
-  const handleEnter = (e) => {
-
+  const handleEnter = async(e,commentId) => {
+    console.log(commentId)
     if (e.key === "Enter") alert('enter')
+      await dispatch(editComment(commentId));
   }
   
   const showDropMenu = (comment, user) => {
@@ -67,7 +68,7 @@ const Comments = (props) => {
 								className="comment__content menu-trigger"
 								suppressContentEditableWarning="true"
                 contentEditable='false'
-                onKeyPress={handleEnter}
+                onKeyPress={(e)=>handleEnter(e,comment.id)}
 								onClick={() => showDropMenu(comment,user)}
 							>
 								{comment.content}
