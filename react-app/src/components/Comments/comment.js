@@ -1,5 +1,6 @@
 import React, {useState,useRef,useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
+import {useHistory} from 'react-router-dom'
 import {useDetectOutsideClick} from "../../services/detectOutsideClick"
 import { updateComments, deleteComment } from "../../Store/comments";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
@@ -8,13 +9,18 @@ import { commentLike } from '../../Store/commentLike'
 
 
 export default function CommentContent({ comment }) {
+    const history = useHistory()
     const dispatch = useDispatch();
     const [isLiked, setIsLiked] = useState(false);
     const user = useSelector((state) => state.session.user);
     const dropdownRef = useRef(null);
     const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
 
+    const profileRedirect = () => {
+        console.log(comment)
+        history.push(`profile/${comment.userId}`)
 
+    }
 
 
     const likeHandler = () => {
@@ -65,7 +71,7 @@ export default function CommentContent({ comment }) {
         <>
             <div className="comments__container menu-container">
                 <div className="comments__user-comment">
-                    <div className="comment__username">{comment.username}</div>
+                    <div className="comment__username" onClick={profileRedirect}>{comment.username} </div>
                 <div
                     id={`comment-${comment.id}`}
                     className="comment__content menu-trigger"
