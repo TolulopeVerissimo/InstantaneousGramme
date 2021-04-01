@@ -24,6 +24,7 @@
 
 .post__username {
   padding-left: 0.6rem;
+  cursor: pointer
 }
 
 .post__username:hover {
