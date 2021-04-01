@@ -1,23 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react'
-
-import { useDispatch } from 'react-redux'
-
-import { getProfile } from '../../Store/profile'
-
-import { getFollows } from '../../Store/follow'
-
-import { useParams } from 'react-router-dom'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import FollowUser from '../FollowUser'
 import './styles/headers.css'
 function Header({ profile }) {
-
-
-    const [isLoaded, setIsLoaded] = useState(false);
-
-
-    // const item = Object.values(profile)[0]
-    // const profileObj = Object.values(profile)[0]
-
-
+    const userId = useSelector(state => state.session.user.id)
     return (
         <>
 
@@ -27,19 +13,24 @@ function Header({ profile }) {
                     <div className="pfp">
                         <img src={profile.profilePicture} alt={profile.username} />
                     </div>
-                    <h2 className="userHandle">{profile.username}</h2>
-                    {/* <i style={{ fontSize: '3.2rem' }} class="fas fa-cog"></i> */}
-                    <div className="metrics">
-                        <span>posts</span>
-                        <span className="s"></span>
-                        <span>followers</span>
-                        <span className="s"></span>
-                        <span>following</span>
+                    <div className="userinfo">
+                        <div className="userHandle">
+                            <h2 >{profile.username}</h2>
+                            {profile.id !== userId &&
+                            <FollowUser followedUserId={profile.id} />
+                            }
+                        </div>
+                        <div className="metrics">
+                            <span><span style={{ fontWeight: '700'}}>{profile.postCount}</span> posts</span>
+                            <span className="s"></span>
+                            <span><span style={{ fontWeight: '700'}}>{profile.followerCount}</span> followers</span>
+                            <span className="s"></span>
+                            <span><span style={{ fontWeight: '700'}}>{profile.followingCount}</span> following</span>
+                        </div>
+                        <h4>{profile.username}</h4>
+                        <p>{profile.biography}</p>
+
                     </div>
-                    <div><h4>{profile.username}</h4></div>
-                    <div><p>{profile.biography}</p></div>
-
-
                 </div>}
 
         </>

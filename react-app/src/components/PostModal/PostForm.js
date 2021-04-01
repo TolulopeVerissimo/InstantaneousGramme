@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getSignedRequest } from '../../services/upload'
@@ -12,12 +12,18 @@ function PostForm({ edit, post, setShowModal }) {
   const [src, setSrc] = useState('')
   const [photo, setPhoto] = useState('')
   const [description, setDescription] = useState('')
-  const [isPrivate, setIsPrivate] = useState(false)
+  const [isPrivate] = useState(false)
   const user = useSelector(state => state.session.user)
   let userId
   if (user) {
     userId = user.id;
   }
+  useEffect(() => {
+    if (post) {
+      setDescription(post.description)
+      setSrc(post.imagePath)
+    }
+  })
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (edit) {
@@ -39,18 +45,26 @@ function PostForm({ edit, post, setShowModal }) {
   const removePost = async (e) => {
     await dispatch(deletePost(post.id));
   };
+
+  const closeWindow = (e) => {
+    e.preventDefault()
+    setShowModal(false);
+  }
   return (
-    <div className='postform__container'>
-      <h2 className='postform__header'>{edit ? "Edit Post" : "New Post"}</h2>
-      <form className='postform' onSubmit={handleSubmit}>
+    <div className="postform__container">
+      <div className="postform__closeForm">
+        <i className="fas fa-window-close" onClick={closeWindow}/>
+      </div>
+      <h2 className="postform__header">{edit ? "Edit Post" : "New Post"}</h2>
+      <form className="postform" onSubmit={handleSubmit}>
       {src && <img className="postform__image" src={src} />}
         {!edit && (
-          <div className='fileInput__container'>
-            <label className='postform__label fileInput__label'>
+          <div className="fileInput__container">
+            <label className="postform__label fileInput__label">
               Choose a Photo
               <input
-                type='file'
-                className='postform__input fileInput'
+                type="file"
+                className="postform__input fileInput"
                 onChange={readUrl}
               />
             </label>
@@ -58,30 +72,20 @@ function PostForm({ edit, post, setShowModal }) {
         )}
 
         <textarea
-          rows='5'
-          cols='33'
-          type='textarea'
+          rows="5"
+          cols="33"
+          type="textarea"
           value={description}
-          placeholder='Write a caption...'
+          placeholder="Write a caption..."
           onChange={(e) => setDescription(e.target.value)}
         />
-
-        <label className='postform__label'>
-          Private
-          <input
-            type='checkbox'
-            className='postform__input checkbox'
-            checked={isPrivate}
-            onChange={(e) => setIsPrivate(e.target.checked)}
-          />
-        </label>
-        <div className='postform__button-container'>
-          <button type='submit' className='postform__button'>
+        <div className="postform__button-container">
+          <button type="submit" className="postform__button">
             {edit ? "Edit Post" : "Share Post"}
           </button>
 
           {edit && (
-            <a onClick={removePost} className='postform__delete'>
+            <a onClick={removePost} className="postform__delete">
               Delete Post
             </a>
           )}

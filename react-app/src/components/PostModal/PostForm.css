@@ -1,27 +1,23 @@
-#modal-content {
+.postform__container {
+  min-width: 50rem;
+  min-height: 20rem;
+  font-size: 1.2rem;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.postform__header {
+  display: grid;
+  width: 100%;
+  height: 3rem;
+  font-weight: 700;
+  text-align: center;
+  align-items: center;
+  margin: 1.5rem auto;
   border-radius: 1rem;
 }
 .postform {
-  padding: 0.5rem;
-}
-
-.postform__container {
-  width: 70rem;
-  height: 40rem;
-  font-size: 1.2rem;
-  border-radius: 1rem;
-}
-
-.postform__header {
-  display: grid;
-  border-bottom: 2px solid rgb(228, 227, 227);
-  width: 100%;
-  height: 3rem;
-  text-align: center;
-  align-items: center;
-  color: rgb(95, 95, 95);
-  background-color: #fafafad0;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 textarea {
   display: grid;
@@ -34,51 +30,61 @@ textarea {
   background-color: #ffffff;
   width: 90%;
   padding: 1rem;
+  border-radius: 1rem;
 }
-
 .postform__label {
   display: block;
   width: 10%;
   margin: 0 auto;
   padding: 0.5rem;
 }
-
-.fileInput__label:hover {
-  background-color: #0095f6;
-}
-
 .postform__input {
   outline: none;
 }
 .textarea {
   resize: none;
 }
-
-.postform__button {
-  width: 11rem;
-  height: 3rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  border: 1px solid #ccc;
-  background-color: #5aaef8;
-  color: white;
-  font-weight: 500;
-  border-radius: 0.6rem;
-  outline: none;
-  padding: 0.7rem;
-  cursor: pointer;
-}
-
 .postform__button-container {
   width: 100%;
-  display: grid;
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
-
-.postform__button:hover {
-  background-color: #0095f6;
+.postform__button {
+  width: 10rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 500;
+  border-radius: 1rem;
+  outline: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1.4rem;
 }
-
+.postform__button:hover, .fileInput__label:hover {
+  background-color: #007df6;
+}
+.postform__delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: red;
+  color: white;
+  width: 10rem;
+  padding: .70rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  height: 2.2rem;
+  margin-left: 1.5rem;
+  font-size: 1.4rem;
+}
+.postform__delete:hover {
+  background-color: #cc0000;
+}
 .fileInput {
   width: 0.1px;
   height: 0.1px;
@@ -88,7 +94,7 @@ textarea {
   z-index: -1;
 }
 .fileInput__label {
-  background-color: #5aaef8;
+  background-color: dodgerblue;
   width: 11rem;
   height: 1.8rem;
   text-align: center;
@@ -104,21 +110,21 @@ textarea {
   display: grid;
   width: 100%;
 }
-
-.postform__delete {
-  text-align: center;
-  color: #5aaef8;
-  padding-bottom: 1rem;
-}
-
-.postform__delete:hover {
-  text-decoration: underline;
-}
-
 .postform__image {
   display: block;
   width: 90%;
-  max-width: 40rem;
-  max-height: 100rem;
+  max-width: 25rem;
+  max-height: 30rem;
   margin: 0 auto;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+}
+.postform__closeForm {
+  display: flex;
+  justify-content: flex-end;
+}
+.postform__closeForm i {
+  font-size: 2rem;
+  color: red;
+  cursor: pointer;
 }

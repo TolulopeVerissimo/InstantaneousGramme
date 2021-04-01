@@ -12,7 +12,9 @@ const Comments = (props) => {
 
 
   const comments = useSelector((state) => {
-    return Object.values(state.comments).filter((comment) => comment.postId == props.postId);
+    return Object.values(state.comments).filter(
+      (comment) => comment.postId === props.postId
+    );
   });
   const user = useSelector((state) => state.session.user);
 
@@ -31,7 +33,8 @@ const Comments = (props) => {
   }
   return (
     <>
-      { isLoaded &&
+      {comments &&
+        user &&
         comments.map((comment) => (
           <div className='comments__container menu-container'>
             <div className='comments__user-comment'>
@@ -53,17 +56,9 @@ const Comments = (props) => {
               </div>
             </div>
           </div>
-
-
         ))}
-
-        </>
-    );
-
-
-
-
-
+    </>
+  );
 };
 
 export default Comments;

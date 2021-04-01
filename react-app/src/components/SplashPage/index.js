@@ -4,9 +4,8 @@ import { useHistory } from 'react-router-dom'
 import './splash.css'
 import './appstore.css'
 import RotatingImage from './RotatingImage'
-import { demoLogin, login } from '../../Store/session.js'
+import { login } from '../../Store/session.js'
 import {useDispatch} from 'react-redux'
-import AppStore from './AppStore'
 function Splash({ authenticated, setAuthenticated }) {
     let history = useHistory()
     const [errors, setErrors] = useState([]);
@@ -16,7 +15,6 @@ function Splash({ authenticated, setAuthenticated }) {
     }
     const loginDemo = async(e) => {
         e.preventDefault()
-        // const user = await dispatch(demoLogin())
         const user = await dispatch(login('demo@aa.io','password'))
         if (!user.errors) {
             setAuthenticated(true)
@@ -50,7 +48,7 @@ function Splash({ authenticated, setAuthenticated }) {
 
                             <div className="Demo-Login">
                                 <form>
-                                    <input type="submit" value="DEMO LOGIN" onClick={loginDemo} />
+                                    <input type="submit" value="Demo Login" onClick={loginDemo} />
                                 </form>
                             </div>
                         </div>
@@ -60,11 +58,6 @@ function Splash({ authenticated, setAuthenticated }) {
                                 <span>Don't have an account? </span>
                                 <span onClick={signUpRedirect} style={{ cursor: 'pointer', color: '#0095f6' }}>Sign Up </span>
                             </div>
-                        </div>
-
-                        <p style={{ textAlign: 'center' }}> Get the app.</p>
-                        <div className="appstore__wrapper">
-                            <AppStore />
                         </div>
                     </div>
                 </div>
