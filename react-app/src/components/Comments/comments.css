@@ -1,8 +1,16 @@
-.comments__container {
+.commentLike-icon{
+  height: 20px;
+
+}
+.commentLikeContainer{
+  display:inline-block;
+  align-items: right;
+  margin-left: 30rem;
 }
 
 .comments__user-comment {
   font-size: 1.4rem;
+  position: relative
 }
 
 .comment__username {

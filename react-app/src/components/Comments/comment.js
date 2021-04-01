@@ -107,18 +107,18 @@ export default function CommentContent({ comment }) {
                                     </nav>
                                 </>
                             )}
+
+                    </div>
+                </div>
                         <div className='commentLikeContainer'>
                             
-               </div>
                         <img
                             className='commentLike-icon'
         src={isLiked ? redHeart : blankHeart}
         alt='post like button'
         onClick={() => likeHandler()}
         />
-
-                    </div>
-                </div>
+               </div>
             </div>
 
             
