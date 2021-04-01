@@ -24,8 +24,6 @@ const NavBar = ({ setAuthenticated }) => {
       <div className="navbar__navicons">
         <PostModal edit={false}/>
         <i className="fas fa-home navbar__icon" onClick={homeRouter} />
-        {/* <i className="far fa-paper-plane navbar__icon" /> */}
-        {/* <i className="far fa-compass navbar__icon" onClick={exploreRouter} /> */}
         <i className="far fa-heart navbar__icon" />
         <ProfileDropdown setAuthenticated={setAuthenticated} />
       </div>

@@ -11,7 +11,6 @@ comment_routes = Blueprint('comments', __name__)
 
 
 @comment_routes.route('/')
-# @login_required
 def comments():
     comments = Comment.query.all()
     if comments[0]:
@@ -25,7 +24,6 @@ def comments():
 
 
 @comment_routes.route('/', methods=['POST'])
-# @login_required
 def new_comment():
     data = request.get_json() 
     print(data)   
@@ -33,7 +31,6 @@ def new_comment():
     userId = data['userId']
     postId = data['postId']
     content = data['content']
-    # userId = data['userId']
     new_comment = Comment(userId=userId, postId=postId, content=content)
     db.session.add(new_comment)
     db.session.commit()
@@ -54,8 +51,6 @@ def edit_comment(id):
     data = request.get_json() 
     comment = Comment.query.get(id)
     comment.content = data['content']
-    # userId = data['userId']
-    # comment.content = content
     db.session.commit()
 
     return comment.to_dict()

@@ -2,8 +2,6 @@
 .menu-container {
     position: relative;
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
     height: 100%;
   }
   
@@ -14,9 +12,6 @@
     justify-content: space-between;
     align-items: center;
     outline: none;
-    /* padding: 4px 6px; */
-
-    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); */
     border: none;
     vertical-align: middle;
     transition: box-shadow 0.4s ease;
@@ -47,7 +42,6 @@
     border-radius: 8px;
     position: absolute;
     top: 60px;
-    /* right: 0; */
     width: 300px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
     opacity: 0;
@@ -64,12 +58,6 @@
 
   }
 
-  /* .comment__content.active nav {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-
-  } */
 
 
   .highlight {
