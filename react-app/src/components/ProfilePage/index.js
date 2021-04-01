@@ -27,7 +27,6 @@ function Profile() {
 	if (posts) {
 		for (let key in posts) {
 			if (posts[key].userId === parseInt(id, 10)) {
-				console.log()
 				userPosts.push(posts[key])
 			}
 		}

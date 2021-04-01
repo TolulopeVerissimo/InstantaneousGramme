@@ -1,0 +1,87 @@
+
+.menu-container {
+    position: relative;
+    display: flex;
+    height: 100%;
+  }
+  
+  .menu-trigger {
+    background: #ffffff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+    border: none;
+    vertical-align: middle;
+    transition: box-shadow 0.4s ease;
+    margin-left: auto; /* Strictly for positioning */
+  }
+  
+  .menu-trigger:hover {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .menu-trigger span {
+    font-weight: 700;
+    vertical-align: middle;
+    font-size: 20px;
+    margin: 0 15px;
+  }
+  
+  .menu-trigger img {
+    border-radius: 50%;
+    height: 40px
+  }
+  nav.abs{
+    right: 0
+  }
+  
+  .menu {
+    background: #ffffff;
+    border-radius: 8px;
+    position: absolute;
+    top: 60px;
+    width: 300px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    z-index: 34
+  }
+  
+  .menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+  }
+
+
+
+  .highlight {
+    background-color: yellow;
+  }
+  
+  .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu li {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .menu-container li:hover{
+    background-color: #aaa8a8;
+  }
+  .menu li div {
+    text-decoration: none;
+    color: #333333;
+    padding: 15px 20px;
+    display: block;
+    cursor: pointer;
+  }
+  

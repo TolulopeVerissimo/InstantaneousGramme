@@ -1,8 +1,15 @@
-.comments__container {
+.commentLike-icon{
+  height: 20px;
+
+}
+.commentLikeContainer{
+
+  margin-left: 45rem;
 }
 
 .comments__user-comment {
   font-size: 1.4rem;
+  position: absolute
 }
 
 .comment__username {
@@ -10,6 +17,7 @@
   padding-top: 0.2rem;
   padding-right: 0.5rem;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .comment__content {

@@ -7,8 +7,6 @@ import "./StationarySide.css";
 function StationarySide() {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // const userId = useSelector((state) => state.session.user.id);
-
   const allUsers = useSelector((state) => state.users);
   const suggestedUsers = [];
 

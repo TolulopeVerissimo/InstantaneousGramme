@@ -1,7 +1,8 @@
 
 const SET_COMMENTS = 'COMMENTS/SET_COMMENTS';
 const CREATE_COMMENTS = 'COMMENTS/CREATE_COMMENTS';
-const REMOVE_COMMENTS = 'COMMENTS/REMOVE_COMMENTS';
+const REMOVE_COMMENT = 'COMMENTS/REMOVE_COMMENT';
+const UPDATE_COMMENT = "posts/UPDATE_COMMENT";
 
 const setComments = (comments) => {
     return {
@@ -10,15 +11,22 @@ const setComments = (comments) => {
     };
 };
 
+const updateComment = (comment) => {
+    return {
+      type: UPDATE_COMMENT,
+      comment,
+    };
+  };
+
 const createComments = (comments) => {
     return {
         type: CREATE_COMMENTS,
         comments
     }
 }
-const removeComments = (id) => {
+const removeComment = (id) => {
     return {
-        type: REMOVE_COMMENTS,
+        type: REMOVE_COMMENT,
         id
     }
 }
@@ -51,27 +59,30 @@ export const createComment = (userId, postId, content) => async (dispatch) => {
 
 };
 
-export const updateCOMMENTS = ({ id, name, }) => async (dispatch) => {
-    const formData = new FormData();
-    formData.append('name', name);
+export const updateComments = (commentId, content) => async (dispatch) => {
 
-    const response = await fetch(`/api/users/${id}/COMMENTS/`, {
-        method: 'PUT',
-        body: formData,
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        },
-    });
-    dispatch(createComments(response.data.COMMENTS));
-    return response.data.COMMENTS;
+    const options =
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify({ content })
+    }
+    const res = await fetch(`/api/comments/${commentId}`, options)
+    if (!res.ok) alert('issue')
+    const data = await res.json()
+
 };
 
-export const deleteComments = (id) => async (dispatch) => {
-    await dispatch(removeComments(id));
-    const response = await fetch(`/api/users/COMMENTS/${id}`, {
+export const deleteComment = (id) => async (dispatch) => {
+    await dispatch(removeComment(id));
+    const res = await fetch(`/api/comments/${id}`, {
         method: 'DELETE',
     });
-    return response.data.message;
+    if (res.ok) {
+        
+    }
 };
 
 const initialState = {};
@@ -87,7 +98,7 @@ const commentsReducer = (state = initialState, action) => {
 
         case CREATE_COMMENTS:
             return { ...state, [action.comments.id]: action.comments };
-        case REMOVE_COMMENTS:
+        case REMOVE_COMMENT:
             const newState = { ...state };
             delete newState[action.id];
             return newState;

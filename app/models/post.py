@@ -39,5 +39,4 @@ class Post(db.Model):
             'profilePicture': profilePicture,
             'likesUsers': likesUsers,
             'date_created': date
-            # 'comments': self.comments,
         }

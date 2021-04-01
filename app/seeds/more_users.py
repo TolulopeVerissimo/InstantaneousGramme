@@ -37,12 +37,3 @@ def seed_more_users():
 def undo_more_users():
     db.session.execute('TRUNCATE users CASCADE;')
     db.session.commit()
-
-
-# name='Demo',
-#         email='demo@aa.io',
-#         phoneNumber=5551234567,
-#         hashed_password=generate_password_hash('password'),
-#         username='demoMcdemoson',
-#         biography="A long time demouser, first time insta user",
-#         profilePicture=
