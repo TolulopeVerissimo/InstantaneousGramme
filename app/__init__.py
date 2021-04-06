@@ -9,7 +9,7 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 from flask_socketio import SocketIO, send, emit
 
-from .models import db, User, Post, DirectMessage
+from .models import db, User, Post, DM
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.post_routes import post_routes
@@ -71,10 +71,10 @@ CORS(app)
 @socketio.on("message")
 def handleMessage(msg):
     msg = json.loads(msg)
-    message, senderid, recieverid = msg.values()
+    message, senderId, recieverId = msg.values()
 
-    message = DirectMessage(message=message, senderid=senderid,
-                            recieverid=recieverid)
+    message = DirectMessage(message=message, senderId=senderId,
+                            recieverId=recieverId)
     db.session.add(message)
     db.session.commit()
     emit('message', {'msg': message.to_dict(), })

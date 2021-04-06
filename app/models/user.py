@@ -38,6 +38,13 @@ class User(db.Model, UserMixin):
         lazy="dynamic"
     )
 
+    messages_sent = db.relationship(
+        "DirectMessage", foreign_keys="DirectMessage.senderId", back_populates="sender"
+    )
+    messages_received = db.relationship(
+        "DirectMessage", foreign_keys="DirectMessage.receiverId", back_populates="receiver"
+    )
+
     @property
     def password(self):
         return self.hashed_password

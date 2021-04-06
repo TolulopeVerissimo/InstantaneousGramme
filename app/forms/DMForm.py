@@ -4,6 +4,6 @@ from wtforms.validators import DataRequired, Length
 
 
 class DMForm(FlaskForm):
-    senderId = IntegerField("senderid", validators=[DataRequired()])
-    receiverId = IntegerField("receiverid", validators=[DataRequired()])
+    senderId = IntegerField("senderId", validators=[DataRequired()])
+    receiverId = IntegerField("receiverId", validators=[DataRequired()])
     message = StringField("message",validators=[DataRequired(message="may not be empty"),Length(min=1, max=500, message="must be less than 500 characters"),],)

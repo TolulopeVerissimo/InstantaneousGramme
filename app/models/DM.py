@@ -13,17 +13,17 @@ class DirectMessage (db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     sender = db.relationship(
-        "User", foreign_keys=[senderid], back_populates="messages_sent"
+        "User", foreign_keys=[senderId], back_populates="messages_sent"
     )
     receiver = db.relationship(
-        "User", foreign_keys=[receiverid], back_populates="messages_received"
+        "User", foreign_keys=[receiverId], back_populates="messages_received"
     )
 
     def to_dict(self):
         return {
             "id": self.id,
-            "senderid": self.senderid,
-            "receiverid": self.receiverid,
+            "senderId": self.senderId,
+            "receiverId": self.receiverId,
             "message": self.message,
             "viewstatus": self.viewstatus,
             "timestamp": self.timestamp,
