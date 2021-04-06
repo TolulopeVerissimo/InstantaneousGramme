@@ -24,7 +24,7 @@ from .queries import query_commands
 
 from .config import Configuration
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static/")
 
 # Setup login manager
 login = LoginManager(app)
