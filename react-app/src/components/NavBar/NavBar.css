@@ -130,6 +130,16 @@
 
 .search-results__username {
   padding-left: 1rem;
+  color: black;
+  text-decoration: none;
+}
+
+.search-results__username:visited {
+  color: black;
+}
+
+.search-results__username:hover {
+  text-decoration: underline;
 }
 
 @keyframes revealMenu {
