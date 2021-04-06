@@ -118,18 +118,18 @@
 }
 .search-results__user-card {
   height: 3rem;
-  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 3rem auto;
 }
 
-.search-results__pic-container {
-  margin-right: 1rem;
-}
 .search-results__pic {
-  height: 100%;
-  width: 100%;
+  height: 3rem;
+  width: 3rem;
   border-radius: 50%;
+}
+
+.search-results__username {
+  padding-left: 1rem;
 }
 
 @keyframes revealMenu {

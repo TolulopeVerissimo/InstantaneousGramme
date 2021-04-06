@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 // import { getSearchResults } from "../../Store/user";
 
 const SearchBar = () => {
@@ -25,14 +26,18 @@ const SearchBar = () => {
           {searchResults.map((user) => (
             <li key={user.id}>
               <div className='search-results__user-card'>
-                <div className='search-results__pic-container'>
-                  <img
-                    className='search-results__pic'
-                    src={user.profilePicture}
-                    alt='profile'
-                  />
-                </div>
-                <div>{user.username}</div>
+                <img
+                  className='search-results__pic'
+                  src={user.profilePicture}
+                  alt='profile'
+                />
+                <NavLink
+                  to={`/profile/${user.id}`}
+                  className='search-results__username'
+                  onClick={() => setQuery("")}
+                >
+                  {user.username}
+                </NavLink>
               </div>
             </li>
           ))}
