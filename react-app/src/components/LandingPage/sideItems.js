@@ -17,7 +17,7 @@ export const sideItems = [
   },
   {
     title: "Tolu V. LinkedIn",
-    path: "https://www.linkedin.com/in/tolu-v-924b94174/",
+    path: "https://www.linkedin.com/in/tolulope-v-924b94174/",
     cName: "item-text",
   },
   {
