@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-// import { getSearchResults } from "../../Store/user";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -21,7 +20,7 @@ const SearchBar = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       ></input>
-      {query && (
+      {query && searchResults.length !== 0 && (
         <ul className='search-results__dropdown'>
           {searchResults.map((user) => (
             <li key={user.id}>
