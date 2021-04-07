@@ -41,7 +41,7 @@ export default function CommentContent({ comment }) {
             activeElement.classList.remove('highlight')
         }
       }
-      
+
       const showDropMenu = (comment, user) => {
           if (comment.userId !== user.id) return
         setIsActive(!isActive);
@@ -64,63 +64,59 @@ export default function CommentContent({ comment }) {
         <>
             <div className="comments__container menu-container">
                 <div className="comments__user-comment">
-                    <div className="comment__username" onClick={profileRedirect}>{comment.username} </div>
-                <div
-                    id={`comment-${comment.id}`}
-                    className="comment__content menu-trigger"
-                    suppressContentEditableWarning="true"
-                    contentEditable='false'
-                    onKeyPress={(e)=>handleEnter(e,comment.id)}
-                    onClick={() => showDropMenu(comment,user)}
-                            >
-                            {comment.content}
-                            
-                            {comment.userId === user.id && (
-                                <>
-                                <nav
-                                    ref={dropdownRef}
-                                    className={`menu abs ${isActive ? "active" : "inactive"}`}
+                    <div className="comment__username" onClick={profileRedirect}>{comment.username}</div>
+                    <div
+                        id={`comment-${comment.id}`}
+                        className="comment__content menu-trigger"
+                        suppressContentEditableWarning="true"
+                        contentEditable='false'
+                        onKeyPress={(e)=>handleEnter(e,comment.id)}
+                        onClick={() => showDropMenu(comment,user)}
                                 >
-                                        <ul>
-                                            <li>
-                                                <div
-                                                    className=""
-                                                    suppressContentEditableWarning="true"
-                                                    contentEditable="false"
-                                                    onClick={() => removeComment(comment.id)}
-                                                >
-                                                    Delete
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div
-                                                    className=""
-                                                    suppressContentEditableWarning="true"
-                                                    contentEditable="false"
-                                                    onClick={(e) => editActionHandler(e,comment)}
-                                                >
-                                                    Edit
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </>
-                            )}
+                                {comment.content}
 
-                    </div>
+                                {comment.userId === user.id && (
+                                    <>
+                                    <nav
+                                        ref={dropdownRef}
+                                        className={`menu abs ${isActive ? "active" : "inactive"}`}
+                                    >
+                                            <ul>
+                                                <li>
+                                                    <div
+                                                        className=""
+                                                        suppressContentEditableWarning="true"
+                                                        contentEditable="false"
+                                                        onClick={() => removeComment(comment.id)}
+                                                    >
+                                                        Delete
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div
+                                                        className=""
+                                                        suppressContentEditableWarning="true"
+                                                        contentEditable="false"
+                                                        onClick={(e) => editActionHandler(e,comment)}
+                                                    >
+                                                        Edit
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </>
+                                )}
+                        </div>
                 </div>
-                        <div className='commentLikeContainer'>
-                            
-                        <img
-                            className='commentLike-icon'
-        src={isLiked ? redHeart : blankHeart}
-        alt='post like button'
-        onClick={() => likeHandler()}
-        />
-               </div>
+                <div className='commentLikeContainer'>
+                    <img
+                        className='commentLike-icon'
+                        src={isLiked ? redHeart : blankHeart}
+                        alt='post like button'
+                        onClick={() => likeHandler()}
+                        />
+                </div>
             </div>
-
-            
         </>
     )
 

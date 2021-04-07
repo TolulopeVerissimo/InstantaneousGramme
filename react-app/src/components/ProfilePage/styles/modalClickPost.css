@@ -31,7 +31,7 @@
     grid-template-columns: auto 6fr auto;
     align-items: center;
     font-size: 1.4rem;
-    margin:2rem 2rem;
+    margin:1.5rem 2rem;
 }
 
 .modalPost__username {
