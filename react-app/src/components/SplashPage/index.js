@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import LoginForm from '../auth/LoginForm.js'
 import { useHistory } from 'react-router-dom'
 import './splash.css'
@@ -7,21 +7,15 @@ import RotatingImage from './RotatingImage'
 import { login } from '../../Store/session.js'
 import {useDispatch} from 'react-redux'
 function Splash({ authenticated, setAuthenticated }) {
-    let history = useHistory()
-    const [errors, setErrors] = useState([]);
-    const dispatch = useDispatch()
+    let history = useHistory();
+    const dispatch = useDispatch();
     const signUpRedirect = () => {
         history.push('/sign-up')
     }
     const loginDemo = async(e) => {
         e.preventDefault()
-        const user = await dispatch(login('demo@aa.io','password'))
-        if (!user.errors) {
-            setAuthenticated(true)
-        } else {
-            setErrors(user.errors)
-        }
-
+        await dispatch(login('demo@aa.io','password'))
+        setAuthenticated(true)
     }
 
 

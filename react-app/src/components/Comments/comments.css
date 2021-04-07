@@ -5,6 +5,10 @@
 .comments__container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding-top: .5rem;
+  margin-top: .5rem;
+  font-size: 1.2rem;
 }
 .commentLikeContainer{
   display: inline-block;
@@ -16,14 +20,14 @@
 
 .comment__username {
   display: inline-block;
-  padding-top: 0.2rem;
   padding-right: 0.5rem;
   font-weight: bold;
   cursor: pointer;
 }
 
 .comment__content {
-  display: inline-block;
+  display: inline;
+  text-align: center;
 }
 
 .comment-form__container {
