@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./dropdown.css";
 import "./comments.css";
 import CommentContent from './comment'
 import { useSelector } from "react-redux";
 
 
-const Comments = (props) => {
+const Comments = ({postId}) => {
 	const comments = useSelector((state) => {
 		return Object.values(state.comments).filter(
-			(comment) => comment.postId === props.postId
+			(comment) => comment.postId === postId
 		);
 	});
 	const user = useSelector((state) => state.session.user);
