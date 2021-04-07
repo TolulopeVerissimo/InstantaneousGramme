@@ -30,7 +30,6 @@ const Post = ({ post, user }) => {
 
   const userRedirect = () => {
     history.push(`profile/${post.userId}`)
-    
   }
 
   //sets isLiked to match redux state
@@ -50,10 +49,6 @@ const Post = ({ post, user }) => {
         </div>
         <div className='post__user-info'>
           <div onClick={userRedirect} className='post__username'>{post.username}</div>
-        </div>
-        <div className="post__edit-button">
-
-          <EditPostModal post={post} edit={true} />
         </div>
       </div>
       <div className='post__image'>
@@ -80,11 +75,10 @@ const Post = ({ post, user }) => {
           {"Liked by " + post.likesUsers.length + " " + likeCount()}
         </p>
         <div className='post__title'>
-          <p className='post__user'>{post.username}</p>
+          <p className='post__user' onClick={userRedirect}>{post.username}</p>
           <p className='post__description'>{post.description}</p>
         </div>
         <div className='post__comments'>
-          {/* pass user in as props to Comments */}
           <Comments postId={post.id} />
         </div>
         <p className='post__createdAt'>{post.date_created}</p>

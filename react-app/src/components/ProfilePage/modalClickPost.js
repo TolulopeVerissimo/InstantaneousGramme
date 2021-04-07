@@ -59,8 +59,8 @@ const ModalPost = ({ post, user }) => {
 
                 <div className='comment__container'>
                     <div className='modalPost__title'>
-                        <p className='modalPost__user'>{post.username}</p>
-                        <p className='modalPost__description'>{post.description}</p>
+                        <h3 className='modalPost__user'>{post.username}</h3>
+                        <span className='modalPost__description'>{post.description}</span>
                     </div>
                     <div className='modalPost__comments'>
                         <Comments postId={post.id} />

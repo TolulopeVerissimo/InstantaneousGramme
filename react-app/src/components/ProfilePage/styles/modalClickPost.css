@@ -68,13 +68,12 @@
 
 .modalPost__icon img {
     height: 100%;
-
     overflow: hidden;
 }
-
+.modalPost__comments {
+    margin-top: 1.5rem;
+}
 .comment__container {
-    font-size: 1.4rem;
-    padding-top: 10rem;
     border-bottom: 0.5px solid rgb(235, 231, 231);
     border-top: 0.5px solid rgb(235, 231, 231);
 }
@@ -90,6 +89,7 @@
 
 .modalPost__description {
     display: inline-block;
+    word-wrap: break-word;
 }
 
 .modalPost__createdAt {
