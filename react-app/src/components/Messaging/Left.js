@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { Modal } from '../../Context/Modal'
@@ -14,28 +14,36 @@ const LeftSide = () => {
     const profileRedirect = () => {
         history.push(`/profile/${userId}`)
     }
+    const [isLoaded, setIsLoaded] = useState(false);
+    useEffect(() => {
+        if (user) setIsLoaded(true);
+    }, [user]);
+
+    console.log(user)
 
     return (
         <>
-            <div className="Leftcontainer">
-                <div className="topbox">
-                    <h3 onClick={profileRedirect}>{`${user.name}`}</h3>
-                    <i className="fas fa-edit leftEdit" onClick={() => {
-                        showModal && (
-                            <Modal onClose={() => setShowModal(false)}>
-                                < SearchModal />
-                            </Modal>
-                        )
-                    }
+            {
+                isLoaded &&
+                <div className="Leftcontainer">
+                    <div className="topbox">
+                        <h3 onClick={profileRedirect}>{`${user.username}`}</h3>
+                        <i className="fas fa-edit leftEdit" onClick={() => setShowModal(true)}></i>
+                        {
+                            showModal && (
+                                <Modal onClose={() => setShowModal(false)}>
+                                    <SearchModal />
+                                </Modal>
+                            )
+                        }
+                    </div>
 
-                    }></i>
+                    <div className="userList">
+
+                    </div>
+
                 </div>
-
-                <div className="userList">
-
-                </div>
-
-            </div>
+            }
         </>
     );
 }

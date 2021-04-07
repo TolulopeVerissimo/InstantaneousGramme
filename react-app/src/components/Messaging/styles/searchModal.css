@@ -1,6 +1,7 @@
 .searchModal {
     height: 5rem;
     width: 3rem;
+    background-color: #fafafa;
     border-radius: 0.5rem;
 }
 .fadedWords {
