@@ -4,6 +4,7 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import Splash from "./components/SplashPage";
 import Profile from './components/ProfilePage'
+import DMs from './components/Messaging'
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -48,6 +49,9 @@ function App() {
 
 
           </Route>
+          <ProtectedRoute path="/DM/" exact={true} authenticated={authenticated}>
+            <DMs />
+          </ProtectedRoute>
           <ProtectedRoute path="/profile/:id" exact={true} authenticated={authenticated}>
             <Profile />
           </ProtectedRoute>

@@ -1,0 +1,9 @@
+.DMcontainer {
+    border: 0.5rem solid black;
+    border-radius: 0.5rem;
+    height: 85rem;
+    width: 90rem;
+    position: absolute;
+    top: 10%;
+    left: 25%;
+}

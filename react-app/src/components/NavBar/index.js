@@ -12,6 +12,9 @@ const NavBar = ({ setAuthenticated }) => {
   const exploreRouter = () => {
     history.push('/explore')
   }
+  const DMRouter = () => {
+    history.push('/DM')
+  }
   return (
     <nav className="navbar">
       <div className="navbar__logocontainer">
@@ -22,8 +25,9 @@ const NavBar = ({ setAuthenticated }) => {
         <input type="text" placeholder="Search" className="navbar__searchfield"></input>
       </div>
       <div className="navbar__navicons">
-        <PostModal edit={false}/>
+        <PostModal edit={false} />
         <i className="fas fa-home navbar__icon" onClick={homeRouter} />
+        <i className="fas fa-inbox navbar__icon" onClick={DMRouter} />
         {/* <i className="far fa-paper-plane navbar__icon" /> */}
         {/* <i className="far fa-compass navbar__icon" onClick={exploreRouter} /> */}
         <i className="far fa-heart navbar__icon" />
