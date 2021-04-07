@@ -8,14 +8,13 @@
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  background-color: white;
+  align-items: center;
+  grid-template-columns: auto auto;
 }
 
 .posts__feed {
   display: grid;
   width: 100%;
   margin-right: 4rem;
-  justify-content: center;
-  background-color: white;
+  justify-content: end;
 }
