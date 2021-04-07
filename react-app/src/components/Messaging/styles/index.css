@@ -1,4 +1,5 @@
 .DMcontainer {
+    display: flex;
     border: 0.5rem solid black;
     border-radius: 0.5rem;
     height: 85rem;
