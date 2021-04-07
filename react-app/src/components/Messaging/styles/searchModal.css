@@ -1,0 +1,15 @@
+.searchModal {
+    height: 5rem;
+    width: 3rem;
+    border-radius: 0.5rem;
+}
+.fadedWords {
+    opacity: 0.3;
+    border: 0;
+    color: #0095f6;
+    color: rgba(var(--d69, 0, 149, 246), 1);
+    padding: 0;
+    position: relative;
+}
+.NOTfadedWords {
+}
