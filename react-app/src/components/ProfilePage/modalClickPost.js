@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Comments from "../Comments";
 import CommentForm from "../Comments/CommentForm";
 import commentIcon from "../../images/icons/insta_comment_icon.png";
@@ -47,7 +47,6 @@ const ModalPost = ({ post, user }) => {
             </div>
 
             <div className="modalPost__right">
-
                 <div className='modalPost__header'>
                     <div className='modalPost__profile-pic'>
                         <img src={post.profilePicture} alt='profile pic' />
@@ -55,56 +54,50 @@ const ModalPost = ({ post, user }) => {
                     <div className='modalPost__user-info'>
                         <div className='modalPost__username'>{post.username}</div>
                     </div>
-                    <EditPostModal post={post} edit={true} />
+                    {user.id === post.userId ? <EditPostModal post={post} edit={true} /> : null}
                 </div>
 
-
                 <div className='comment__container'>
-
-
                     <div className='modalPost__title'>
                         <p className='modalPost__user'>{post.username}</p>
                         <p className='modalPost__description'>{post.description}</p>
                     </div>
-
                     <div className='modalPost__comments'>
-                        {/* pass user in as props to Comments */}
                         <Comments postId={post.id} />
                     </div>
-
-
                 </div>
 
-                <div className='modalPost__icons'>
-                    <div className='modalPost__icon'>
-                        <img
-                            src={isLiked ? redHeart : blankHeart}
-                            alt='post like button'
-                            onClick={() => likeHandler()}
-                        />
+                <div id="bottom_row">
+                    <div className='modalPost__icons'>
+                        <div className='modalPost__icon'>
+                            <img
+                                src={isLiked ? redHeart : blankHeart}
+                                alt='post like button'
+                                onClick={() => likeHandler()}
+                            />
+                        </div>
+
+                        <div className='modalPost__icon'>
+                            <img
+                                src={commentIcon}
+                                alt='post comment button'
+                            />
+                        </div>
+
+                        <div className='modalPost__icon'></div>
+
                     </div>
-                    <div className='modalPost__icon'>
-                        <img
-                            src={commentIcon}
-                            alt='post comment button'
-                        />
+                    <p className='comment__likes-count'>
+                        {"Liked by " + post.likesUsers.length + " " + likeCount()}
+                    </p>
+                    <p className='modalPost__createdAt'>{post.date_created}</p>
+
+
+                    <div className='modalPost__comment-form'>
+                        <CommentForm postId={post.id}/>
                     </div>
-                    <div className='modalPost__icon'></div>
-
                 </div>
-                <p className='commment__likes-count'>
-                    {"Liked by " + post.likesUsers.length + " " + likeCount()}
-                </p>
-                <p className='modalPost__createdAt'>{post.date_created}</p>
-
-
-                <div className='modalPost__comment-form'>
-                    <CommentForm postId={post.id}/>
-                </div>
-
             </div>
-
-
         </div>
     );
 };
