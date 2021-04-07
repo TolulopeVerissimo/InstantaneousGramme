@@ -4,10 +4,9 @@ import "./comments.css";
 import smilyIcon from '../../images/icons/insta_smily_face_icon.png'
 import {createComment} from '../../Store/comments'
 
-const CommentForm = (props) => {
+const CommentForm = ({postId}) => {
   const [content, setContent] = useState('')
   const user = useSelector(state => state.session.user)
-  const postId = props.postId
   const dispatch = useDispatch()
 
 

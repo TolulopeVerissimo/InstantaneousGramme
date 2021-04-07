@@ -1,18 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import "./dropdown.css";
 import "./comments.css";
 import CommentContent from './comment'
 import { useSelector } from "react-redux";
 
 
-const Comments = (props) => {
-  const [isLiked, setIsLiked] = useState(false);
-
-
-
+const Comments = ({postId}) => {
 	const comments = useSelector((state) => {
 		return Object.values(state.comments).filter(
-			(comment) => comment.postId === props.postId
+			(comment) => comment.postId === postId
 		);
 	});
 	const user = useSelector((state) => state.session.user);
@@ -22,7 +18,7 @@ const Comments = (props) => {
 			{comments &&
 				user &&
 				comments.map((comment) => (
-					<CommentContent comment={comment} />
+					<CommentContent comment={comment} key={comment.id} />
 
 				))}
 		</>

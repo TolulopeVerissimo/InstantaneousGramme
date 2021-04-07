@@ -65,6 +65,7 @@ textarea {
 }
 .postform__button:hover, .fileInput__label:hover {
   background-color: #007df6;
+  transform: translateY(.1rem);
 }
 .postform__delete {
   display: flex;

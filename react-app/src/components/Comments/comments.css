@@ -2,26 +2,32 @@
   height: 20px;
 
 }
+.comments__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: .5rem;
+  margin-top: .5rem;
+  font-size: 1.2rem;
+}
 .commentLikeContainer{
-
-  margin-left: 45rem;
+  display: inline-block;
 }
 
 .comments__user-comment {
   font-size: 1.4rem;
-  position: absolute
 }
 
 .comment__username {
   display: inline-block;
-  padding-top: 0.2rem;
   padding-right: 0.5rem;
   font-weight: bold;
   cursor: pointer;
 }
 
 .comment__content {
-  display: inline-block;
+  display: inline;
+  text-align: center;
 }
 
 .comment-form__container {
@@ -53,8 +59,12 @@
   text-align: center;
   height: 60%;
   cursor: pointer;
-  background-color: #0095f6;
+  background-color: dodgerblue;
   border-radius: .6rem;
+}
+.comment-form__button:hover {
+  background-color: #007df6;
+  transform: translateY(.1rem);
 }
 
 .commentform {

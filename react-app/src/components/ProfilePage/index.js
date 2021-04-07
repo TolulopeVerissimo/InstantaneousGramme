@@ -4,6 +4,7 @@ import Header from './Header.js'
 import SmallPost from './SmallPost'
 import { getProfile } from '../../Store/profile'
 import { getPosts } from '../../Store/posts'
+import { getComments } from '../../Store/comments'
 import { useParams } from 'react-router-dom'
 import './styles/Profile.css'
 import { getFollowers } from '../../Store/follow.js'
@@ -22,6 +23,7 @@ function Profile() {
 		dispatch(getProfile(id))
 		dispatch(getPosts())
 		dispatch(getFollowers(id))
+		dispatch(getComments())
 		setLoaded(true)
 	}, [dispatch, id])
 	if (posts) {
