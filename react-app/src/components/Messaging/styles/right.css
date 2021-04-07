@@ -1,3 +1,36 @@
 .Rightcontainer {
-    width: ;
+    width: 100%;
+    border-left: 0.15rem solid black;
+    height: 100%;
+}
+.rightCircle {
+    height: 15rem;
+    width: 15rem;
+    margin: 25rem 0 0 20rem;
+    border-radius: 50%;
+    border: 0.1rem solid black;
+}
+.rightCircle i {
+    position: relative;
+    font-size: 8rem;
+    top: 25%;
+    left: 20%;
+}
+.Rightcontainer h3 {
+    margin: 4rem 0 0 20rem;
+}
+.Rightcontainer p {
+    text-align: center;
+    margin: 2rem 0 0 0rem;
+}
+.Rightcontainer button {
+    width: 15rem;
+    color: white;
+    outline: none;
+    text-align: center;
+    height: 5%;
+    cursor: pointer;
+    background-color: #0095f6;
+    border-radius: 0.6rem;
+    margin: 1.5rem 0 0 20rem;
 }

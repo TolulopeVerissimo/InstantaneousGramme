@@ -49,7 +49,7 @@ function App() {
 
 
           </Route>
-          <ProtectedRoute path="/DM/" exact={true} authenticated={authenticated}>
+          <ProtectedRoute path="/DM" exact={true} authenticated={authenticated}>
             <DMs />
           </ProtectedRoute>
           <ProtectedRoute path="/profile/:id" exact={true} authenticated={authenticated}>

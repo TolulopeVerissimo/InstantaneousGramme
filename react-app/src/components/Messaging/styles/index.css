@@ -1,7 +1,8 @@
 .DMcontainer {
     display: flex;
-    border: 0.5rem solid black;
-    border-radius: 0.5rem;
+    /* grid-template-columns: 1fr 10rem; */
+    border: 0.15rem solid black;
+    border-radius: 0.15rem;
     height: 85rem;
     width: 90rem;
     position: absolute;
