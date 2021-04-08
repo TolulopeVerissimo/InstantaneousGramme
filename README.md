@@ -70,7 +70,6 @@
     </li>
     <li><a href="#project-challenges">Project Challenges</a></li>
     <li><a href="#feature-highlights">Feature Highlights</a></li>
-    <li><a href="#code-snippets">Code Snippets</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#license">License</a></li>
@@ -86,9 +85,7 @@
 
 ![product-screenshot](https://i.imgur.com/n3vzM1f.png)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`RyanGC93`, `InstantaneousGramme`, `twitter_handle`, `ryangconk@gmail.com`, `project_title`, `This a clone of Instagram that is built with `
+
 
 
 ### Built With
@@ -134,6 +131,7 @@ This is an example of how to list things you need to use the software and how to
 <details>
   <summary>Click to expand!</summary>
   
+  
   ## Heading
   1. A numbered
   2. list
@@ -142,27 +140,75 @@ This is an example of how to list things you need to use the software and how to
 </details>
 
 ## Feature Highlights
+
+### (1) Uploading Images From the Frontend Using AWS buckets
 <details>
   <summary>Click to expand!</summary>
   
-  ## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
+  ### Summary
+  TODO >>>>> ADD Summary
+  ### Code Snippet
+  ```
+  export async function getSignedRequest(photo){
+  let res = await fetch('/sign_s3/?file_name='+photo.name+"&file_type="+photo.type);
+  if (res.ok) {
+    res= await res.json()
+    uploadFile(photo, res.data, res.url);
+  } else {
+    console.error('could not get url')
+  }
+  return res.data.url + res.data.fields.key
+}
+
+export async function uploadFile(file, s3Data, url){
+  const data = new FormData()
+  for(const key in s3Data.fields){
+    data.append(key, s3Data.fields[key]);
+  }
+  data.append('file', file)
+  const res = await fetch(url, {
+    method:'POST',
+    body: data
+  })
+  return res
+}
+  ```
 </details>
 
-## Code Snippets
+
+### (2) Direct messaging using web sockets
 <details>
   <summary>Click to expand!</summary>
   
-  ## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
-</details>
+  ### Summary
+  TODO >>>>> ADD Summary
+  ### Code Snippet
+  ```
+  export async function getSignedRequest(photo){
+  let res = await fetch('/sign_s3/?file_name='+photo.name+"&file_type="+photo.type);
+  if (res.ok) {
+    res= await res.json()
+    uploadFile(photo, res.data, res.url);
+  } else {
+    console.error('could not get url')
+  }
+  return res.data.url + res.data.fields.key
+}
 
+export async function uploadFile(file, s3Data, url){
+  const data = new FormData()
+  for(const key in s3Data.fields){
+    data.append(key, s3Data.fields[key]);
+  }
+  data.append('file', file)
+  const res = await fetch(url, {
+    method:'POST',
+    body: data
+  })
+  return res
+}
+  ```
+</details>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -188,18 +234,19 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Ryan Conk- [@twitter_handle](https://twitter.com/twitter_handle) - ryangconk@gmail.com
+Ryan Conk- [Github](https://github.com/RyanGC93) - ryangconk@gmail.com
+
+Ryan Maloney- [Github](https://github.com/r-maloney) - ryangconk@gmail.com
+
+Lu Verissimo- [Github](https://github.com/TolulopeVerissimo) - ryangconk@gmail.com
+
+Jon Werner- [Github](https://github.com/jon-wehner) - ryangconk@gmail.com
 
 Project Link: [https://github.com/TolulopeVerissimo/InstantaneousGramme](https://github.com/TolulopeVerissimo/InstantaneousGramme)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
 
 
 
