@@ -43,20 +43,26 @@ export const getComments = () => async (dispatch) => {
 };
 
 export const createComment = (userId, postId, content) => async (dispatch) => {
-    const formData = new FormData();
-    formData.append('userId', userId)
-    formData.append('postId', postId)
-    formData.append('content', content)
-    const options =    {
-      method: 'POST',
-      body: formData
-    }
-    const res = await fetch('/api/comments/', options)
-    if (!res.ok) alert('issue')
-    const data = await res.json()
-
-    return dispatch(setComments([data]));
-
+  const formData = new FormData();
+  formData.append('user_id', userId)
+  formData.append('post_id', postId)
+  formData.append('content', content)
+  const options =    {
+    method: 'POST',
+    body: formData
+  }
+  try {
+      const res = await fetch('/api/comments/', options)
+      if (!res.ok) throw res
+      const comment = await res.json()
+      if(!comment.errors) {
+        dispatch(setComments([comment]));
+      }
+      return comment
+  }
+  catch (err) {
+    return err
+  }
 };
 
 export const updateComments = (commentId, content) => async (dispatch) => {
