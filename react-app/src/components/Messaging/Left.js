@@ -19,7 +19,6 @@ const LeftSide = () => {
         if (user) setIsLoaded(true);
     }, [user]);
 
-    console.log(user)
 
     return (
         <>
@@ -29,14 +28,14 @@ const LeftSide = () => {
                     <div className="topbox">
                         <h3 onClick={profileRedirect}>{`${user.username}`}</h3>
                         <i className="fas fa-edit leftEdit" onClick={() => setShowModal(true)}></i>
-                        {
-                            showModal && (
-                                <Modal onClose={() => setShowModal(false)}>
-                                    <SearchModal />
-                                </Modal>
-                            )
-                        }
                     </div>
+                    {
+                        showModal && (
+                            <Modal onClose={() => setShowModal(false)}>
+                                <SearchModal />
+                            </Modal>
+                        )
+                    }
 
                     <div className="userList">
 
