@@ -28,7 +28,6 @@ const CommentForm = ({postId}) => {
           onChange={(e) => {
             setContent(e.target.value)
             setLines(Math.ceil(e.target.value.length/70)> 0 ? Math.ceil(e.target.value.length/70) : 1)
-            console.log(lines)
           }}
           style={{height: `${lines * 32}px`}}
         ></textarea>
