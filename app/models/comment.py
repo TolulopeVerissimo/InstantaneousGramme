@@ -5,9 +5,9 @@ class Comment(db.Model):
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    postId = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
-    content = db.Column(db.String(255), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
+    content = db.Column(db.Text, nullable=False)
     date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(
     ), onupdate=db.func.current_timestamp())
@@ -24,8 +24,8 @@ class Comment(db.Model):
             date = f'{month} {day} {year}'
             return {
                 'id': self.id,
-                'userId': self.userId,
-                'postId': self.postId,
+                'userId': self.user_id,
+                'postId': self.post_id,
                 'content': self.content,
                 'date_created': date,
                 'username': username,

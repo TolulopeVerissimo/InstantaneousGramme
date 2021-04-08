@@ -4,38 +4,38 @@ from app.models import db, Comment
 def seed_comments():
 
     first = Comment(
-        userId = 1,
-        postId = 1,
+        user_id = 1,
+        post_id = 1,
         content = 'Wow that is a nice photo'
     )
     second = Comment(
-        userId = 2,
-        postId = 1,
+        user_id = 2,
+        post_id = 1,
         content = 'Very cool'
     )
     third = Comment(
-        userId = 3,
-        postId = 1,
+        user_id = 3,
+        post_id = 1,
         content = 'Awesome'
     )
     fourth = Comment(
-        userId = 3,
-        postId = 2,
+        user_id = 3,
+        post_id = 2,
         content = 'You go!'
     )
     fifth = Comment(
-        userId = 3,
-        postId = 2,
+        user_id = 3,
+        post_id = 2,
         content = 'Cool!'
     )
     sixth = Comment(
-        userId = 3,
-        postId = 1,
+        user_id = 3,
+        post_id = 1,
         content = 'awesome'
     )
     seventh = Comment(
-        userId = 2,
-        postId = 1,
+        user_id = 2,
+        post_id = 1,
         content = 'radical'
     )
     db.session.add(first)

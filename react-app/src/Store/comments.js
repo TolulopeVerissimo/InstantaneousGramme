@@ -43,13 +43,13 @@ export const getComments = () => async (dispatch) => {
 };
 
 export const createComment = (userId, postId, content) => async (dispatch) => {
-    const options =
-    {
+    const formData = new FormData();
+    formData.append('userId', userId)
+    formData.append('postId', postId)
+    formData.append('content', content)
+    const options =    {
       method: 'POST',
-      headers: {
-        'Content-Type': 'Application/json'
-      },
-      body: JSON.stringify({ userId, postId, content })
+      body: formData
     }
     const res = await fetch('/api/comments/', options)
     if (!res.ok) alert('issue')
@@ -81,7 +81,7 @@ export const deleteComment = (id) => async (dispatch) => {
         method: 'DELETE',
     });
     if (res.ok) {
-        
+
     }
 };
 
