@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { Modal } from '../../Context/Modal'
-import SearchModal from './SearchModal.js'
+import SearchModal from './searchModal.js'
 import './styles/left.css'
 
 const LeftSide = () => {
