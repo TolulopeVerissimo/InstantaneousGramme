@@ -14,19 +14,20 @@ class Comment(db.Model):
 
     user = db.relationship("User", back_populates="comments")
     post = db.relationship("Post", back_populates="comments")
-    commentLikes = db.relationship("CommentLike", cascade="all, delete-orphan", back_populates="comment")
+    commentLikes = db.relationship("CommentLike", cascade="all, delete-orphan",
+                                   back_populates="comment")
 
     def to_dict(self):
-            username = self.user.username
-            year = self.date_created.strftime('%Y')
-            month = self.date_created.strftime('%B')
-            day = self.date_created.strftime("%d")
-            date = f'{month} {day} {year}'
-            return {
-                'id': self.id,
-                'userId': self.user_id,
-                'postId': self.post_id,
-                'content': self.content,
-                'date_created': date,
-                'username': username,
-            }
+        username = self.user.username
+        year = self.date_created.strftime('%Y')
+        month = self.date_created.strftime('%B')
+        day = self.date_created.strftime("%d")
+        date = f'{month} {day} {year}'
+        return {
+            'id': self.id,
+            'userId': self.user_id,
+            'postId': self.post_id,
+            'content': self.content,
+            'date_created': date,
+            'username': username,
+        }

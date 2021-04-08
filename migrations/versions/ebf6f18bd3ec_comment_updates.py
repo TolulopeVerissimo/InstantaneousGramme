@@ -33,6 +33,8 @@ def downgrade():
     op.alter_column('comments', 'user_id', new_column_name='userId')
     op.drop_constraint(None, 'comments', type_='foreignkey')
     op.drop_constraint(None, 'comments', type_='foreignkey')
-    op.create_foreign_key('comments_userId_fkey', 'comments', 'users', ['userId'], ['id'])
-    op.create_foreign_key('comments_postId_fkey', 'comments', 'posts', ['postId'], ['id'])
+    op.create_foreign_key('comments_userId_fkey', 'comments', 'users',
+                          ['userId'], ['id'])
+    op.create_foreign_key('comments_postId_fkey', 'comments', 'posts',
+                          ['postId'], ['id'])
     # ### end Alembic commands ###
