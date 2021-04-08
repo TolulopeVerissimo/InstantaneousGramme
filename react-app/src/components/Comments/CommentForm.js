@@ -14,8 +14,7 @@ const CommentForm = ({postId}) => {
   const formSubmitHandler = async (e) => {
     e.preventDefault()
     const comment = await  dispatch(createComment(user.id,postId,content))
-    if (comment.errors) {
-      console.log(comment.errors)
+    if (comment.errors) {      
       setErrors(comment.errors)
     }
   }
