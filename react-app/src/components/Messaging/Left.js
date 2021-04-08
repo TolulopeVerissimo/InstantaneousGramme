@@ -5,7 +5,6 @@ import { Modal } from '../../Context/Modal'
 import SearchModal from './SearchModal.js'
 import './styles/left.css'
 
-
 const LeftSide = () => {
     const [showModal, setShowModal] = useState(false);
     let history = useHistory()
@@ -19,7 +18,6 @@ const LeftSide = () => {
         if (user) setIsLoaded(true);
     }, [user]);
 
-
     return (
         <>
             {
@@ -27,15 +25,16 @@ const LeftSide = () => {
                 <div className="Leftcontainer">
                     <div className="topbox">
                         <h3 onClick={profileRedirect}>{`${user.username}`}</h3>
+
                         <i className="fas fa-edit leftEdit" onClick={() => setShowModal(true)}></i>
+                        {
+                            showModal && (
+                                <Modal onClose={() => setShowModal(false)}>
+                                    <SearchModal />
+                                </Modal>
+                            )
+                        }
                     </div>
-                    {
-                        showModal && (
-                            <Modal onClose={() => setShowModal(false)}>
-                                <SearchModal />
-                            </Modal>
-                        )
-                    }
 
                     <div className="userList">
 
