@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import {useSelector, useDispatch} from 'react-redux'
 import "./comments.css";
-import smilyIcon from '../../images/icons/insta_smily_face_icon.png'
 import {createComment} from '../../Store/comments'
 
 const CommentForm = ({postId}) => {
   const [content, setContent] = useState('')
   const [lines, setLines] = useState(1)
+  const [errors, setErrors] = useState("")
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
 
   const formSubmitHandler = async (e) => {
     e.preventDefault()
-    if(!content) return alert('there is no content')
-    const userId = user.id
-    dispatch(createComment(userId,postId,content))
+    const comment = await  dispatch(createComment(user.id,postId,content))
+    if (comment.errors) {
+      console.log(comment.errors)
+      setErrors(comment.errors)
+    }
   }
 
 
@@ -24,10 +26,11 @@ const CommentForm = ({postId}) => {
       <form className="commentform" onSubmit={formSubmitHandler}>
         <textarea
           className='comment-form__input'
-          placeholder='Add a comment...'
+          placeholder={errors? errors : 'Add a comment...'}
           onChange={(e) => {
             setContent(e.target.value)
-            setLines(Math.ceil(e.target.value.length/70)> 0 ? Math.ceil(e.target.value.length/70) : 1)
+            const numLines = Math.ceil(e.target.value.length/70)
+            setLines( numLines > 0 ? numLines : 1)
           }}
           style={{height: `${lines * 32}px`}}
         ></textarea>
