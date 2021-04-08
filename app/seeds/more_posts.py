@@ -15,7 +15,7 @@ def seed_more_posts():
     posts = [Post(
         description=fake.sentence(),
         private=False,
-        imagePath=photos[i].medium,
+        imagePath=photos[i].large2x,
         userId=randint(1, 15)) for i in range(80)]
 
     for post in posts:
@@ -30,5 +30,5 @@ def seed_more_posts():
 
 
 def undo_more_posts():
-    db.session.execute('TRUNCATE posts CASCADE;')
+    db.session.execute('TRUNCATE posts RESTART IDENTITY CASCADE;')
     db.session.commit()
