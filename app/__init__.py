@@ -16,6 +16,7 @@ from .api.post_routes import post_routes
 from .api.comment_routes import comment_routes
 from .api.postLike_routes import postLike_routes
 from .api.DM_routes import DM_routes
+from .api.commentLike_routes import commentLike_routes
 from .seeds import seed_commands
 from .queries import query_commands
 
@@ -25,13 +26,12 @@ from flask_socketio import SocketIO, send
 
 from .config import Configuration
 
-app = Flask(__name__)
+
+app = Flask(__name__, static_folder="static/")
 if __name__ == '__main__':
     socketio.run(app)
-
 socketio = SocketIO(app, cors_allowed_origins="*")    
-    
-    
+
 
 # Setup login manager
 login = LoginManager(app)
@@ -56,6 +56,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(post_routes, url_prefix='/api/posts')
 app.register_blueprint(postLike_routes, url_prefix='/api/postLikes')
+app.register_blueprint(commentLike_routes, url_prefix='/api/commentLikes')
 db.init_app(app)
 Migrate(app, db)
 

@@ -1,7 +1,7 @@
 export const sideItems = [
   {
     title: "About",
-    path: "/https://github.com/TolulopeVerissimo/InstantaneousGramme/wiki",
+    path: "https://github.com/TolulopeVerissimo/InstantaneousGramme/wiki",
     cName: "item-text",
   },
 

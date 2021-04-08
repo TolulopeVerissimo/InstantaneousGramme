@@ -13,7 +13,6 @@ export default function SmallPost({ post, user }) {
           } />
           {showModal
             && (<Modal onClose={() => {
-              // setDisplayCSS('inline-block')
               setShowModal(false)
             }}>
               <ModalPost post={post} user={user} />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import {useHistory} from 'react-router-dom'
 import Comments from "../Comments";
 import CommentForm from "../Comments/CommentForm";
 import commentIcon from "../../images/icons/insta_comment_icon.png";
@@ -9,6 +10,7 @@ import { postLike } from "../../Store/postLike";
 import EditPostModal from "../EditPostModal";
 
 const Post = ({ post, user }) => {
+  const history = useHistory()
   const [isLiked, setIsLiked] = useState(false);
   const dispatch = useDispatch();
 
@@ -26,6 +28,10 @@ const Post = ({ post, user }) => {
     }
   };
 
+  const userRedirect = () => {
+    history.push(`profile/${post.userId}`)
+  }
+
   //sets isLiked to match redux state
   useEffect(() => {
     if (post) {
@@ -42,11 +48,7 @@ const Post = ({ post, user }) => {
           <img src={post.profilePicture} alt='profile pic' />
         </div>
         <div className='post__user-info'>
-          <div className='post__username'>{post.username}</div>
-        </div>
-        <div className="post__edit-button">
-
-          <EditPostModal post={post} edit={true} />
+          <div onClick={userRedirect} className='post__username'>{post.username}</div>
         </div>
       </div>
       <div className='post__image'>
@@ -73,11 +75,10 @@ const Post = ({ post, user }) => {
           {"Liked by " + post.likesUsers.length + " " + likeCount()}
         </p>
         <div className='post__title'>
-          <p className='post__user'>{post.username}</p>
+          <p className='post__user' onClick={userRedirect}>{post.username}</p>
           <p className='post__description'>{post.description}</p>
         </div>
         <div className='post__comments'>
-          {/* pass user in as props to Comments */}
           <Comments postId={post.id} />
         </div>
         <p className='post__createdAt'>{post.date_created}</p>

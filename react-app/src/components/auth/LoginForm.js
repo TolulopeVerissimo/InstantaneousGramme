@@ -34,11 +34,11 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   return (
     <form className="loginForm" onSubmit={onLogin}>
-      <div>
+      <ul className="errors">
         {errors.map((error) => (
-          <div>{error}</div>
+          <li key={error}>{error}</li>
         ))}
-      </div>
+      </ul>
       <div>
         <label htmlFor="email"></label>
         <input

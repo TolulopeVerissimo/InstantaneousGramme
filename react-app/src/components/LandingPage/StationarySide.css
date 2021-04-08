@@ -41,7 +41,6 @@
 
 .suggestion__pic {
   object-fit: cover;
-  background-color: pink;
   height: 3rem;
   max-width: 3rem;
   border-radius: 50%;

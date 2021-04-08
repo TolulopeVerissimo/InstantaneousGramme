@@ -1,5 +1,5 @@
 * {
-  font-family: "proxima-nova", sans-serif;
+  font-family: "lato", sans-serif;
   background-color: white;
 }
 
@@ -23,7 +23,9 @@
 }
 
 .post__username {
+  font-weight: 700;
   padding-left: 0.6rem;
+  cursor: pointer
 }
 
 .post__username:hover {
@@ -68,7 +70,7 @@
 }
 
 .comment__container {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   padding: 1rem;
   padding-top: 0rem;
   border-bottom: 0.5px solid rgb(235, 231, 231);
@@ -82,6 +84,7 @@
   font-weight: bold;
   display: inline-block;
   padding: 0.5rem 0.5rem 0rem 0rem;
+  cursor: pointer;
 }
 
 .post__description {
@@ -89,8 +92,9 @@
 }
 
 .post__createdAt {
-  font-size: 1rem;
-  color: rgb(168, 167, 167);
+  font-size: 1.1rem;
+  color: rgb(156, 155, 155);
+  font-weight: 700;
   padding-top: 0.8rem;
 }
 .editpost__dropdown {
