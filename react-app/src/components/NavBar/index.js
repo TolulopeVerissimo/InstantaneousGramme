@@ -8,8 +8,14 @@ import "./NavBar.css";
 const NavBar = ({ setAuthenticated }) => {
   let history = useHistory();
   const homeRouter = () => {
-    history.push("/");
-  };
+    history.push('/')
+  }
+  const exploreRouter = () => {
+    history.push('/explore')
+  }
+  const DMRouter = () => {
+    history.push('/DM')
+  }
 
   return (
     <nav className='navbar'>
@@ -26,6 +32,7 @@ const NavBar = ({ setAuthenticated }) => {
       <div className='navbar__navicons'>
         <PostModal edit={false} />
         <i className='fas fa-home navbar__icon' onClick={homeRouter} />
+        <i className="fas fa-inbox navbar__icon" onClick={DMRouter} />
         <i className='far fa-heart navbar__icon' />
         <ProfileDropdown setAuthenticated={setAuthenticated} />
       </div>

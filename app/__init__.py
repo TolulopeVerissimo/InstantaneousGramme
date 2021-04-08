@@ -7,24 +7,31 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
+from flask_socketio import SocketIO, send, emit
 
-from .models import db, User, Post
+from .models import db, User, Post, DM
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.post_routes import post_routes
 from .api.comment_routes import comment_routes
 from .api.postLike_routes import postLike_routes
+from .api.DM_routes import DM_routes
 from .api.commentLike_routes import commentLike_routes
 from .seeds import seed_commands
 from .queries import query_commands
 
 
 # socketIO
-# from flask_socketio import SocketIO, send
+from flask_socketio import SocketIO, send
 
 from .config import Configuration
 
+
 app = Flask(__name__, static_folder="static/")
+if __name__ == '__main__':
+    socketio.run(app)
+socketio = SocketIO(app, cors_allowed_origins="*")    
+
 
 # Setup login manager
 login = LoginManager(app)
@@ -61,6 +68,18 @@ CORS(app)
 # Therefore, we need to make sure that in production any
 # request made over http is redirected to https.
 # Well.........
+
+@socketio.on("message")
+def handleMessage(msg):
+    msg = json.loads(msg)
+    message, senderId, recieverId = msg.values()
+
+    message = DirectMessage(message=message, senderId=senderId,
+                            recieverId=recieverId)
+    db.session.add(message)
+    db.session.commit()
+    emit('message', {'msg': message.to_dict(), })
+    print('recieved message' + message.message)
 
 
 @app.before_request

@@ -1,0 +1,25 @@
+.searchModal {
+    height: 45rem;
+    width: 40rem;
+    background-color: #fafafa;
+    border-radius: 4rem 4rem 4rem 4rem;
+    position: relative;
+    /* top: 50%;
+    left: 50%; */
+}
+.topboarder {
+    border-radius: 5rem 5rem 0rem 0rem;
+    border-bottom: solid rgba(var(--b6a, 219, 219, 219), 1);
+}
+.closeModalX {
+}
+.fadedWords {
+    opacity: 0.3;
+    border: 0;
+    color: #0095f6;
+    color: rgba(var(--d69, 0, 149, 246), 1);
+    padding: 0;
+    position: relative;
+}
+.NOTfadedWords {
+}

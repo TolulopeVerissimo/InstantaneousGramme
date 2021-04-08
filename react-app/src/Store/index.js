@@ -7,6 +7,7 @@ import usersReducer from "./user";
 import profileReducer from "./profile";
 import followsReducer from "./follow";
 import sessionReducer from "./session";
+import DMReducer from "./DM";
 
 const rootReducer = combineReducers({
   comments: commentsReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   profiles: profileReducer,
   follows: followsReducer,
   session: sessionReducer,
+  message: DMReducer,
 });
 
 let enhancer;
