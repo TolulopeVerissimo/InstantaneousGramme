@@ -6,6 +6,7 @@ import {createComment} from '../../Store/comments'
 
 const CommentForm = ({postId}) => {
   const [content, setContent] = useState('')
+  const [lines, setLines] = useState(1)
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
@@ -20,17 +21,17 @@ const CommentForm = ({postId}) => {
 
   return (
     <div className='comment-form__container'>
-      <img
-        alt="smile emoji"
-        className='comment-form__icon'
-        src={smilyIcon}
-      ></img>
       <form className="commentform" onSubmit={formSubmitHandler}>
-        <input
+        <textarea
           className='comment-form__input'
           placeholder='Add a comment...'
-          onChange={(e) => setContent(e.target.value)}
-        ></input>
+          onChange={(e) => {
+            setContent(e.target.value)
+            setLines(Math.ceil(e.target.value.length/70)> 0 ? Math.ceil(e.target.value.length/70) : 1)
+            console.log(lines)
+          }}
+          style={{height: `${lines * 32}px`}}
+        ></textarea>
         <button type='submit' className='comment-form__button'>
           Post
         </button>
