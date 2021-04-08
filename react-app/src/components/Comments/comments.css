@@ -31,10 +31,10 @@
 }
 
 .comment-form__container {
-  height: 5rem;
-  display: grid;
-  grid-template-columns: 4rem auto 4rem;
-  width: 100%;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .comment-form__icon {
@@ -45,22 +45,28 @@
 }
 
 .comment-form__input {
+  max-height: 100%;
   border: none;
-  padding-left: 0.5rem;
+  padding: 0rem 0.5rem;
   align-items: center;
   outline: none;
   width: 100%;
+  flex-grow: 1;
+  resize: none;
+  width: 75%;
+  overflow-y:auto;
 }
 
 .comment-form__button {
   width: 6rem;
-  color: white;
+    color: white;
   outline: none;
   text-align: center;
   height: 60%;
   cursor: pointer;
   background-color: dodgerblue;
   border-radius: .6rem;
+  margin-left: .5rem;
 }
 .comment-form__button:hover {
   background-color: #007df6;
@@ -69,5 +75,9 @@
 
 .commentform {
   display: flex;
+  box-sizing: border-box;
+  width: 90%;
   align-items: center;
+  height: 6rem;
+  padding-top: .1rem;
 }

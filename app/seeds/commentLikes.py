@@ -26,18 +26,18 @@ def seed_commentLikes():
     sixth = CommentLike(
         userId = 1,
         commentId = 1
-    )    
+    )
     seventh = CommentLike(
         userId = 1,
         commentId = 3
-    )                   
+    )
     db.session.add(first)
     db.session.add(second)
     db.session.add(third)
     db.session.add(fourth)
     db.session.add(fifth)
     db.session.add(sixth)
-    db.session.add(seventh)               
+    db.session.add(seventh)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.
@@ -45,5 +45,5 @@ def seed_commentLikes():
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 def undo_commentLikes():
-    db.session.execute('TRUNCATE commentLikes;')
+    db.session.execute('TRUNCATE "commentLikes" RESTART IDENTITY;')
     db.session.commit()

@@ -30,5 +30,5 @@ def seed_postLikes():
 
 
 def undo_postLikes():
-    db.session.execute('TRUNCATE postLikes;')
+    db.session.execute('TRUNCATE "postLikes" RESTART IDENTITY;')
     db.session.commit()
