@@ -10,12 +10,16 @@ post_routes = Blueprint('posts', __name__)
 @login_required
 def posts(id):
     user = User.query.get(id)
-    follows = user.follows.all()
-    print(follows)
+    follows = [follow.id for follow in user.follows.all()]
     posts = []
     for id in follows:
-        posts.append(Post.query.filter_by(userId == id).all())
-    return jsonify({"posts": [post.to_dict() for post in posts]})
+        follow_posts = Post.query.filter(Post.userId == id).all()
+        for post in follow_posts:
+            posts.append(post)
+    if posts[0]:
+        return jsonify({"posts": [post.to_dict() for post in posts]})
+    else:
+        return {'posts': []}
 
 
 @post_routes.route('/', methods=['POST'])
