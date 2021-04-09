@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {useSelector, useDispatch} from 'react-redux'
 import "./comments.css";
 import {createComment} from '../../Store/comments'
+import { getPost } from "../../Store/posts";
 
 const CommentForm = ({postId}) => {
   const [content, setContent] = useState('')
@@ -14,8 +15,11 @@ const CommentForm = ({postId}) => {
   const formSubmitHandler = async (e) => {
     e.preventDefault()
     const comment = await  dispatch(createComment(user.id,postId,content))
-    if (comment.errors) {      
+    if (comment.errors) {
       setErrors(comment.errors)
+    }
+    else {
+      await dispatch(getPost(postId))
     }
   }
 
