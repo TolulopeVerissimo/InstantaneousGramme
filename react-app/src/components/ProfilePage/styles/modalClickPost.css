@@ -69,7 +69,14 @@
     overflow: hidden;
 }
 .modalPost__comments {
-    margin-top: 1.5rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 90%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.modalPost__comments::-webkit-scrollbar {
+    display: none;
 }
 .comment__container {
     border-bottom: 0.5px solid rgb(235, 231, 231);

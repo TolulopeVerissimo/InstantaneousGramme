@@ -35,7 +35,7 @@ def new_post():
 def post(id):
     post = Post.query.get(id)
     if post:
-        return jsonify(post.to_dict())
+        return jsonify({"posts": [post.to_dict()]})
     else:
         return {'post': []}
 

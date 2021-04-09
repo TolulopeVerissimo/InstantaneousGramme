@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Comments from "../Comments";
+import ModalComments from "../Comments/ModalComments";
 import CommentForm from "../Comments/CommentForm";
 import commentIcon from "../../images/icons/insta_comment_icon.png";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
@@ -63,7 +63,7 @@ const ModalPost = ({ post, user }) => {
                         <span className='modalPost__description'>{post.description}</span>
                     </div>
                     <div className='modalPost__comments'>
-                        <Comments postId={post.id} />
+                        <ModalComments postId={post.id} />
                     </div>
                 </div>
 

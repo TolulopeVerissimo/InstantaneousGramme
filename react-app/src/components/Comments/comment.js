@@ -51,6 +51,7 @@ export default function CommentContent({ comment }) {
       }
       const removeComment = async (commentId) => {
 		await dispatch(deleteComment(commentId));
+        await dispatch(getPost(comment.postId))
 	};
 
 
