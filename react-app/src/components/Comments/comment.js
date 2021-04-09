@@ -17,7 +17,9 @@ export default function CommentContent({ comment }) {
     const user = useSelector((state) => state.session.user);
     const dropdownRef = useRef(null);
     const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-    const [readonly, setReadonly]= useState(true)
+    const [activeEdit, setActiveEdit] = useState(false)
+    const [readonly, setReadonly] = useState(true)
+
 
     const profileRedirect = () => {
         history.push(`profile/${comment.userId}`)
@@ -33,15 +35,13 @@ export default function CommentContent({ comment }) {
     let activeElement
 
 
+
     const handleEnter = async(e,commentId) => {
         activeElement = document.querySelector(`#comment-${comment.id} input`)
-
         let content = activeElement.value;
-        console.log(content)
         if (e.key === "Enter") {
           e.preventDefault()
             await dispatch(updateComments(commentId, content));
-            activeElement.setAttribute("contenteditable", false);
             activeElement.classList.remove('highlight')
             setReadonly(true)
         }
@@ -57,13 +57,15 @@ export default function CommentContent({ comment }) {
 	};
 
 
+
     const editActionHandler = (e, comment) => {
         activeElement = document.querySelector(`#comment-${comment.id} input`)
 
         setReadonly(false)
-        activeElement.classList.add('highlight');
+        setActiveEdit(true)
         activeElement.focus()
     }
+
 
     useEffect(() => {
         if (!comment || !user) return
@@ -86,7 +88,7 @@ export default function CommentContent({ comment }) {
                     >
                         {isUser && (
                             <input
-                                className={`comment-input ${isUser ? 'user-comment': 'nonuser-comment'}`}
+                                className={`comment-input ${isUser ? 'user-comment': 'nonuser-comment'} ${activeEdit ? 'highlight' :""}`}
                                 readOnly={readonly}
                                 value={commentContent}
                                 onChange={(e)=> setCommentContent(e.target.value)}
