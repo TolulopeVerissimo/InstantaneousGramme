@@ -9,7 +9,7 @@ function Header({ profile }) {
 
     const handleProfilePic = async (img) => {
       const url = await getSignedRequest(img);
-      console.log(url)
+
     }
     return (
         <>
