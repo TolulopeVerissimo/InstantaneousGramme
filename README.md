@@ -120,10 +120,10 @@ This is an example of how to list things you need to use the software and how to
    ```
 
 2. Backend Installation
-- Follow Instructions for Backend [Instructions]()
+- Follow Instructions for Backend [Instructions](https://github.com/TolulopeVerissimo/InstantaneousGramme/blob/readme/README_BACKEND.md)
 
 3. Frontend Installation
-- Follow Instructions for Frontend [Instructions]()
+- Follow Instructions for Frontend [Instructions](https://github.com/TolulopeVerissimo/InstantaneousGramme/blob/readme/README_FRONTEND.md)
 
 
 
