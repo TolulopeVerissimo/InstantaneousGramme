@@ -13,6 +13,7 @@ const CommentForm = ({postId}) => {
 
 
   const formSubmitHandler = async (e) => {
+    setErrors("")
     e.preventDefault()
     const comment = await  dispatch(createComment(user.id,postId,content))
     if (comment.errors) {
@@ -20,6 +21,7 @@ const CommentForm = ({postId}) => {
     }
     else {
       await dispatch(getPost(postId))
+      setContent("")
     }
   }
 
@@ -30,6 +32,7 @@ const CommentForm = ({postId}) => {
         <textarea
           className='comment-form__input'
           placeholder={errors? errors : 'Add a comment...'}
+          value={content}
           onChange={(e) => {
             setContent(e.target.value)
             const numLines = Math.ceil(e.target.value.length/70)

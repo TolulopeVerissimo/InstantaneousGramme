@@ -1,4 +1,4 @@
-
+import getPost from './posts'
 const SET_COMMENTS = 'COMMENTS/SET_COMMENTS';
 const CREATE_COMMENTS = 'COMMENTS/CREATE_COMMENTS';
 const REMOVE_COMMENT = 'COMMENTS/REMOVE_COMMENT';
@@ -56,7 +56,7 @@ export const createComment = (userId, postId, content) => async (dispatch) => {
       if (!res.ok) throw res
       const comment = await res.json()
       if(!comment.errors) {
-        dispatch(setComments([comment]));
+        dispatch(getPost(postId));
       }
       return comment
   }
