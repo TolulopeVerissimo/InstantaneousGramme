@@ -72,11 +72,11 @@ export const updatePostLikes = (like) => async (dispatch) => {
   return response;
 };
 
-export const getPosts = () => async (dispatch) => {
-  const response = await fetch("/api/posts/");
+export const getPosts = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/posts/${userId}`);
   if (response.ok) {
     let res = await response.json();
-       dispatch(setPosts(res.posts));
+      dispatch(setPosts(res.posts));
   }
   return response;
 };

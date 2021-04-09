@@ -9,13 +9,14 @@ import { getUsers } from "../../Store/user";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
+  const userId = useSelector((state) => state.session.user.id)
   const posts = useSelector((state) => Object.values(state.posts));
 
   useEffect(() => {
-    dispatch(postActions.getPosts());
+    dispatch(postActions.getPosts(userId));
     dispatch(getUsers());
     dispatch(commentActions.getComments());
-  }, [dispatch]);
+  }, [userId, dispatch]);
 
   return (
     <>

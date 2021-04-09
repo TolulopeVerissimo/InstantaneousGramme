@@ -1,19 +1,21 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Post
+from app.models import db, Post, User
 from flask_login import login_required
 from app.forms import NewPostForm, EditPostForm
 post_routes = Blueprint('posts', __name__)
 
 
-@post_routes.route('/')
+@post_routes.route('/<int:id>')
 @login_required
-def posts():
-    posts = Post.query.all()
-    if posts[0]:
-        return jsonify({"posts": [post.to_dict() for post in posts]})
-    else:
-        return {'posts': []}
+def posts(id):
+    user = User.query.get(id)
+    follows = user.follows.all()
+    print(follows)
+    posts = []
+    for id in follows:
+        posts.append(Post.query.filter_by(userId == id).all())
+    return jsonify({"posts": [post.to_dict() for post in posts]})
 
 
 @post_routes.route('/', methods=['POST'])
