@@ -67,11 +67,12 @@ export const updateUser = ({ id, name, email, phoneNumber, username, biography, 
 };
 
 export const updateProfilePic = (id, url) => async (dispatch) => {
+    console.log(`id:${id}, url:${url}`)
     const formData = new FormData();
     formData.append('profilePicture', url)
-    const fetchUrl = `/users/${id}/profile`
+    const fetchUrl = `/api/users/${id}/picture/`
     const options = {
-        method: 'PATCH',
+        method: 'PUT',
         body: formData
      }
     const response = await fetch(fetchUrl, options)

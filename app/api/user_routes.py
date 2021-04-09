@@ -22,7 +22,7 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('/<int:id>', methods=['PATCH'])
+@user_routes.route('/<int:id>/picture/', methods=['PUT'])
 @login_required
 def update_profile(id):
     user = User.query.get(id)

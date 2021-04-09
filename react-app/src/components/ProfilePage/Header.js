@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSignedRequest } from '../../services/upload'
 import { getProfile } from '../../Store/profile'
+import { updateProfilePic } from '../../Store/user'
 import FollowUser from '../FollowUser'
 import './styles/headers.css'
 function Header({ profile }) {
@@ -11,6 +12,8 @@ function Header({ profile }) {
 
   const handleProfilePic = async (img) => {
     const url = await getSignedRequest(img);
+    console.log(url)
+    await dispatch(updateProfilePic(userId, url))
     await dispatch(getProfile(userId))
   }
   return (
