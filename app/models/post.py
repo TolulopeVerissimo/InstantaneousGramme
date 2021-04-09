@@ -20,6 +20,9 @@ class Post(db.Model):
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(
     ), onupdate=db.func.current_timestamp())
 
+    def sort_comments(self):
+        self.comments.sort(key=lambda comment: comment.id)
+
     def to_dict(self):
         user = self.user.to_dict()
         username = user["username"]
@@ -30,6 +33,7 @@ class Post(db.Model):
         month = self.date_created.strftime('%B')
         day = self.date_created.strftime("%d")
         date = f'{month} {day} {year}'
+        self.sort_comments()
 
         return {
             'id': self.id,
