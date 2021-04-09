@@ -20,9 +20,10 @@ class User(db.Model, UserMixin):
     biography = db.Column(db.String(200))
     profilePicture = db.Column(db.String(255))
     hashed_password = db.Column(db.String(255), nullable=False)
-    date_created  = db.Column(db.DateTime,  default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(),onupdate=db.func.current_timestamp())
-
+    date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
+    date_modified = db.Column(
+        db.DateTime,  default=db.func.current_timestamp(),
+        onupdate=db.func.current_timestamp())
 
     posts = db.relationship("Post", back_populates="user")
     postLikes = db.relationship("PostLike", back_populates="user")
@@ -38,10 +39,12 @@ class User(db.Model, UserMixin):
     )
 
     messages_sent = db.relationship(
-        "DirectMessage", foreign_keys="DirectMessage.senderId", back_populates="sender"
+        "DirectMessage", foreign_keys="DirectMessage.senderId",
+        back_populates="sender"
     )
     messages_received = db.relationship(
-        "DirectMessage", foreign_keys="DirectMessage.receiverId", back_populates="receiver"
+        "DirectMessage", foreign_keys="DirectMessage.receiverId",
+        back_populates="receiver"
     )
 
     @property
@@ -61,6 +64,5 @@ class User(db.Model, UserMixin):
             "username": self.username,
             "email": self.email,
             "profilePicture": self.profilePicture,
-            "biography":self.biography,
+            "biography": self.biography,
         }
-

@@ -66,6 +66,20 @@ export const updateUser = ({ id, name, email, phoneNumber, username, biography, 
     return response.data.user;
 };
 
+export const updateProfilePic = (id, url) => async (dispatch) => {
+    const formData = new FormData();
+    formData.append('profilePicture', url)
+    const fetchUrl = `/users/${id}/profile`
+    const options = {
+        method: 'PATCH',
+        body: formData
+     }
+    const response = await fetch(fetchUrl, options)
+    const user = await response.json()
+    dispatch(setUsers[user])
+}
+
+
 const initialState = {};
 
 const usersReducer = (state = initialState, action) => {
