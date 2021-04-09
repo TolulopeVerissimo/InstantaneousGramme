@@ -7,19 +7,19 @@
   
   .menu-trigger {
     background: #ffffff;
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     outline: none;
     border: none;
-    vertical-align: middle;
+
     transition: box-shadow 0.4s ease;
     margin-left: auto; /* Strictly for positioning */
   }
   
-  .menu-trigger:hover {
+  .user-comment:hover {
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    cursor:pointer
   }
   
   .menu-trigger span {

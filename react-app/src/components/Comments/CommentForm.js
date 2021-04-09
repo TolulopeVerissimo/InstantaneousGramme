@@ -16,6 +16,8 @@ const CommentForm = ({postId}) => {
     const comment = await  dispatch(createComment(user.id,postId,content))
     if (comment.errors) {      
       setErrors(comment.errors)
+    } else {
+      setContent('')
     }
   }
 
@@ -31,7 +33,8 @@ const CommentForm = ({postId}) => {
             const numLines = Math.ceil(e.target.value.length/70)
             setLines( numLines > 0 ? numLines : 1)
           }}
-          style={{height: `${lines * 32}px`}}
+          style={{ height: `${lines * 32}px` }}
+          value={content}
         ></textarea>
         <button type='submit' className='comment-form__button'>
           Post

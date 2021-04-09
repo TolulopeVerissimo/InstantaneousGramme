@@ -2,6 +2,20 @@
   height: 20px;
 
 }
+.comment-input{
+  outline: none;
+  border: none;
+  margin: 0;
+}
+.drop-item:hover{
+  background-color:rgb(226, 226, 226)
+}
+
+.drop-item{
+  /* background-color: blue */
+
+}
+
 .comments__container {
   display: flex;
   justify-content: space-between;

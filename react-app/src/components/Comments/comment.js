@@ -1,4 +1,4 @@
-import React, {useState,useRef} from 'react'
+import React, {useState,useRef,useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {useHistory} from 'react-router-dom'
 import {useDetectOutsideClick} from "../../services/detectOutsideClick"
@@ -10,11 +10,14 @@ import { commentLike } from '../../Store/commentLike'
 
 export default function CommentContent({ comment }) {
     const history = useHistory()
+    const [commentContent,setCommentContent] = useState('')
+    const [isUser, setIsUser] = useState(false)
     const dispatch = useDispatch();
     const [isLiked, setIsLiked] = useState(false);
     const user = useSelector((state) => state.session.user);
     const dropdownRef = useRef(null);
     const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
+    const [readonly, setReadonly]= useState(true)
 
     const profileRedirect = () => {
         history.push(`profile/${comment.userId}`)
@@ -31,14 +34,16 @@ export default function CommentContent({ comment }) {
 
 
     const handleEnter = async(e,commentId) => {
-        activeElement = document.querySelector(`#comment-${comment.id}`)
+        activeElement = document.querySelector(`#comment-${comment.id} input`)
 
-        let content = activeElement.firstChild.nodeValue
+        let content = activeElement.value;
+        console.log(content)
         if (e.key === "Enter") {
           e.preventDefault()
             await dispatch(updateComments(commentId, content));
             activeElement.setAttribute("contenteditable", false);
             activeElement.classList.remove('highlight')
+            setReadonly(true)
         }
       }
 
@@ -53,12 +58,20 @@ export default function CommentContent({ comment }) {
 
 
     const editActionHandler = (e, comment) => {
-        activeElement = document.querySelector(`#comment-${comment.id}`)
+        activeElement = document.querySelector(`#comment-${comment.id} input`)
 
-        activeElement.setAttribute("contenteditable", true);
+        setReadonly(false)
         activeElement.classList.add('highlight');
         activeElement.focus()
     }
+
+    useEffect(() => {
+        if (!comment || !user) return
+        console.log(comment, user)
+        if (comment.userId === user.id) setIsUser(true)
+        setCommentContent(comment.content)
+
+    },[isUser])
 
     return (
         <>
@@ -68,12 +81,22 @@ export default function CommentContent({ comment }) {
                     <div
                         id={`comment-${comment.id}`}
                         className="comment__content menu-trigger"
-                        suppressContentEditableWarning="true"
-                        contentEditable='false'
                         onKeyPress={(e)=>handleEnter(e,comment.id)}
                         onClick={() => showDropMenu(comment,user)}
-                                >
-                                {comment.content}
+                    >
+                        {isUser && (
+                            <input
+                                className={`comment-input ${isUser ? 'user-comment': 'nonuser-comment'}`}
+                                readOnly={readonly}
+                                value={commentContent}
+                                onChange={(e)=> setCommentContent(e.target.value)}
+                            />
+                        )}
+                        {!isUser && (
+                            <div className='comment__content'>{comment.content}</div>
+                        )}
+                        
+                                
 
                                 {comment.userId === user.id && (
                                     <>
@@ -84,9 +107,7 @@ export default function CommentContent({ comment }) {
                                             <ul>
                                                 <li>
                                                     <div
-                                                        className=""
-                                                        suppressContentEditableWarning="true"
-                                                        contentEditable="false"
+                                                        className="drop-item"
                                                         onClick={() => removeComment(comment.id)}
                                                     >
                                                         Delete
@@ -94,9 +115,7 @@ export default function CommentContent({ comment }) {
                                                 </li>
                                                 <li>
                                                     <div
-                                                        className=""
-                                                        suppressContentEditableWarning="true"
-                                                        contentEditable="false"
+                                                        className="drop-item"
                                                         onClick={(e) => editActionHandler(e,comment)}
                                                     >
                                                         Edit
