@@ -9,7 +9,6 @@ export default function ChatForm() {
     const [message, setMessage] = useState('');
 
     const { otherUser } = useOtherUserContext();
-    console.log(otherUser)
     const lgdInUserId = useSelector((state) => state.session.user.id);
 
     const onSend = async function (e) {

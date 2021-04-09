@@ -69,7 +69,6 @@ export default function CommentContent({ comment }) {
 
     useEffect(() => {
         if (!comment || !user) return
-        console.log(comment, user)
         if (comment.userId === user.id) setIsUser(true)
         setCommentContent(comment.content)
 
