@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSignedRequest } from '../../services/upload'
 import { getProfile } from '../../Store/profile'
@@ -8,11 +8,9 @@ import './styles/headers.css'
 function Header({ profile }) {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
-  const [img, setImg] = useState("")
 
   const handleProfilePic = async (img) => {
     const url = await getSignedRequest(img);
-    console.log(url)
     await dispatch(updateProfilePic(userId, url))
     await dispatch(getProfile(userId))
   }
@@ -27,7 +25,6 @@ function Header({ profile }) {
                   <input type="file"
                     id="profilepic-upload"
                     accept="image/jpeg, image/png"
-                    value={img}
                     onChange={(e) =>handleProfilePic(e.target.files[0])}
                     style={{display: "none"}}
                     />

@@ -67,7 +67,6 @@ export const updateUser = ({ id, name, email, phoneNumber, username, biography, 
 };
 
 export const updateProfilePic = (id, url) => async (dispatch) => {
-    console.log(`id:${id}, url:${url}`)
     const formData = new FormData();
     formData.append('profilePicture', url)
     const fetchUrl = `/api/users/${id}/picture/`
@@ -77,7 +76,7 @@ export const updateProfilePic = (id, url) => async (dispatch) => {
      }
     const response = await fetch(fetchUrl, options)
     const user = await response.json()
-    dispatch(setUsers[user])
+    dispatch(setUsers([user]))
 }
 
 
