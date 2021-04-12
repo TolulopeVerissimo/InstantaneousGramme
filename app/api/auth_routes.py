@@ -58,7 +58,8 @@ def sign_up():
             name=form.data['name'],
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            profilePicture='https://group-gram.s3.amazonaws.com/blank-profile-picture-973460_640.png'
         )
         db.session.add(user)
         db.session.commit()
