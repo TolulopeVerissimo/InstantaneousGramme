@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom'
-
-
 import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { restoreUser } from '../../Store/session'
 import { signUp } from '../../services/auth';
 import './signup.css'
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
-
+  const dispatch = useDispatch()
   let history = useHistory()
   const loginRedirect = () => {
     history.push('/')
@@ -23,7 +23,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     if (password === repeatPassword) {
       const user = await signUp(name, username, email, password);
       if (!user.errors) {
+        await dispatch(restoreUser())
         setAuthenticated(true);
+        loginRedirect()
       }
     }
   };

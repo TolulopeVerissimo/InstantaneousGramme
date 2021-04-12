@@ -42,6 +42,7 @@ export const signUp = async (name, username, email, password) => {
       username,
       email,
       password,
+      profilePicture: "https://group-gram.s3.amazonaws.com/blank-profile-picture-973460_640.png",
     }),
   });
   return await response.json();
