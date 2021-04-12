@@ -1,5 +1,4 @@
 const SET_POSTS = "posts/SET_POSTS";
-const CREATE_POSTS = "posts/CREATE_POSTS";
 const REMOVE_POST = "posts/REMOVE_POST";
 const UPDATE_POST = "posts/UPDATE_POST";
 
@@ -81,6 +80,15 @@ export const getPosts = () => async (dispatch) => {
   return response;
 };
 
+export const getPost = (id) => async (dispatch) => {
+  const response = await fetch(`/api/posts/${id}`);
+  if (response.ok) {
+    let res = await response.json();
+       dispatch(setPosts(res.posts));
+  }
+  return response;
+};
+
 const initialState = {};
 
 const postsReducer = (state = initialState, action) => {
@@ -91,8 +99,6 @@ const postsReducer = (state = initialState, action) => {
         return acc;
       }, {});
       return { ...state, ...posts };
-    case CREATE_POSTS:
-      return { ...state, [action.drink.id]: action.drink };
     case REMOVE_POST:
       const newState = { ...state };
       delete newState[action.id];

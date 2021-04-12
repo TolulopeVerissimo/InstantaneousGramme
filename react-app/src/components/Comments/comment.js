@@ -6,6 +6,7 @@ import { updateComments, deleteComment } from "../../Store/comments";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import { commentLike } from '../../Store/commentLike'
+import { getPost } from '../../Store/posts';
 
 
 export default function CommentContent({ comment }) {
@@ -37,6 +38,7 @@ export default function CommentContent({ comment }) {
         if (e.key === "Enter") {
           e.preventDefault()
             await dispatch(updateComments(commentId, content));
+            await dispatch(getPost(comment.postId))
             activeElement.setAttribute("contenteditable", false);
             activeElement.classList.remove('highlight')
         }
@@ -49,6 +51,7 @@ export default function CommentContent({ comment }) {
       }
       const removeComment = async (commentId) => {
 		await dispatch(deleteComment(commentId));
+        await dispatch(getPost(comment.postId))
 	};
 
 

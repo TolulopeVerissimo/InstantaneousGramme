@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {useSelector, useDispatch} from 'react-redux'
 import "./comments.css";
 import {createComment} from '../../Store/comments'
+import { getPost } from "../../Store/posts";
 
 const CommentForm = ({postId}) => {
   const [content, setContent] = useState('')
@@ -12,10 +13,15 @@ const CommentForm = ({postId}) => {
 
 
   const formSubmitHandler = async (e) => {
+    setErrors("")
     e.preventDefault()
     const comment = await  dispatch(createComment(user.id,postId,content))
-    if (comment.errors) {      
+    if (comment.errors) {
       setErrors(comment.errors)
+    }
+    else {
+      await dispatch(getPost(postId))
+      setContent("")
     }
   }
 
@@ -26,6 +32,7 @@ const CommentForm = ({postId}) => {
         <textarea
           className='comment-form__input'
           placeholder={errors? errors : 'Add a comment...'}
+          value={content}
           onChange={(e) => {
             setContent(e.target.value)
             const numLines = Math.ceil(e.target.value.length/70)

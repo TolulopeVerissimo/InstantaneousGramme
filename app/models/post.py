@@ -11,12 +11,17 @@ class Post(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     user = db.relationship("User", back_populates="posts")
-    comments = db.relationship("Comment", cascade="all, delete-orphan", back_populates="post")
-    postLikes = db.relationship("PostLike", cascade="all, delete-orphan", back_populates="post")
+    comments = db.relationship(
+        "Comment", cascade="all, delete-orphan", back_populates="post")
+    postLikes = db.relationship(
+        "PostLike", cascade="all, delete-orphan", back_populates="post")
 
     date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(
     ), onupdate=db.func.current_timestamp())
+
+    def sort_comments(self):
+        self.comments.sort(key=lambda comment: comment.id)
 
     def to_dict(self):
         user = self.user.to_dict()
@@ -28,6 +33,7 @@ class Post(db.Model):
         month = self.date_created.strftime('%B')
         day = self.date_created.strftime("%d")
         date = f'{month} {day} {year}'
+        self.sort_comments()
 
         return {
             'id': self.id,
@@ -38,5 +44,6 @@ class Post(db.Model):
             'username': username,
             'profilePicture': profilePicture,
             'likesUsers': likesUsers,
-            'date_created': date
+            'date_created': date,
+            'comments': [comment.to_dict() for comment in self.comments]
         }

@@ -23,7 +23,6 @@ function Profile() {
 		dispatch(getProfile(id))
 		dispatch(getPosts())
 		dispatch(getFollowers(id))
-		dispatch(getComments())
 		setLoaded(true)
 	}, [dispatch, id])
 	if (posts) {

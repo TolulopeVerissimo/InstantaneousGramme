@@ -3,11 +3,9 @@ import "./dropdown.css";
 import "./comments.css";
 import CommentContent from "./comment"
 import { useSelector } from "react-redux";
-import { Modal } from "../../Context/Modal"
-import ModalPost from "../ProfilePage/modalClickPost"
 
 
-const Comments = ({postId}) => {
+const ModalComments = ({postId}) => {
 	const comments = useSelector((state) => state.posts[postId].comments)
 	const user = useSelector((state) => state.session.user);
 	const post = useSelector((state) => state.posts[postId])
@@ -15,22 +13,13 @@ const Comments = ({postId}) => {
 
 	return (
 		<>
-			{comments && comments.length > 2 ?
-				<span onClick={() => setShowModal(true)}>{`View all ${comments.length} comments`}</span> : null}
 			{comments &&
 				user &&
-				comments.slice(0, 2).map((comment) => (
+				comments.map((comment) => (
 					<CommentContent comment={comment} key={comment.id} />
 				))}
-			{showModal &&
-				(<Modal onClose={() => {
-					setShowModal(false)
-				}}>
-					<ModalPost post={post} user={user} />
-				</Modal>)
-			}
 		</>
 	);
 };
 
-export default Comments;
+export default ModalComments;

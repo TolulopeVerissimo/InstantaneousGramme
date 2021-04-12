@@ -14,6 +14,15 @@
   margin-bottom: 4rem;
 }
 
+.post__comments {
+  margin-top: .5rem;
+}
+
+.post__comments > span {
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .post__header {
   display: grid;
   grid-template-columns: auto 6fr auto;
@@ -74,7 +83,7 @@
   padding: 1rem;
   padding-top: 0rem;
   border-bottom: 0.5px solid rgb(235, 231, 231);
-}
+  }
 
 .post__title {
   width: 100%;
