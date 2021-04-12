@@ -53,7 +53,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
 
   return (
-    <>
+    <div id="signup-wrapper">
       <div className="signUpForm">
         <form
           onSubmit={onSignUp}>
@@ -116,7 +116,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           <span onClick={loginRedirect} style={{ cursor: 'pointer', color: '#0095f6' }}>Log In </span>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
