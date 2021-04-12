@@ -6,18 +6,16 @@
     margin-bottom: 5rem;
 }
 .HeaderMain .pfp {
+    display: flex;
     height: 15rem;
     width: 15rem;
-    border-radius: 50%;
-    border-radius: 50%;
-    border: 1px solid black;
 }
 .pfp img {
     height: 100%;
     width: 100%;
     border-radius: 50%;
-    background-position: center center;
-    background-size: cover;
+    border: 1px solid black;
+    cursor: pointer;
 }
 .userinfo {
     display: flex;

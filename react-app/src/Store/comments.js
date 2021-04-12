@@ -2,7 +2,6 @@
 const SET_COMMENTS = 'COMMENTS/SET_COMMENTS';
 const CREATE_COMMENTS = 'COMMENTS/CREATE_COMMENTS';
 const REMOVE_COMMENT = 'COMMENTS/REMOVE_COMMENT';
-const UPDATE_COMMENT = "posts/UPDATE_COMMENT";
 
 const setComments = (comments) => {
     return {
@@ -11,19 +10,6 @@ const setComments = (comments) => {
     };
 };
 
-const updateComment = (comment) => {
-    return {
-      type: UPDATE_COMMENT,
-      comment,
-    };
-  };
-
-const createComments = (comments) => {
-    return {
-        type: CREATE_COMMENTS,
-        comments
-    }
-}
 const removeComment = (id) => {
     return {
         type: REMOVE_COMMENT,
@@ -75,9 +61,7 @@ export const updateComments = (commentId, content) => async (dispatch) => {
       },
       body: JSON.stringify({ content })
     }
-    const res = await fetch(`/api/comments/${commentId}`, options)
-    if (!res.ok) alert('issue')
-    const data = await res.json()
+    await fetch(`/api/comments/${commentId}`, options)
 
 };
 

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, make_response, request
 from flask_login import login_required
 from app.models import User, Post, db
-from app.forms import FollowForm
+from app.forms import FollowForm, ProfilePicForm
 
 user_routes = Blueprint('users', __name__)
 
@@ -10,14 +10,28 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
-    return {user.id: {"id": user.id, "username": user.username, "profilePicture": user.profilePicture}
-            for user in users}
+    return {user.id: {
+        "id": user.id, "username": user.username, "profilePicture":
+        user.profilePicture} for user in users}
 
 
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
     user = User.query.get(id)
+    return user.to_dict()
+
+
+@user_routes.route('/<int:id>/picture/', methods=['PUT'])
+@login_required
+def update_profile(id):
+    user = User.query.get(id)
+    form = ProfilePicForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        user.profilePicture = form['profilePicture'].data
+        db.session.add(user)
+        db.session.commit()
     return user.to_dict()
 
 
@@ -42,9 +56,9 @@ def profileGet(id):
 def get_user_follows(id):
     user = User.query.filter(User.id == id).first()
     followers = user.followers.all()
-    return {user.id: {follower.id:
-                      {"id": follower.id, "username": follower.username}
-                      for follower in user.followers.all()}}
+    return {user.id: {
+        follower.id: {"id": follower.id, "username": follower.username}
+        for follower in user.followers.all()}}
 
 
 @user_routes.route('/<int:followed_user_id>/follow', methods=['POST'])
