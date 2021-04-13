@@ -3,7 +3,6 @@
     width: 38rem;
     height: 38rem;
     margin: 0 auto;
-    margin-top: 18rem;
 }
 .signUpForm form {
     border: 1px solid #CCCCCC;
@@ -54,4 +53,11 @@ input {
     align-content: center;
     justify-content: center;
     background-color: #ffff;
+}
+
+#signup-wrapper {
+    background-color: #ffff;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 14rem;
 }
