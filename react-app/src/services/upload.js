@@ -4,9 +4,9 @@ export async function getSignedRequest(photo){
     res= await res.json()
     uploadFile(photo, res.data, res.url);
   } else {
-    console.error('could not get url')
+    return {"error": "Upload Failed"}
   }
-  return res.data.url + res.data.fields.key
+  return res.data
 }
 
 export async function uploadFile(file, s3Data, url){
