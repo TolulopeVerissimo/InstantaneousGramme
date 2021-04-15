@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { getSignedRequest } from '../../services/upload'
 import { updateProfilePic } from '../../Store/user'
 import FollowUser from '../FollowUser'
 import './styles/headers.css'
 import spin from '../../images/Spin-1s-200px.gif'
-function Header() {
+function Header({profile}) {
   const dispatch = useDispatch();
   const { id: userId } = useParams()
-  const profile = useSelector(state => state.profiles[userId])
-  const [profilePic, setProfilePic] = useState("")
-
-  useEffect(() => {
-    if(profile) {
-      setProfilePic(profile.profilePicture)
-    }
-  },[profile])
+  const [profilePic, setProfilePic] = useState(profile.profilePicture)
 
   const handleProfilePic = async (e) => {
     setProfilePic(spin)
@@ -36,7 +29,7 @@ function Header() {
             <div className="pfp">
               <form>
                 <label htmlFor="profilepic-upload">
-                  <img src={profilePic ? profilePic : spin} alt={profile.username} />
+                  <img src={profilePic} alt={profile.username} />
                   <input type="file"
                     id="profilepic-upload"
                     accept="image/jpeg, image/png"

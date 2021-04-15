@@ -13,15 +13,18 @@ function Profile() {
 	const [loaded, setLoaded] = useState(false)
 	const user = useSelector((state) => state.session.user);
 	const posts = useSelector(state => state.posts)
+	const profile = useSelector(state => state.profiles[id]);
 	const dispatch = useDispatch()
 	const userPosts = []
 
 	useEffect(() => {
-
-		dispatch(getProfile(id))
-		dispatch(getPosts())
-		dispatch(getFollowers(id))
-		setLoaded(true)
+		async function fetchData() {
+			await dispatch(getProfile(id))
+			await dispatch(getPosts())
+			await dispatch(getFollowers(id))
+			setLoaded(true)
+		}
+		fetchData()
 	}, [dispatch, id])
 	if (posts) {
 		for (let key in posts) {
@@ -34,7 +37,7 @@ function Profile() {
 		<>
 			{ loaded &&
 				<div id="profile">
-					<Header/>
+					<Header profile={profile}/>
 					<div className="gridContainer">
 						{userPosts &&
 							userPosts.map((post) => <SmallPost post={post} key={post.id} user={user} />)
