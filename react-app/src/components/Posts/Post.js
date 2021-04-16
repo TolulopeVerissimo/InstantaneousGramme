@@ -7,7 +7,6 @@ import commentIcon from "../../images/icons/insta_comment_icon.png";
 import blankHeart from "../../images/icons/insta_heart_blank_icon.png";
 import redHeart from "../../images/icons/insta_heart_red_icon.png";
 import { postLike } from "../../Store/postLike";
-import EditPostModal from "../EditPostModal";
 
 const Post = ({ post, user }) => {
   const history = useHistory()

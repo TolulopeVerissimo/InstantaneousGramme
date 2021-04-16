@@ -1,19 +1,27 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router'
 import { getSignedRequest } from '../../services/upload'
-import { getProfile } from '../../Store/profile'
 import { updateProfilePic } from '../../Store/user'
 import FollowUser from '../FollowUser'
 import './styles/headers.css'
-function Header({ profile }) {
+import spin from '../../images/Spin-1s-200px.gif'
+function Header({profile}) {
   const dispatch = useDispatch();
-  const userId = useSelector(state => state.session.user.id)
+  const { id: userId } = useParams()
+  const [profilePic, setProfilePic] = useState(profile.profilePicture)
 
-  const handleProfilePic = async (img) => {
-    const url = await getSignedRequest(img);
-    await dispatch(updateProfilePic(userId, url))
-    await dispatch(getProfile(userId))
+  const handleProfilePic = async (e) => {
+    setProfilePic(spin)
+    const src = URL.createObjectURL(e.target.files[0])
+    const res = await getSignedRequest(e.target.files[0]);
+    if (!res.error){
+      const url = res.url + res.fields.key
+      await dispatch(updateProfilePic(userId, url))
+      setProfilePic(src)
+    }
   }
+
   return (
       <>
         {profile &&
@@ -21,11 +29,11 @@ function Header({ profile }) {
             <div className="pfp">
               <form>
                 <label htmlFor="profilepic-upload">
-                  <img src={profile.profilePicture} alt={profile.username} />
+                  <img src={profilePic} alt={profile.username} />
                   <input type="file"
                     id="profilepic-upload"
                     accept="image/jpeg, image/png"
-                    onChange={(e) =>handleProfilePic(e.target.files[0])}
+                    onChange={handleProfilePic}
                     style={{display: "none"}}
                     />
                 </label>
