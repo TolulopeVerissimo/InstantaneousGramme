@@ -29,7 +29,8 @@ function PostForm({ edit, post, setShowModal }) {
     if (edit) {
       await dispatch(editPost(post.id, description, isPrivate));
     } else {
-      const url = await getSignedRequest(photo);
+      const res = await getSignedRequest(photo);
+      const url = res.url + res.fields.key
       await dispatch(createPost({userId, description, url, isPrivate }));
     }
     setShowModal(false)
